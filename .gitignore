@@ -79,3 +79,16 @@ test-results/
 
 /agents/*
 .agent/*
+
+# Python cache and temporary files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+install.log
+install_*.log
