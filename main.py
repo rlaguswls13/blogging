@@ -34,12 +34,12 @@ def required_flag(args: List[str], name: str) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("사용법: python main.py <new|validate|approve|publish|sync|todo|backlinks> [options]", file=sys.stderr)
+        print("사용법: python main.py <new|validate|approve|publish|sync|todo|backlinks|theme> [options]", file=sys.stderr)
         sys.exit(1)
-        
+
     command = sys.argv[1]
     args = sys.argv[2:]
-    
+
     try:
         if command == "new":
             topic = required_flag(args, "topic")
@@ -47,12 +47,12 @@ def main():
             print(f"새 실행 생성: {run_id}")
             print(f"경로: temp/runs/{run_id}")
             return
-            
+
         elif command == "validate":
             run_id = required_flag(args, "run")
             preflight = has_flag(args, "preflight")
             ok, errors, warnings = validate_run(run_id, require_human_approval=not preflight)
-            
+
             for w in warnings:
                 print(f"경고: {w}")
             if not ok:
@@ -61,28 +61,28 @@ def main():
                 sys.exit(1)
             print("게시 게이트 통과")
             return
-            
+
         elif command == "approve":
             run_id = required_flag(args, "run")
             approve_run(run_id)
             print(f"사람 승인 기록 완료: {run_id}")
             return
-            
+
         elif command == "publish":
             run_id = required_flag(args, "run")
-            platform_str = read_flag(args, "platform") or "notion"
+            platform_str = read_flag(args, "platform") or "blogger"
             platforms = [p.strip() for p in platform_str.split(",")]
             dry_run = has_flag(args, "dry-run")
-            
+
             publish_to_multi(run_id, platforms, dry_run)
             print("dry-run 완료" if dry_run else "멀티 플랫폼 게시 완료")
             return
-            
+
         elif command == "sync":
             count = sync_mdx()
             print(f"{count}개의 Notion 페이지를 MDX로 생성했습니다.")
             return
-            
+
         elif command == "todo":
             status = read_flag(args, "status")
             todos = get_todos(status)
@@ -101,23 +101,23 @@ def main():
                         print(f"  연결된 글 ID: {todo.linkedArticleId}")
                     print("")
             return
-            
+
         elif command == "backlinks":
             graph = load_knowledge_graph()
             run_id = required_flag(args, "run")
             target_article_id = f"article-{run_id}"
-            
+
             node = next((n for n in graph.get("nodes", []) if n.get("articleId") == target_article_id), None)
             if not node:
                 print(f"오류: 지식 그래프에서 글을 찾을 수 없습니다: {target_article_id}", file=sys.stderr)
                 sys.exit(1)
-                
+
             print(f"--- [{node.get('topic')}] 백링크 정보 ---")
             print(f"등록 시각: {node.get('createdAt')}")
             print("\n[인용된 참고문헌]")
             for r in node.get("references", []):
                 print(f"- {r.get('title')} ({r.get('url')})")
-                
+
             print("\n[설정된 백링크]")
             backlinks = node.get("backlinks", [])
             if not backlinks:
@@ -126,11 +126,17 @@ def main():
                 for b in backlinks:
                     print(f"- From: {b.get('fromArticleId')} -> To: {b.get('toArticleId')} (앵커: \"{b.get('anchor')}\")")
             return
-            
+
+        elif command == "theme":
+            from src.theme import manage_theme
+            upload = has_flag(args, "upload")
+            manage_theme(upload=upload)
+            return
+
         else:
             print(f"Error: 지원하지 않는 명령어입니다: {command}", file=sys.stderr)
             sys.exit(1)
-            
+
     except Exception as e:
         print(f"오류 발생: {str(e)}", file=sys.stderr)
         sys.exit(1)
