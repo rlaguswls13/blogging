@@ -158,7 +158,6 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
 
     # 1. Strip internal validation / todo checklist sections from published blog content
     published_content = content
-    published_content = re.sub(r"## 사실 검증 결과\s*(.*?)(?=##|\Z)", "", published_content, flags=re.MULTILINE | re.DOTALL)
     published_content = re.sub(r"## 꼬리질문\s*(.*?)(?=##|\Z)", "", published_content, flags=re.MULTILINE | re.DOTALL)
 
     # 2. Automatically linkify raw URLs in markdown content (skipping code blocks)

@@ -22,7 +22,6 @@
         --card-bg: #ffffff;
         --text-main: #1f2937;             /* Clean Charcoal Black */
         --text-muted: #4b5563;            /* Soft Gray */
-        --border-color: #ebe7e0;          /* Soft Pastel Warm Border */
         --terminal-bg: #1e222b;           /* Dark Slate Code Background */
         --accent-color: #f43f5e;          /* Vibrant Rose Accent (Primary/원색) */
         --font-family: 'Inter', 'Noto Sans KR', sans-serif;

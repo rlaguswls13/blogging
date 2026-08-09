@@ -1,9 +1,148 @@
 {
   "nodes": [
     {
+      "articleId": "article-20260805073529",
+      "topic": "^Kubernetes^ Operator^ 패턴^",
+      "createdAt": "2026-08-09T22:42:07.494895Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 왜 Kubernetes Operator 패턴인가?",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. Kubernetes 확장 모델과 Custom Resource Definition (CRD)",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. Operator 패턴의 핵심 개념과 작동 원리 (Reconciliation Loop)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. Operator 개발을 위한 주요 도구 및 프레임워크 (Kubebuilder vs Operator SDK)",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. Operator 패턴 도입 시 주의점 및 모범 사례 (Best Practices)",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)",
+          "title": "Kubernetes 공식 문서 - Custom Resources (",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)",
+          "title": "Kubernetes 공식 문서 - Operator Pattern (",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://oneuptime.com/blog/kubernetes-operator-reconciliation-loop)",
+          "title": "OneUptime Tech Blog - The Reconciliation Loop in Kubernetes Operators (",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://sdk.operatorframework.io/docs/building-operators/golang/comparison/)",
+          "title": "Operator SDK 공식 문서 - Kubebuilder vs Operator SDK Comparison (",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://book.kubebuilder.io/beyond-commons/idempotency.html)",
+          "title": "Kubebuilder 공식 가이드북 - Design Patterns: Idempotency (",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260805073529-1",
+          "question": "Kubernetes Operator의 어드미션 웹훅(Admission Webhook)을 활용한 보안 정책 강제 방법은 무엇인가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://kubernetes.io/docs/reference/access-authn-authz/extensible-admission-controllers/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260805073529-2",
+          "question": "Operator Lifecycle Manager (OLM)를 통해 클러스터 상에서 Operator의 실시간 무중단 업그레이드를 구현하는 구조는 어떻게 설계되는가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://olm.operatorframework.io/docs/concepts/crds/operatorgroup/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260805073529-3",
+          "question": "controller-runtime의 Cache/Indexer 메커니즘과 Informer의 API 서버 트래픽 최소화 아키텍처의 상세 원리는 무엇인가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://pkg.go.dev/sigs.k8s.io/controller-runtime/pkg/cache"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
       "articleId": "article-20260805102804",
       "topic": "Google Blogger API 사용법",
-      "createdAt": "2026-08-05T10:43:56.166119Z",
+      "createdAt": "2026-08-09T22:48:07.838230Z",
       "tocItems": [
         {
           "id": "toc-1",

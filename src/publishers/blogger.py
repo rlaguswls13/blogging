@@ -86,6 +86,51 @@ class BloggerPublisher(BlogPublisher):
                 publishedAt=datetime.datetime.utcnow().isoformat() + "Z"
             )
 
+        # 1. Try to reuse existing refresh token first to avoid browser popup blocker issues
+        if creds_dict.get("refresh_token"):
+            try:
+                print("[Blogger] 기존 refresh_token을 이용해 게시물 반영을 시도합니다...")
+                service = self.get_blogger_service(creds_dict)
+                posts = service.posts()
+                body = {
+                    "title": article.title,
+                    "content": article.htmlContent,
+                    "labels": article.tags
+                }
+
+                if article.existingPostId:
+                    request = posts.update(
+                        blogId=blog_id,
+                        postId=article.existingPostId,
+                        body=body
+                    )
+                else:
+                    request = posts.insert(
+                        blogId=blog_id,
+                        isDraft=article.isDraft if article.isDraft is not None else False,
+                        body=body
+                    )
+
+                response = request.execute()
+                post_id = response.get("id")
+                url = response.get("url")
+
+                if not post_id or not url:
+                    raise Exception("Blogger API 응답에서 postId 또는 url을 찾을 수 없습니다.")
+
+                published_at = response.get("published", datetime.datetime.utcnow().isoformat() + "Z")
+                print(f"[Blogger] 기존 refresh_token으로 게시물 반영에 성공했습니다! (ID: {post_id})")
+
+                return PublishResult(
+                    platform=self.name,
+                    postId=post_id,
+                    url=url,
+                    publishedAt=published_at
+                )
+            except Exception as e:
+                print(f"[Blogger] 기존 refresh_token을 이용한 시도가 실패했습니다: {e}")
+                print("[Blogger] 대화형 브라우저 OAuth 인증으로 폴백합니다...")
+
         try:
             import urllib.parse
             from http.server import HTTPServer, BaseHTTPRequestHandler
