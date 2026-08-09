@@ -985,7 +985,7 @@
       <nav class='nav-bar'>
         <div class='brand-title'>
           <a class='nav-brand' expr:href='data:blog.homepageUrl'>
-            <span class='nav-brand-tech'>TECH</span> LOG <span class='nav-brand-signature'>&amp;lt;KHJ/&amp;gt;</span>
+            <span class='nav-brand-tech'>TECH</span> LOG <span class='nav-brand-signature'>&amp;lt;BEJI/&amp;gt;</span>
           </a>
         </div>
         <div class='gnb-center-search'>
@@ -1769,7 +1769,7 @@
       </div>
       <div class='footer-bottom'>
         <div class='footer-inner'>
-          <div class='footer-brand'>TECH LOG &amp;lt;KHJ/&amp;gt;</div>
+          <div class='footer-brand'>TECH LOG &amp;lt;BEJI/&amp;gt;</div>
           <div class='footer-copyright'>&amp;copy; 2026 TECH LOG. All rights reserved.</div>
         </div>
       </div>
