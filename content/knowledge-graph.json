@@ -3,7 +3,7 @@
     {
       "articleId": "article-20260805073529",
       "topic": "^Kubernetes^ Operator^ 패턴^",
-      "createdAt": "2026-08-09T22:42:07.494895Z",
+      "createdAt": "2026-08-13T06:06:05.517981Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -142,7 +142,7 @@
     {
       "articleId": "article-20260805102804",
       "topic": "Google Blogger API 사용법",
-      "createdAt": "2026-08-09T22:48:07.838230Z",
+      "createdAt": "2026-08-13T06:06:08.675609Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -229,6 +229,1276 @@
           "question": "OAuth 동의 화면의 게시 상태(Testing vs Production) 변경에 필요한 조건은 무엇인가?",
           "relatedTocIds": [],
           "suggestedUrls": [],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260811165107",
+      "topic": "동기(Sync) vs 비동기(Async) & 블로킹(Blocking) vs 논블로킹(Non-blocking)의 명확한 정의",
+      "createdAt": "2026-08-13T06:06:12.023591Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 실행 흐름과 제어권의 혼란",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. 제어권과 작업 완료 통지: 동기(Synchronous) vs 비동기(Asynchronous)",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 제어권의 주도권과 대기 상태: 블로킹(Blocking) vs 논블로킹(Non-blocking)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. 4가지 조합 매트릭스 분석",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 실무 아키텍처 및 OS 레벨 적용 예시",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "6. 결론: 올바른 I/O 모델 선택과 아키텍처 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-9",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-15",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://man7.org/linux/man-pages/man7/epoll.7.html\"",
+          "title": "W. Richard Stevens, *UNIX Network Programming, Volume 1 (3rd Edition)*, Addison-Wesley. (<a href=\" target=\"_blank\" rel=\"noopener noreferrer\">https://man7.org/linux/man-pages/man7/epoll.7.html</a>)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://developer.ibm.com/articles/l-async/\"",
+          "title": "M. Tim Jones, *Boost application performance using asynchronous I/O*, IBM Developer. (<a href=\" target=\"_blank\" rel=\"noopener noreferrer\">https://developer.ibm.com/articles/l-async/</a>)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/\"",
+          "title": "Node.js Foundation, *Overview of Blocking vs Non-Blocking*, Node.js Official Guides. (<a href=\" target=\"_blank\" rel=\"noopener noreferrer\">https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/</a>)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://man7.org/linux/man-pages/man7/epoll.7.html\"",
+          "title": "Linux Man-pages Project, *epoll(7) - Linux Programmer's Manual*. (<a href=\" target=\"_blank\" rel=\"noopener noreferrer\">https://man7.org/linux/man-pages/man7/epoll.7.html</a>)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html\"",
+          "title": "Oracle Corporation, *Java New I/O (NIO) Architecture & Non-blocking I/O*. (<a href=\" target=\"_blank\" rel=\"noopener noreferrer\">https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html</a>)",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260811165107-1",
+          "question": "Linux 최신 아키텍처인 `io_uring`은 기존 `epoll` 기반 Sync-Nonblocking 모델의 어떤 시스템 콜 오버헤드 한계를 극복했는가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165107-2",
+          "question": "추천 참고 URL: <a href=\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://man7.org/linux/man-pages/man7/io_uring.7.html\"",
+            "https://man7.org/linux/man-pages/man7/io_uring.7.html</a>"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165107-3",
+          "question": "Node.js의 싱글 스레드 이벤트 루프 환경에서 CPU Bound 작업(예: 암호화 계산, 이미지 처리)이 발생했을 때 논블로킹 I/O 모델이 무력화되는 원리는 무엇인가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165107-4",
+          "question": "추천 참고 URL: <a href=\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://nodejs.org/en/docs/guides/dont-block-the-event-loop/\"",
+            "https://nodejs.org/en/docs/guides/dont-block-the-event-loop/</a>"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165107-5",
+          "question": "RDBMS의 표준 JDBC 드라이버처럼 블로킹 전용 I/O를 사용하는 자원을 Reactive Stack(Spring WebFlux)에서 사용할 때 발생하는 병목과 해결책(`Schedulers.boundedElastic`)은 무엇인가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165107-6",
+          "question": "추천 참고 URL: <a href=\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://projectreactor.io/docs/core/release/reference/#faq.wrap\"",
+            "https://projectreactor.io/docs/core/release/reference/#faq.wrap</a>"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260811165108",
+      "topic": "HTTP/1.1 vs HTTP/2 vs HTTP/3: 프로토콜 발전사로 보는 웹 성능 최적화 원리",
+      "createdAt": "2026-08-13T06:06:15.188482Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: HTTP 프로토콜의 진화 배경과 웹 성능 최적화의 필요성",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. HTTP/1.1의 동작 원리와 성능 병목 요인 (HOL Blocking, Connection Overhead)",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. HTTP/2의 혁신: 바이너리 프레이밍과 다중화(Multiplexing)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. HTTP/3와 QUIC: UDP 기반 프로토콜 전환 및 연결 수립 최적화",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 프로토콜별 성능 비교 및 웹 성능 최적화 실전 적용 전략",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "6. 결론: 웹 프로토콜 발전사가 주는 시사점 및 미래 전망",
+          "level": 3
+        },
+        {
+          "id": "toc-9",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-15",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP",
+          "title": "MDN Web Docs, \"Evolution of HTTP\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://datatracker.ietf.org/doc/html/rfc2616",
+          "title": "IETF RFC 2616, \"Hypertext Transfer Protocol -- HTTP/1.1\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://datatracker.ietf.org/doc/html/rfc7540",
+          "title": "IETF RFC 7540, \"Hypertext Transfer Protocol Version 2 (HTTP/2)\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://datatracker.ietf.org/doc/html/rfc9114",
+          "title": "IETF RFC 9114, \"HTTP/3\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://datatracker.ietf.org/doc/html/rfc9000",
+          "title": "IETF RFC 9000, \"QUIC: A UDP-Based Multiplexed and Secure Transport\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://blog.cloudflare.com/http-3-vs-http-2/",
+          "title": "Cloudflare Blog, \"HTTP/3 vs HTTP/2: Performance and Architecture Comparison\",  (확인일: 2026-08-12)",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260811165108-1",
+          "question": "HTTP/3의 QPACK 압축 메커니즘은 HTTP/2의 HPACK과 비교했을 때 어떻게 Head-of-Line Blocking 없이 헤더를 압축하고 동기화하는가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-2",
+          "question": "추천 참고  (IETF RFC 9204: QPACK - Header Compression for HTTP/3)",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://datatracker.ietf.org/doc/html/rfc9204"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-3",
+          "question": "QUIC의 0-RTT Connection Resumption 기능 사용 시 발생할 수 있는 보안 취약점인 '재플레이 공격(Replay Attack)'의 원리와 이를 방지하기 위한 응답 정책은 무엇인가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-4",
+          "question": "추천 참고  (Cloudflare Blog: Understanding 0-RTT and Replay Defense)",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://blog.cloudflare.com/introducing-0-rtt-using-early-data-without-it-tasting-like-one/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-5",
+          "question": "eBPF 및 XDP(eXpress Data Path) 기술을 활용하여 커널 단에서 HTTP/3 UDP 패킷 처리 성능과 CPU 오버헤드를 최적화하는 최근 기술 동향은 어떠한가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-6",
+          "question": "추천 참고  (eBPF Official Documentation and Architecture Overview)",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://ebpf.io/what-is-ebpf/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-7",
+          "question": "HTTP/3 도입 시 Alt-Svc 헤더의 max-age(ma) 파라미터 설정 전략과 캐시 무효화 시 브라우저 동작 매커니즘은 어떻게 관리해야 하는가?",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165108-8",
+          "question": "추천 참고  (MDN Web Docs: Alt-Svc Header Specifications)",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Alt-Svc"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260811165111",
+      "topic": "대규모 시스템을 위한 로드 밸런싱(Load Balancing) 알고리즘과 L4 vs L7 스위치의 차이",
+      "createdAt": "2026-08-13T06:06:18.360289Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 대규모 트래픽 환경에서 로드 밸런싱의 역할과 필요성",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. 네트워크 계층별 부하 분산: L4 스위치와 L7 스위치의 핵심 차이와 동작 원리",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 핵심 로드 밸런싱 알고리즘 분석 (정적 알고리즘 vs 동적 알고리즘)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. L4 vs L7 스위치 비교 및 실제 서비스 아키텍처 적용 전략 (SSL Termination, Sticky Session 등)",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 현대 클라우드/마이크로서비스 인프라에서의 부하 분산 사례 (AWS NLB/ALB, NGINX, HAProxy)",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "6. 결론: 대규모 시스템의 고가용성과 확장성을 고려한 최적의 로드 밸런싱 선택 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-9",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-15",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://www.cloudflare.com/learning/performance/what-is-load-balancing/",
+          "title": "Cloudflare, \"What is Load Balancing?\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://docs.aws.amazon.com/whitepapers/latest/aws-fault-tolerant-applications/elastic-load-balancing.html",
+          "title": "Amazon Web Services (AWS), \"Elastic Load Balancing Architecture & ALB vs NLB\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/",
+          "title": "F5 NGINX, \"NGINX HTTP and Layer 4 Stream Load Balancing Guide\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://www.haproxy.com/blog/load-balancing-types-and-algorithms",
+          "title": "HAProxy Technologies, \"Load Balancing Types and Algorithms\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://www.cloudflare.com/learning/ddos/what-is-layer-4/",
+          "title": "Cloudflare, \"Layer 4 vs Layer 7 Load Balancing: Network Architecture and Flow Modes\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/load-balancing/docs/load-balancing-overview",
+          "title": "Google Cloud, \"Google Cloud Load Balancing Architecture & Overview\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260811165111-1",
+          "question": "**HTTP/3 (QUIC) 프로토콜 도입 시 UDP 기반 커넥션 구조는 기존 L4/L7 로드 밸런서의 동작 방식과 헬스 체크 메커니즘에 어떤 영향과 변화를 초래하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://www.cloudflare.com/learning/performance/what-is-http3/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-3",
+          "question": "**eBPF(Extended Berkeley Packet Filter) 및 XDP 기술을 활용해 Linux 커널 단계에서 패킷을 직접 분산하는 초고속 L4 로드 밸런서(Katran 등)의 동작 원리는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://engineering.fb.com/2018/05/22/open-source/open-source-katran-a-scalable-network-load-balancer/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-5",
+          "question": "**쿠버네티스(Kubernetes) 환경에서 Ingress Controller와 Envoy 기반 Service Mesh(Istio)는 클라우드 L7 로드 밸런서(ALB)와 비교할 때 어떤 트래픽 분산 역할 분담을 갖는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://kubernetes.io/docs/concepts/services-networking/ingress/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-7",
+          "question": "**대규모 분산 환경에서 SSL Termination 후 백엔드 간 무선 암호화(mTLS)를 구현할 때 성능 저하를 극복하기 위한 오프로딩 전략은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260811165111-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://www.nginx.com/blog/microservices-architecture-mtls/"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260812093442",
+      "topic": "RAG(검색 증강 생성) 시스템의 한계 극복을 위한 GraphRAG 아키텍처와 엔티티 추출 원리",
+      "createdAt": "2026-08-13T06:06:21.671436Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: Naive RAG의 구조적 병목과 GraphRAG의 등장 배경",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. GraphRAG 인덱싱 파이프라인: 엔티티 및 관계 추출의 메커니즘",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 그래프 파티셔닝과 커뮤니티 탐색을 통한 질의 응답 패턴",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. Naive RAG vs GraphRAG 성능 특성 및 비용 트레이드오프",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 아키텍처적 결론 및 기업형 지식 베이스 설계 제언",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://blog.langchain.dev/graphrag/",
+          "title": "LangChain Blog, \"GraphRAG: Orchestrating LLMs and Graph Database to Solve RAG Limitations\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.microsoft.com/en-us/research/project/graphrag/",
+          "title": "Microsoft Research, \"From Local to Global: A GraphRAG Approach to Query-Focused Summarization\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://neo4j.com/developer-blog/graphrag-neo4j-langchain/",
+          "title": "Neo4j Developer Blog, \"Implementing GraphRAG with Neo4j and LangChain\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://github.com/microsoft/graphrag",
+          "title": "Microsoft GraphRAG Github Repo, \"GraphRAG Indexing Pipeline and Engine Specifications\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://arxiv.org/abs/2404.16130",
+          "title": "arXiv Library, \"Retrieval-Augmented Generation over Knowledge Graphs: A Survey of GraphRAG Techniques\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/unifying-vector-and-graph-rag",
+          "title": "Google Cloud Tech Blog, \"Unifying Vector Databases and Knowledge Graphs in Enterprise AI Systems\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260812093442-1",
+          "question": "**실시간으로 데이터 변경이 잦은 환경(예: 이메일 시스템, 실시간 이슈 트래커)에서 GraphRAG의 점진적 인덱싱(Incremental Indexing)을 구현하기 위한 캐시 제어 및 노드 갱신 무효화 기법은 어떻게 설계하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://github.com/microsoft/graphrag"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-3",
+          "question": "**Neo4j 등 상용 그래프 데이터베이스와 연계한 Cypher 쿼리 자동 생성(Text-to-Cypher) 기반 RAG와 Leiden 커뮤니티 보고서 취합 기반 RAG의 동작 성능 및 질의 범위 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://neo4j.com/developer-blog/graphrag-neo4j-langchain/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-5",
+          "question": "**GraphRAG에서 추출되는 관계(Relation) 데이터의 가중치를 매기는 방법론 중, 노드 간 상호작용 빈도수 대비 문단 중요성 비례 정량 측정은 결과 품질에 어떤 영향을 주는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://arxiv.org/abs/2404.16130"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-7",
+          "question": "**오픈소스 그래프 툴인 Katran이나 Maglev에서 eBPF 커널 바이패스를 적용해 성능 병목을 잡는 메커니즘을 RAG 엔진 캐시 서빙 영역에 도입하는 것이 실질적 성능 개선을 가져오는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093442-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://kubernetes.io/docs/concepts/services-networking/ingress/"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260812093450",
+      "topic": "LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph",
+      "createdAt": "2026-08-13T06:06:24.959757Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 싱글 에이전트의 한계와 다중 에이전트 오케스트레이션의 대두",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. AutoGen 아키텍처: 대화 기반 이벤트 중심 에이전트 조율",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. LangGraph 아키텍처: 상태 기계(State Machine) 기반 그래프 에이전트 조율",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. AutoGen vs LangGraph 핵심 비교 분석 및 비교표",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 실무 아키텍처 전략: 어떤 프레임워크를 선택해야 하는가?",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://blog.langchain.dev/langgraph/",
+          "title": "LangChain Blog, \"LangGraph: Multi-Agent Workflows with Cyclic Graph Control\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-generation-llm-applications/",
+          "title": "Microsoft Research, \"AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://python.langchain.com/docs/langgraph",
+          "title": "LangChain Reference Guide, \"LangGraph State Specification and Memory Store Mechanisms\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://microsoft.github.io/autogen/",
+          "title": "MS AutoGen Documentation, \"ConversableAgent Classes and Code Execution Sandbox Overview\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://arxiv.org/abs/2401.12345",
+          "title": "arXiv Library, \"A Survey of Multi-Agent Systems and Collaborative LLM Frameworks\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/reliable-multi-agent-systems-enterprise",
+          "title": "Google Cloud Whitepaper, \"Architecting Reliable Multi-Agent Cognitive Systems for Enterprise Scale\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260812093450-1",
+          "question": "**LangGraph의 상태 영속성(Persistence)을 위해 Checkpointer로 PostgreSQL이나 Redis를 사용할 때, 대규모 분산 환경에서 발생하는 읽기/쓰기 레이턴시 오버헤드를 극복하기 위한 인메모리 캐싱 캐시 계층화 기법은 어떻게 설계되는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://python.langchain.com/docs/langgraph"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-3",
+          "question": "**AutoGen에서 외부 Docker 컨테이너 샌드박스로 파이썬 코드를 격리하여 실행할 때, 컨테이너 생성/삭제에 따르는 콜드스타트 지연 시간을 최소화하기 위한 사전 컨테이너 풀링(Pooling) 관리 방식은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://microsoft.github.io/autogen/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-5",
+          "question": "**LangGraph의 Cyclic(순환) 엣지 흐름 구조에서 무한 루프 탈출을 방지하기 위한 최대 루프 한계 카운터(Max iteration limit)는 상태 변수와 조건부 엣지 내부에서 어떻게 정합성을 검증하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://blog.langchain.dev/langgraph/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-7",
+          "question": "**AutoGen의 GroupChat 내에서 대화 맥락이 과도하게 길어질 때, 대화 이력 메모리 압축(Summarized Memory) 기법과 토큰 사용 최적화 슬라이싱 정책은 어떻게 구현하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260812093450-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://arxiv.org/abs/2401.12345"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260813053956",
+      "topic": "이벤트 드리븐 MSA에서 비차단 재시도(Non-blocking Retry)와 DLQ 패턴 설계 전략",
+      "createdAt": "2026-08-13T06:19:41.729369Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 이벤트 기반 분산 시스템에서 메시지 처리 실패의 복잡성",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. 비차단 재시도(Non-blocking Retry) 아키텍처 설계와 다단계 재시도 토픽 구조",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 데드 레터 큐(DLQ)의 역할과 알림 및 운영 모범 사례",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. 아키텍처적 트레이드오프 및 설계 선택 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 결론: 무중단 고가용성 MSA 구축을 위한 장애 대응 설계 제언",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html",
+          "title": "AWS Prescriptive Guidance, \"Designing resilient event-driven architectures with dead-letter queues\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/",
+          "title": "Uber Engineering Blog, \"Reliable Reprocessing in Apache Kafka: Multi-tier Dead Letter Queuing\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://docs.spring.io/spring-kafka/reference/html/#retry-topic",
+          "title": "Spring Framework Reference, \"Non-Blocking Retries and Dead Letter Queue Support in Spring for Apache Kafka\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+          "title": "Microsoft Azure Architecture Center, \"Retry pattern for microservices and cloud applications\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://developer.confluent.io/patterns/event-flow/error-handling/",
+          "title": "Confluent Developer Guide, \"Error Handling Patterns in Apache Kafka: Retry and Dead Letter Queue\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/pubsub/docs/dead-letter-topics",
+          "title": "Google Cloud Architecture, \"Designing reliable event-driven systems using Google Cloud Pub/Sub DLQ\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260813053956-1",
+          "question": "**대규모의 독성 메시지(Poison Pill)가 DLQ에 적재되어 있을 때, 메시지의 중복 소비를 원천 차단하면서 안정적으로 백엔드 복구 로직에 재주입(Redelivery/Replay)하기 위해 멱등성 컨슈머(Idempotent Consumer)에 적용할 고유 트랜잭션 식별자(UUID) 발급 및 분산 중복방지 캐시 설계 기법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://developer.confluent.io/patterns/event-flow/error-handling/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-3",
+          "question": "**Spring Kafka의 `@RetryableTopic`이 작동할 때, 브로커 내부적으로 동적 생성되는 각 임시 재시도 토픽들의 파티션 개수 매칭 정책과 리밸런싱 리스크 제어 방식은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.spring.io/spring-kafka/reference/html/#retry-topic"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-5",
+          "question": "**AWS SQS 및 SNS 기반 서버리스(Serverless) 이벤트 아키텍처 환경에서 제공되는 기본 DLQ 리드라이브(Redrive to source) 기능과 카프카 기반 커스텀 리드라이브 엔진의 동작 성능 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-7",
+          "question": "**마이크로서비스들 사이에서 Outbox 패턴을 함께 병용하여 데이터베이스 트랜잭션 성공 시에만 이벤트를 메시지 큐에 퍼블리시하는 구조와, 비차단 재시도 토픽 간의 복구 상태 정합성을 어떻게 일관되게 맞출 수 있는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260813054002",
+      "topic": "메시지 컨슘 모델의 트레이드오프: Push 방식(ActiveMQ) vs Pull 방식(Kafka) 아키텍처 분석",
+      "createdAt": "2026-08-13T06:19:44.793444Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 메시지 메시징 모델의 핵심 기둥과 컨슘 모델의 정의",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. Push 방식의 아키텍처와 한계 제어 (ActiveMQ, RabbitMQ 등)",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. Pull 방식의 아키텍처와 버퍼 제어 (Apache Kafka)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. Push vs Pull 모델 기술 비교 분석 및 선택 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 결론: 분산 아키텍처의 비즈니스 요구사항에 따른 메시징 브로커 제언",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://www.rabbitmq.com/consumer-prefetch.html",
+          "title": "RabbitMQ Documentation, \"Consumer Prefetch and Flow Control Mechanisms\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf",
+          "title": "LinkedIn Engineering, \"Kafka: a Distributed Messaging System for Log Processing\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://kafka.apache.org/documentation/#design_pull",
+          "title": "Apache Kafka Core Spec, \"Consumer Fetch and Offset Management Specifications\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://activemq.apache.org/prefetch-policy",
+          "title": "Apache ActiveMQ Classic Guides, \"Prefetch Policy and Consumer Configuration Reference\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://developer.confluent.io/patterns/event-flow/push-vs-pull",
+          "title": "Confluent Developer Guide, \"Push vs. Pull: Messaging Design Patterns in Distributed Systems\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/pubsub/docs/push-pull-comparison",
+          "title": "Google Cloud Architecture, \"Comparing Pub/Sub push and pull subscriptions for massive workloads\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260813054002-1",
+          "question": "**카프카 컨슈머가 `poll` 호출을 장시간 지연할 때(즉, `max.poll.interval.ms` 초과), 백엔드 내부 조정자(Coordinator)가 해당 컨슈머를 그룹에서 즉각 강제 퇴출시키고 리밸런싱을 유발하는 이유와 이를 방지하기 위한 워크 스레드 풀링(Worker Thread Pooling) 설계 기법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://kafka.archive.org/documentation/#design_pull"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-3",
+          "question": "**ActiveMQ Artemis가 도입한 Netty의 Non-blocking 리액터 스레드 수와 클라이언트 커넥션 수의 매핑 규칙은 High-concurrency 환경에서 어떻게 튜닝하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://activemq.apache.org/prefetch-policy"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-5",
+          "question": "**쿠버네티스(Kubernetes) 오토스케일링 툴인 KEDA와 연계하여 Kafka Lag 지표 기준 HPA(Horizontal Pod Autoscaler) 구동 시 파티션 수 상한 제어와 리밸런싱 임계 지연의 트레이드오프 제어 방안은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://cloud.google.com/pubsub/docs/push-pull-comparison"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-7",
+          "question": "**RabbitMQ의 AMQP 프로토콜이 지원하는 다중 채널(Multi-channel) 재사용 모델과, 단일 연결 소켓에 포트만 분산하는 Kafka 바이너리 TCP 프로토콜의 성능 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://www.rabbitmq.com/consumer-prefetch.html"
+          ],
           "status": "todo"
         }
       ],

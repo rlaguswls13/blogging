@@ -183,58 +183,62 @@ def manage_theme(upload: bool = False):
                 if not restore_item:
                     raise RuntimeError("복원(Restore) 메뉴 아이템을 찾을 수 없습니다.")
 
-                print("[Blogger] 복원(Restore) 메뉴 아이템 클릭")
-                restore_item.click()
-                active_frame.wait_for_timeout(2000)
-                    
-                # 모달 팝업에서 업로드 클릭 및 파일 지정
-                theme_uploaded = False
-                
-                # '업로드' / 'Upload' 버튼을 찾아 expect_file_chooser를 통해 파일 다이얼로그 가로채서 업로드
+                print("[Blogger] 복원(Restore) 메뉴 아이템 강제 클릭 이벤트 디스패치")
+                restore_item.dispatch_event('click')
+                active_frame.wait_for_timeout(3000)
+
+                # 복원 모달 팝업이 나타날 때까지 대기
+                print("[Blogger] 복원 대화상자 모달 대기 중...")
                 try:
+                    active_frame.wait_for_selector("div[role='dialog']", timeout=8000)
+                except Exception:
+                    pass
+
+                # 모달 팝업 내부에서만 업로드 버튼 찾기
+                theme_uploaded = False
+                try:
+                    dialog = active_frame.locator("div[role='dialog']").first
                     upload_btn = None
-                    for kw in ["업로드", "Upload"]:
-                        loc = active_frame.get_by_role("button", name=kw, exact=False).first
-                        if loc.count() > 0 and loc.is_visible():
-                            upload_btn = loc
-                            break
-                    
-                    if not upload_btn:
+                    if dialog.count() > 0:
                         for kw in ["업로드", "Upload"]:
-                            loc = active_frame.locator(f"div[role='button']:has-text('{kw}')").first
+                            loc = dialog.locator(f"button:has-text('{kw}'), div[role='button']:has-text('{kw}'), span:has-text('{kw}')").first
                             if loc.count() > 0 and loc.is_visible():
                                 upload_btn = loc
                                 break
 
                     if not upload_btn:
-                        upload_btn = active_frame.locator("button:has-text('업로드'), button:has-text('Upload')").first
-                        if upload_btn.count() == 0:
-                            upload_btn = active_frame.locator("span:has-text('업로드'), span:has-text('Upload')").first
+                        # 폴백: 대화상자가 제대로 안 잡혔을 경우 프레임 전체에서 탐색
+                        for kw in ["업로드", "Upload"]:
+                            loc = active_frame.locator(f"button:has-text('{kw}'), div[role='button']:has-text('{kw}')").first
+                            if loc.count() > 0 and loc.is_visible():
+                                upload_btn = loc
+                                break
 
-                    print(f"[Blogger] 업로드 버튼 탐색 완료: {upload_btn}. 클릭 시뮬레이션 및 파일 선택기 가로채기 시작...")
-                    
+                    print(f"[Blogger] 복원 대화상자 내 업로드 버튼 지정 완료. 클릭 및 파일 지정 감시...")
                     with page.expect_file_chooser(timeout=10000) as fc_info:
                         upload_btn.click(force=True)
                     file_chooser = fc_info.value
                     file_chooser.set_files(str(theme_path))
-                    print("[Blogger] 파일 선택기 가로채기를 통한 테마 파일 업로드 성공!")
+                    print("[Blogger] 파일 가로채기를 통한 테마 파일 전송 완료!")
                     theme_uploaded = True
                 except Exception as e:
-                    print(f"[Blogger] 파일 선택기 가로채기 실패 ({str(e)}). 직접 input[type=file] 지정 또는 강제 세팅을 시도합니다.")
+                    print(f"[Blogger] 업로드 가로채기 실패 ({str(e)}). input[type=file] 강제 주입을 시도합니다.")
 
                 if not theme_uploaded:
-                    # 시도 2: input[type=file] 직접 set_input_files 설정
                     try:
                         file_input = active_frame.locator("input[type='file']").first
                         if file_input.count() > 0:
                             file_input.set_input_files(str(theme_path))
-                            print("[Blogger] input[type='file']에 직접 파일 지정 성공!")
+                            file_input.dispatch_event('change')
+                            print("[Blogger] input[type='file']에 직접 파일 지정 및 change 이벤트 트리거 성공!")
                             theme_uploaded = True
                     except Exception as fe:
-                        raise RuntimeError(f"모든 파일 업로드 경로가 실패했습니다. 상세오류: {str(fe)}")
-                # 업로드 통신 대기하며 진행 경과 스크린샷 캡처
-                print("[Blogger] 테마 업로드 대기 시작 (진행 상황 모니터링)...")
-                for i in range(1, 9):
+                        raise RuntimeError(f"테마 복원 업로드 처리가 불가능합니다. 오류: {str(fe)}")
+
+                # 업로드 서버 완료 토스트 감시 (최대 30초 대기)
+                print("[Blogger] 테마 복원 완료 토스트 감시 시작 (최대 30초)...")
+                restored_toast_found = False
+                for i in range(1, 16):
                     active_frame.wait_for_timeout(2000)
                     step_shot_path = f"C:/Users/rlagu/.gemini/antigravity/brain/af7d9d0f-bcbe-46da-b9b8-4b47e058a573/blogger_upload_step_{i}.png"
                     try:

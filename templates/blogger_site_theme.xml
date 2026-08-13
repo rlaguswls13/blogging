@@ -2,8 +2,105 @@
 <!DOCTYPE html>
 <html b:css='false' b:defaultmessages='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' class='v3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
+    <script type='text/javascript'>
+      //<![CDATA[
+      (function() {
+        var path = window.location.pathname;
+        if (path === '/label' || path === '/label/') {
+          window.location.replace('/search/label?max-results=100');
+        } else if (path.indexOf('/label/') === 0) {
+          var category = path.substring(7);
+          window.location.replace('/search/label/' + category + '?max-results=100');
+        }
+      })();
+      //]]>
+    </script>
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title/></title>
+    <style>
+      .tech-pagination .page-btn:hover {
+        background-color: var(--primary-light) !important;
+        border-color: var(--primary-color) !important;
+        color: var(--primary-color) !important;
+      }
+      .tech-pagination .page-btn.active {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+      }
+      
+      /* Modal Popup Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: all 0.3s ease;
+      }
+      .modal-box {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      @keyframes modalScaleUp {
+        from { transform: scale(0.95); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.2rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .modal-header h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+      .modal-close-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--text-muted);
+        transition: color 0.2s;
+        line-height: 1;
+        padding: 0;
+      }
+      .modal-close-btn:hover {
+        color: var(--text-main);
+      }
+      .modal-body {
+        padding: 1.5rem;
+        max-height: 350px;
+        overflow-y: auto;
+      }
+      .devlog-tags-popup {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .devlog-tags-popup .tech-tag {
+        display: inline-flex !important;
+      }
+    </style>
     
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
@@ -485,7 +582,7 @@
       
       .container.is-single-column {
         grid-template-columns: 1fr !important;
-        max-width: 840px;
+        max-width: 1200px;
       }
       
       /* Recent Posts Title Section */
@@ -527,6 +624,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
+        min-height: 550px;
       }
       
       @media(min-width: 640px) {
@@ -635,7 +733,7 @@
         background: var(--card-bg);
         border: 1px solid var(--border-color);
         border-radius: 12px;
-        padding: 2.5rem;
+        padding: 2.5rem 3rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.01);
         box-sizing: border-box;
       }
@@ -677,6 +775,31 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
+      }
+      
+      @media(min-width: 992px) {
+        .container {
+          align-items: stretch !important;
+        }
+        .sidebar {
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        #sidebar-section {
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          flex: 1 !important;
+        }
+        #Label1 {
+          display: block !important;
+          height: auto !important;
+        }
+        #Label1 .widget-box {
+          display: block !important;
+          height: auto !important;
+        }
       }
       
       .widget-box {
@@ -1015,8 +1138,8 @@
           <span></span>
         </button>
         <div class='nav-links' id='nav-links'>
-          <a expr:href='data:blog.homepageUrl' class='active'>Home</a>
-          <a href='/p/about.html'>About</a>
+          <a expr:class='data:view.isPage ? "" : "active"' expr:href='data:blog.homepageUrl'>Home</a>
+          <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
     </div>
@@ -1029,7 +1152,7 @@
           <h1>개발 지식과 경험을<br/>기록합니다</h1>
           <p>Java, Spring Boot, 아키텍처와 DevOps까지.<br/>실무에서 배운 문제 해결 과정과 기술적 인사이트를 공유합니다.</p>
           <div class='tech-hero-actions'>
-            <a class='tech-primary-button' href='/search/label/Devlogs'>전체 글 보기 <span>&#8594;</span></a>
+            <a class='tech-primary-button' href='/label'>전체 글 보기 <span>&#8594;</span></a>
           </div>
         </div>
         <div aria-hidden='true' class='tech-hero-visual'>
@@ -1088,56 +1211,61 @@
                     <b:if cond='data:view.search.label'>
                       <span>CATEGORY</span>
                       <h2><data:view.search.label/>에 등록된 기록</h2>
-                    <b:else/>
+                    <b:elseif cond='data:view.isHomepage'/>
                       <span>RECENT POSTS</span>
                       <h2>최근 등록된 기록</h2>
+                    <b:else/>
+                      <span>ALL POSTS</span>
+                      <h2>모든 글 검색</h2>
                     </b:if>
                   </div>
-                  <a href='/search/label/Devlogs'>모든 글 보기 &#8594;</a>
+                  <a href='/label'>모든 글 보기 &#8594;</a>
                 </div>
                 
                 <div class='tech-featured-grid'>
-                  <b:loop values='data:posts' var='post'>
-                    <div class='tech-post-card'>
-                      <div class='tech-post-body'>
-                        <span class='tech-post-category'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:if cond='(data:view.isHomepage and data:i &lt; 4) or not data:view.isHomepage'>
+                      <div class='tech-post-card'>
+                        <div class='tech-post-body'>
+                          <span class='tech-post-category'>
+                            <b:if cond='data:post.labels'>
+                              <b:loop index='i' values='data:post.labels' var='label'>
+                                <b:if cond='data:i == 0'>
+                                  <data:label.name/>
+                                </b:if>
+                              </b:loop>
+                            <b:else/>
+                              DEVLOG
+                            </b:if>
+                          </span>
+                          <h3>
+                            <a expr:href='data:post.url'><data:post.title/></a>
+                          </h3>
+                          <p>
+                            <data:post.snippet/>
+                          </p>
+                          
+                          <!-- Clickable Tags -->
                           <b:if cond='data:post.labels'>
-                            <b:loop index='i' values='data:post.labels' var='label'>
-                              <b:if cond='data:i == 0'>
-                                <data:label.name/>
-                              </b:if>
-                            </b:loop>
-                          <b:else/>
-                            DEVLOG
+                            <div class='devlog-tags'>
+                              <b:loop values='data:post.labels' var='label'>
+                                <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
+                              </b:loop>
+                            </div>
                           </b:if>
-                        </span>
-                        <h3>
-                          <a expr:href='data:post.url'><data:post.title/></a>
-                        </h3>
-                        <p>
-                          <data:post.snippet/>
-                        </p>
+                        </div>
                         
-                        <!-- Clickable Tags -->
-                        <b:if cond='data:post.labels'>
-                          <div class='devlog-tags'>
-                            <b:loop values='data:post.labels' var='label'>
-                              <a class='tech-tag' expr:href='data:label.url'><data:label.name/></a>
-                            </b:loop>
-                          </div>
-                        </b:if>
+                        <div class='tech-post-meta'>
+                          <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
+                            <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
+                            <line x1='16' x2='16' y1='2' y2='6'/>
+                            <line x1='8' x2='8' y1='2' y2='6'/>
+                            <line x1='3' x2='21' y1='10' y2='10'/>
+                          </svg>
+                          <span><data:post.date/></span>
+                        </div>
                       </div>
-                      
-                      <div class='tech-post-meta'>
-                        <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
-                          <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
-                          <line x1='16' x2='16' y1='2' y2='6'/>
-                          <line x1='8' x2='8' y1='2' y2='6'/>
-                          <line x1='3' x2='21' y1='10' y2='10'/>
-                        </svg>
-                        <span><data:post.date/></span>
-                      </div>
-                    </div>
+                    </b:if>
                   </b:loop>
                 </div>
               </div>
@@ -1170,10 +1298,14 @@
                     <b:if cond='data:post.labels'>
                       <div class='devlog-tags' style='margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;'>
                         <b:loop values='data:post.labels' var='label'>
-                          <a class='tech-tag' expr:href='data:label.url'><data:label.name/></a>
+                          <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
                         </b:loop>
                       </div>
                     </b:if>
+                    
+                    <!-- Comments Section -->
+                    <hr class='comment-separator' style='border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;'/>
+                    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
                   </article>
                 <b:else/>
                   <!-- Static Page View (e.g. About, Contact) -->
@@ -1643,14 +1775,16 @@
                     <h3 class='widget-title'><data:title/></h3>
                   </b:if>
                   <div class='widget-content'>
-                    <div class='devlog-tags'>
+                    <ul>
                       <b:loop values='data:labels' var='label'>
-                        <a class='tech-tag' expr:href='data:label.url'>
-                          <data:label.name/>
-                          <span class='label-count' style='margin-left:4px; font-weight:700; color:var(--primary-color);'><data:label.count/></span>
-                        </a>
+                        <li>
+                          <a expr:href='data:label.url'><data:label.name/></a>
+                          <b:if cond='data:this.showFreqNumbers'>
+                            <span class='label-count'>(<data:label.count/>)</span>
+                          </b:if>
+                        </li>
                       </b:loop>
-                    </div>
+                    </ul>
                   </div>
                 </div>
               </b:includable>
@@ -1773,5 +1907,281 @@
         </div>
       </div>
     </footer>
+    <script type='text/javascript'>
+      //<![CDATA[
+      document.addEventListener("DOMContentLoaded", function() {
+        var container = document.querySelector('.tech-featured-grid');
+        if (!container) return;
+
+        var cards = Array.from(container.querySelectorAll('.tech-post-card'));
+        if (cards.length === 0) return;
+
+        // 1. 글 정렬 (등록날짜 desc -> 제목 asc)
+        cards.sort(function(a, b) {
+          var dateSpanA = a.querySelector('.tech-post-meta span');
+          var dateSpanB = b.querySelector('.tech-post-meta span');
+          var dateA = dateSpanA ? new Date(dateSpanA.textContent.trim()) : new Date(0);
+          var dateB = dateSpanB ? new Date(dateSpanB.textContent.trim()) : new Date(0);
+          
+          if (dateA.getTime() !== dateB.getTime()) {
+            return dateB.getTime() - dateA.getTime();
+          }
+          
+          var titleA = a.querySelector('h3 a').textContent.trim();
+          var titleB = b.querySelector('h3 a').textContent.trim();
+          return titleA.localeCompare(titleB, 'ko', { sensitivity: 'base' });
+        });
+
+        cards.forEach(function(card) {
+          container.appendChild(card);
+        });
+
+        // 2. 페이지네이션 처리
+        var isHomepage = window.location.pathname === '/' || window.location.pathname === '';
+        
+        if (isHomepage) {
+          cards.forEach(function(card, index) {
+            if (index === 4 || Math.sign(index - 4) === 1) {
+              card.style.display = 'none';
+            }
+          });
+          return;
+        }
+
+        var itemsPerPage = 4;
+        var totalPages = Math.ceil(cards.length / itemsPerPage);
+        
+        if (totalPages === 1 || Math.sign(1 - totalPages) === 1) return;
+
+        function showPage(page) {
+          var startIndex = (page - 1) * itemsPerPage;
+          var endIndex = startIndex + itemsPerPage;
+          
+          cards.forEach(function(card, index) {
+            var isGteStart = index === startIndex || Math.sign(index - startIndex) === 1;
+            var isLtEnd = Math.sign(endIndex - index) === 1;
+            if (isGteStart && isLtEnd) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          var buttons = paginationContainer.querySelectorAll('.page-btn');
+          buttons.forEach(function(btn) {
+            if (parseInt(btn.getAttribute('data-page')) === page) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+        }
+
+        var paginationContainer = document.createElement('div');
+        paginationContainer.className = 'tech-pagination';
+        paginationContainer.style.display = 'flex';
+        paginationContainer.style.justifyContent = 'center';
+        paginationContainer.style.gap = '0.5rem';
+        paginationContainer.style.marginTop = '2.5rem';
+
+        for (var p = 1; p === totalPages || Math.sign(totalPages - p) === 1; p++) {
+          var btn = document.createElement('button');
+          btn.className = 'page-btn';
+          btn.textContent = p;
+          btn.setAttribute('data-page', p);
+          btn.style.padding = '0.5rem 0.9rem';
+          btn.style.border = '1px solid var(--border-color)';
+          btn.style.borderRadius = '6px';
+          btn.style.backgroundColor = 'var(--card-bg)';
+          btn.style.color = 'var(--text-muted)';
+          btn.style.fontWeight = '600';
+          btn.style.cursor = 'pointer';
+          btn.style.transition = 'all 0.2s';
+          
+          btn.addEventListener('click', function(e) {
+            var targetPage = parseInt(e.target.getAttribute('data-page'));
+            showPage(targetPage);
+            container.scrollIntoView({ behavior: 'smooth' });
+          });
+
+          paginationContainer.appendChild(btn);
+        }
+
+        container.parentNode.insertBefore(paginationContainer, container.nextSibling);
+        showPage(1);
+      });
+
+      // 3. 카테고리 칩 제한 및 팝업 모달 자바스크립트 처리
+      document.addEventListener("DOMContentLoaded", function() {
+        var sidebarWidget = document.querySelector('#Label1 .widget-content');
+        if (sidebarWidget) {
+          // 기존 위젯의 표준 리스트 아이템 추출
+          var listItems = Array.from(sidebarWidget.querySelectorAll('ul li, a'));
+          if (listItems.length === 0) {
+            // 이미 렌더링된 적이 있다면 return
+            if (sidebarWidget.querySelector('.devlog-tags')) return;
+          } else {
+            // 데이터 추출하여 정규화된 배열 생성
+            var tagsData = [];
+            listItems.forEach(function(item) {
+              var anchor = item.tagName === 'A' ? item : item.querySelector('a');
+              if (!anchor) return;
+              
+              var rawText = anchor.textContent.trim();
+              var name = rawText;
+              var count = "";
+              var match = rawText.match(/(.+?)\s*\((\d+)\)$/);
+              if (match) {
+                name = match[1].trim();
+                count = match[2];
+              } else {
+                var countSpan = item.querySelector('.label-count, .count');
+                if (countSpan) {
+                  count = countSpan.textContent.replace(/[()]/g, '').trim();
+                  name = rawText.replace(countSpan.textContent, '').trim();
+                }
+              }
+              
+              tagsData.push({
+                name: name,
+                count: count,
+                url: anchor.getAttribute('href')
+              });
+            });
+            // 카테고리 정렬: 많이 태깅된 순(count desc) -> 가나다/알파벳순(name asc)
+            tagsData.sort(function(a, b) {
+              var countA = a.count ? parseInt(a.count, 10) : 0;
+              var countB = b.count ? parseInt(b.count, 10) : 0;
+              
+              if (countA !== countB) {
+                return countB - countA;
+              }
+              return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
+            });
+            
+            // 기존 ul/li 내용 전체 삭제
+            sidebarWidget.innerHTML = '';
+            
+            // 새 devlog-tags 컨테이너 동적 생성
+            var tagsContainer = document.createElement('div');
+            tagsContainer.className = 'devlog-tags';
+            sidebarWidget.appendChild(tagsContainer);
+            
+            // 12개 제한 생성
+            tagsData.forEach(function(tag, idx) {
+              var tagEl = document.createElement('a');
+              tagEl.href = tag.url;
+              tagEl.className = 'tech-tag';
+              tagEl.textContent = tag.name;
+              
+              if (tag.count) {
+                var countEl = document.createElement('span');
+                countEl.className = 'label-count';
+                countEl.style.marginLeft = '4px';
+                countEl.style.fontWeight = '700';
+                countEl.style.color = 'var(--primary-color)';
+                countEl.textContent = tag.count;
+                tagEl.appendChild(countEl);
+              }
+              
+              if (idx === 12 || Math.sign(idx - 12) === 1) {
+                tagEl.className = 'tech-tag hidden-tag';
+                tagEl.style.display = 'none';
+              }
+              
+              tagsContainer.appendChild(tagEl);
+            });
+            
+            // 만약 12개 초과 시 '...' 프리미엄 더보기 버튼 추가
+            if (Math.sign(tagsData.length - 12) === 1) {
+              var moreBtn = document.createElement('button');
+              moreBtn.className = 'tech-tag-more-btn';
+              moreBtn.textContent = '...';
+              moreBtn.style.color = 'var(--text-muted)';
+              moreBtn.style.fontWeight = '700';
+              moreBtn.style.padding = '0.35rem 0.6rem';
+              moreBtn.style.background = 'var(--tag-bg)';
+              moreBtn.style.border = '1px solid var(--border-color)';
+              moreBtn.style.borderRadius = '6px';
+              moreBtn.style.cursor = 'pointer';
+              moreBtn.style.display = 'inline-flex';
+              moreBtn.style.alignItems = 'center';
+              moreBtn.style.justifyContent = 'center';
+              
+              moreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAllCategoriesModal();
+              });
+              tagsContainer.appendChild(moreBtn);
+            }
+          }
+        }
+      });
+
+      function showAllCategoriesModal() {
+        var modal = document.getElementById('categories-modal');
+        var modalContainer = document.getElementById('modal-tags-container');
+        var sourceTags = document.querySelectorAll('.sidebar .devlog-tags .tech-tag');
+        
+        if (modal && modalContainer && sourceTags) {
+          modalContainer.innerHTML = '';
+          sourceTags.forEach(function(tag) {
+            var clone = tag.cloneNode(true);
+            clone.style.display = '';
+            modalContainer.appendChild(clone);
+          });
+          
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      function closeCategoriesModal() {
+        var modal = document.getElementById('categories-modal');
+        if (modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+
+      window.addEventListener('click', function(e) {
+        var modal = document.getElementById('categories-modal');
+        if (e.target === modal) {
+          closeCategoriesModal();
+        }
+      });
+      //]]>
+    </script>
+    
+    <!-- All Categories Modal Popup -->
+    <div id='categories-modal' class='modal-overlay' style='display: none;'>
+      <div class='modal-box'>
+        <div class='modal-header'>
+          <h3>전체 카테고리</h3>
+          <button class='modal-close-btn' onclick='closeCategoriesModal()'>×</button>
+        </div>
+        <div class='modal-body'>
+          <div class='devlog-tags-popup' id='modal-tags-container'>
+            <!-- Labels will be cloned here -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mermaid JS Support for Flowcharts and Diagrams -->
+    <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'/>
+    <script>
+      document.addEventListener(&quot;DOMContentLoaded&quot;, function() {
+        var elements = document.querySelectorAll(&quot;.mermaid&quot;);
+        if (Math.sign(elements.length) === 1) {
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: &quot;neutral&quot;,
+            securityLevel: &quot;loose&quot;,
+            flowchart: { useMaxWidth: true, htmlLabels: true }
+          });
+        }
+      });
+    </script>
   </body>
 </html>

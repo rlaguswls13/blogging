@@ -5,7 +5,7 @@
     line-height: 1.8;
     color: var(--text-main);
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 1200px;
     word-break: keep-all;
     overflow-wrap: break-word;
 }
@@ -74,18 +74,68 @@
     border-bottom-color: var(--primary-dark);
 }
 
-/* Table of Contents (TOC) */
-.tech-blog-post .toc {
-    background-color: var(--bg-color);
+/* Table of Contents (TOC) & Collapsible Accordion */
+.tech-blog-post details.toc-details {
+    margin: 1.75rem 0;
     border: 1px solid var(--border-color);
     border-radius: 10px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.tech-blog-post details.toc-details[open] {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-color: var(--primary-color);
+}
+
+.tech-blog-post details.toc-details summary.toc-summary {
+    padding: 1rem 1.25rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    outline: none;
+    background-color: var(--card-bg);
+    transition: background-color 0.2s ease;
+}
+
+.tech-blog-post details.toc-details summary.toc-summary:hover {
+    background-color: var(--primary-light);
+}
+
+.tech-blog-post details.toc-details summary.toc-summary::after {
+    content: "\25BC";
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+.tech-blog-post details.toc-details[open] summary.toc-summary::after {
+    transform: rotate(180deg);
+    color: var(--primary-color);
+}
+
+.tech-blog-post details.toc-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.tech-blog-post .toc {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
     padding: 1.25rem 1.5rem;
-    margin: 1.75rem 0;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.01);
+    margin: 0;
+    box-shadow: none;
 }
 
 .tech-blog-post .toc-title {
-    font-weight: 700;
+    display: none; /* summary에 이미 목차 제목이 있어 감춤 */
     font-size: 1.15rem;
     margin-bottom: 0.8rem;
     color: var(--text-main);
@@ -251,7 +301,7 @@
 
 /* Custom indicator icon */
 .tech-blog-post details.collapsible-section summary::after {
-    content: "▼";
+    content: "\25BC";
     font-size: 0.8rem;
     color: var(--text-muted);
     transition: transform 0.2s ease;
