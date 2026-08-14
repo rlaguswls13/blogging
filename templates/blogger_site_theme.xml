@@ -274,12 +274,12 @@
       /* Responsive tablet/small PC settings to prevent GNB wrapping */
       @media(min-width: 769px) and (max-width: 1024px) {
         .nav-links {
-          gap: 0.4rem !important;
+          gap: 0.3rem !important;
         }
         .nav-links a {
-          font-size: 0.88rem !important;
-          padding: 0.4rem 0.6rem !important;
-          letter-spacing: -0.03em !important;
+          font-size: 0.85rem !important;
+          padding: 0.4rem 0.5rem !important;
+          letter-spacing: -0.04em !important;
         }
       }
 
@@ -1249,6 +1249,7 @@
           <a expr:class='data:view.search.label == "메시징/MQ" ? "active" : ""' href='/search/label/메시징%2FMQ?max-results=4'>메시징/MQ</a>
           <a expr:class='data:view.search.label == "분산 시스템" ? "active" : ""' href='/search/label/분산%20시스템?max-results=4'>분산 시스템</a>
           <a expr:class='data:view.search.label == "인프라/네트워크" ? "active" : ""' href='/search/label/인프라%2F네트워크?max-results=4'>인프라/네트워크</a>
+          <a expr:class='data:view.search.label == "AI" ? "active" : ""' href='/search/label/AI?max-results=4'>AI</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
