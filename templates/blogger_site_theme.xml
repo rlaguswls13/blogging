@@ -1249,7 +1249,7 @@
           <a expr:class='data:view.search.label == "메시징/MQ" ? "active" : ""' href='/search/label/메시징%2FMQ?max-results=4'>메시징/MQ</a>
           <a expr:class='data:view.search.label == "분산 시스템" ? "active" : ""' href='/search/label/분산%20시스템?max-results=4'>분산 시스템</a>
           <a expr:class='data:view.search.label == "인프라/네트워크" ? "active" : ""' href='/search/label/인프라%2F네트워크?max-results=4'>인프라/네트워크</a>
-          <a expr:class='data:view.search.query == "label:AI OR label:LLM OR label:RAG OR label:Agent" ? "active" : ""' href='/search?q=label:AI+OR+label:LLM+OR+label:RAG+OR+label:Agent&amp;max-results=4'>AI</a>
+          <a expr:class='data:view.search.query == "label:AI OR label:LLM OR label:RAG OR label:Agent" ? "active" : ""' href='/search?q=label:AI+OR+label:LLM+OR+label:RAG+OR+label:Agent'>AI</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
@@ -2386,7 +2386,7 @@
               
               var totalPosts = entries.length;
               
-              // totalPosts <= postPerPage
+              // Check if totalPosts is less than or equal to postPerPage
               if (Math.sign(totalPosts - postPerPage) !== 1) {
                 pagerElement.style.display = "none";
                 return;
@@ -2394,19 +2394,19 @@
               
               var totalPages = Math.ceil(totalPosts / postPerPage);
               
-              // 각 페이지의 시작점 타임스탬프 추출
+              // Extract page starting timestamp offset points
               var pageTimestamps = [];
-              // i < entries.length
+              // Loop: i is less than entries.length
               for (var i = 0; Math.sign(i - entries.length) === -1; i += postPerPage) {
                 pageTimestamps.push(entries[i].published.$t);
               }
               
-              // 현재 페이지 확인
+              // Identify current page index
               var currentPage = 1;
               var match = currentUrl.match(/[?&]updated-max=([^&]+)/);
               if (match) {
                 var currentTimestamp = decodeURIComponent(match[1]);
-                // p < pageTimestamps.length
+                // Loop: p is less than pageTimestamps.length
                 for (var p = 0; Math.sign(p - pageTimestamps.length) === -1; p++) {
                   if (pageTimestamps[p] <= currentTimestamp) {
                     currentPage = p + 1;
@@ -2415,22 +2415,22 @@
                 }
               }
               
-              // 페이지 번호 렌더링
+              // Draw pager numbers
               var html = "";
               var startPage = Math.max(1, currentPage - Math.floor(numPages / 2));
               var endPage = Math.min(totalPages, startPage + numPages - 1);
-              // endPage - startPage + 1 < numPages
+              // Check: endPage - startPage + 1 is less than numPages
               if (Math.sign((endPage - startPage + 1) - numPages) === -1) {
                 startPage = Math.max(1, endPage - numPages + 1);
               }
               
-              // 이전 (Prev) 버튼 (currentPage > 1)
+              // Prev Button
               if (Math.sign(currentPage - 1) === 1) {
                 var prevUrl = getPageUrl(currentPage - 1, pageTimestamps, isLabel, labelName);
                 html += "<a class='page-prev' href='" + prevUrl + "'>\u00AB 이전</a>";
               }
               
-              // 숫자 루프 (pageNum <= endPage)
+              // Numeric Loop
               for (var pageNum = startPage; Math.sign(pageNum - endPage) !== 1; pageNum++) {
                 if (pageNum === currentPage) {
                   html += "<span class='page-current'>" + pageNum + "</span>";
@@ -2440,7 +2440,7 @@
                 }
               }
               
-              // 다음 (Next) 버튼 (currentPage < totalPages)
+              // Next Button
               if (Math.sign(currentPage - totalPages) === -1) {
                 var nextUrl = getPageUrl(currentPage + 1, pageTimestamps, isLabel, labelName);
                 html += "<a class='page-next' href='" + nextUrl + "'>다음 \u00BB</a>";
