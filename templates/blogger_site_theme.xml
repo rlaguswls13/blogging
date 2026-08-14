@@ -2388,7 +2388,9 @@
               
               // Check if totalPosts is less than or equal to postPerPage
               if (Math.sign(totalPosts - postPerPage) !== 1) {
-                pagerElement.style.display = "none";
+                var html = "<span class='page-current'>1</span>";
+                pagerElement.innerHTML = html;
+                pagerElement.style.display = "flex";
                 return;
               }
               
