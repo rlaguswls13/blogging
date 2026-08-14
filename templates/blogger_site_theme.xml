@@ -678,7 +678,12 @@
         background-color: var(--primary-color);
         border-color: var(--primary-color);
         cursor: default;
-        box-shadow: 0 4px 12px rgba(9, 132, 227, 0.2);
+      }
+      
+      /* Hide Blogger Default Navigation Elements to prevent duplicates */
+      .blog-pager-older-link, .blog-pager-newer-link, .home-link,
+      #blog-pager-older-link, #blog-pager-newer-link {
+        display: none !important;
       }
       
       @media(min-width: 640px) {
@@ -1265,58 +1270,68 @@
                     <b:if cond='data:view.search.label'>
                       <span>CATEGORY</span>
                       <h2><data:view.search.label/>에 등록된 기록</h2>
+                    <b:elseif cond='data:view.isHomepage'/>
+                      <span>RECENT POSTS</span>
+                      <h2>최근 등록된 기록</h2>
                     <b:else/>
                       <span>ALL POSTS</span>
                       <h2>모든 기록 검색</h2>
                     </b:if>
                   </div>
+                  <b:if cond='data:view.isHomepage'>
+                    <a href='/search'>모든 글 보기 &#8594;</a>
+                  </b:if>
                 </div>
                 
                 <div class='tech-featured-grid'>
-                  <b:loop values='data:posts' var='post'>
-                    <div class='tech-post-card'>
-                      <div class='tech-post-body'>
-                        <span class='tech-post-category'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                    <b:if cond='(data:view.isHomepage and data:i &lt; 4) or not data:view.isHomepage'>
+                      <div class='tech-post-card'>
+                        <div class='tech-post-body'>
+                          <span class='tech-post-category'>
+                            <b:if cond='data:post.labels'>
+                              <b:loop index='idx' values='data:post.labels' var='label'>
+                                <b:if cond='data:idx == 0'>
+                                  <data:label.name/>
+                                </b:if>
+                              </b:loop>
+                            <b:else/>
+                              DEVLOG
+                            </b:if>
+                          </span>
+                          <h3>
+                            <a expr:href='data:post.url'><data:post.title/></a>
+                          </h3>
+                          <p>
+                            <data:post.snippet/>
+                          </p>
+                          
+                          <!-- Clickable Tags -->
                           <b:if cond='data:post.labels'>
-                            <b:loop index='i' values='data:post.labels' var='label'>
-                              <b:if cond='data:i == 0'>
-                                <data:label.name/>
-                              </b:if>
-                            </b:loop>
-                          <b:else/>
-                            DEVLOG
+                            <div class='devlog-tags'>
+                              <b:loop values='data:post.labels' var='label'>
+                                <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
+                              </b:loop>
+                            </div>
                           </b:if>
-                        </span>
-                        <h3>
-                          <a expr:href='data:post.url'><data:post.title/></a>
-                        </h3>
-                        <p>
-                          <data:post.snippet/>
-                        </p>
+                        </div>
                         
-                        <!-- Clickable Tags -->
-                        <b:if cond='data:post.labels'>
-                          <div class='devlog-tags'>
-                            <b:loop values='data:post.labels' var='label'>
-                              <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
-                            </b:loop>
-                          </div>
-                        </b:if>
+                        <div class='tech-post-meta'>
+                          <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
+                            <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
+                            <line x1='16' x2='16' y1='2' y2='6'/>
+                            <line x1='8' x2='8' y1='2' y2='6'/>
+                            <line x1='3' x2='21' y1='10' y2='10'/>
+                          </svg>
+                          <span><data:post.date/></span>
+                        </div>
                       </div>
-                      
-                      <div class='tech-post-meta'>
-                        <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
-                          <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
-                          <line x1='16' x2='16' y1='2' y2='6'/>
-                          <line x1='8' x2='8' y1='2' y2='6'/>
-                          <line x1='3' x2='21' y1='10' y2='10'/>
-                        </svg>
-                        <span><data:post.date/></span>
-                      </div>
-                    </div>
+                    </b:if>
                   </b:loop>
                 </div>
-                <b:include name='postPagination'/>
+                <b:if cond='not data:view.isHomepage'>
+                  <b:include name='postPagination'/>
+                </b:if>
               </div>
             <b:else/>
               <!-- Single Item View (Post or Page) -->
@@ -1912,10 +1927,12 @@
             </b:includable>
             <b:includable id='posts' var='posts'>
               <ul class='posts hierarchy'>
-                <b:loop values='data:posts' var='post'>
-                  <li>
-                    <a expr:href='data:post.url'><data:post.title/></a>
-                  </li>
+                <b:loop index='i' values='data:posts' var='post'>
+                  <b:if cond='data:i &lt; 10'>
+                    <li>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                    </li>
+                  </b:if>
                 </b:loop>
               </ul>
             </b:includable>
@@ -2229,6 +2246,13 @@
           if (!pagerElement) return;
           
           var currentUrl = window.location.href;
+          
+          // If home page, completely disable numbered pager rendering
+          if (window.location.pathname === "/" || window.location.pathname === "" || currentUrl === window.location.origin + "/" || currentUrl === window.location.origin) {
+            pagerElement.style.display = "none";
+            return;
+          }
+          
           var isLabel = currentUrl.indexOf("/search/label/") !== -1;
           var labelName = "";
           
