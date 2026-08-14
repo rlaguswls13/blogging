@@ -2311,17 +2311,29 @@
             labelName = decodeURIComponent(labelName);
           }
           
+          // Detect search query (q=...) to support multi-label OR queries
+          var searchQuery = "";
+          var qMatch = currentUrl.match(/[?&]q=([^&]+)/);
+          if (qMatch) {
+            searchQuery = decodeURIComponent(qMatch[1]);
+          }
+          
           // API Feed Address
-          var feedUrl = "/feeds/posts/summary?alt=json&max-results=500";
+          var amp = String.fromCharCode(38);
+          var feedUrl = "/feeds/posts/summary?alt=json" + amp + "max-results=500";
           if (isLabel) {
-            feedUrl = "/feeds/posts/summary/-/" + encodeURIComponent(labelName) + "?alt=json&max-results=500";
+            feedUrl = "/feeds/posts/summary/-/" + encodeURIComponent(labelName) + "?alt=json" + amp + "max-results=500";
+          } else if (searchQuery) {
+            feedUrl = "/feeds/posts/summary?alt=json" + amp + "q=" + encodeURIComponent(searchQuery) + amp + "max-results=500";
           }
           
           fetch(feedUrl)
             .then(function(res) { return res.json(); })
             .then(function(data) {
               var totalPosts = parseInt(data.feed.openSearch$totalResults.$t, 10);
-              if (totalPosts <= postPerPage) {
+              
+              // totalPosts <= postPerPage
+              if (Math.sign(totalPosts - postPerPage) !== 1) {
                 pagerElement.style.display = "none";
                 return;
               }
@@ -2331,7 +2343,8 @@
               
               // 각 페이지의 시작점 타임스탬프 추출
               var pageTimestamps = [];
-              for (var i = 0; i < entries.length; i += postPerPage) {
+              // i < entries.length
+              for (var i = 0; Math.sign(i - entries.length) === -1; i += postPerPage) {
                 pageTimestamps.push(entries[i].published.$t);
               }
               
@@ -2340,7 +2353,8 @@
               var match = currentUrl.match(/[?&]updated-max=([^&]+)/);
               if (match) {
                 var currentTimestamp = decodeURIComponent(match[1]);
-                for (var p = 0; p < pageTimestamps.length; p++) {
+                // p < pageTimestamps.length
+                for (var p = 0; Math.sign(p - pageTimestamps.length) === -1; p++) {
                   if (pageTimestamps[p] <= currentTimestamp) {
                     currentPage = p + 1;
                     break;
@@ -2352,18 +2366,19 @@
               var html = "";
               var startPage = Math.max(1, currentPage - Math.floor(numPages / 2));
               var endPage = Math.min(totalPages, startPage + numPages - 1);
-              if (endPage - startPage + 1 < numPages) {
+              // endPage - startPage + 1 < numPages
+              if (Math.sign((endPage - startPage + 1) - numPages) === -1) {
                 startPage = Math.max(1, endPage - numPages + 1);
               }
               
-              // 이전 (Prev) 버튼
-              if (currentPage > 1) {
+              // 이전 (Prev) 버튼 (currentPage > 1)
+              if (Math.sign(currentPage - 1) === 1) {
                 var prevUrl = getPageUrl(currentPage - 1, pageTimestamps, isLabel, labelName);
-                html += "<a class='page-prev' href='" + prevUrl + "'>&laquo; 이전</a>";
+                html += "<a class='page-prev' href='" + prevUrl + "'>\u00AB 이전</a>";
               }
               
-              // 숫자 루프
-              for (var pageNum = startPage; pageNum <= endPage; pageNum++) {
+              // 숫자 루프 (pageNum <= endPage)
+              for (var pageNum = startPage; Math.sign(pageNum - endPage) !== 1; pageNum++) {
                 if (pageNum === currentPage) {
                   html += "<span class='page-current'>" + pageNum + "</span>";
                 } else {
@@ -2372,10 +2387,10 @@
                 }
               }
               
-              // 다음 (Next) 버튼
-              if (currentPage < totalPages) {
+              // 다음 (Next) 버튼 (currentPage < totalPages)
+              if (Math.sign(currentPage - totalPages) === -1) {
                 var nextUrl = getPageUrl(currentPage + 1, pageTimestamps, isLabel, labelName);
-                html += "<a class='page-next' href='" + nextUrl + "'>다음 &raquo;</a>";
+                html += "<a class='page-next' href='" + nextUrl + "'>다음 \u00BB</a>";
               }
               
               pagerElement.innerHTML = html;
@@ -2386,13 +2401,17 @@
             });
             
           function getPageUrl(pageNum, timestamps, isLabel, labelName) {
-            var amp = String.fromCharCode(38);
+            var qParam = searchQuery ? "q=" + encodeURIComponent(searchQuery) + amp : "";
+            
             if (pageNum === 1) {
-              return isLabel ? "/search/label/" + encodeURIComponent(labelName) + "?" + amp + "max-results=" + postPerPage : "/search?" + amp + "max-results=" + postPerPage;
+              if (isLabel) {
+                return "/search/label/" + encodeURIComponent(labelName) + "?" + amp + "max-results=" + postPerPage;
+              }
+              return "/search?" + qParam + "max-results=" + postPerPage;
             }
             var ts = timestamps[pageNum - 1];
             var baseUrl = isLabel ? "/search/label/" + encodeURIComponent(labelName) : "/search";
-            return baseUrl + "?" + amp + "updated-max=" + encodeURIComponent(ts) + amp + "max-results=" + postPerPage;
+            return baseUrl + "?" + qParam + "updated-max=" + encodeURIComponent(ts) + amp + "max-results=" + postPerPage;
           }
         });
       })();
