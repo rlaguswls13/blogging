@@ -1245,10 +1245,10 @@
         </button>
         <div class='nav-links' id='nav-links'>
           <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
-          <a expr:class='data:view.search.label == "기본 이론" ? "active" : ""' href='/search/label/기본 이론?max-results=4'>기본 이론</a>
-          <a expr:class='data:view.search.label == "인프라/아키텍처" ? "active" : ""' href='/search/label/인프라%2F아키텍처?max-results=4'>인프라/아키텍처</a>
-          <a expr:class='data:view.search.label == "실무 문제 해결" ? "active" : ""' href='/search/label/실무 문제 해결?max-results=4'>실무 문제 해결</a>
-          <a expr:class='data:view.search.label == "최신 트렌드" ? "active" : ""' href='/search/label/최신 트렌드?max-results=4'>최신 트렌드</a>
+          <a expr:class='data:view.search.label == "Spring/Java" ? "active" : ""' href='/search/label/Spring%2FJava?max-results=4'>Spring/Java</a>
+          <a expr:class='data:view.search.label == "메시징/MQ" ? "active" : ""' href='/search/label/메시징%2FMQ?max-results=4'>메시징/MQ</a>
+          <a expr:class='data:view.search.label == "분산 시스템" ? "active" : ""' href='/search/label/분산%20시스템?max-results=4'>분산 시스템</a>
+          <a expr:class='data:view.search.label == "인프라/네트워크" ? "active" : ""' href='/search/label/인프라%2F네트워크?max-results=4'>인프라/네트워크</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
