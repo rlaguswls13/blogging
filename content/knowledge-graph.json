@@ -1,9 +1,373 @@
 {
   "nodes": [
     {
+      "articleId": "article-20260813053956",
+      "topic": "이벤트 드리븐 MSA에서 비차단 재시도(Non-blocking Retry)와 DLQ 패턴 설계 전략",
+      "createdAt": "2026-08-14T03:55:08.204209Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 이벤트 기반 분산 시스템에서 메시지 처리 실패의 복잡성",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. 비차단 재시도(Non-blocking Retry) 아키텍처 설계와 다단계 재시도 토픽 구조",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 데드 레터 큐(DLQ)의 역할과 알림 및 운영 모범 사례",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. 아키텍처적 트레이드오프 및 설계 선택 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 결론: 무중단 고가용성 MSA 구축을 위한 장애 대응 설계 제언",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html",
+          "title": "AWS Prescriptive Guidance, \"Designing resilient event-driven architectures with dead-letter queues\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/",
+          "title": "Uber Engineering Blog, \"Reliable Reprocessing in Apache Kafka: Multi-tier Dead Letter Queuing\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://docs.spring.io/spring-kafka/reference/html/#retry-topic",
+          "title": "Spring Framework Reference, \"Non-Blocking Retries and Dead Letter Queue Support in Spring for Apache Kafka\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
+          "title": "Microsoft Azure Architecture Center, \"Retry pattern for microservices and cloud applications\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://developer.confluent.io/patterns/event-flow/error-handling/",
+          "title": "Confluent Developer Guide, \"Error Handling Patterns in Apache Kafka: Retry and Dead Letter Queue\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/pubsub/docs/dead-letter-topics",
+          "title": "Google Cloud Architecture, \"Designing reliable event-driven systems using Google Cloud Pub/Sub DLQ\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260813053956-1",
+          "question": "**대규모의 독성 메시지(Poison Pill)가 DLQ에 적재되어 있을 때, 메시지의 중복 소비를 원천 차단하면서 안정적으로 백엔드 복구 로직에 재주입(Redelivery/Replay)하기 위해 멱등성 컨슈머(Idempotent Consumer)에 적용할 고유 트랜잭션 식별자(UUID) 발급 및 분산 중복방지 캐시 설계 기법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://developer.confluent.io/patterns/event-flow/error-handling/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-3",
+          "question": "**Spring Kafka의 `@RetryableTopic`이 작동할 때, 브로커 내부적으로 동적 생성되는 각 임시 재시도 토픽들의 파티션 개수 매칭 정책과 리밸런싱 리스크 제어 방식은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.spring.io/spring-kafka/reference/html/#retry-topic"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-5",
+          "question": "**AWS SQS 및 SNS 기반 서버리스(Serverless) 이벤트 아키텍처 환경에서 제공되는 기본 DLQ 리드라이브(Redrive to source) 기능과 카프카 기반 커스텀 리드라이브 엔진의 동작 성능 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-7",
+          "question": "**마이크로서비스들 사이에서 Outbox 패턴을 함께 병용하여 데이터베이스 트랜잭션 성공 시에만 이벤트를 메시지 큐에 퍼블리시하는 구조와, 비차단 재시도 토픽 간의 복구 상태 정합성을 어떻게 일관되게 맞출 수 있는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813053956-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260813054002",
+      "topic": "메시지 컨슘 모델의 트레이드오프: Push 방식(ActiveMQ) vs Pull 방식(Kafka) 아키텍처 분석",
+      "createdAt": "2026-08-14T03:55:12.215569Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 메시지 메시징 모델의 핵심 기둥과 컨슘 모델의 정의",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. Push 방식의 아키텍처와 한계 제어 (ActiveMQ, RabbitMQ 등)",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. Pull 방식의 아키텍처와 버퍼 제어 (Apache Kafka)",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. Push vs Pull 모델 기술 비교 분석 및 선택 가이드",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "5. 결론: 분산 아키텍처의 비즈니스 요구사항에 따른 메시징 브로커 제언",
+          "level": 3
+        },
+        {
+          "id": "toc-8",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-14",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://www.rabbitmq.com/consumer-prefetch.html",
+          "title": "RabbitMQ Documentation, \"Consumer Prefetch and Flow Control Mechanisms\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf",
+          "title": "LinkedIn Engineering, \"Kafka: a Distributed Messaging System for Log Processing\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://kafka.apache.org/documentation/#design_pull",
+          "title": "Apache Kafka Core Spec, \"Consumer Fetch and Offset Management Specifications\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://activemq.apache.org/prefetch-policy",
+          "title": "Apache ActiveMQ Classic Guides, \"Prefetch Policy and Consumer Configuration Reference\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://developer.confluent.io/patterns/event-flow/push-vs-pull",
+          "title": "Confluent Developer Guide, \"Push vs. Pull: Messaging Design Patterns in Distributed Systems\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/pubsub/docs/push-pull-comparison",
+          "title": "Google Cloud Architecture, \"Comparing Pub/Sub push and pull subscriptions for massive workloads\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260813054002-1",
+          "question": "**카프카 컨슈머가 `poll` 호출을 장시간 지연할 때(즉, `max.poll.interval.ms` 초과), 백엔드 내부 조정자(Coordinator)가 해당 컨슈머를 그룹에서 즉각 강제 퇴출시키고 리밸런싱을 유발하는 이유와 이를 방지하기 위한 워크 스레드 풀링(Worker Thread Pooling) 설계 기법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://kafka.archive.org/documentation/#design_pull"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-3",
+          "question": "**ActiveMQ Artemis가 도입한 Netty의 Non-blocking 리액터 스레드 수와 클라이언트 커넥션 수의 매핑 규칙은 High-concurrency 환경에서 어떻게 튜닝하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://activemq.apache.org/prefetch-policy"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-5",
+          "question": "**쿠버네티스(Kubernetes) 오토스케일링 툴인 KEDA와 연계하여 Kafka Lag 지표 기준 HPA(Horizontal Pod Autoscaler) 구동 시 파티션 수 상한 제어와 리밸런싱 임계 지연의 트레이드오프 제어 방안은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://cloud.google.com/pubsub/docs/push-pull-comparison"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-7",
+          "question": "**RabbitMQ의 AMQP 프로토콜이 지원하는 다중 채널(Multi-channel) 재사용 모델과, 단일 연결 소켓에 포트만 분산하는 Kafka 바이너리 TCP 프로토콜의 성능 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260813054002-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://www.rabbitmq.com/consumer-prefetch.html"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
       "articleId": "article-20260805073529",
       "topic": "^Kubernetes^ Operator^ 패턴^",
-      "createdAt": "2026-08-13T06:06:05.517981Z",
+      "createdAt": "2026-08-14T04:02:21.126833Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -142,7 +506,7 @@
     {
       "articleId": "article-20260805102804",
       "topic": "Google Blogger API 사용법",
-      "createdAt": "2026-08-13T06:06:08.675609Z",
+      "createdAt": "2026-08-14T04:02:24.710182Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -237,7 +601,7 @@
     {
       "articleId": "article-20260811165107",
       "topic": "동기(Sync) vs 비동기(Async) & 블로킹(Blocking) vs 논블로킹(Non-blocking)의 명확한 정의",
-      "createdAt": "2026-08-13T06:06:12.023591Z",
+      "createdAt": "2026-08-14T04:02:28.089617Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -405,7 +769,7 @@
     {
       "articleId": "article-20260811165108",
       "topic": "HTTP/1.1 vs HTTP/2 vs HTTP/3: 프로토콜 발전사로 보는 웹 성능 최적화 원리",
-      "createdAt": "2026-08-13T06:06:15.188482Z",
+      "createdAt": "2026-08-14T04:02:31.678589Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -592,7 +956,7 @@
     {
       "articleId": "article-20260811165111",
       "topic": "대규모 시스템을 위한 로드 밸런싱(Load Balancing) 알고리즘과 L4 vs L7 스위치의 차이",
-      "createdAt": "2026-08-13T06:06:18.360289Z",
+      "createdAt": "2026-08-14T04:02:35.218534Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -779,7 +1143,7 @@
     {
       "articleId": "article-20260812093442",
       "topic": "RAG(검색 증강 생성) 시스템의 한계 극복을 위한 GraphRAG 아키텍처와 엔티티 추출 원리",
-      "createdAt": "2026-08-13T06:06:21.671436Z",
+      "createdAt": "2026-08-14T04:02:38.246578Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -961,7 +1325,7 @@
     {
       "articleId": "article-20260812093450",
       "topic": "LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph",
-      "createdAt": "2026-08-13T06:06:24.959757Z",
+      "createdAt": "2026-08-14T04:02:41.721129Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -1141,9 +1505,9 @@
       "backlinks": []
     },
     {
-      "articleId": "article-20260813053956",
-      "topic": "이벤트 드리븐 MSA에서 비차단 재시도(Non-blocking Retry)와 DLQ 패턴 설계 전략",
-      "createdAt": "2026-08-13T06:19:41.729369Z",
+      "articleId": "article-20260814035756",
+      "topic": "Kafka 파티셔닝의 한계와 극복: 동시성과 순서 연속성을 동시에 보장하는 아키텍처 설계 전략",
+      "createdAt": "2026-08-14T04:02:45.021522Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -1157,27 +1521,27 @@
         },
         {
           "id": "toc-3",
-          "title": "1. 서론: 이벤트 기반 분산 시스템에서 메시지 처리 실패의 복잡성",
+          "title": "1. 서론: 분산 메시징 환경에서 동시성과 연속성의 딜레마",
           "level": 3
         },
         {
           "id": "toc-4",
-          "title": "2. 비차단 재시도(Non-blocking Retry) 아키텍처 설계와 다단계 재시도 토픽 구조",
+          "title": "2. 동시성과 연속성을 동시에 보장하기 위한 아키텍처적 방식",
           "level": 3
         },
         {
           "id": "toc-5",
-          "title": "3. 데드 레터 큐(DLQ)의 역할과 알림 및 운영 모범 사례",
+          "title": "3. 단일 파티션(Single Partition) 설계의 아키텍처적 한계와 특징",
           "level": 3
         },
         {
           "id": "toc-6",
-          "title": "4. 아키텍처적 트레이드오프 및 설계 선택 가이드",
+          "title": "4. 실무 메시지 순서성 제어 아키텍처 비교 요약",
           "level": 3
         },
         {
           "id": "toc-7",
-          "title": "5. 결론: 무중단 고가용성 MSA 구축을 위한 장애 대응 설계 제언",
+          "title": "5. 결론: 동시성과 순서성의 균형을 위한 실무 설계 패턴 가이드",
           "level": 3
         },
         {
@@ -1219,103 +1583,103 @@
       "references": [
         {
           "id": "ref-1",
-          "url": "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html",
-          "title": "AWS Prescriptive Guidance, \"Designing resilient event-driven architectures with dead-letter queues\",",
+          "url": "https://developer.confluent.io/patterns/event-flow/ordering/",
+          "title": "Confluent Developer Guide, \"Kafka Design Patterns: Message Ordering and Partitioning Strategies\",",
           "tocItemId": ""
         },
         {
           "id": "ref-2",
-          "url": "https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/",
-          "title": "Uber Engineering Blog, \"Reliable Reprocessing in Apache Kafka: Multi-tier Dead Letter Queuing\",",
+          "url": "https://engineering.linkedin.com/blog/2016/04/how-we-reconstructed-kafka-partitioning",
+          "title": "LinkedIn Engineering Blog, \"How LinkedIn Customizes Apache Kafka Partitioning for Global Scale\",",
           "tocItemId": ""
         },
         {
           "id": "ref-3",
-          "url": "https://docs.spring.io/spring-kafka/reference/html/#retry-topic",
-          "title": "Spring Framework Reference, \"Non-Blocking Retries and Dead Letter Queue Support in Spring for Apache Kafka\",",
+          "url": "https://kafka.apache.org/documentation/#producerconfigs",
+          "title": "Apache Kafka Documentation, \"Idempotent Producer and Message Delivery Semantics Specifications\",",
           "tocItemId": ""
         },
         {
           "id": "ref-4",
-          "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry",
-          "title": "Microsoft Azure Architecture Center, \"Retry pattern for microservices and cloud applications\",",
+          "url": "https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy",
+          "title": "Microsoft Azure Architecture Center, \"Messaging patterns for maintaining sequence order in distributed microservices\",",
           "tocItemId": ""
         },
         {
           "id": "ref-5",
-          "url": "https://developer.confluent.io/patterns/event-flow/error-handling/",
-          "title": "Confluent Developer Guide, \"Error Handling Patterns in Apache Kafka: Retry and Dead Letter Queue\",",
+          "url": "https://developer.confluent.io/courses/architecture/exactly-once-semantics/",
+          "title": "Confluent Developer Guide, \"Exactly-Once Semantics (EOS) and Message Sequence Management in Kafka v3\",",
           "tocItemId": ""
         },
         {
           "id": "ref-6",
-          "url": "https://cloud.google.com/pubsub/docs/dead-letter-topics",
-          "title": "Google Cloud Architecture, \"Designing reliable event-driven systems using Google Cloud Pub/Sub DLQ\",",
+          "url": "https://cloud.google.com/pubsub/docs/partitioning-best-practices",
+          "title": "Google Cloud Architecture, \"Optimizing partition design for horizontal scale and low latency in distributed queues\",",
           "tocItemId": ""
         }
       ],
       "tailQuestions": [
         {
-          "id": "q-article-20260813053956-1",
-          "question": "**대규모의 독성 메시지(Poison Pill)가 DLQ에 적재되어 있을 때, 메시지의 중복 소비를 원천 차단하면서 안정적으로 백엔드 복구 로직에 재주입(Redelivery/Replay)하기 위해 멱등성 컨슈머(Idempotent Consumer)에 적용할 고유 트랜잭션 식별자(UUID) 발급 및 분산 중복방지 캐시 설계 기법은 무엇인가?**",
+          "id": "q-article-20260814035756-1",
+          "question": "**카프카 토픽의 파티션 개수를 도중에 증설하는 동안(Dynamic Partition Expansion), 기존 파티션에 남아 있는 잔여 메시지가 컨슈머에 의해 모두 소비(Drain)될 때까지 신규 파티션으로의 라우팅을 임시 차단 및 지연시키는 '파티션 드레이닝 프로토콜'은 어떻게 구현하는가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-2",
+          "id": "q-article-20260814035756-2",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://developer.confluent.io/patterns/event-flow/error-handling/"
+            "https://developer.confluent.io/patterns/event-flow/ordering/"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-3",
-          "question": "**Spring Kafka의 `@RetryableTopic`이 작동할 때, 브로커 내부적으로 동적 생성되는 각 임시 재시도 토픽들의 파티션 개수 매칭 정책과 리밸런싱 리스크 제어 방식은 무엇인가?**",
+          "id": "q-article-20260814035756-3",
+          "question": "**멱등성 프로듀서가 `max.in.flight.requests.per.connection` 설정을 기본값인 5로 유지할 때, 5개 패킷이 동시에 날아가다가 3번째 패킷만 유실된 경우 카프카 브로커 내부에서 메모리 내 버퍼 정렬을 통해 순서를 재조립하는 원리는 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-4",
+          "id": "q-article-20260814035756-4",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://docs.spring.io/spring-kafka/reference/html/#retry-topic"
+            "https://kafka.apache.org/documentation/#producerconfigs"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-5",
-          "question": "**AWS SQS 및 SNS 기반 서버리스(Serverless) 이벤트 아키텍처 환경에서 제공되는 기본 DLQ 리드라이브(Redrive to source) 기능과 카프카 기반 커스텀 리드라이브 엔진의 동작 성능 차이는 무엇인가?**",
+          "id": "q-article-20260814035756-5",
+          "question": "**AWS Kinesis Streams 등 타 분산 스트리밍 솔루션에서 제공하는 '샤드 스플리팅(Shard Splitting)' 기능과 Apache Kafka의 고정 파티션 구조 간의 동적 파티션 마이그레이션 리스크 제어 방식의 차이는 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-6",
+          "id": "q-article-20260814035756-6",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html"
+            "https://cloud.google.com/pubsub/docs/partitioning-best-practices"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-7",
-          "question": "**마이크로서비스들 사이에서 Outbox 패턴을 함께 병용하여 데이터베이스 트랜잭션 성공 시에만 이벤트를 메시지 큐에 퍼블리시하는 구조와, 비차단 재시도 토픽 간의 복구 상태 정합성을 어떻게 일관되게 맞출 수 있는가?**",
+          "id": "q-article-20260814035756-7",
+          "question": "**분산 데이터베이스(Cassandra 등)의 파티션 키 설계 방식과 Kafka 토픽의 파티션 키 설계 방식에서 공통적으로 발생하는 데이터 스큐(Skew) 문제를 극복하기 위한 해시 솔트(Salt) 처리 기법은 어떻게 설계되는가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813053956-8",
+          "id": "q-article-20260814035756-8",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://learn.microsoft.com/en-us/azure/architecture/patterns/retry"
+            "https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy"
           ],
           "status": "todo"
         }
@@ -1323,9 +1687,9 @@
       "backlinks": []
     },
     {
-      "articleId": "article-20260813054002",
-      "topic": "메시지 컨슘 모델의 트레이드오프: Push 방식(ActiveMQ) vs Pull 방식(Kafka) 아키텍처 분석",
-      "createdAt": "2026-08-13T06:19:44.793444Z",
+      "articleId": "article-20260814035807",
+      "topic": "4대 메시징 미들웨어 비교분석: ActiveMQ, Kafka, RabbitMQ, Redis의 아키텍처적 장단점과 솔루션 선택 가이드",
+      "createdAt": "2026-08-14T04:02:48.292560Z",
       "tocItems": [
         {
           "id": "toc-1",
@@ -1339,27 +1703,27 @@
         },
         {
           "id": "toc-3",
-          "title": "1. 서론: 메시지 메시징 모델의 핵심 기둥과 컨슘 모델의 정의",
+          "title": "1. 서론: 메시징 아키텍처의 다원성과 미들웨어 선택의 필요성",
           "level": 3
         },
         {
           "id": "toc-4",
-          "title": "2. Push 방식의 아키텍처와 한계 제어 (ActiveMQ, RabbitMQ 등)",
+          "title": "2. 4대 메시징 미들웨어 개별 아키텍처 및 장단점 분석",
           "level": 3
         },
         {
           "id": "toc-5",
-          "title": "3. Pull 방식의 아키텍처와 버퍼 제어 (Apache Kafka)",
+          "title": "3. 미들웨어 아키텍처 비교 요약표",
           "level": 3
         },
         {
           "id": "toc-6",
-          "title": "4. Push vs Pull 모델 기술 비교 분석 및 선택 가이드",
+          "title": "4. 시나리오별 미들웨어 매칭 가이드 (어느 솔루션에 어울리는가?)",
           "level": 3
         },
         {
           "id": "toc-7",
-          "title": "5. 결론: 분산 아키텍처의 비즈니스 요구사항에 따른 메시징 브로커 제언",
+          "title": "5. 결론: 상호 보완적인 하이브리드 메시징 토폴로지 구축",
           "level": 3
         },
         {
@@ -1401,103 +1765,103 @@
       "references": [
         {
           "id": "ref-1",
-          "url": "https://www.rabbitmq.com/consumer-prefetch.html",
-          "title": "RabbitMQ Documentation, \"Consumer Prefetch and Flow Control Mechanisms\",",
+          "url": "https://www.rabbitmq.com/tutorials/amqp-concepts.html",
+          "title": "RabbitMQ Tutorials & Architecture Guides, \"Understanding Exchange Types and AMQP Routing logic\",",
           "tocItemId": ""
         },
         {
           "id": "ref-2",
-          "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf",
-          "title": "LinkedIn Engineering, \"Kafka: a Distributed Messaging System for Log Processing\",",
+          "url": "https://engineering.linkedin.com/blog/2015/09/under-the-hood-of-linkedins-commits-log",
+          "title": "LinkedIn Engineering Blog, \"Kafka: A high-throughput distributed messaging system at LinkedIn scale\",",
           "tocItemId": ""
         },
         {
           "id": "ref-3",
-          "url": "https://kafka.apache.org/documentation/#design_pull",
-          "title": "Apache Kafka Core Spec, \"Consumer Fetch and Offset Management Specifications\",",
+          "url": "https://kafka.apache.org/documentation/#design_commitlog",
+          "title": "Apache Kafka Core Spec, \"Kafka Commit Log Storage and Offset Persistence Specification\",",
           "tocItemId": ""
         },
         {
           "id": "ref-4",
-          "url": "https://activemq.apache.org/prefetch-policy",
-          "title": "Apache ActiveMQ Classic Guides, \"Prefetch Policy and Consumer Configuration Reference\",",
+          "url": "https://activemq.apache.org/components/artemis/documentation/",
+          "title": "Apache ActiveMQ Artemis Guide, \"JMS Specifications, Transactional Messaging, and Protocol Support\",",
           "tocItemId": ""
         },
         {
           "id": "ref-5",
-          "url": "https://developer.confluent.io/patterns/event-flow/push-vs-pull",
-          "title": "Confluent Developer Guide, \"Push vs. Pull: Messaging Design Patterns in Distributed Systems\",",
+          "url": "https://developer.confluent.io/patterns/event-flow/broker-comparison",
+          "title": "Confluent Developer Guide, \"Comparing Message Brokers: ActiveMQ vs. RabbitMQ vs. Apache Kafka\",",
           "tocItemId": ""
         },
         {
           "id": "ref-6",
-          "url": "https://cloud.google.com/pubsub/docs/push-pull-comparison",
-          "title": "Google Cloud Architecture, \"Comparing Pub/Sub push and pull subscriptions for massive workloads\",",
+          "url": "https://cloud.google.com/architecture/redis-message-broker-patterns",
+          "title": "Google Cloud Architecture Guide, \"Using Redis as a light-weight high-speed message queue in cloud run applications\",",
           "tocItemId": ""
         }
       ],
       "tailQuestions": [
         {
-          "id": "q-article-20260813054002-1",
-          "question": "**카프카 컨슈머가 `poll` 호출을 장시간 지연할 때(즉, `max.poll.interval.ms` 초과), 백엔드 내부 조정자(Coordinator)가 해당 컨슈머를 그룹에서 즉각 강제 퇴출시키고 리밸런싱을 유발하는 이유와 이를 방지하기 위한 워크 스레드 풀링(Worker Thread Pooling) 설계 기법은 무엇인가?**",
+          "id": "q-article-20260814035807-1",
+          "question": "**Redis의 Streams 자료구조가 지원하는 '컨슈머 그룹(Consumer Group)' 기능과 Apache Kafka의 컨슈머 그룹 기능 간의 메시지 분산 분배 방식 및 오프셋(Pending Entries List) 관리 방식의 차이는 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-2",
+          "id": "q-article-20260814035807-2",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://kafka.archive.org/documentation/#design_pull"
+            "https://cloud.google.com/architecture/redis-message-broker-patterns"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-3",
-          "question": "**ActiveMQ Artemis가 도입한 Netty의 Non-blocking 리액터 스레드 수와 클라이언트 커넥션 수의 매핑 규칙은 High-concurrency 환경에서 어떻게 튜닝하는가?**",
+          "id": "q-article-20260814035807-3",
+          "question": "**RabbitMQ에서 메시지 유실을 절대적으로 방지하기 위해 Publisher Confirms와 Queue/Message Durable 설정을 모두 활성화했을 때 발생하는 디스크 동기화(fsync) 오버헤드와 처리량 하락을 완화하기 위한 배치(Batch) 커밋 기법은 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-4",
+          "id": "q-article-20260814035807-4",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://activemq.apache.org/prefetch-policy"
+            "https://www.rabbitmq.com/tutorials/amqp-concepts.html"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-5",
-          "question": "**쿠버네티스(Kubernetes) 오토스케일링 툴인 KEDA와 연계하여 Kafka Lag 지표 기준 HPA(Horizontal Pod Autoscaler) 구동 시 파티션 수 상한 제어와 리밸런싱 임계 지연의 트레이드오프 제어 방안은 무엇인가?**",
+          "id": "q-article-20260814035807-5",
+          "question": "**ActiveMQ Artemis의 고성능 논블로킹 일러스트레이터인 'ActiveMQ Journal' 저장 파일 구조가 제공하는 순차 디스크 I/O 최적화 기술과 Kafka의 Commit Log 세그먼트 저장 방식의 성능적 차이는 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-6",
+          "id": "q-article-20260814035807-6",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://cloud.google.com/pubsub/docs/push-pull-comparison"
+            "https://activemq.apache.org/components/artemis/documentation/"
           ],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-7",
-          "question": "**RabbitMQ의 AMQP 프로토콜이 지원하는 다중 채널(Multi-channel) 재사용 모델과, 단일 연결 소켓에 포트만 분산하는 Kafka 바이너리 TCP 프로토콜의 성능 차이는 무엇인가?**",
+          "id": "q-article-20260814035807-7",
+          "question": "**대규모 엔터프라이즈 환경에서 메시지 페이로드의 스키마 변경 관리를 자동으로 수행하기 위해 Confluent Schema Registry(Avro 스키마 검증)를 Kafka에 결합하는 방식과 타 미들웨어의 스키마 버전 제어 기법의 아키텍처적 차이는 무엇인가?**",
           "relatedTocIds": [],
           "suggestedUrls": [],
           "status": "todo"
         },
         {
-          "id": "q-article-20260813054002-8",
+          "id": "q-article-20260814035807-8",
           "question": "추천 참고",
           "relatedTocIds": [],
           "suggestedUrls": [
-            "https://www.rabbitmq.com/consumer-prefetch.html"
+            "https://developer.confluent.io/patterns/event-flow/broker-comparison"
           ],
           "status": "todo"
         }

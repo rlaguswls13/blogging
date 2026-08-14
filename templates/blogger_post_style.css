@@ -325,3 +325,15 @@
 .tech-blog-post .collapsible-content p:last-child {
     margin-bottom: 0;
 }
+
+/* Responsive & Styled Blog Post Images */
+.tech-blog-post img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2.2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
