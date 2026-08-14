@@ -1867,6 +1867,646 @@
         }
       ],
       "backlinks": []
+    },
+    {
+      "articleId": "article-20260814171842",
+      "topic": "Redis 분산 락(Distributed Lock)의 한계와 극복: Redlock 알고리즘과 시계 드리프트(Clock Drift) 정합성 딜레마",
+      "createdAt": "2026-08-14T17:20:46.815071Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 분산 환경에서의 동시성 제어와 Redis의 기용 이유",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. Lettuce vs Redisson: 스핀 락(Spin Lock)과 Pub/Sub 스핀 방지 차이",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. Redlock 알고리즘의 동작 방식과 시계 드리프트(Clock Drift) 한계",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. 분산 락의 한계 극복: 펜싱 토큰(Fencing Token) 패턴",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-8",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://redis.io/docs/manual/patterns/distributed-locks/",
+          "title": "Redis Official Documentation, \"Distributed Locks with Redis and the Redlock spec\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://developer.confluent.io/patterns/event-flow/concurrency/",
+          "title": "Confluent Developer Guide, \"Locking Patterns and Concurrency Management in Large Scale Memory Stores\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers",
+          "title": "Redisson Client Reference Guide, \"Distributed Lock implementations and Watchdog configurations\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://martin.kleppmann.com/2016/02/08/how-to-do-a-distributed-lock.html",
+          "title": "Martin Kleppmann's Blog, \"How to do a distributed lock (Why Redlock is not safe)\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-5",
+          "url": "https://developer.confluent.io/courses/architecture/redis-locking-comparison/",
+          "title": "Confluent Architecture Library, \"Comparing Lettuce and Redisson performance in high contention scenarios\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-6",
+          "url": "https://cloud.google.com/solutions/time-sync-in-compute-engine",
+          "title": "Google Cloud Architecture, \"Time synchronization and drift mitigation strategies for distributed transactions\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260814171842-1",
+          "question": "**Redis Sentinel 또는 Redis Cluster 환경에서 마스터 노드가 다운되어 슬레이브로 장애 극복(Failover)되는 수십 밀리초의 찰나에, 미처 동기화되지 않은 락 키 정보 누락으로 인해 다른 클라이언트가 락을 이중 획득하는 복제 지연(Replication Lag) 장애는 아키텍처적으로 어떻게 복구하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://redis.io/docs/manual/patterns/distributed-locks/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-3",
+          "question": "**Lettuce로 스핀 락을 구현할 때 Redis에 가해지는 무모한 질의 폭증을 막기 위해, 폴링 대기 루프 사이에 지수 백오프(Exponential Backoff)와 지터(Jitter) 알고리즘을 파이썬/자바로 정교하게 코딩하는 모범 공식은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://developer.confluent.io/patterns/event-flow/concurrency/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-5",
+          "question": "**ZooKeeper의 큐레이터(Curator) 라이브러리가 분산 락(InterProcessMutex)을 제공할 때, 주키퍼의 순차 노드(Sequential Node) 및 와치(Watch) 기능을 사용해 락 대기 및 복구를 처리하는 아키텍처와 Redis의 Pub/Sub 방식의 효율성 차이는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-7",
+          "question": "**RDBMS의 낙관적 락(Version Column)을 적용하여 Redis 분산 락 없이 대안 분산 정합성을 맞출 때, 빈번한 데이터 쓰기 충돌 발생 시 발생하는 무수히 많은 롤백(Rollback) 비용과 네트워크 레이턴시 증가 한계를 산출하는 방법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171842-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://martin.kleppmann.com/2016/02/08/how-to-do-a-distributed-lock.html"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260814171843",
+      "topic": "Saga 패턴을 활용한 MSA 분산 트랜잭션 제어: Choreography vs Orchestration 아키텍처와 보상 트랜잭션 설계 전략",
+      "createdAt": "2026-08-14T17:20:50.278451Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 분산 데이터베이스 환경의 트랜잭션 딜레마와 2PC의 한계",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. Saga 패턴의 구조와 2대 설계 토폴로지 비교",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 보상 트랜잭션(Compensating Transaction) 설계와 멱등성 보장 기법",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-7",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-8",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://developer.confluent.io/patterns/event-flow/eventual-consistency/",
+          "title": "Confluent Developer Guide, \"Distributed Transactions vs Eventual Consistency in Stream Processing\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://microservices.io/patterns/data/saga.html",
+          "title": "Microservices.io Pattern Catalog, \"Saga Pattern (Choreography and Orchestration)\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://developer.confluent.io/courses/architecture/saga-implementation/",
+          "title": "Confluent Architecture Library, \"Saga orchestration and compensation patterns inside Kafka message streams\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://cloud.google.com/solutions/microservices-transaction-strategies",
+          "title": "Google Cloud Architecture, \"Database-per-service patterns and transaction consistency strategies\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260814171843-1",
+          "question": "**Saga 패턴이 보증하지 못하는 데이터 격리성(Isolation) 문제를 차단하기 위해, 아직 미확정 상태인 리소스에 대해 소유권을 선점해두는 '시맨틱 락(Semantic Lock)'과 '비관적 갱신(Pessimistic Update)'을 애플리케이션 엔티티 컬럼 레벨에서 우아하게 코딩하는 모범 가이드는 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://microservices.io/patterns/data/saga.html"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-3",
+          "question": "**카프카(Kafka) 기반으로 Choreography Saga를 구성할 때, 주문 이벤트와 결제 이벤트를 순차적으로 정합성 있게 매칭하기 위해 파티션 키(Partition Key) 전략을 수립하고 메시지 중복 수신 시의 '멱등적 컨슈머(Idempotent Consumer)' 로직을 설계하는 방법은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://developer.confluent.io/patterns/event-flow/eventual-consistency/"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-5",
+          "question": "**Temporal.io와 같은 전문 분산 오케스트레이션 엔진을 사용하여 오케스트레이터의 장애 복구와 무한 재시도 타임아웃 워크플로우를 코드로 추상화하는 기법은 어떤 메커니즘으로 내부 DB 상태를 복제·추적하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-7",
+          "question": "**결제 마이크로서비스가 결제 승인을 마친 뒤 주문 마이크로서비스로 완료 이벤트를 퍼블리싱하려다 네트워크 두절로 유실되었을 때, 이 트랜잭션 탈락을 방지하는 '트랜잭셔널 아웃박스(Transactional Outbox)' 패턴과 CDC(Change Data Capture)의 실무 연동 구조는 어떻게 되는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814171843-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://martin.kleppmann.com/2016/02/08/how-to-do-a-distributed-lock.html"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260814172123",
+      "topic": "Spring AOP(관점 지향 프로그래밍)와 프록시(Proxy) 아키텍처: JDK Dynamic Proxy vs CGLIB 기술 분석",
+      "createdAt": "2026-08-14T17:25:16.544504Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: 제어의 역전(IoC)과 의존성 주입(DI)의 구조적 정의",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. 의존성 주입(DI)의 3가지 주입 방식과 트레이드오프",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 생성자 주입(Constructor Injection)을 무조건 선택해야 하는 이유",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-7",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-8",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://martinfowler.com/articles/injection.html",
+          "title": "Martin Fowler, \"Inversion of Control Containers and the Dependency Injection pattern\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#beans-dependencies",
+          "title": "Spring Framework Reference Documentation, \"Core Technologies - Dependency Injection\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://www.baeldung.com/spring-constructor-injection-vs-field-injection",
+          "title": "Baeldung, \"Constructor Injection vs Field Injection in Spring\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-4",
+          "url": "https://github.com/spring-projects/spring-framework/wiki",
+          "title": "Spring Framework Github discussions, \"Guidelines for dependency injection style guide\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260814172123-1",
+          "question": "**스프링 컨테이너 기동 시 순환 참조가 감지되었을 때, 긴급히 리팩토링 없이 우회하기 위해 `@Lazy` 어노테이션이나 `ObjectProvider`를 사용하여 의존성 조회 시점을 런타임으로 미루는 트릭은 실무적으로 어떤 성능 오버헤드와 리스크를 동반하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172123-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.spring.org/spring-framework/docs/current/reference/html/core.html"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172123-3",
+          "question": "**생성자 주입 방식 하에서 스프링 빈의 생성 주기(Instantiation)와 의존성 대입(Populate) 과정은 수정자 주입과 내부적으로 어떻게 실행 단계의 우선순위가 다르게 적용되는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172123-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://martinfowler.com/articles/injection.html"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172123-5",
+          "question": "**빈의 생명주기 콜백(Bean Lifecycle Callback) 인터페이스인 `@PostConstruct`와 `@PreDestroy`가 실행될 때, 이들 초기화 메서드가 빈 내부의 필드 의존성 주입이 완벽하게 완료된 상태임을 보장하는 타이밍은 구체적으로 빈 생성 라이프사이클의 어느 단계인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172123-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://www.baeldung.com/spring-constructor-injection-vs-field-injection"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
+    },
+    {
+      "articleId": "article-20260814172138",
+      "topic": "Spring AOP(관점 지향 프로그래밍)와 프록시(Proxy) 아키텍처: JDK Dynamic Proxy vs CGLIB 기술 분석",
+      "createdAt": "2026-08-14T17:25:19.833530Z",
+      "tocItems": [
+        {
+          "id": "toc-1",
+          "title": "요약",
+          "level": 2
+        },
+        {
+          "id": "toc-2",
+          "title": "본문",
+          "level": 2
+        },
+        {
+          "id": "toc-3",
+          "title": "1. 서론: OOP의 한계를 극복하는 AOP와 프록시 패턴의 관계",
+          "level": 3
+        },
+        {
+          "id": "toc-4",
+          "title": "2. JDK Dynamic Proxy vs CGLIB: 프록시 생성 기법 비교",
+          "level": 3
+        },
+        {
+          "id": "toc-5",
+          "title": "3. 스프링 부트(Spring Boot)에서 CGLIB를 전면 기본값으로 채택한 사유",
+          "level": 3
+        },
+        {
+          "id": "toc-6",
+          "title": "4. 프록시 아키텍처의 한계와 실무 극복: 내부 호출(Self-Invocation) 문제",
+          "level": 3
+        },
+        {
+          "id": "toc-7",
+          "title": "사실 검증 결과",
+          "level": 2
+        },
+        {
+          "id": "toc-8",
+          "title": "작성자의 견해",
+          "level": 2
+        },
+        {
+          "id": "toc-9",
+          "title": "한계와 반론",
+          "level": 2
+        },
+        {
+          "id": "toc-10",
+          "title": "참고문헌",
+          "level": 2
+        },
+        {
+          "id": "toc-11",
+          "title": "종합적 의견",
+          "level": 2
+        },
+        {
+          "id": "toc-12",
+          "title": "꼬리질문",
+          "level": 2
+        },
+        {
+          "id": "toc-13",
+          "title": "백링크",
+          "level": 2
+        }
+      ],
+      "references": [
+        {
+          "id": "ref-1",
+          "url": "https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#aop",
+          "title": "Spring Framework Reference Documentation, \"Aspect Oriented Programming with Spring\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-2",
+          "url": "https://github.com/cglib/cglib/wiki/Architecture",
+          "title": "CGLIB Project Github Wiki, \"Code Generation Library principles and performance metrics\",",
+          "tocItemId": ""
+        },
+        {
+          "id": "ref-3",
+          "url": "https://docs.spring.org/spring-boot/docs/current/reference/html/features.html#features.aop",
+          "title": "Spring Boot Reference Guide, \"AOP Auto-configuration properties and CGLIB default strategies\",",
+          "tocItemId": ""
+        }
+      ],
+      "tailQuestions": [
+        {
+          "id": "q-article-20260814172138-1",
+          "question": "**상속이 원천 불가능한 `final` 클래스에 `@Transactional` 등의 AOP 어노테이션을 부여할 경우, 디폴트 엔진인 CGLIB는 프록시 서브클래스 생성 시점에서 구체적으로 어떤 에러를 발생시키며 이를 회피하기 위한 해결책은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-2",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://github.com/cglib/cglib/wiki/Architecture"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-3",
+          "question": "**Spring AOP 대신 AspectJ 컴파일러(AJC)를 활용하여 컴파일 시점(CTW)에 AOP 위빙을 수행하도록 빌드 파이프라인(Maven/Gradle)을 세팅할 때, 빌드 속도 저하와 런타임 프록시 회피 효과 사이의 트레이드오프는 어떻게 계산하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-4",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#aop"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-5",
+          "question": "**CGLIB가 클래스 바이트코드를 런타임에 동적으로 변경하여 JVM 메타스페이스(Metaspace)에 쏟아낼 때 발생할 수 있는 클래스로더 누수(Memory Leak) 리스크와 이를 해결하기 위해 스프링이 사용하고 있는 내부 프록시 클래스 캐싱 메커니즘은 무엇인가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-6",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://github.com/cglib/cglib/wiki/Architecture"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-7",
+          "question": "**자가 호출(Self-Invocation) 오류를 극복하기 위해 Spring context 로딩 완료 후 자기 자신의 프록시 객체를 필드로 지연 순환 참조(`@Autowired @Lazy MyService self`)받는 트릭은 왜 아키텍처적으로 악취(Code Smell)를 풍기며 지양되어야 하는가?**",
+          "relatedTocIds": [],
+          "suggestedUrls": [],
+          "status": "todo"
+        },
+        {
+          "id": "q-article-20260814172138-8",
+          "question": "추천 참고",
+          "relatedTocIds": [],
+          "suggestedUrls": [
+            "https://docs.spring.org/spring-boot/docs/current/reference/html/features.html#features.aop"
+          ],
+          "status": "todo"
+        }
+      ],
+      "backlinks": []
     }
   ],
   "version": 1
