@@ -1249,7 +1249,7 @@
           <a expr:class='data:view.search.label == "메시징/MQ" ? "active" : ""' href='/search/label/메시징%2FMQ?max-results=4'>메시징/MQ</a>
           <a expr:class='data:view.search.label == "분산 시스템" ? "active" : ""' href='/search/label/분산%20시스템?max-results=4'>분산 시스템</a>
           <a expr:class='data:view.search.label == "인프라/네트워크" ? "active" : ""' href='/search/label/인프라%2F네트워크?max-results=4'>인프라/네트워크</a>
-          <a expr:class='data:view.search.label == "AI" ? "active" : ""' href='/search/label/AI?max-results=4'>AI</a>
+          <a expr:class='data:view.search.query == "label:AI OR label:LLM OR label:RAG OR label:Agent" ? "active" : ""' href='/search?q=label:AI+OR+label:LLM+OR+label:RAG+OR+label:Agent&amp;max-results=4'>AI</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
@@ -2318,19 +2318,73 @@
             searchQuery = decodeURIComponent(qMatch[1]);
           }
           
-          // API Feed Address
+          // Always query all posts (up to 500) to support dynamic client-side filtering and multi-label logical queries
           var amp = String.fromCharCode(38);
           var feedUrl = "/feeds/posts/summary?alt=json" + amp + "max-results=500";
-          if (isLabel) {
-            feedUrl = "/feeds/posts/summary/-/" + encodeURIComponent(labelName) + "?alt=json" + amp + "max-results=500";
-          } else if (searchQuery) {
-            feedUrl = "/feeds/posts/summary?alt=json" + amp + "q=" + encodeURIComponent(searchQuery) + amp + "max-results=500";
-          }
           
           fetch(feedUrl)
             .then(function(res) { return res.json(); })
             .then(function(data) {
-              var totalPosts = parseInt(data.feed.openSearch$totalResults.$t, 10);
+              var allEntries = data.feed.entry || [];
+              var entries = [];
+              
+              // Filter entries based on the current context URL
+              if (isLabel) {
+                // Filter by exact label name
+                allEntries.forEach(function(entry) {
+                  var categories = entry.category || [];
+                  var matched = false;
+                  categories.forEach(function(cat) {
+                    if (cat.term === labelName) {
+                      matched = true;
+                    }
+                  });
+                  if (matched) {
+                    entries.push(entry);
+                  }
+                });
+              } else if (searchQuery) {
+                // Support multi-label OR conditions (e.g. q=label:AI+OR+label:LLM)
+                var targetLabels = [];
+                var labelMatches = searchQuery.match(/label:([^\s+]+)/g);
+                if (labelMatches) {
+                  labelMatches.forEach(function(lm) {
+                    var lName = lm.replace("label:", "").trim();
+                    targetLabels.push(lName);
+                  });
+                }
+                
+                if (targetLabels.length > 0) {
+                  // Perform OR matching on labels
+                  allEntries.forEach(function(entry) {
+                    var categories = entry.category || [];
+                    var matched = false;
+                    categories.forEach(function(cat) {
+                      if (targetLabels.indexOf(cat.term) !== -1) {
+                        matched = true;
+                      }
+                    });
+                    if (matched) {
+                      entries.push(entry);
+                    }
+                  });
+                } else {
+                  // Fallback to normal text search filtering
+                  allEntries.forEach(function(entry) {
+                    var title = (entry.title && entry.title.$t || "").toLowerCase();
+                    var summary = (entry.summary && entry.summary.$t || "").toLowerCase();
+                    var qLower = searchQuery.toLowerCase();
+                    if (title.indexOf(qLower) !== -1 || summary.indexOf(qLower) !== -1) {
+                      entries.push(entry);
+                    }
+                  });
+                }
+              } else {
+                // Basic /search with no filters (Show All)
+                entries = allEntries;
+              }
+              
+              var totalPosts = entries.length;
               
               // totalPosts <= postPerPage
               if (Math.sign(totalPosts - postPerPage) !== 1) {
@@ -2338,7 +2392,6 @@
                 return;
               }
               
-              var entries = data.feed.entry || [];
               var totalPages = Math.ceil(totalPosts / postPerPage);
               
               // 각 페이지의 시작점 타임스탬프 추출
