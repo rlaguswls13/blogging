@@ -627,12 +627,12 @@
         min-height: 550px;
       }
       
-      /* Blog Pager / Pagination */
+      /* Blog Pager / Numbered Pagination Styles */
       .blog-pager {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 1.5rem;
+        gap: 0.5rem;
         margin: 3.5rem auto 1.5rem auto;
         padding: 0 1rem;
         max-width: 800px;
@@ -640,22 +640,29 @@
         box-sizing: border-box;
       }
       
-      .blog-pager a {
+      .blog-pager a, .blog-pager .page-current {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.75rem 1.75rem;
+        width: 40px;
+        height: 40px;
         font-size: 0.95rem;
         font-weight: 600;
-        color: var(--text-main);
+        color: var(--text-muted);
         background-color: var(--card-bg);
         border: 1px solid var(--border-color);
-        border-radius: 30px;
+        border-radius: 50%;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
         text-decoration: none;
-        min-width: 120px;
+        box-sizing: border-box;
+      }
+      
+      .blog-pager a.page-prev, .blog-pager a.page-next {
+        width: auto;
+        padding: 0 1.25rem;
+        border-radius: 30px;
       }
       
       .blog-pager a:hover {
@@ -666,12 +673,12 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       }
       
-      .blog-pager-older-link {
-        order: 2;
-      }
-      
-      .blog-pager-newer-link {
-        order: 1;
+      .blog-pager .page-current {
+        color: #ffffff;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        cursor: default;
+        box-shadow: 0 4px 12px rgba(9, 132, 227, 0.2);
       }
       
       @media(min-width: 640px) {
@@ -2209,6 +2216,114 @@
         </div>
       </div>
     </div>
+    
+    <!-- Blogger Numbered Pagination System Script -->
+    <script type='text/javascript'>
+      //<![CDATA[
+      (function() {
+        var postPerPage = 4; // 한 페이지당 표시할 최대 글 개수 (Blogger 설정과 일치 필수)
+        var numPages = 5;    // 한 번에 표시할 페이지 번호 가짓수
+        
+        document.addEventListener("DOMContentLoaded", function() {
+          var pagerElement = document.getElementById("blog-pager");
+          if (!pagerElement) return;
+          
+          var currentUrl = window.location.href;
+          var isLabel = currentUrl.indexOf("/search/label/") !== -1;
+          var labelName = "";
+          
+          if (isLabel) {
+            var parts = currentUrl.split("/search/label/");
+            labelName = parts[1].split("?")[0].split("#")[0];
+            labelName = decodeURIComponent(labelName);
+          }
+          
+          // API Feed Address
+          var feedUrl = "/feeds/posts/summary?alt=json&max-results=500";
+          if (isLabel) {
+            feedUrl = "/feeds/posts/summary/-/" + encodeURIComponent(labelName) + "?alt=json&max-results=500";
+          }
+          
+          fetch(feedUrl)
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+              var totalPosts = parseInt(data.feed.openSearch$totalResults.$t, 10);
+              if (totalPosts <= postPerPage) {
+                pagerElement.style.display = "none";
+                return;
+              }
+              
+              var entries = data.feed.entry || [];
+              var totalPages = Math.ceil(totalPosts / postPerPage);
+              
+              // 각 페이지의 시작점 타임스탬프 추출
+              var pageTimestamps = [];
+              for (var i = 0; i < entries.length; i += postPerPage) {
+                pageTimestamps.push(entries[i].published.$t);
+              }
+              
+              // 현재 페이지 확인
+              var currentPage = 1;
+              var match = currentUrl.match(/[?&]updated-max=([^&]+)/);
+              if (match) {
+                var currentTimestamp = decodeURIComponent(match[1]);
+                for (var p = 0; p < pageTimestamps.length; p++) {
+                  if (pageTimestamps[p] <= currentTimestamp) {
+                    currentPage = p + 1;
+                    break;
+                  }
+                }
+              }
+              
+              // 페이지 번호 렌더링
+              var html = "";
+              var startPage = Math.max(1, currentPage - Math.floor(numPages / 2));
+              var endPage = Math.min(totalPages, startPage + numPages - 1);
+              if (endPage - startPage + 1 < numPages) {
+                startPage = Math.max(1, endPage - numPages + 1);
+              }
+              
+              // 이전 (Prev) 버튼
+              if (currentPage > 1) {
+                var prevUrl = getPageUrl(currentPage - 1, pageTimestamps, isLabel, labelName);
+                html += "<a class='page-prev' href='" + prevUrl + "'>&laquo; 이전</a>";
+              }
+              
+              // 숫자 루프
+              for (var pageNum = startPage; pageNum <= endPage; pageNum++) {
+                if (pageNum === currentPage) {
+                  html += "<span class='page-current'>" + pageNum + "</span>";
+                } else {
+                  var targetUrl = getPageUrl(pageNum, pageTimestamps, isLabel, labelName);
+                  html += "<a class='page-num' href='" + targetUrl + "'>" + pageNum + "</a>";
+                }
+              }
+              
+              // 다음 (Next) 버튼
+              if (currentPage < totalPages) {
+                var nextUrl = getPageUrl(currentPage + 1, pageTimestamps, isLabel, labelName);
+                html += "<a class='page-next' href='" + nextUrl + "'>다음 &raquo;</a>";
+              }
+              
+              pagerElement.innerHTML = html;
+              pagerElement.style.display = "flex";
+            })
+            .catch(function(err) {
+              console.error("Numbered pagination error:", err);
+            });
+            
+          function getPageUrl(pageNum, timestamps, isLabel, labelName) {
+            if (pageNum === 1) {
+              return isLabel ? "/search/label/" + encodeURIComponent(labelName) + "?max-results=" + postPerPage : "/?max-results=" + postPerPage;
+            }
+            var ts = timestamps[pageNum - 1];
+            var baseUrl = isLabel ? "/search/label/" + encodeURIComponent(labelName) : "/search";
+            return baseUrl + "?updated-max=" + encodeURIComponent(ts) + "&max-results=" + postPerPage;
+          }
+        });
+      })();
+      //]]>
+    </script>
     
     <!-- Mermaid JS Support for Flowcharts and Diagrams -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'/>
