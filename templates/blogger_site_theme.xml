@@ -627,6 +627,53 @@
         min-height: 550px;
       }
       
+      /* Blog Pager / Pagination */
+      .blog-pager {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 3.5rem auto 1.5rem auto;
+        padding: 0 1rem;
+        max-width: 800px;
+        clear: both;
+        box-sizing: border-box;
+      }
+      
+      .blog-pager a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.75rem 1.75rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-main);
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 30px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        text-decoration: none;
+        min-width: 120px;
+      }
+      
+      .blog-pager a:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-color: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+      
+      .blog-pager-older-link {
+        order: 2;
+      }
+      
+      .blog-pager-newer-link {
+        order: 1;
+      }
+      
       @media(min-width: 640px) {
         .tech-featured-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1268,6 +1315,7 @@
                     </b:if>
                   </b:loop>
                 </div>
+                <b:include name='postPagination'/>
               </div>
             <b:else/>
               <!-- Single Item View (Post or Page) -->
