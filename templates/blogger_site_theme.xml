@@ -1262,11 +1262,9 @@
         </button>
         <div class='nav-links' id='nav-links'>
           <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
-          <a expr:class='data:view.search.label == "Spring/Java" ? "active" : ""' href='/search/label/Spring%2FJava?max-results=4'>Spring/Java</a>
-          <a expr:class='data:view.search.label == "메시징/MQ" ? "active" : ""' href='/search/label/메시징%2FMQ?max-results=4'>메시징/MQ</a>
-          <a expr:class='data:view.search.label == "분산 시스템" ? "active" : ""' href='/search/label/분산%20시스템?max-results=4'>분산 시스템</a>
-          <a expr:class='data:view.search.label == "인프라/네트워크" ? "active" : ""' href='/search/label/인프라%2F네트워크?max-results=4'>인프라/네트워크</a>
-          <a expr:class='data:view.search.query == "label:AI OR label:LLM OR label:RAG OR label:Agent" ? "active" : ""' href='/search?q=label:AI+OR+label:LLM+OR+label:RAG+OR+label:Agent'>AI</a>
+          <a expr:class='data:view.search.query contains "Basics" or data:view.search.label == "Basics" or data:view.search.label == "기초" ? "active" : ""' href='/search?q=label:Basics+OR+label:기초+OR+label:Spring+OR+label:Java'>Basics</a>
+          <a expr:class='data:view.search.query contains "Advanced" or data:view.search.label == "Advanced" or data:view.search.label == "응용" ? "active" : ""' href='/search?q=label:Advanced+OR+label:응용+OR+label:실무+OR+label:Kafka+OR+label:Redis+OR+label:MSA'>Advanced</a>
+          <a expr:class='data:view.search.query contains "Trends" or data:view.search.label == "Trends" or data:view.search.label == "트렌드" ? "active" : ""' href='/search?q=label:Trends+OR+label:트렌드+OR+label:AI+OR+label:LLM+OR+label:RAG+OR+label:Kubernetes'>Trends</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
@@ -2347,12 +2345,23 @@
               
               // Filter entries based on the current context URL
               if (isLabel) {
-                // Filter by exact label name
+                // Check if label matches any of our 3 core category synonyms
+                var targetSynonyms = [labelName];
+                var lNameLower = labelName.toLowerCase();
+                
+                if (lNameLower === "basics" || lNameLower === "기초") {
+                  targetSynonyms = ["Basics", "기초", "Basic", "Spring", "Java", "Theory"];
+                } else if (lNameLower === "advanced" || lNameLower === "응용" || lNameLower === "실무") {
+                  targetSynonyms = ["Advanced", "응용", "실무", "Kafka", "Redis", "MSA", "Architecture", "System", "Middleware"];
+                } else if (lNameLower === "trends" || lNameLower === "트렌드") {
+                  targetSynonyms = ["Trends", "트렌드", "Trend", "AI", "LLM", "RAG", "Agent", "Kubernetes", "HTTP3", "QUIC"];
+                }
+                
                 allEntries.forEach(function(entry) {
                   var categories = entry.category || [];
                   var matched = false;
                   categories.forEach(function(cat) {
-                    if (cat.term === labelName) {
+                    if (targetSynonyms.indexOf(cat.term) !== -1) {
                       matched = true;
                     }
                   });
@@ -2361,7 +2370,7 @@
                   }
                 });
               } else if (searchQuery) {
-                // Support multi-label OR conditions (e.g. q=label:AI+OR+label:LLM)
+                // Support multi-label OR conditions (e.g. q=label:Basics+OR+label:Spring)
                 var targetLabels = [];
                 var labelMatches = searchQuery.match(/label:([^\s+]+)/g);
                 if (labelMatches) {
@@ -2372,7 +2381,7 @@
                 }
                 
                 if (targetLabels.length > 0) {
-                  // Perform OR matching on labels
+                  // Perform intelligent OR matching on labels
                   allEntries.forEach(function(entry) {
                     var categories = entry.category || [];
                     var matched = false;
