@@ -274,11 +274,12 @@
       /* Responsive tablet/small PC settings to prevent GNB wrapping */
       @media(min-width: 769px) and (max-width: 1024px) {
         .nav-links {
-          gap: 0.6rem !important;
+          gap: 0.4rem !important;
         }
         .nav-links a {
-          font-size: 0.9rem !important;
-          padding: 0.4rem 0.75rem !important;
+          font-size: 0.88rem !important;
+          padding: 0.4rem 0.6rem !important;
+          letter-spacing: -0.03em !important;
         }
       }
 
@@ -1244,10 +1245,10 @@
         </button>
         <div class='nav-links' id='nav-links'>
           <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
-          <a expr:class='data:view.search.label == "기본" ? "active" : ""' href='/search/label/기본?max-results=4'>기본</a>
-          <a expr:class='data:view.search.label == "중급" ? "active" : ""' href='/search/label/중급?max-results=4'>중급</a>
-          <a expr:class='data:view.search.label == "고급" ? "active" : ""' href='/search/label/고급?max-results=4'>고급</a>
-          <a expr:class='data:view.search.label == "트렌드" ? "active" : ""' href='/search/label/트렌드?max-results=4'>트렌드</a>
+          <a expr:class='data:view.search.label == "기본 이론" ? "active" : ""' href='/search/label/기본 이론?max-results=4'>기본 이론</a>
+          <a expr:class='data:view.search.label == "인프라/아키텍처" ? "active" : ""' href='/search/label/인프라%2F아키텍처?max-results=4'>인프라/아키텍처</a>
+          <a expr:class='data:view.search.label == "실무 문제 해결" ? "active" : ""' href='/search/label/실무 문제 해결?max-results=4'>실무 문제 해결</a>
+          <a expr:class='data:view.search.label == "최신 트렌드" ? "active" : ""' href='/search/label/최신 트렌드?max-results=4'>최신 트렌드</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
