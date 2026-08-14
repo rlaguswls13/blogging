@@ -2337,12 +2337,13 @@
             });
             
           function getPageUrl(pageNum, timestamps, isLabel, labelName) {
+            var amp = String.fromCharCode(38);
             if (pageNum === 1) {
-              return isLabel ? "/search/label/" + encodeURIComponent(labelName) + "?max-results=" + postPerPage : "/?max-results=" + postPerPage;
+              return isLabel ? "/search/label/" + encodeURIComponent(labelName) + "?" + amp + "max-results=" + postPerPage : "/search?" + amp + "max-results=" + postPerPage;
             }
             var ts = timestamps[pageNum - 1];
             var baseUrl = isLabel ? "/search/label/" + encodeURIComponent(labelName) : "/search";
-            return baseUrl + "?updated-max=" + encodeURIComponent(ts) + "&max-results=" + postPerPage;
+            return baseUrl + "?" + amp + "updated-max=" + encodeURIComponent(ts) + amp + "max-results=" + postPerPage;
           }
         });
       })();
