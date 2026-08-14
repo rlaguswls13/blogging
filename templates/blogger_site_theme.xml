@@ -7,10 +7,10 @@
       (function() {
         var path = window.location.pathname;
         if (path === '/label' || path === '/label/') {
-          window.location.replace('/search/label?max-results=100');
+          window.location.replace('/search/label?max-results=4');
         } else if (path.indexOf('/label/') === 0) {
           var category = path.substring(7);
-          window.location.replace('/search/label/' + category + '?max-results=100');
+          window.location.replace('/search/label/' + category + '?max-results=4');
         }
       })();
       //]]>
@@ -686,6 +686,23 @@
         display: none !important;
       }
       
+      /* Responsive Mobile Styles for Pagination */
+      @media (max-width: 480px) {
+        .blog-pager {
+          gap: 0.25rem !important;
+          margin: 2.5rem auto 1rem auto !important;
+        }
+        .blog-pager a, .blog-pager .page-current {
+          width: 34px !important;
+          height: 34px !important;
+          font-size: 0.85rem !important;
+        }
+        .blog-pager a.page-prev, .blog-pager a.page-next {
+          padding: 0 0.85rem !important;
+          border-radius: 20px !important;
+        }
+      }
+      
       @media(min-width: 640px) {
         .tech-featured-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -1278,8 +1295,9 @@
                       <h2>모든 기록 검색</h2>
                     </b:if>
                   </div>
-                  <b:if cond='data:view.isHomepage'>
-                    <a href='/search'>모든 글 보기 &#8594;</a>
+                  <!-- 홈페이지이거나, search 경로 하위(라벨 검색 결과 포함) 일 때 전체 글보기 버튼 단 하나만 상시 노출 -->
+                  <b:if cond='data:view.isHomepage or data:view.isSearch or data:view.search.label'>
+                    <a class='tech-primary-button' href='/search?max-results=4'>전체 글 보기 &#8594;</a>
                   </b:if>
                 </div>
                 
@@ -1302,15 +1320,11 @@
                           <h3>
                             <a expr:href='data:post.url'><data:post.title/></a>
                           </h3>
-                          <p>
-                            <data:post.snippet/>
-                          </p>
-                          
                           <!-- Clickable Tags -->
                           <b:if cond='data:post.labels'>
                             <div class='devlog-tags'>
                               <b:loop values='data:post.labels' var='label'>
-                                <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
+                                <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
                               </b:loop>
                             </div>
                           </b:if>
@@ -1362,7 +1376,7 @@
                     <b:if cond='data:post.labels'>
                       <div class='devlog-tags' style='margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;'>
                         <b:loop values='data:post.labels' var='label'>
-                          <a class='tech-tag' expr:href='"/label/" + data:label.name'><data:label.name/></a>
+                          <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
                         </b:loop>
                       </div>
                     </b:if>
@@ -1842,7 +1856,7 @@
                     <ul>
                       <b:loop values='data:labels' var='label'>
                         <li>
-                          <a expr:href='data:label.url'><data:label.name/></a>
+                          <a expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
                           <b:if cond='data:this.showFreqNumbers'>
                             <span class='label-count'>(<data:label.count/>)</span>
                           </b:if>
