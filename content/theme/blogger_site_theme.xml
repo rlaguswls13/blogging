@@ -2021,8 +2021,124 @@
     <!-- TECH LOG Unified Site Theme CSS Engine (v22.0.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v22.0.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v22.0.0 Inline Fallback) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=20.0.0'></script>
+    <script type='text/javascript'>
+      //<![CDATA[
+      (function() {
+        function getTargetFilterLabel() {
+          var pathname = window.location.pathname;
+          var search = window.location.search;
+
+          if (pathname.indexOf('/search/label/') !== -1) {
+            var parts = pathname.split('/search/label/');
+            if (parts.length > 1 && parts[1]) {
+              var labelStr = parts[1].split('?')[0];
+              return decodeURIComponent(labelStr).trim().toLowerCase();
+            }
+          }
+
+          if (search && search.indexOf('q=') !== -1) {
+            var urlParams = new URLSearchParams(search);
+            var q = urlParams.get('q');
+            if (q) {
+              q = decodeURIComponent(q).trim().toLowerCase();
+              if (q.indexOf('label:') !== -1) {
+                return q;
+              }
+            }
+          }
+          return null;
+        }
+
+        window.initBloggerFeedPagination = function(json) {
+          var entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
+          var allPosts = [];
+
+          entries.forEach(function(entry) {
+            var title = entry.title ? entry.title.$t : '';
+            var published = entry.published ? entry.published.$t : '';
+            var url = '';
+            if (entry.link) {
+              for (var i = 0; i < entry.link.length; i++) {
+                if (entry.link[i].rel === 'alternate') {
+                  url = entry.link[i].href;
+                  break;
+                }
+              }
+            }
+            var labels = [];
+            if (entry.category) {
+              entry.category.forEach(function(cat) {
+                if (cat.term) labels.push(cat.term);
+              });
+            }
+
+            allPosts.push({
+              title: title,
+              published: published,
+              url: url,
+              labels: labels
+            });
+          });
+
+          var targetFilter = getTargetFilterLabel();
+          if (targetFilter) {
+            var activePosts = [];
+            allPosts.forEach(function(post) {
+              var lowerPostLabels = post.labels.map(function(l) { return l.toLowerCase(); });
+              var matches = false;
+
+              if (targetFilter.indexOf('basics') !== -1 || targetFilter.indexOf('기초') !== -1) {
+                var basicsGroup = ['basics', '기초', 'database', 'rdbms', 'sql', 'nosql', 'gof', 'design patterns', 'java', 'mvc'];
+                for (var bIdx = 0; bIdx < basicsGroup.length; bIdx++) {
+                  if (lowerPostLabels.indexOf(basicsGroup[bIdx]) !== -1) {
+                    matches = true;
+                    break;
+                  }
+                }
+              } else if (targetFilter.indexOf('advanced') !== -1 || targetFilter.indexOf('응용') !== -1 || targetFilter.indexOf('실무') !== -1) {
+                var advGroup = ['advanced', '응용', '실무', 'system architecture', 'microservices', 'kafka', 'redis', 'distributed lock', 'concurrency', 'saga pattern', 'software engineering', 'software architecture', 'spring aop', 'cg-lib', 'aspectj', 'spring boot'];
+                for (var aIdx = 0; aIdx < advGroup.length; aIdx++) {
+                  if (lowerPostLabels.indexOf(advGroup[aIdx]) !== -1) {
+                    matches = true;
+                    break;
+                  }
+                }
+              } else if (targetFilter.indexOf('trends') !== -1 || targetFilter.indexOf('트렌드') !== -1) {
+                var trendGroup = ['trends', '트렌드', 'ai agent', 'graphrag', 'ai framework', 'llm', 'llm agent', 'kubernetes', 'cloud-native', 'devops', 'http3', 'quic', 'autogen'];
+                for (var tIdx = 0; tIdx < trendGroup.length; tIdx++) {
+                  if (lowerPostLabels.indexOf(trendGroup[tIdx]) !== -1) {
+                    matches = true;
+                    break;
+                  }
+                }
+              } else {
+                if (lowerPostLabels.indexOf(targetFilter) !== -1) {
+                  matches = true;
+                }
+              }
+
+              if (matches) {
+                activePosts.push(post);
+              }
+            });
+
+            allPosts = activePosts;
+          }
+
+          if (allPosts.length > 0 && typeof renderPage === 'function') {
+            renderPage(1);
+          } else if (targetFilter) {
+            var postsContainer = document.querySelector('.blog-posts') || document.querySelector('.main-content') || document.getElementById('main');
+            if (postsContainer) {
+              postsContainer.innerHTML = '<div style="text-align:center; padding: 4rem 1rem; color: #64748b; background: #ffffff; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);"><h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color:#1e293b;">해당 카테고리의 포스팅이 없습니다</h3><p style="font-size: 0.95rem;">카테고리 라벨: "' + targetFilter + '"</p></div>';
+            }
+          }
+        };
+      })();
+      //]]>
+    </script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=22.0.0'></script>
   </body>
 </html>
