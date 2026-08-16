@@ -166,6 +166,7 @@
       modalContainer.appendChild(tagEl);
     });
 
+    modal.classList.add('active');
     modal.style.setProperty('display', 'flex', 'important');
     document.body.style.overflow = 'hidden';
   }
@@ -173,6 +174,7 @@
   function closeCategoriesModal() {
     var modal = document.getElementById('categories-modal');
     if (modal) {
+      modal.classList.remove('active');
       modal.style.setProperty('display', 'none', 'important');
       document.body.style.overflow = '';
     }
