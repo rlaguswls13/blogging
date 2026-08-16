@@ -163,13 +163,19 @@
       moreBtn.type = 'button';
       moreBtn.className = 'tech-tag-more-btn';
       moreBtn.textContent = '...';
-      moreBtn.setAttribute('onclick', 'window.showCategoriesModal()');
+      moreBtn.setAttribute('onclick', 'if(window.showCategoriesModal) window.showCategoriesModal(); return false;');
       
-      moreBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.showCategoriesModal();
-      });
+      moreBtn.onclick = function(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        if (window.showCategoriesModal) {
+          window.showCategoriesModal();
+        }
+        return false;
+      };
+
       tagsBox.appendChild(moreBtn);
     }
   }

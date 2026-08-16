@@ -1,6 +1,9 @@
 /* TECH LOG - Category Chips, 5-Page Block Pager, Modal Overlay & Typography CSS (v2.9.0) */
 
-/* 1. Post Title Typography Restoration (제목 색상 & 크기 원복) */
+/* 1. Post Title Typography Restoration (제목 색상 & 크기 최상위 고정) */
+#main-posts-grid .post-card-title,
+.posts-grid .post-card-title,
+.blog-posts .post-card-title,
 .post-card-title, 
 .tech-post-title,
 .post-title,
@@ -9,21 +12,29 @@ article h2 {
   font-size: 1.25rem !important; /* 20px 깔끔한 헤드라인 크기 */
   font-weight: 700 !important;
   line-height: 1.45 !important;
-  color: var(--text-main, #1e293b) !important;
+  color: #1e293b !important;
   margin-bottom: 0.75rem !important;
   letter-spacing: -0.02em !important;
   word-break: keep-all !important;
 }
 
+#main-posts-grid .post-card-title a,
+.posts-grid .post-card-title a,
+.blog-posts .post-card-title a,
 .post-card-title a,
 .tech-post-title a,
 .post-title a,
 article h2 a {
   color: #1e293b !important; /* 딥 참숯색 헤드라인 */
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
   text-decoration: none !important;
   transition: color 0.2s ease-in-out !important;
 }
 
+#main-posts-grid .post-card-title a:hover,
+.posts-grid .post-card-title a:hover,
+.blog-posts .post-card-title a:hover,
 .post-card-title a:hover,
 .tech-post-title a:hover,
 .post-title a:hover,
