@@ -76,7 +76,7 @@
       .blog-pager .blog-pager-newer-link,
       .blog-pager .blog-pager-older-link,
       .blog-pager .home-link,
-      .tech-pagination .page-btn {
+      .page-btn {
         display: inline-flex !important;
         flex-direction: row !important;
         writing-mode: horizontal-tb !important;
@@ -84,37 +84,35 @@
         word-break: keep-all !important;
         align-items: center !important;
         justify-content: center !important;
-        padding: 0.75rem 1.5rem !important;
+        padding: 0.6rem 1.1rem !important;
+        min-width: 40px !important;
+        height: 40px !important;
         background-color: var(--card-bg, #ffffff) !important;
         border: 1px solid var(--border-color, #e2e8f0) !important;
-        border-radius: 30px !important;
+        border-radius: 20px !important;
         color: var(--text-main, #334155) !important;
-        font-weight: 700 !important;
-        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
         text-decoration: none !important;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
         cursor: pointer !important;
         margin: 0 !important;
-        position: relative !important;
-        z-index: 10 !important;
+        box-sizing: border-box !important;
       }
       .blog-pager a:hover,
-      .blog-pager .blog-pager-newer-link:hover,
-      .blog-pager .blog-pager-older-link:hover,
-      .blog-pager .home-link:hover,
-      .tech-pagination .page-btn:hover {
-        background-color: var(--primary-light) !important;
-        border-color: var(--primary-color) !important;
-        color: var(--primary-color) !important;
+      .page-btn:hover:not(.disabled) {
+        background-color: var(--primary-light, #eff6ff) !important;
+        border-color: var(--primary-color, #2563eb) !important;
+        color: var(--primary-color, #2563eb) !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15) !important;
       }
-      .tech-pagination .page-btn.active {
-        background-color: var(--primary-color) !important;
-        border-color: var(--primary-color) !important;
+      .page-btn.active {
+        background-color: var(--primary-color, #2563eb) !important;
+        border-color: var(--primary-color, #2563eb) !important;
         color: #ffffff !important;
-        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2) !important;
+        font-weight: 700 !important;
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
       }
       
       /* Modal Popup Styles */

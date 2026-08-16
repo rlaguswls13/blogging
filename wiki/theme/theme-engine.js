@@ -1,14 +1,44 @@
 /**
- * TECH LOG - Unified Blogger Theme Frontend Engine
- * Handles Dynamic AJAX Card Paging, Category Tags 12-Limit & Modal Popup, and Mermaid Diagram Rendering.
+ * TECH LOG - Unified Blogger Theme Frontend Engine (v2.0)
+ * 1. Category 12-Limit Chips & Dynamic Modal Popup Injector
+ * 2. Strict 4-Card Grid Standardizer
+ * 3. 5-Page Block Numbered Pagination System ([«] [1] [2] [3] [4] [5] [»])
  */
 (function() {
   'use strict';
 
   // =========================================================
-  // 1. 카테고리 칩 12개 제한 및 ... 더보기 팝업 모달 Engine
+  // 1. Dynamic Category Modal Injector & 12-Tag Limit Engine
   // =========================================================
+  function ensureCategoriesModalExists() {
+    if (document.getElementById('categories-modal')) return;
+
+    var modalDiv = document.createElement('div');
+    modalDiv.id = 'categories-modal';
+    modalDiv.className = 'modal-overlay';
+    modalDiv.style.display = 'none';
+    modalDiv.innerHTML = 
+      '<div class="modal-box">' +
+        '<div class="modal-header">' +
+          '<h3>전체 카테고리</h3>' +
+          '<button class="modal-close-btn" id="modal-close-btn-x">×</button>' +
+        '</div>' +
+        '<div class="modal-body">' +
+          '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
+        '</div>' +
+      '</div>';
+    
+    document.body.appendChild(modalDiv);
+
+    var closeBtn = document.getElementById('modal-close-btn-x');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeCategoriesModal);
+    }
+  }
+
   function initCategoryTagsLimit() {
+    ensureCategoriesModalExists();
+
     var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
     if (!widget) return;
 
@@ -47,7 +77,7 @@
 
     if (tagsData.length === 0) return;
 
-    // 글 수 내림차순 -> 이름 오름차순 정렬
+    // 카테고리 정렬: 글 수 내림차순 -> 이름 오름차순
     tagsData.sort(function(a, b) {
       var countA = a.count ? parseInt(a.count, 10) : 0;
       var countB = b.count ? parseInt(b.count, 10) : 0;
@@ -55,7 +85,7 @@
       return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
     });
 
-    // 기존 내용 비우고 모던 devlog-tags 칩 박스로 렌더링
+    // 기존 내용 초기화 및 신규 칩 박스 생성
     container.innerHTML = '';
     var tagsBox = document.createElement('div');
     tagsBox.className = 'devlog-tags';
@@ -107,6 +137,7 @@
   }
 
   function showAllCategoriesModal(tagsData) {
+    ensureCategoriesModalExists();
     var modal = document.getElementById('categories-modal');
     var modalContainer = document.getElementById('modal-tags-container');
     if (!modal || !modalContainer) return;
@@ -114,33 +145,24 @@
     modalContainer.innerHTML = '';
     var tags = tagsData || [];
 
-    if (tags.length === 0) {
-      var sourceTags = document.querySelectorAll('#Label1 .devlog-tags .tech-tag');
-      sourceTags.forEach(function(tag) {
-        var clone = tag.cloneNode(true);
-        clone.style.display = 'inline-flex';
-        modalContainer.appendChild(clone);
-      });
-    } else {
-      tags.forEach(function(tag) {
-        var tagEl = document.createElement('a');
-        tagEl.href = tag.url;
-        tagEl.className = 'tech-tag';
-        tagEl.textContent = tag.name;
-        tagEl.style.display = 'inline-flex';
-        if (tag.count) {
-          var countEl = document.createElement('span');
-          countEl.className = 'label-count';
-          countEl.style.marginLeft = '4px';
-          countEl.style.fontWeight = '700';
-          countEl.style.color = 'var(--primary-color, #2563eb)';
-          countEl.textContent = '(' + tag.count + ')';
-          tagEl.appendChild(countEl);
-        }
-        modalContainer.appendChild(tagEl);
-      });
-    }
-    
+    tags.forEach(function(tag) {
+      var tagEl = document.createElement('a');
+      tagEl.href = tag.url;
+      tagEl.className = 'tech-tag';
+      tagEl.textContent = tag.name;
+      tagEl.style.display = 'inline-flex';
+      if (tag.count) {
+        var countEl = document.createElement('span');
+        countEl.className = 'label-count';
+        countEl.style.marginLeft = '4px';
+        countEl.style.fontWeight = '700';
+        countEl.style.color = 'var(--primary-color, #2563eb)';
+        countEl.textContent = '(' + tag.count + ')';
+        tagEl.appendChild(countEl);
+      }
+      modalContainer.appendChild(tagEl);
+    });
+
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
   }
@@ -154,16 +176,34 @@
   }
 
   // =========================================================
-  // 2. Blogger Dynamic AJAX Card Pager Engine
+  // 2. Strict 4-Card Grid Standardizer & 5-Page Block Numbered Pager Engine
   // =========================================================
-  var postPerPage = 4;
+  var postPerPage = 4;   // 한 페이지당 정확히 글 4개만 노출
+  var pageBlockSize = 5; // 한 번에 표시할 숫자 페이지 번호 개수 (5개 단위)
   var allPosts = [];
   var currentPage = 1;
+
+  function enforceInitial4CardGrid() {
+    // 비동기 데이터 로딩 전에도 서버사이드 초기 렌더링 카드를 4개로 잘라 규칙성 보장
+    var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
+    if (!container) return;
+
+    var cards = Array.from(container.children).filter(function(child) {
+      return child.classList.contains('post-card') || child.classList.contains('tech-post-card') || child.tagName === 'ARTICLE';
+    });
+
+    if (cards.length > postPerPage && allPosts.length === 0) {
+      for (var i = postPerPage; i < cards.length; i++) {
+        cards[i].style.display = 'none';
+      }
+    }
+  }
 
   function formatBloggerDate(dateStr) {
     if (!dateStr) return '';
     try {
       var d = new Date(dateStr);
+      if (isNaN(d.getTime())) return dateStr;
       return (d.getMonth() + 1) + '월 ' + d.getDate() + ', ' + d.getFullYear();
     } catch(e) {
       return dateStr;
@@ -171,28 +211,30 @@
   }
 
   function renderPage(page) {
-    var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts');
+    var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
     if (!container) return;
 
-    var existingCards = Array.from(container.children);
-    if (allPosts.length === 0 && existingCards.length > 0) return;
-
     currentPage = page;
-    var startIdx = (page - 1) * postPerPage;
+    var totalPages = Math.ceil(allPosts.length / postPerPage);
+    if (page < 1) currentPage = 1;
+    if (page > totalPages) currentPage = totalPages;
+
+    var startIdx = (currentPage - 1) * postPerPage;
     var endIdx = startIdx + postPerPage;
     var pagePosts = allPosts.slice(startIdx, endIdx);
 
+    // 카드 grid 렌더링
     container.innerHTML = '';
     pagePosts.forEach(function(post) {
       var article = document.createElement('article');
-      article.className = 'post-card';
+      article.className = 'post-card tech-post-card';
       
       var badgeCat = (post.labels && post.labels.length > 0) ? post.labels[0] : 'TECH';
       var tagsHtml = '';
       if (post.labels && post.labels.length > 0) {
-        tagsHtml = '<div class="post-tags">';
+        tagsHtml = '<div class="devlog-tags post-tags">';
         post.labels.slice(0, 4).forEach(function(lbl) {
-          tagsHtml += '<span class="tech-tag">' + lbl + '</span>';
+          tagsHtml += '<a class="tech-tag" href="/search/label/' + encodeURIComponent(lbl) + '?max-results=4">' + lbl + '</a>';
         });
         tagsHtml += '</div>';
       }
@@ -200,67 +242,82 @@
       var formattedDate = formatBloggerDate(post.published);
 
       article.innerHTML = 
-        '<div class="post-card-body">' +
-          '<div class="post-category-badge">' + badgeCat + '</div>' +
-          '<h2 class="post-card-title"><a href="' + post.url + '">' + post.title + '</a></h2>' +
+        '<div class="post-card-body tech-post-body">' +
+          '<span class="post-category-badge tech-post-category">' + badgeCat + '</span>' +
+          '<h2 class="post-card-title"><h3><a href="' + post.url + '">' + post.title + '</a></h3></h2>' +
           tagsHtml +
-          '<div class="post-card-meta">' +
-            '<span>📅 ' + formattedDate + '</span>' +
-          '</div>' +
+        '</div>' +
+        '<div class="post-card-meta tech-post-meta">' +
+          '<span>📅 ' + formattedDate + '</span>' +
         '</div>';
       
       container.appendChild(article);
     });
 
-    renderPagerControls();
+    render5BlockPagerControls(totalPages);
 
-    // 상단으로 부드러운 스크롤 이동
+    // 상단 스크롤 이동
     window.scrollTo({
       top: container.offsetTop - 100,
       behavior: 'smooth'
     });
   }
 
-  function renderPagerControls() {
+  function render5BlockPagerControls(totalPages) {
     var pager = document.getElementById('blog-pager');
     if (!pager) return;
 
-    var totalPages = Math.ceil(allPosts.length / postPerPage);
     if (totalPages <= 1) {
       pager.style.display = 'none';
       return;
     }
 
     pager.style.display = 'flex';
-    var html = '';
 
-    if (currentPage > 1) {
-      html += '<a class="blog-pager-newer-link" href="#" id="prev-page-btn">← 최근 게시물</a>';
+    // 5개 단위 Block 구간 계산 (예: 1~5, 6~10, 11~15)
+    var currentBlock = Math.ceil(currentPage / pageBlockSize);
+    var startPage = (currentBlock - 1) * pageBlockSize + 1;
+    var endPage = Math.min(totalPages, startPage + pageBlockSize - 1);
+
+    var html = '<div class="tech-pagination-numbers" style="display:inline-flex;gap:0.5rem;align-items:center;">';
+
+    // 이전 5개 묶음 이동 버튼 (« 이전)
+    if (startPage > 1) {
+      var prevBlockTarget = startPage - 1;
+      html += '<button class="page-btn prev-block-btn" data-page="' + prevBlockTarget + '">« 이전</button>';
+    } else {
+      html += '<button class="page-btn prev-block-btn disabled" style="opacity:0.4;cursor:not-allowed;" disabled>« 이전</button>';
     }
 
-    html += '<a class="home-link" href="/">홈 (' + currentPage + '/' + totalPages + ')</a>';
-
-    if (currentPage < totalPages) {
-      html += '<a class="blog-pager-older-link" href="#" id="next-page-btn">이전 게시물 →</a>';
+    // 5개 숫자 페이지 버튼들 ([1] [2] [3] [4] [5])
+    for (var p = startPage; p <= endPage; p++) {
+      var activeClass = p === currentPage ? ' active' : '';
+      var activeStyle = p === currentPage ? ' style="background:var(--primary-color, #2563eb);color:#ffffff;font-weight:700;"' : '';
+      html += '<button class="page-btn num-btn' + activeClass + '" data-page="' + p + '"' + activeStyle + '>' + p + '</button>';
     }
 
+    // 다음 5개 묶음 이동 버튼 (다음 »)
+    if (endPage < totalPages) {
+      var nextBlockTarget = endPage + 1;
+      html += '<button class="page-btn next-block-btn" data-page="' + nextBlockTarget + '">다음 »</button>';
+    } else {
+      html += '<button class="page-btn next-block-btn disabled" style="opacity:0.4;cursor:not-allowed;" disabled>다음 »</button>';
+    }
+
+    html += '</div>';
     pager.innerHTML = html;
 
-    var prevBtn = document.getElementById('prev-page-btn');
-    if (prevBtn) {
-      prevBtn.addEventListener('click', function(e) {
+    // 페이지 버튼 이벤트 핸들러
+    var buttons = pager.querySelectorAll('.page-btn[data-page]');
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
         e.preventDefault();
-        if (currentPage > 1) renderPage(currentPage - 1);
+        var targetP = parseInt(btn.getAttribute('data-page'), 10);
+        if (targetP && targetP !== currentPage) {
+          renderPage(targetP);
+        }
       });
-    }
-
-    var nextBtn = document.getElementById('next-page-btn');
-    if (nextBtn) {
-      nextBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (currentPage < totalPages) renderPage(currentPage + 1);
-      });
-    }
+    });
   }
 
   window.initBloggerFeedPagination = function(json) {
@@ -303,9 +360,19 @@
   // 3. Event Listeners and Initialization
   // =========================================================
   document.addEventListener("DOMContentLoaded", function() {
+    ensureCategoriesModalExists();
     initCategoryTagsLimit();
-    setTimeout(initCategoryTagsLimit, 300);
-    setTimeout(initCategoryTagsLimit, 1000);
+    enforceInitial4CardGrid();
+
+    setTimeout(function() {
+      initCategoryTagsLimit();
+      enforceInitial4CardGrid();
+    }, 300);
+
+    setTimeout(function() {
+      initCategoryTagsLimit();
+      enforceInitial4CardGrid();
+    }, 1000);
 
     // 상세 글 페이지가 아닌 경우 동적 AJAX 카드 페이징 갱신
     if (window.location.pathname.indexOf('/20') !== 0 || window.location.pathname.indexOf('.html') === -1) {
