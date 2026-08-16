@@ -138,9 +138,40 @@
     });
   }
 
+  function getSearchFilterCriteria() {
+    if (!window.location.search) return null;
+    var urlParams = new URLSearchParams(window.location.search);
+    var q = urlParams.get('q');
+    if (!q) return null;
+
+    q = decodeURIComponent(q).trim();
+    if (!q) return null;
+
+    var targetLabels = [];
+    var keywords = [];
+
+    var parts = q.split(/\s+OR\s+|\s+/i);
+    parts.forEach(function(part) {
+      part = part.trim();
+      if (part.indexOf('label:') === 0) {
+        var labelName = part.substring(6).replace(/^["']|["']$/g, '').trim();
+        if (labelName) targetLabels.push(labelName.toLowerCase());
+      } else if (part) {
+        keywords.push(part.toLowerCase());
+      }
+    });
+
+    return {
+      labels: targetLabels,
+      keywords: keywords,
+      rawQuery: q
+    };
+  }
+
   window.initBloggerFeedPagination = function(json) {
     var entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
     allPosts = [];
+    var filterCriteria = getSearchFilterCriteria();
 
     entries.forEach(function(entry) {
       var title = entry.title ? entry.title.$t : '';
@@ -161,16 +192,53 @@
         });
       }
 
-      allPosts.push({
+      var postObj = {
         title: title,
         published: published,
         url: url,
         labels: labels
-      });
+      };
+
+      if (filterCriteria) {
+        var matches = false;
+
+        if (filterCriteria.labels.length > 0) {
+          var lowerPostLabels = labels.map(function(l) { return l.toLowerCase(); });
+          for (var lIdx = 0; lIdx < filterCriteria.labels.length; lIdx++) {
+            if (lowerPostLabels.indexOf(filterCriteria.labels[lIdx]) !== -1) {
+              matches = true;
+              break;
+            }
+          }
+        }
+
+        if (!matches && filterCriteria.keywords.length > 0) {
+          var lowerTitle = title.toLowerCase();
+          var lowerPostLabelsStr = labels.join(' ').toLowerCase();
+          for (var kIdx = 0; kIdx < filterCriteria.keywords.length; kIdx++) {
+            var kw = filterCriteria.keywords[kIdx];
+            if (lowerTitle.indexOf(kw) !== -1 || lowerPostLabelsStr.indexOf(kw) !== -1) {
+              matches = true;
+              break;
+            }
+          }
+        }
+
+        if (matches) {
+          allPosts.push(postObj);
+        }
+      } else {
+        allPosts.push(postObj);
+      }
     });
 
     if (allPosts.length > 0) {
       renderPage(1);
+    } else if (filterCriteria) {
+      var postsContainer = document.querySelector('.blog-posts') || document.querySelector('.main-content') || document.getElementById('main');
+      if (postsContainer) {
+        postsContainer.innerHTML = '<div style="text-align:center; padding: 4rem 1rem; color: #64748b; background: #ffffff; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);"><h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color:#1e293b;">검색 결과가 없습니다</h3><p style="font-size: 0.95rem;">검색 쿼리: "' + filterCriteria.rawQuery + '"</p></div>';
+      }
     }
   };
 
