@@ -1,8 +1,9 @@
 /**
- * TECH LOG - Unified Blogger Theme Frontend Engine (v2.0)
- * 1. Category 12-Limit Chips & Dynamic Modal Popup Injector
+ * TECH LOG - Unified Site Theme JS Engine (v2.2.0)
+ * Order-guaranteed Execution Waterfall:
+ * 1. Ensure Modal DOM & Category 12-Chip Limit
  * 2. Strict 4-Card Grid Standardizer
- * 3. 5-Page Block Numbered Pagination System ([«] [1] [2] [3] [4] [5] [»])
+ * 3. 5-Page Block Numbered Pager Engine
  */
 (function() {
   'use strict';
@@ -85,7 +86,7 @@
       return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
     });
 
-    // 기존 내용 초기화 및 신규 칩 박스 생성
+    // 기존 내용 비우고 모던 devlog-tags 칩 박스로 렌더링
     container.innerHTML = '';
     var tagsBox = document.createElement('div');
     tagsBox.className = 'devlog-tags';
@@ -184,7 +185,6 @@
   var currentPage = 1;
 
   function enforceInitial4CardGrid() {
-    // 비동기 데이터 로딩 전에도 서버사이드 초기 렌더링 카드를 4개로 잘라 규칙성 보장
     var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
     if (!container) return;
 
@@ -223,7 +223,6 @@
     var endIdx = startIdx + postPerPage;
     var pagePosts = allPosts.slice(startIdx, endIdx);
 
-    // 카드 grid 렌더링
     container.innerHTML = '';
     pagePosts.forEach(function(post) {
       var article = document.createElement('article');
@@ -244,7 +243,7 @@
       article.innerHTML = 
         '<div class="post-card-body tech-post-body">' +
           '<span class="post-category-badge tech-post-category">' + badgeCat + '</span>' +
-          '<h2 class="post-card-title"><h3><a href="' + post.url + '">' + post.title + '</a></h3></h2>' +
+          '<h2 class="post-card-title"><a href="' + post.url + '">' + post.title + '</a></h2>' +
           tagsHtml +
         '</div>' +
         '<div class="post-card-meta tech-post-meta">' +
@@ -256,7 +255,6 @@
 
     render5BlockPagerControls(totalPages);
 
-    // 상단 스크롤 이동
     window.scrollTo({
       top: container.offsetTop - 100,
       behavior: 'smooth'
@@ -274,14 +272,12 @@
 
     pager.style.display = 'flex';
 
-    // 5개 단위 Block 구간 계산 (예: 1~5, 6~10, 11~15)
     var currentBlock = Math.ceil(currentPage / pageBlockSize);
     var startPage = (currentBlock - 1) * pageBlockSize + 1;
     var endPage = Math.min(totalPages, startPage + pageBlockSize - 1);
 
     var html = '<div class="tech-pagination-numbers" style="display:inline-flex;gap:0.5rem;align-items:center;">';
 
-    // 이전 5개 묶음 이동 버튼 (« 이전)
     if (startPage > 1) {
       var prevBlockTarget = startPage - 1;
       html += '<button class="page-btn prev-block-btn" data-page="' + prevBlockTarget + '">« 이전</button>';
@@ -289,14 +285,12 @@
       html += '<button class="page-btn prev-block-btn disabled" style="opacity:0.4;cursor:not-allowed;" disabled>« 이전</button>';
     }
 
-    // 5개 숫자 페이지 버튼들 ([1] [2] [3] [4] [5])
     for (var p = startPage; p <= endPage; p++) {
       var activeClass = p === currentPage ? ' active' : '';
       var activeStyle = p === currentPage ? ' style="background:var(--primary-color, #2563eb);color:#ffffff;font-weight:700;"' : '';
       html += '<button class="page-btn num-btn' + activeClass + '" data-page="' + p + '"' + activeStyle + '>' + p + '</button>';
     }
 
-    // 다음 5개 묶음 이동 버튼 (다음 »)
     if (endPage < totalPages) {
       var nextBlockTarget = endPage + 1;
       html += '<button class="page-btn next-block-btn" data-page="' + nextBlockTarget + '">다음 »</button>';
@@ -307,7 +301,6 @@
     html += '</div>';
     pager.innerHTML = html;
 
-    // 페이지 버튼 이벤트 핸들러
     var buttons = pager.querySelectorAll('.page-btn[data-page]');
     buttons.forEach(function(btn) {
       btn.addEventListener('click', function(e) {
@@ -374,14 +367,12 @@
       enforceInitial4CardGrid();
     }, 1000);
 
-    // 상세 글 페이지가 아닌 경우 동적 AJAX 카드 페이징 갱신
     if (window.location.pathname.indexOf('/20') !== 0 || window.location.pathname.indexOf('.html') === -1) {
       var script = document.createElement('script');
       script.src = '/feeds/posts/summary?alt=json-in-script&max-results=150&callback=initBloggerFeedPagination';
       document.body.appendChild(script);
     }
 
-    // Mermaid Diagram Render
     var mermaidEls = document.querySelectorAll('.mermaid');
     if (mermaidEls.length > 0 && typeof mermaid !== 'undefined') {
       mermaid.initialize({
