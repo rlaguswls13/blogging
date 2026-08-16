@@ -103,7 +103,7 @@
 
 /* 3. Modal Popup Overlay (Default Hidden: display: none) */
 .modal-overlay {
-  display: none; /* 기본 숨김 상태 고정 */
+  display: none !important; /* 기본 숨김 상태 고정 */
   position: fixed;
   top: 0;
   left: 0;

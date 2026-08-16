@@ -166,14 +166,14 @@
       modalContainer.appendChild(tagEl);
     });
 
-    modal.style.display = 'flex';
+    modal.style.setProperty('display', 'flex', 'important');
     document.body.style.overflow = 'hidden';
   }
 
   function closeCategoriesModal() {
     var modal = document.getElementById('categories-modal');
     if (modal) {
-      modal.style.display = 'none';
+      modal.style.setProperty('display', 'none', 'important');
       document.body.style.overflow = '';
     }
   }

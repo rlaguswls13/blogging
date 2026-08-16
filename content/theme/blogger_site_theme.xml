@@ -2141,11 +2141,11 @@
         </div>
       </div>
     </footer>
-    <!-- TECH LOG Unified Site Theme CSS Engine (v2.6.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=2.6.0' rel='stylesheet'/>
+    <!-- TECH LOG Unified Site Theme CSS Engine (v2.7.0) -->
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=2.7.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v2.6.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v2.7.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=2.6.0'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=2.7.0'></script>
   </body>
 </html>
