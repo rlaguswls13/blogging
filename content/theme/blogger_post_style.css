@@ -135,7 +135,8 @@
 }
 
 .tech-blog-post .toc-title {
-    display: none; /* summary에 이미 목차 제목이 있어 감춤 */
+    display: none;
+    /* summary에 이미 목차 제목이 있어 감춤 */
     font-size: 1.15rem;
     margin-bottom: 0.8rem;
     color: var(--text-main);
@@ -167,7 +168,8 @@
 
 /* Code Blocks */
 .tech-blog-post pre {
-    background-color: #272822; /* Matches Pygments Monokai background */
+    background-color: #272822;
+    /* Matches Pygments Monokai background */
     color: #f8f8f2;
     padding: 1.25rem;
     border-radius: 8px;
@@ -192,7 +194,7 @@
     color: var(--accent-color);
     padding: 0.2rem 0.45rem;
     border-radius: 6px;
-    border: 1px solid var(--border-color);
+    border: none;
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     font-size: 0.88em;
     font-weight: 500;
@@ -227,14 +229,16 @@
     overflow: hidden;
 }
 
-.tech-blog-post th, .tech-blog-post td {
+.tech-blog-post th,
+.tech-blog-post td {
     padding: 0.85rem 1rem;
     border-bottom: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     text-align: left;
 }
 
-.tech-blog-post th:last-child, .tech-blog-post td:last-child {
+.tech-blog-post th:last-child,
+.tech-blog-post td:last-child {
     border-right: none;
 }
 
@@ -254,7 +258,8 @@
 }
 
 /* Lists */
-.tech-blog-post ul, .tech-blog-post ol {
+.tech-blog-post ul,
+.tech-blog-post ol {
     margin-top: 0;
     margin-bottom: 1.35rem;
     padding-left: 1.5rem;

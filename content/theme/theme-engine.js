@@ -58,8 +58,13 @@
 
   window.showCategoriesModal = function() {
     var modal = ensureCategoriesModalExists();
+    if (!modal) return;
+    if (modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
+    
     var modalContainer = document.getElementById('modal-tags-container');
-    if (!modal || !modalContainer) return;
+    if (!modalContainer) return;
 
     if (!currentTagsData || currentTagsData.length === 0) {
       var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
