@@ -151,9 +151,9 @@
     tagsBox.className = 'devlog-tags';
     container.appendChild(tagsBox);
 
-    // 상위 12개 렌더링
+    // 상위 8개만 사이드바에 렌더링하고 나머지는 '...' 모달 팝업으로 제공
     tagsData.forEach(function(tag, idx) {
-      if (idx < 12) {
+      if (idx < 8) {
         var tagEl = document.createElement('a');
         tagEl.href = tag.url;
         tagEl.className = 'tech-tag';
@@ -171,11 +171,12 @@
       }
     });
 
-    // 12개 초과 시 '...' 모달 더보기 버튼 렌더링 (13번째 위치)
-    if (tagsData.length > 12) {
+    // 8개 초과 시 '...' 모달 더보기 버튼 렌더링 (9번째 위치에 배치의 팝업 열기 버튼)
+    if (tagsData.length > 8) {
       var moreBtn = document.createElement('button');
       moreBtn.type = 'button';
       moreBtn.className = 'tech-tag-more-btn';
+      moreBtn.id = 'tech-tag-more-btn';
       moreBtn.textContent = '...';
       moreBtn.setAttribute('onclick', 'if(window.showCategoriesModal) window.showCategoriesModal(); return false;');
       

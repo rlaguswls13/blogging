@@ -18,6 +18,13 @@
   transition: opacity 0.25s ease-in-out !important;
 }
 
+#categories-modal.active,
+.modal-overlay.active {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 /* 1. Modern Google Fonts & Pretendard Typography Import */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
