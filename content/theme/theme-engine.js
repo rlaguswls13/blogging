@@ -1,29 +1,30 @@
 /**
- * TECH LOG - Unified Site Theme JS Engine (v2.3.0)
- * Fixed Modal Toggle Engine (Default Hidden, Guaranteed Close)
+ * TECH LOG - Unified Site Theme JS Engine (v2.9.0)
+ * 1. Guaranteed Global Category Modal Toggle Engine (Open / Close)
+ * 2. Title Typography & Grid Enforcer
+ * 3. 5-Page Block Numbered Pager
  */
 (function() {
   'use strict';
 
+  var currentTagsData = [];
+
   // =========================================================
-  // 1. Dynamic Category Modal Injector & 12-Tag Limit Engine
+  // 1. Dynamic Category Modal Injector & Global Toggle Methods
   // =========================================================
   function ensureCategoriesModalExists() {
     var existingModal = document.getElementById('categories-modal');
-    if (existingModal) {
-      existingModal.style.display = 'none';
-      return;
-    }
+    if (existingModal) return existingModal;
 
     var modalDiv = document.createElement('div');
     modalDiv.id = 'categories-modal';
     modalDiv.className = 'modal-overlay';
-    modalDiv.style.display = 'none';
+    modalDiv.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
     modalDiv.innerHTML = 
       '<div class="modal-box">' +
         '<div class="modal-header">' +
           '<h3>전체 카테고리</h3>' +
-          '<button class="modal-close-btn" id="modal-close-btn-x" type="button">×</button>' +
+          '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="window.closeCategoriesModal()">×</button>' +
         '</div>' +
         '<div class="modal-body">' +
           '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
@@ -32,21 +33,52 @@
     
     document.body.appendChild(modalDiv);
 
-    var closeBtn = document.getElementById('modal-close-btn-x');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        closeCategoriesModal();
-      });
-    }
-
     modalDiv.addEventListener('click', function(e) {
       if (e.target === modalDiv) {
-        closeCategoriesModal();
+        window.closeCategoriesModal();
       }
     });
+
+    return modalDiv;
   }
+
+  window.showCategoriesModal = function() {
+    var modal = ensureCategoriesModalExists();
+    var modalContainer = document.getElementById('modal-tags-container');
+    if (!modal || !modalContainer) return;
+
+    modalContainer.innerHTML = '';
+    currentTagsData.forEach(function(tag) {
+      var tagEl = document.createElement('a');
+      tagEl.href = tag.url;
+      tagEl.className = 'tech-tag';
+      tagEl.textContent = tag.name;
+      tagEl.style.display = 'inline-flex';
+      if (tag.count) {
+        var countEl = document.createElement('span');
+        countEl.className = 'label-count';
+        countEl.style.marginLeft = '4px';
+        countEl.style.fontWeight = '700';
+        countEl.style.color = 'var(--primary-color, #2563eb)';
+        countEl.textContent = '(' + tag.count + ')';
+        tagEl.appendChild(countEl);
+      }
+      modalContainer.appendChild(tagEl);
+    });
+
+    modal.classList.add('active');
+    modal.setAttribute('style', 'display: flex !important; visibility: visible !important; opacity: 1 !important; z-index: 999999 !important;');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeCategoriesModal = function() {
+    var modal = document.getElementById('categories-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
+      document.body.style.overflow = '';
+    }
+  };
 
   function initCategoryTagsLimit() {
     ensureCategoriesModalExists();
@@ -97,6 +129,8 @@
       return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
     });
 
+    currentTagsData = tagsData;
+
     // 기존 내용 비우고 모던 devlog-tags 칩 박스로 렌더링
     container.innerHTML = '';
     var tagsBox = document.createElement('div');
@@ -129,54 +163,14 @@
       moreBtn.type = 'button';
       moreBtn.className = 'tech-tag-more-btn';
       moreBtn.textContent = '...';
+      moreBtn.setAttribute('onclick', 'window.showCategoriesModal()');
       
       moreBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        showAllCategoriesModal(tagsData);
+        window.showCategoriesModal();
       });
       tagsBox.appendChild(moreBtn);
-    }
-  }
-
-  function showAllCategoriesModal(tagsData) {
-    ensureCategoriesModalExists();
-    var modal = document.getElementById('categories-modal');
-    var modalContainer = document.getElementById('modal-tags-container');
-    if (!modal || !modalContainer) return;
-
-    modalContainer.innerHTML = '';
-    var tags = tagsData || [];
-
-    tags.forEach(function(tag) {
-      var tagEl = document.createElement('a');
-      tagEl.href = tag.url;
-      tagEl.className = 'tech-tag';
-      tagEl.textContent = tag.name;
-      tagEl.style.display = 'inline-flex';
-      if (tag.count) {
-        var countEl = document.createElement('span');
-        countEl.className = 'label-count';
-        countEl.style.marginLeft = '4px';
-        countEl.style.fontWeight = '700';
-        countEl.style.color = 'var(--primary-color, #2563eb)';
-        countEl.textContent = '(' + tag.count + ')';
-        tagEl.appendChild(countEl);
-      }
-      modalContainer.appendChild(tagEl);
-    });
-
-    modal.classList.add('active');
-    modal.style.setProperty('display', 'flex', 'important');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeCategoriesModal() {
-    var modal = document.getElementById('categories-modal');
-    if (modal) {
-      modal.classList.remove('active');
-      modal.style.setProperty('display', 'none', 'important');
-      document.body.style.overflow = '';
     }
   }
 
@@ -385,13 +379,6 @@
         securityLevel: 'loose',
         flowchart: { useMaxWidth: true, htmlLabels: true }
       });
-    }
-  });
-
-  window.addEventListener('click', function(e) {
-    var modal = document.getElementById('categories-modal');
-    if (e.target === modal) {
-      closeCategoriesModal();
     }
   });
 

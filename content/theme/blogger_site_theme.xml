@@ -2151,11 +2151,11 @@
       }
     </style>
 
-    <!-- TECH LOG Unified Site Theme CSS Engine (v2.8.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=20260816_1232' rel='stylesheet'/>
+    <!-- TECH LOG Unified Site Theme CSS Engine (v2.9.0) -->
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=2.9.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v2.8.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v2.9.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=20260816_1232'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=2.9.0'></script>
   </body>
 </html>
