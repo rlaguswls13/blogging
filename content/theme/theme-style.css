@@ -232,45 +232,28 @@ a:hover {
   margin-bottom: 0.75rem;
 }
 
-#main-posts-grid .post-card-title,
-.posts-grid .post-card-title,
-.blog-posts .post-card-title,
-.post-card-title, 
+/* Post Card Titles - 100% Fixed 20px #1e293b Deep Black */
+.post-card-title,
+.post-card-title a,
 .tech-post-title,
-.post-title,
-h2.post-card-title,
-article h2 {
-  font-size: 1.25rem !important;
+.tech-post-title a,
+#main-posts-grid .post-card-title,
+#main-posts-grid .post-card-title a,
+.posts-grid .post-card-title,
+.posts-grid .post-card-title a {
+  font-size: 1.25rem !important; /* 20px */
   font-weight: 700 !important;
   line-height: 1.45 !important;
-  color: #1e293b !important;
-  margin-bottom: 0.75rem !important;
-  letter-spacing: -0.02em !important;
-  word-break: keep-all !important;
-}
-
-#main-posts-grid .post-card-title a,
-.posts-grid .post-card-title a,
-.blog-posts .post-card-title a,
-.post-card-title a,
-.tech-post-title a,
-.post-title a,
-article h2 a {
-  color: #1e293b !important;
-  font-size: 1.25rem !important;
-  font-weight: 700 !important;
+  color: #1e293b !important; /* 파란색 번뜩임 방지: 딥 참숯색 */
   text-decoration: none !important;
   transition: color 0.2s ease-in-out !important;
 }
 
-#main-posts-grid .post-card-title a:hover,
-.posts-grid .post-card-title a:hover,
-.blog-posts .post-card-title a:hover,
 .post-card-title a:hover,
 .tech-post-title a:hover,
-.post-title a:hover,
-article h2 a:hover {
-  color: #2563eb !important;
+#main-posts-grid .post-card-title a:hover,
+.posts-grid .post-card-title a:hover {
+  color: #2563eb !important; /* 마우스 호버 시에만 비브런트 블루 */
 }
 
 .post-card-meta {
