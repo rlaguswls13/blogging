@@ -2,9 +2,10 @@ import datetime
 import os
 import re
 import shutil
+import subprocess
 import frontmatter
 from typing import List, Dict, Any
-from src.core.paths import run_directory, posts_root
+from src.core.paths import run_directory, posts_root, project_root
 from src.core.files import read_state, write_json
 from src.core.types import TailQuestion, Reference, TocItem, KnowledgeNode, PublishedPlatformDetail, Backlink
 from src.pipeline.validate import validate_run
@@ -12,6 +13,31 @@ from src.pipeline.converter import convert_markdown_to_html
 from src.publishers.base import BlogPublisher, ArticlePayload, PublishResult
 from src.publishers.notion import NotionPublisher
 from src.publishers.blogger import BloggerPublisher
+
+
+def ensure_images_pushed() -> None:
+    """content/images/에 미반영 변경이 있으면 커밋 후 원격으로 push한다.
+
+    convert_markdown_to_html()이 로컬 이미지를 GitHub Raw CDN URL로 치환하는데,
+    이 URL은 해당 파일이 실제로 원격 저장소에 push되어 있어야만 살아있다.
+    push하지 않은 채 발행하면 라이브 게시물의 이미지 링크가 깨진 채로 나가므로,
+    발행 직전에 이를 자동으로 맞춘다. 실패 시 예외를 던져 발행 자체를 차단한다.
+    """
+    status = subprocess.run(
+        ["git", "status", "--porcelain", "--", "content/images/"],
+        cwd=project_root, capture_output=True, text=True, check=True
+    )
+    if not status.stdout.strip():
+        return
+
+    print("[이미지 동기화] content/images/에 미반영 변경을 발견했습니다. 커밋 및 push를 진행합니다...")
+    subprocess.run(["git", "add", "content/images/"], cwd=project_root, check=True)
+    subprocess.run(
+        ["git", "commit", "-m", "chore(images): sync content/images before publish"],
+        cwd=project_root, check=True
+    )
+    subprocess.run(["git", "push"], cwd=project_root, check=True)
+    print("[이미지 동기화] push 완료.")
 
 def get_publisher(platform: str) -> BlogPublisher:
     if platform == "blogger":
@@ -145,6 +171,9 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
 
     for w in warnings:
         print(f"경고: {w}")
+
+    if not dry_run:
+        ensure_images_pushed()
 
     dir_path = run_directory(run_id)
     state_path = dir_path / "state.json"

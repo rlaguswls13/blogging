@@ -112,6 +112,7 @@ class ArticleFrontmatter(BaseModel):
 class PublishGate(BaseModel):
     requiredSections: List[str]
     minimumReferences: int = Field(..., ge=0)
+    sectionMinWords: Dict[str, int] = Field(default_factory=dict)
     requireOpinionDisclaimer: bool
     requireHumanApproval: bool
     allowBrokenLinks: bool

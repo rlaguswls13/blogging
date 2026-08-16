@@ -10,6 +10,12 @@
     "꼬리질문"
   ],
   "minimumReferences": 2,
+  "sectionMinWords": {
+    "본문": 800,
+    "작성자의 견해": 100,
+    "한계와 반론": 80,
+    "종합적 의견": 100
+  },
   "requireOpinionDisclaimer": true,
   "requireHumanApproval": true,
   "allowBrokenLinks": false

@@ -1,18 +1,49 @@
 import re
 from typing import List, Optional, Tuple
+from urllib.parse import urlparse
 import frontmatter
 import requests
 from src.core.paths import run_directory, gate_path
 from src.core.files import read_json, read_state
 from src.core.types import ArticleFrontmatter, PublishGate
 
+# Tier 1/2 참고문헌 신뢰도 도메인 allowlist (wiki/Blog_Writing_Rules.md 10번 수칙 참고).
+# 이 목록과 하나도 겹치지 않으면 "출처가 전부 블로그성"이라는 경고만 띄운다(발행 차단 아님).
+TRUSTED_REFERENCE_DOMAINS = {
+    "arxiv.org", "dl.acm.org", "ieeexplore.ieee.org", "datatracker.ietf.org",
+    "www.w3.org", "w3.org", "docs.oracle.com", "spring.io", "docs.spring.io",
+    "kubernetes.io", "kafka.apache.org", "redis.io", "www.cncf.io", "cncf.io",
+    "www.linuxfoundation.org", "linuxfoundation.org", "developer.mozilla.org",
+    "learn.microsoft.com", "cloud.google.com", "docs.aws.amazon.com", "aws.amazon.com",
+}
+
 def section_exists(body: str, heading: str) -> bool:
     escaped = re.escape(heading)
     pattern = re.compile(rf"^##\s+{escaped}\s*$", re.MULTILINE)
     return bool(pattern.search(body))
 
+def section_text(body: str, heading: str) -> str:
+    # (?=^##(?!#)|\Z): 다음 H2(##)에서 멈추되, 본문 안에 흔한 H3(###) 하위 소제목까지
+    # section 끝으로 잘못 인식하지 않도록 3번째 #이 없는 경우만 경계로 취급한다.
+    escaped = re.escape(heading)
+    pattern = re.compile(rf"^##\s+{escaped}\s*$(.*?)(?=^##(?!#)|\Z)", re.MULTILINE | re.DOTALL)
+    match = pattern.search(body)
+    return match.group(1) if match else ""
+
+def word_count(text: str) -> int:
+    """한글 글자 수 + 영숫자 단어 수를 더한 대략적인 분량 지표."""
+    cjk = len(re.findall(r"[가-힣]", text))
+    latin_words = len(re.findall(r"[A-Za-z0-9]+", text))
+    return cjk + latin_words
+
+def code_block_count(body: str) -> int:
+    return len(re.findall(r"```", body)) // 2
+
+def image_count(body: str) -> int:
+    return len(re.findall(r"!\[[^\]]*\]\([^)]+\)", body))
+
 def reference_section_items(body: str) -> List[str]:
-    match = re.search(r"^##\s+참고문헌\s*$(.*?)(?=^##|\Z)", body, re.MULTILINE | re.DOTALL)
+    match = re.search(r"^##\s+참고문헌\s*$(.*?)(?=^##(?!#)|\Z)", body, re.MULTILINE | re.DOTALL)
     if not match:
         return []
     section_content = match.group(1)
@@ -74,8 +105,9 @@ def validate_run(
         errors.append(f"참고문헌은 최소 {gate.minimumReferences}개가 필요합니다. 현재 {refs}개입니다.")
 
     # Check Reference Link Validity (missing URL / broken link)
+    ref_urls = reference_urls(ref_items)
     if not skip_link_check:
-        for item, url in reference_urls(ref_items):
+        for item, url in ref_urls:
             if url is None:
                 message = f"참고문헌에 URL이 없습니다: {item[:60]}"
                 (errors if not gate.allowBrokenLinks else warnings).append(message)
@@ -84,6 +116,30 @@ def validate_run(
             if not ok:
                 message = f"참고문헌 링크가 접속되지 않습니다 ({detail}): {url}"
                 (errors if not gate.allowBrokenLinks else warnings).append(message)
+
+    # Check Reference Credibility Tier (warning only)
+    live_urls = [url for _, url in ref_urls if url]
+    if live_urls:
+        has_trusted = any(
+            urlparse(url).netloc in TRUSTED_REFERENCE_DOMAINS for url in live_urls
+        )
+        if not has_trusted:
+            warnings.append(
+                "참고문헌이 전부 비공식/블로그성 출처입니다. 공식 문서나 논문을 최소 1개 포함하는 것을 권장합니다."
+            )
+
+    # Check Section Minimum Word Counts
+    for section, min_words in gate.sectionMinWords.items():
+        text = section_text(post.content, section)
+        actual = word_count(text)
+        if actual < min_words:
+            errors.append(
+                f"'{section}' 섹션 분량이 부족합니다. 최소 {min_words}단어 필요, 현재 약 {actual}단어입니다."
+            )
+
+    # Check Code/Image Presence (warning only)
+    if code_block_count(post.content) == 0 and image_count(post.content) == 0:
+        warnings.append("코드 예시와 이미지가 모두 없습니다. 주제에 맞다면 추가를 고려하세요.")
 
     # Check Opinion Disclaimer
     if gate.requireOpinionDisclaimer:
@@ -94,13 +150,27 @@ def validate_run(
     if "�" in post.content:
         errors.append("본문에 깨진 문자(U+FFFD)가 포함되어 있습니다. 인코딩을 확인하세요.")
 
-    # Check High-Risk / Unverified Claims
-    if re.search(r"\bRisk:\s*high[\s\S]{0,250}\bVerdict:\s*unverified\b", post.content, re.IGNORECASE):
-        errors.append("고위험 미검증 주장이 남아 있습니다.")
-        
-    # Check Contradicted Claims
-    if re.search(r"\bVerdict:\s*contradicted\b", post.content, re.IGNORECASE):
-        errors.append("반박된 주장이 남아 있습니다.")
+    # Check Unverified / Contradicted Claims
+    # 실제 저작 포맷은 "| Claim | 판정 | 근거 |" 표에 verified/unverified/contradicted가
+    # 표 셀 값으로 들어간다("Risk: high"/"Verdict: unverified" 같은 접두 표기는 실제로
+    # 쓰인 적이 없어 예전 정규식이 항상 무매칭이었다 — 2026-08-17 확인).
+    fact_check_section = section_text(post.content, "사실 검증 결과")
+    claim_rows = re.findall(
+        r"^\|(?!\s*Claim\s*\|)(?!\s*-+\s*\|)(.+?)\|\s*(verified|unverified|contradicted)\s*\|(.*?)\|\s*$",
+        fact_check_section, re.IGNORECASE | re.MULTILINE
+    )
+    verdicts = [v.lower() for _claim, v, _evidence in claim_rows]
+    if "unverified" in verdicts:
+        errors.append("미검증(unverified) 판정의 주장이 남아 있습니다.")
+    if "contradicted" in verdicts:
+        errors.append("반박된(contradicted) 판정의 주장이 남아 있습니다.")
+
+    # Check for claims with no evidence cited (weak anti-hallucination signal, warning only)
+    unsupported = [claim.strip() for claim, verdict, evidence in claim_rows if not evidence.strip()]
+    if unsupported:
+        warnings.append(
+            f"근거(출처) 없이 판정된 claim이 {len(unsupported)}건 있습니다: {unsupported[0][:60]}"
+        )
         
     # Check Human Approval
     if require_human_approval and gate.requireHumanApproval and not state.humanApproved:
