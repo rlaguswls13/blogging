@@ -409,6 +409,27 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
      ```
   3. **전역 이벤트 위임 (Global Event Delegation)**: 동적 생성되는 `...` 더보기 버튼(`tech-tag-more-btn`)의 버블링 차단 방지를 위해 `document.addEventListener('click', ..., true)` capturing 레벨에서 팝업 함수를 최우선 가로채어 0.0001초 만에 시원한 카테고리 팝업 모달이 노출되도록 보장함.
 
+### 10.4 CDN 캐시 고착 및 XML 완전 인라인 스크립트 엔진 구조 전환 (`v25.0.0`)
+- **발생 원인**:
+  1. 기존 jsDelivr CDN 기반 `theme-engine.js` 로드 방식에서는 GitHub main 브랜치 업데이트 후에도 CDN edge 캐시 갱신 지연으로 구버전 JS 엔진이 서빙됨.
+  2. 스크립트가 IIFE(즉시 실행 함수) 클로저에 갇혀 `window.renderPage` 및 `window.initBloggerFeedPagination` 전역 노출 실패로 비동기 피드 콜백 렌더링이 중단됨.
+- **해결 및 예방 패턴**:
+  1. 외부 CDN 의존성을 완전 폐기하고 `blogger_site_theme.xml` 하단에 전체 스크립트를 인라인 `<script type='text/javascript'>//<![CDATA[ ... //]]></script>`로 100% 임베딩.
+  2. `window.renderPage`, `window.initBloggerFeedPagination`, `window._allPosts`를 `window` 전역 스코프에 노출하여 피드 콜백이 언제든 안전하게 실행되도록 보장.
+
+### 10.5 rockpool 테마 스키마 정합성 & Sticky Nav 오버랩 결함 해결 (`v26.0.0`)
+- **발생 원인**:
+  1. `b:defaultmessages='false'` 속성 때문에 Blogger 내장 기본 메세지가 차단되는 문제 발생.
+  2. `<b:defaultmarkups>`와 `<b:template-skin>` 선언 누락으로 Blogger 기본 페이지네이션(`feedLinks`, `previousPageLink` 등)이 자동 삽입되어 커스텀 JS 페이저와 충돌.
+  3. `<b:skin>` 내 `<Variable>` 및 `<Group>` 스키마 정의 누락으로 Blogger 테마 맞춤설정(Theme Designer) UI와 연동되지 않음.
+  4. Floating Nav bar(`position: sticky; top: 12px; z-index: 100;`) 아래의 사이드바 최상단 가젯(`HTML1` About 카드)에 충분한 상단 여백이 주어지지 않아 Nav bar 뒤쪽에 시각적으로 겹치는(Overlap) 결함 발생.
+- **해결 및 예방 패턴**:
+  1. `b:defaultmessages='false'` 제거, `<title><data:view.title.escaped/></title>`로 XSS/SAXParser 이스케이프 보장, `<b:include data='blog' name='all-head-content'/>`로 SEO/OGP 메타태그 자동 렌더링.
+  2. `<b:defaultmarkups>`를 통한 기본 페이저 중복 삽입 차단 및 `<b:template-skin>` 레이아웃 UI 보호.
+  3. `<b:skin>` 내 `Body`, `Header`, `Feed`, `Widths` `<Group>` 및 `<Variable>` 정의 추가로 테마 맞춤설정 색상/너비 연동 지원.
+  4. Visual 겹침 해결: `.main_content_container`에 `padding-top: 80px !important;`, `.sidebar`에 `margin-top: 90px !important;`를 적용하여 상단 Floating Nav bar 아래로 사이드바 가젯 카드가 완전히 이격되도록 렌더링.
+  5. `initCategoryTagsLimit()` 인라인 포함: 사이드바 `Label1` 가젯의 수십 개 라벨을 상위 8개 모던 태그 칩 + `...` 더보기 모달 팝업 버튼으로 깔끔히 변환 렌더링.
+
 ---
 
 ## 11. 공식 참고문헌
