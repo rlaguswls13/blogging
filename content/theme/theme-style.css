@@ -1,9 +1,17 @@
-/* 0. Modal Popup Overlay Engine (Default Hidden, Active Flex) - Must be loaded first */
-#categories-modal,
-.modal-overlay {
+/* 0. Modal Popup Overlay Engine (Clean Split Control) */
+.modal-overlay:not(.active),
+#categories-modal:not(.active) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+}
+
+.modal-overlay.active,
+#categories-modal.active,
+div#categories-modal.active {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -15,16 +23,6 @@
   justify-content: center !important;
   z-index: 999999 !important;
   padding: 1rem !important;
-  transition: opacity 0.25s ease-in-out !important;
-}
-
-#categories-modal.active,
-div#categories-modal.active,
-.modal-overlay.active {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  z-index: 999999 !important;
 }
 
 /* 1. Modern Google Fonts & Pretendard Typography Import */
