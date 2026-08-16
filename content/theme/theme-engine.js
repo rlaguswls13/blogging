@@ -18,7 +18,7 @@
     var modalDiv = document.createElement('div');
     modalDiv.id = 'categories-modal';
     modalDiv.className = 'modal-overlay';
-    modalDiv.style.setProperty('display', 'none', 'important');
+    modalDiv.setAttribute('style', 'display: none !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.5) !important; backdrop-filter: blur(4px) !important; align-items: center !important; justify-content: center !important; z-index: 99999 !important; padding: 1rem !important;');
     modalDiv.innerHTML = 
       '<div class="modal-box">' +
         '<div class="modal-header">' +
