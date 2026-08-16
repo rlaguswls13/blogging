@@ -10,7 +10,7 @@
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title/></title>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v7.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v8.0.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=7.0.0' rel='stylesheet'/>
     
     <!-- Google Web Fonts -->
@@ -1964,7 +1964,7 @@
                 <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
               </div>
               <div class='modal-body'>
-                <div class='devlog-tags-popup' id='modal-tags-container'/>
+                <div class='devlog-tags-popup' id='modal-tags-container'></div>
               </div>
             </div>
           </div>
@@ -1972,7 +1972,7 @@
           <!-- TECH LOG Unified Site Theme CSS Engine (v5.3.0) -->
           <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=5.2.0' rel='stylesheet'/>
           
-          <!-- TECH LOG Unified Site Theme JS Engine (v7.0.0) -->
+          <!-- TECH LOG Unified Site Theme JS Engine (v8.0.0) -->
           <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
           <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=6.0.0'></script>
               </div>

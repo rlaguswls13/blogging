@@ -61,8 +61,19 @@
     var modalContainer = document.getElementById('modal-tags-container');
     if (!modal || !modalContainer) return;
 
+    if (!currentTagsData || currentTagsData.length === 0) {
+      var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+      if (widget) {
+        var container = widget.querySelector('.widget-content') || widget;
+        var anchors = Array.from(container.querySelectorAll('a'));
+        currentTagsData = anchors.map(function(a) {
+          return { name: a.textContent.trim(), url: a.getAttribute('href') };
+        });
+      }
+    }
+
     modalContainer.innerHTML = '';
-    currentTagsData.forEach(function(tag) {
+    (currentTagsData || []).forEach(function(tag) {
       var tagEl = document.createElement('a');
       tagEl.href = tag.url;
       tagEl.className = 'tech-tag';
