@@ -2,11 +2,13 @@
 <!DOCTYPE html>
 <html b:css='false' b:defaultmessages='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' class='v3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
   <head>
+    <!-- TECH LOG Fail-Safe Modal Hide Defense (Instant 0.0001s Hide) -->
+    <style>#categories-modal,.modal-overlay{display:none !important;visibility:hidden !important;opacity:0 !important;}</style>
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title/></title>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v3.2.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.2.0' rel='stylesheet'/>
+    <!-- TECH LOG Unified Site Theme CSS Engine (v3.4.0) -->
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.4.0' rel='stylesheet'/>
     
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
@@ -1965,8 +1967,8 @@
     <!-- TECH LOG Unified Site Theme CSS Engine (v3.3.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.3.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v3.3.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v3.4.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=3.3.0'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=3.4.0'></script>
   </body>
 </html>
