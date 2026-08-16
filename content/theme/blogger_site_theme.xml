@@ -4,16 +4,14 @@
   <head>
     <!-- TECH LOG Fail-Safe Instant UI Guard (Instant Typography &amp; Layout Lock) -->
     <style>
-      .post-card-title, .post-card-title a, .tech-post-title, .tech-post-title a { font-size: 1.25rem !important; font-weight: 700 !important; color: #1e293b !important; text-decoration: none !important; }
+      .post-card-title, .post-card-title a, .tech-post-title, .tech-post-title a { font-size: 1.05rem !important; font-weight: 700 !important; color: #1e293b !important; text-decoration: none !important; line-height: 1.4 !important; }
       .post-card-title a:hover, .tech-post-title a:hover { color: #2563eb !important; }
+      .post-card-title { display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
     </style>
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
-    
-    <!-- TECH LOG Unified Site Theme CSS Engine (v10.0.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=7.0.0' rel='stylesheet'/>
-    
+
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
     
@@ -784,13 +782,13 @@
         background-color: var(--bg-color);
         color: var(--text-muted);
         border: 1px solid var(--border-color);
-        font-size: 0.78rem;
+        font-size: 0.72rem;
         font-weight: 500;
-        padding: 0 0.85rem;
+        padding: 0 0.65rem;
         border-radius: 4px;
         display: inline-flex;
         align-items: center;
-        min-height: 44px;
+        min-height: 30px;
         box-sizing: border-box;
         border: 1px solid transparent;
         transition: background-color 0.2s, color 0.2s, border-color 0.2s;
@@ -2057,10 +2055,7 @@
       </div>
     </footer>
 
-    
-    <!-- TECH LOG Unified Site Theme CSS Engine (v24.0.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
-    
+
     <!-- TECH LOG Unified Site Theme JS Engine (v25.0.0 Full Inline) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
     <script type='text/javascript'>
