@@ -2127,8 +2127,11 @@
             allPosts = activePosts;
           }
 
-          if (allPosts.length > 0 && typeof renderPage === 'function') {
-            renderPage(1);
+          if (allPosts.length > 0) {
+            window.allPosts = allPosts;
+            if (typeof window.renderPage === 'function') {
+              window.renderPage(1);
+            }
           } else if (targetFilter) {
             var postsContainer = document.querySelector('.blog-posts') || document.querySelector('.main-content') || document.getElementById('main');
             if (postsContainer) {

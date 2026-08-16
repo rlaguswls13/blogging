@@ -250,30 +250,26 @@
     }
   }
 
-  function renderPage(page) {
+  window.renderPage = function(page) {
     var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
     if (!container) return;
 
-    currentPage = page;
-    var totalPages = Math.ceil(allPosts.length / postPerPage);
-    if (page < 1) currentPage = 1;
-    if (page > totalPages) currentPage = totalPages;
+    window.currentPage = page;
+    var totalPages = Math.ceil(window.allPosts.length / postPerPage);
+    if (page < 1) window.currentPage = 1;
+    if (page > totalPages) window.currentPage = totalPages;
 
-    var startIdx = (currentPage - 1) * postPerPage;
+    var startIdx = (window.currentPage - 1) * postPerPage;
     var endIdx = startIdx + postPerPage;
-    var pagePosts = allPosts.slice(startIdx, endIdx);
+    var pagePosts = window.allPosts.slice(startIdx, endIdx);
 
-    container.innerHTML = '';
+    var html = '';
     pagePosts.forEach(function(post) {
-      var article = document.createElement('article');
-      article.className = 'post-card tech-post-card';
-      
-      var badgeCat = (post.labels && post.labels.length > 0) ? post.labels[0] : 'TECH';
+      var dateFormatted = formatBloggerDate(post.published);
+      var categoryBadge = (post.labels && post.labels.length > 0) ? post.labels[0].toUpperCase() : 'TECH';
+
       var tagsHtml = '';
       if (post.labels && post.labels.length > 0) {
-        tagsHtml = '<div class="devlog-tags post-tags">';
-        post.labels.slice(0, 4).forEach(function(lbl) {
-          tagsHtml += '<a class="tech-tag" href="/search/label/' + encodeURIComponent(lbl) + '?max-results=4">' + lbl + '</a>';
         });
         tagsHtml += '</div>';
       }
