@@ -1,9 +1,10 @@
-/* 0. Modal Popup Overlay Engine (Clean Split Control) */
+/* 0. Modal Popup Overlay Engine (Clean Split Control with Pointer Events Guard) */
 .modal-overlay:not(.active),
 #categories-modal:not(.active) {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .modal-overlay.active,
@@ -12,6 +13,7 @@ div#categories-modal.active {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+  pointer-events: auto !important;
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;

@@ -1960,7 +1960,7 @@
     </footer>
     
     <!-- Permanent Fixed Categories Full Modal Popup (Body Level Root) -->
-    <div class='modal-overlay' id='categories-modal' style='display: none;'>
+    <div class='modal-overlay' id='categories-modal' style='display: none !important;'>
       <div class='modal-box'>
         <div class='modal-header'>
           <h3>전체 카테고리</h3>
@@ -2004,7 +2004,7 @@
           }
         }
         modal.className = 'modal-overlay active';
-        modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
+        modal.setAttribute('style', 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;');
         document.body.style.overflow = 'hidden';
       };
 
@@ -2012,16 +2012,16 @@
         var modal = document.getElementById('categories-modal');
         if (modal) {
           modal.className = 'modal-overlay';
-          modal.setAttribute('style', 'display: none;');
+          modal.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
         }
         document.body.style.overflow = '';
       };
     //]]></script>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v15.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v17.0.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v15.0.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v17.0.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
     <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=13.0.0'></script>
   </body>
