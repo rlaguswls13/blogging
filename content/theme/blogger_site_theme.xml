@@ -747,22 +747,6 @@
         width: fit-content;
       }
       
-      .tech-post-card h3 {
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin: 0 0 0.85rem 0;
-        line-height: 1.35;
-        color: var(--text-main);
-      }
-      
-      .tech-post-card h3 a {
-        color: var(--text-main);
-      }
-      
-      .tech-post-card h3 a:hover {
-        color: var(--primary-color);
-      }
-      
       .tech-post-card p {
         color: var(--text-muted);
         font-size: 0.95rem;
@@ -1335,9 +1319,10 @@
                 
                 <div class='tech-featured-grid'>
                   <b:loop index='i' values='data:posts' var='post'>
-                    <div class='tech-post-card'>
-                        <div class='tech-post-body'>
-                          <span class='tech-post-category'>
+                  <b:if cond='data:i &lt; 4'>
+                    <article class='post-card tech-post-card'>
+                        <div class='post-card-body tech-post-body'>
+                          <span class='post-category-badge tech-post-category'>
                             <b:if cond='data:post.labels'>
                               <b:loop index='idx' values='data:post.labels' var='label'>
                                 <b:if cond='data:idx == 0'>
@@ -1348,20 +1333,22 @@
                               DEVLOG
                             </b:if>
                           </span>
-                          <h3>
+                          <h2 class='post-card-title'>
                             <a expr:href='data:post.url'><data:post.title/></a>
-                          </h3>
-                          <!-- Clickable Tags -->
+                          </h2>
+                          <!-- Clickable Tags (최대 4개, JS buildPostCardHtml()의 slice(0,4)와 동일한 개수로 맞춤) -->
                           <b:if cond='data:post.labels'>
-                            <div class='devlog-tags'>
-                              <b:loop values='data:post.labels' var='label'>
-                                <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
+                            <div class='devlog-tags post-tags'>
+                              <b:loop index='li' values='data:post.labels' var='label'>
+                                <b:if cond='data:li &lt; 4'>
+                                  <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
+                                </b:if>
                               </b:loop>
                             </div>
                           </b:if>
                         </div>
-                        
-                        <div class='tech-post-meta'>
+
+                        <div class='post-card-meta tech-post-meta'>
                           <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
                             <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
                             <line x1='16' x2='16' y1='2' y2='6'/>
@@ -1370,7 +1357,8 @@
                           </svg>
                           <span><data:post.date/></span>
                         </div>
-                      </div>
+                      </article>
+                  </b:if>
                   </b:loop>
                 </div>
                 <b:if cond='not data:view.isHomepage or data:posts.length &gt; 4'>
@@ -2167,6 +2155,12 @@
     }
 
     // ---- Core Page Renderer (Global) ----
+    // 서버(Blogger SSR)가 이미 1페이지 카드를 정확히 렌더링해서 내려주므로, 로드 직후 최초
+    // renderPage(1) 호출까지 그대로 JS로 다시 그리면 화면이 "이미 보이던 카드를 지웠다가 다시
+    // 그리는" 눈에 띄는 딜레이/깜빡임이 생긴다. 그래서 최초 1회에 한해 페이지 1 재요청은
+    // DOM을 건드리지 않고 페이지네이션 컨트롤만 붙인다. 이후 실제로 다른 페이지로 이동했다가
+    // 1페이지로 돌아오는 경우는 이미 JS가 DOM을 점유한 상태이므로 정상적으로 다시 그린다.
+    var _initialPage1RenderSkipped = false;
     window.renderPage = function(page) {
       var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
       if (!container) return;
@@ -2174,6 +2168,13 @@
       var totalPages = Math.ceil(_allPosts.length / _postPerPage);
       if (_currentPage < 1) _currentPage = 1;
       if (_currentPage > totalPages) _currentPage = totalPages;
+
+      if (!_initialPage1RenderSkipped && _currentPage === 1) {
+        _initialPage1RenderSkipped = true;
+        renderPaginationControls(totalPages);
+        return;
+      }
+
       var pagePosts = _allPosts.slice((_currentPage - 1) * _postPerPage, _currentPage * _postPerPage);
       var html = '';
       pagePosts.forEach(function(post) { html += buildPostCardHtml(post); });
