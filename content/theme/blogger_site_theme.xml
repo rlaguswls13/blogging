@@ -18,21 +18,53 @@
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
     
     <b:skin><![CDATA[
+/*
+<!-- Constants -->
+
+<Variable name="keycolor" description="Main Color" type="color" default="#3b82f6" hideEditor="true" value="#3b82f6"/>
+<Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true"/>
+<Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true"/>
+
+<!-- Variable definitions -->
+
+<Group description="Body">
+  <Variable name="body.background.color" description="Body background color" type="color" default="#faf8f5" value="#faf8f5"/>
+  <Variable name="body.text.color" description="Main text color" type="color" default="#1f2937" value="#1f2937"/>
+  <Variable name="body.link.color" description="Link color" type="color" default="#3b82f6" value="#3b82f6"/>
+  <Variable name="body.link.hover.color" description="Link Hover color" type="color" default="#1d4ed8" value="#1d4ed8"/>
+</Group>
+
+<Group description="Header">
+  <Variable name="header.background.color" description="Navbar background color" type="color" default="#ffffff" value="#ffffff"/>
+  <Variable name="header.brand.color" description="Brand accent color" type="color" default="#3b82f6" value="#3b82f6"/>
+</Group>
+
+<Group description="Feed">
+  <Variable name="feed.title.color" description="Post title color" type="color" default="#1e293b" value="#1e293b"/>
+  <Variable name="feed.card.bg" description="Card background color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
+
+<Group description="Widths">
+  <Variable name="sidebar.width" description="Sidebar width" type="length" min="240px" max="480px" default="320px" value="320px"/>
+  <Variable name="feed.width" description="Content max width" type="length" min="860px" max="1440px" default="1200px" value="1200px"/>
+</Group>
+*/
+
       html {
         scroll-behavior: smooth;
       }
 
       /* Global CSS Variables and Reset */
       :root {
-        --primary-color: #3b82f6;         /* Vibrant Cobalt Blue (Primary/원색) */
-        --primary-light: #eff6ff;         /* Soft Pastel Sky Blue */
-        --primary-dark: #1d4ed8;          /* Deep Blue */
-        --bg-color: #faf8f5;              /* Soft Pastel Warm Cream - Eye-friendly background */
-        --card-bg: #ffffff;
-        --text-main: #1f2937;             /* Clean Charcoal Black */
-        --text-muted: #4b5563;            /* Soft Gray */
-        --terminal-bg: #1e222b;           /* Dark Slate Code Background */
-        --accent-color: #f43f5e;          /* Vibrant Rose Accent (Primary/원색) */
+        --primary-color: $(body.link.color);
+        --primary-light: #eff6ff;
+        --primary-dark: $(body.link.hover.color);
+        --bg-color: $(body.background.color);
+        --card-bg: $(feed.card.bg);
+        --text-main: $(body.text.color);
+        --text-muted: #4b5563;
+        --terminal-bg: #1e222b;
+        --accent-color: #f43f5e;
         --font-family: 'Inter', 'Noto Sans KR', sans-serif;
       }
 
