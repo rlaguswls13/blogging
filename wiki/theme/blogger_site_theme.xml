@@ -2141,8 +2141,13 @@
         </div>
       </div>
     </footer>
-    <!-- TECH LOG Unified Frontend Engine (External JS Bundle) -->
+    <!-- TECH LOG Modular CSS Engine (v2.0) -->
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/wiki/theme/css/core-layout.css?v=2.0.0' rel='stylesheet'/>
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/wiki/theme/css/components.css?v=2.0.0' rel='stylesheet'/>
+    
+    <!-- TECH LOG Modular JS Engine (v2.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/wiki/theme/theme-engine.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/wiki/theme/js/category-modal.js?v=2.0.0'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/wiki/theme/js/card-pager.js?v=2.0.0'></script>
   </body>
 </html>
