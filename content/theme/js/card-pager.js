@@ -232,37 +232,34 @@
         var lowerPostLabels = post.labels.map(function(l) { return l.toLowerCase(); });
         var matches = false;
 
-        if (targetFilter.indexOf('label:') !== -1) {
-          var keywords = targetFilter.split(/\s+or\s+|\s+/i);
-          keywords.forEach(function(kw) {
-            if (kw.indexOf('label:') === 0) {
-              var targetL = kw.substring(6).replace(/^["']|["']$/g, '').trim();
-              if (targetL && lowerPostLabels.indexOf(targetL) !== -1) {
-                matches = true;
-              }
+        if (targetFilter.indexOf('basics') !== -1 || targetFilter.indexOf('기초') !== -1) {
+          var basicsGroup = ['basics', '기초', 'database', 'rdbms', 'sql', 'nosql', 'gof', 'design patterns', 'java', 'mvc'];
+          for (var bIdx = 0; bIdx < basicsGroup.length; bIdx++) {
+            if (lowerPostLabels.indexOf(basicsGroup[bIdx]) !== -1) {
+              matches = true;
+              break;
             }
-          });
+          }
+        } else if (targetFilter.indexOf('advanced') !== -1 || targetFilter.indexOf('응용') !== -1 || targetFilter.indexOf('실무') !== -1) {
+          var advGroup = ['advanced', '응용', '실무', 'system architecture', 'microservices', 'kafka', 'redis', 'distributed lock', 'concurrency', 'saga pattern', 'software engineering', 'software architecture', 'spring aop', 'cg-lib', 'aspectj', 'spring boot'];
+          for (var aIdx = 0; aIdx < advGroup.length; aIdx++) {
+            if (lowerPostLabels.indexOf(advGroup[aIdx]) !== -1) {
+              matches = true;
+              break;
+            }
+          }
+        } else if (targetFilter.indexOf('trends') !== -1 || targetFilter.indexOf('트렌드') !== -1) {
+          var trendGroup = ['trends', '트렌드', 'ai agent', 'graphrag', 'ai framework', 'llm', 'llm agent', 'kubernetes', 'cloud-native', 'devops', 'http3', 'quic', 'autogen'];
+          for (var tIdx = 0; tIdx < trendGroup.length; tIdx++) {
+            if (lowerPostLabels.indexOf(trendGroup[tIdx]) !== -1) {
+              matches = true;
+              break;
+            }
+          }
         } else {
+          // 기타 일반 단일 라벨 필터링
           if (lowerPostLabels.indexOf(targetFilter) !== -1) {
             matches = true;
-          } else {
-            if (targetFilter === 'advanced') {
-              var advGroup = ['system architecture', 'microservices', 'kafka', 'redis', 'distributed lock', 'concurrency', 'saga pattern', 'software engineering', 'software architecture'];
-              for (var aIdx = 0; aIdx < advGroup.length; aIdx++) {
-                if (lowerPostLabels.indexOf(advGroup[aIdx]) !== -1) {
-                  matches = true;
-                  break;
-                }
-              }
-            } else if (targetFilter === 'trends') {
-              var trendGroup = ['ai agent', 'graphrag', 'ai framework', 'llm', 'llm agent', 'kubernetes', 'cloud-native', 'devops', 'http3', 'quic'];
-              for (var tIdx = 0; tIdx < trendGroup.length; tIdx++) {
-                if (lowerPostLabels.indexOf(trendGroup[tIdx]) !== -1) {
-                  matches = true;
-                  break;
-                }
-              }
-            }
           }
         }
 
