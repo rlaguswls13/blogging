@@ -78,6 +78,17 @@
         overflow-x: hidden;
       }
       
+      /* Container Top Spacing to prevent Sticky Nav Overlap */
+      .container {
+        margin-top: 2rem !important;
+      }
+
+      /* Post Card Title Word-Break & Formatting */
+      .tech-post-card h3, .post-card-title, .post-card-title a {
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+      }
+      
       a {
         color: var(--primary-color);
         text-decoration: none;
@@ -2214,8 +2225,155 @@
       }
     };
 
+    // ---- Category Modal & Tag Chips Limits Engine ----
+    var currentTagsData = [];
+
+    function ensureCategoriesModalExists() {
+      var existingModal = document.getElementById('categories-modal');
+      if (existingModal) return existingModal;
+
+      var modalDiv = document.createElement('div');
+      modalDiv.id = 'categories-modal';
+      modalDiv.className = 'modal-overlay';
+      modalDiv.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
+      modalDiv.innerHTML =
+        '<div class="modal-box">' +
+          '<div class="modal-header">' +
+            '<h3>전체 카테고리</h3>' +
+            '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;">×</button>' +
+          '</div>' +
+          '<div class="modal-body">' +
+            '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
+          '</div>' +
+        '</div>';
+
+      document.body.appendChild(modalDiv);
+      modalDiv.addEventListener('click', function(e) {
+        if (e.target === modalDiv) window.closeCategoriesModal();
+      });
+      return modalDiv;
+    }
+
+    window.showCategoriesModal = function() {
+      var modal = ensureCategoriesModalExists();
+      if (!modal) return;
+      if (modal.parentElement !== document.body) document.body.appendChild(modal);
+
+      var modalContainer = document.getElementById('modal-tags-container');
+      if (!modalContainer) return;
+
+      if (!currentTagsData || currentTagsData.length === 0) {
+        var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+        if (widget) {
+          var anchors = Array.from((widget.querySelector('.widget-content') || widget).querySelectorAll('a'));
+          currentTagsData = anchors.map(function(a) {
+            return { name: a.textContent.trim(), url: a.getAttribute('href') };
+          });
+        }
+      }
+
+      modalContainer.innerHTML = '';
+      (currentTagsData || []).forEach(function(tag) {
+        var tagEl = document.createElement('a');
+        tagEl.href = tag.url;
+        tagEl.className = 'tech-tag';
+        tagEl.textContent = tag.name;
+        tagEl.style.display = 'inline-flex';
+        modalContainer.appendChild(tagEl);
+      });
+
+      modal.className = 'modal-overlay active';
+      modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeCategoriesModal = function() {
+      var modal = document.getElementById('categories-modal');
+      if (modal) {
+        modal.className = 'modal-overlay';
+        modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+        document.body.style.overflow = '';
+      }
+    };
+
+    function initCategoryTagsLimit() {
+      ensureCategoriesModalExists();
+      var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+      if (!widget) return;
+
+      var container = widget.querySelector('.widget-content') || widget;
+      if (!container || container.querySelector('.devlog-tags')) return;
+
+      var anchors = Array.from(container.querySelectorAll('a'));
+      if (anchors.length === 0) return;
+
+      var tagsData = [];
+      anchors.forEach(function(a) {
+        var rawText = a.textContent.trim();
+        if (!rawText) return;
+        var name = rawText, count = '';
+        var match = rawText.match(/(.+?)\s*\((\d+)\)$/);
+        if (match) { name = match[1].trim(); count = match[2]; }
+        else {
+          var nextSpan = a.nextElementSibling;
+          if (nextSpan && nextSpan.classList.contains('label-count')) {
+            count = nextSpan.textContent.replace(/[()]/g, '').trim();
+          }
+        }
+        tagsData.push({ name: name, count: count, url: a.getAttribute('href') });
+      });
+
+      if (tagsData.length === 0) return;
+      tagsData.sort(function(a, b) {
+        var countA = a.count ? parseInt(a.count, 10) : 0;
+        var countB = b.count ? parseInt(b.count, 10) : 0;
+        if (countA !== countB) return countB - countA;
+        return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
+      });
+
+      currentTagsData = tagsData;
+      container.innerHTML = '';
+      var tagsBox = document.createElement('div');
+      tagsBox.className = 'devlog-tags';
+      container.appendChild(tagsBox);
+
+      tagsData.forEach(function(tag, idx) {
+        if (idx < 8) {
+          var tagEl = document.createElement('a');
+          tagEl.href = tag.url;
+          tagEl.className = 'tech-tag';
+          tagEl.textContent = tag.name;
+          if (tag.count) {
+            var cEl = document.createElement('span');
+            cEl.className = 'label-count';
+            cEl.style.cssText = 'margin-left:4px;font-weight:700;color:var(--primary-color, #2563eb);';
+            cEl.textContent = '(' + tag.count + ')';
+            tagEl.appendChild(cEl);
+          }
+          tagsBox.appendChild(tagEl);
+        }
+      });
+
+      if (tagsData.length > 8) {
+        var moreBtn = document.createElement('button');
+        moreBtn.type = 'button';
+        moreBtn.className = 'tech-tag-more-btn';
+        moreBtn.id = 'tech-tag-more-btn';
+        moreBtn.textContent = '...';
+        moreBtn.onclick = function(e) {
+          if (e) { e.preventDefault(); e.stopPropagation(); }
+          window.showCategoriesModal();
+          return false;
+        };
+        tagsBox.appendChild(moreBtn);
+      }
+    }
+
     // ---- DOMContentLoaded ----
     document.addEventListener('DOMContentLoaded', function() {
+      ensureCategoriesModalExists();
+      initCategoryTagsLimit();
+
       var isPostPage = window.location.pathname.indexOf('/20') === 0 && window.location.pathname.indexOf('.html') !== -1;
       if (!isPostPage) {
         var script = document.createElement('script');
@@ -2227,6 +2385,15 @@
         mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
       }
     });
+
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target && (target.classList.contains('tech-tag-more-btn') || target.id === 'tech-tag-more-btn')) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        window.showCategoriesModal();
+        return false;
+      }
+    }, true);
 
     //]]>
     </script>
