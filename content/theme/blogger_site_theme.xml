@@ -1960,7 +1960,7 @@
     </footer>
     
     <!-- Permanent Fixed Categories Full Modal Popup (Body Level Root) -->
-    <div class='modal-overlay' id='categories-modal' style='display: none !important; visibility: hidden !important; opacity: 0 !important;'>
+    <div class='modal-overlay' id='categories-modal' style='display: none;'>
       <div class='modal-box'>
         <div class='modal-header'>
           <h3>전체 카테고리</h3>
@@ -2012,16 +2012,16 @@
         var modal = document.getElementById('categories-modal');
         if (modal) {
           modal.className = 'modal-overlay';
-          modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+          modal.setAttribute('style', 'display: none;');
         }
         document.body.style.overflow = '';
       };
     //]]></script>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v14.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v15.0.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v14.0.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v15.0.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
     <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=13.0.0'></script>
   </body>
