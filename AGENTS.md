@@ -12,8 +12,8 @@ graph TD
     Root --> Part2[2. Blog 글 작성 & 파이프라인 영역]
 
     Part1 --> P1_Raw[RawSource: Blogger Layouts V3 & API Spec URL]
-    Part1 --> P1_Wiki[wiki: wiki/theme/ 가젯 개편 & CSS 지식]
-    Part1 --> P1_Theme[theme: wiki/theme/ 테마 XML & CSS]
+    Part1 --> P1_Wiki[wiki: wiki/rules/ 지식 위키 & wiki/theme/ RAG 기술 지식]
+    Part1 --> P1_Theme[content: content/theme/ 테마 XML, 세분화 CSS & JS 배포 자산]
     Part1 --> P1_Schema[스키마: wiki/rules/blogger_platform_schema.md]
 
     Part2 --> P2_Raw[rawsource: POSIX, RFC, 공식 개발 가이드]
