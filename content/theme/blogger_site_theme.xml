@@ -1173,9 +1173,9 @@
         </button>
         <div class='nav-links' id='nav-links'>
           <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
-          <a expr:class='data:view.search.query contains "Basics" or data:view.search.label == "Basics" or data:view.search.label == "기초" ? "active" : ""' href='/search?q=label:Basics+OR+label:기초+OR+label:Spring+OR+label:Java'>Basics</a>
-          <a expr:class='data:view.search.query contains "Advanced" or data:view.search.label == "Advanced" or data:view.search.label == "응용" ? "active" : ""' href='/search?q=label:Advanced+OR+label:응용+OR+label:실무+OR+label:Kafka+OR+label:Redis+OR+label:MSA'>Advanced</a>
-          <a expr:class='data:view.search.query contains "Trends" or data:view.search.label == "Trends" or data:view.search.label == "트렌드" ? "active" : ""' href='/search?q=label:Trends+OR+label:트렌드+OR+label:AI+OR+label:LLM+OR+label:RAG+OR+label:Kubernetes'>Trends</a>
+          <a expr:class='data:view.search.label == "Basics" or data:view.search.label == "기초" ? "active" : ""' href='/search/label/Basics'>Basics</a>
+          <a expr:class='data:view.search.label == "Advanced" or data:view.search.label == "응용" ? "active" : ""' href='/search/label/Advanced'>Advanced</a>
+          <a expr:class='data:view.search.label == "Trends" or data:view.search.label == "트렌드" ? "active" : ""' href='/search/label/Trends'>Trends</a>
           <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
         </div>
       </nav>
@@ -2018,10 +2018,10 @@
       };
     //]]></script>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v20.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v21.0.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v20.0.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v21.0.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
     <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=20.0.0'></script>
   </body>
