@@ -168,12 +168,33 @@
     };
   }
 
-  window.initBloggerFeedPagination = function(json) {
-    var isSearchPage = window.location.pathname.indexOf('/search') !== -1 || (window.location.search && window.location.search.indexOf('q=') !== -1);
-    if (isSearchPage) {
-      return;
+  function getTargetFilterLabel() {
+    var pathname = window.location.pathname;
+    var search = window.location.search;
+
+    if (pathname.indexOf('/search/label/') !== -1) {
+      var parts = pathname.split('/search/label/');
+      if (parts.length > 1 && parts[1]) {
+        var labelStr = parts[1].split('?')[0];
+        return decodeURIComponent(labelStr).trim().toLowerCase();
+      }
     }
 
+    if (search && search.indexOf('q=') !== -1) {
+      var urlParams = new URLSearchParams(search);
+      var q = urlParams.get('q');
+      if (q) {
+        q = decodeURIComponent(q).trim().toLowerCase();
+        if (q.indexOf('label:') !== -1) {
+          return q;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  window.initBloggerFeedPagination = function(json) {
     var entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
     allPosts = [];
 
@@ -204,8 +225,62 @@
       });
     });
 
+    var targetFilter = getTargetFilterLabel();
+    if (targetFilter) {
+      var activePosts = [];
+      allPosts.forEach(function(post) {
+        var lowerPostLabels = post.labels.map(function(l) { return l.toLowerCase(); });
+        var matches = false;
+
+        if (targetFilter.indexOf('label:') !== -1) {
+          var keywords = targetFilter.split(/\s+or\s+|\s+/i);
+          keywords.forEach(function(kw) {
+            if (kw.indexOf('label:') === 0) {
+              var targetL = kw.substring(6).replace(/^["']|["']$/g, '').trim();
+              if (targetL && lowerPostLabels.indexOf(targetL) !== -1) {
+                matches = true;
+              }
+            }
+          });
+        } else {
+          if (lowerPostLabels.indexOf(targetFilter) !== -1) {
+            matches = true;
+          } else {
+            if (targetFilter === 'advanced') {
+              var advGroup = ['system architecture', 'microservices', 'kafka', 'redis', 'distributed lock', 'concurrency', 'saga pattern', 'software engineering', 'software architecture'];
+              for (var aIdx = 0; aIdx < advGroup.length; aIdx++) {
+                if (lowerPostLabels.indexOf(advGroup[aIdx]) !== -1) {
+                  matches = true;
+                  break;
+                }
+              }
+            } else if (targetFilter === 'trends') {
+              var trendGroup = ['ai agent', 'graphrag', 'ai framework', 'llm', 'llm agent', 'kubernetes', 'cloud-native', 'devops', 'http3', 'quic'];
+              for (var tIdx = 0; tIdx < trendGroup.length; tIdx++) {
+                if (lowerPostLabels.indexOf(trendGroup[tIdx]) !== -1) {
+                  matches = true;
+                  break;
+                }
+              }
+            }
+          }
+        }
+
+        if (matches) {
+          activePosts.push(post);
+        }
+      });
+
+      allPosts = activePosts;
+    }
+
     if (allPosts.length > 0) {
       renderPage(1);
+    } else if (targetFilter) {
+      var postsContainer = document.querySelector('.blog-posts') || document.querySelector('.main-content') || document.getElementById('main');
+      if (postsContainer) {
+        postsContainer.innerHTML = '<div style="text-align:center; padding: 4rem 1rem; color: #64748b; background: #ffffff; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);"><h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; color:#1e293b;">해당 카테고리의 포스팅이 없습니다</h3><p style="font-size: 0.95rem;">카테고리 라벨: "' + targetFilter + '"</p></div>';
+      }
     }
   };
 
