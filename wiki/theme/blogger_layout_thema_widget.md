@@ -436,9 +436,35 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
 - **조치 방향**: 로컬 XML에 없는 위젯이 라이브에만 존재하는 경우 XML 편집으로는 제거되지 않으므로, **Blogger 대시보드 → 레이아웃 → 해당 가젯 편집 → 삭제** 로 직접 제거하는 것이 코드 수정 없이 회귀 위험이 가장 낮음.
 - **예방 규칙**: 레이아웃 탭에서 새 가젯을 추가하기 전, 반드시 (1) 해당 타입이 `<b:defaultmarkups>`에 정의되어 있는지, (2) 정의되어 있다면 실제로 `tech-*`/`post-card` 계열 클래스로 스타일링되는지 먼저 확인. 스타일이 없다면 추가하지 않거나, 추가 전 defaultmarkup을 먼저 작성해야 함.
 
-### 10.7 상단 탭(Basics/Advanced/Trends) 키워드 그룹 매칭 중복·누락 결함 (2026-08-16 발견)
+### 10.7 상단 탭(Basics/Advanced/Trends) 키워드 그룹 매칭 중복·누락 결함 (2026-08-16 발견, 10.8에서 최종 정리됨)
 - **발생 원인**: `postMatchesFilter()`의 Basics/Advanced 키워드 그룹(`bg`/`ag`)에 `database`, `sql`, `concurrency`, `operatingsystem`, `btreeindex`, `coveringindex` 등 지나치게 범용적인 라벨을 **양쪽 그룹에 중복 등록**해 두어, 실제로는 심화(Advanced) 성격의 글(예: MySQL B+Tree 커버링 인덱스 튜닝, Kafka 파티셔닝)이 Basics 탭에도 동시에 노출되었다. 반대로 어느 그룹 키워드에도 걸리지 않는 글(`Google Blogger API` 연동 가이드, `Spring IoC/DI` — 후자는 `java`라는 범용 라벨 때문에 오히려 Basics로 잘못 분류)은 Advanced/Trends 어디에도 나타나지 않는 결함이 있었다.
-- **해결 패턴**: 저자가 실제로 붙이는 명시적 라벨(`기초`/`Basics`)로만 Basics를 판정하고, Trends는 기존 특화 키워드 그룹을 유지하며, **Advanced는 "Basics도 Trends도 아닌 나머지 전부"로 판정하는 상호 배타적 규칙**으로 재설계(`postMatchesFilter()`, `content/theme/blogger_site_theme.xml`). 개별 포스트에 태그를 추가/재분류하는 방식(Blogger API로 라이브 포스트 라벨 수정) 대신 클라이언트 필터 함수만 수정해 배포 리스크를 최소화함 — 기존 38개 게시물 라벨은 그대로 유지된다.
+- **1차 해결**: 저자가 실제로 붙이는 명시적 라벨(`기초`/`Basics`)로만 Basics를 판정하고, Trends는 기존 특화 키워드 그룹을 유지하며, **Advanced는 "Basics도 Trends도 아닌 나머지 전부"로 판정하는 상호 배타적 규칙**으로 재설계. 클라이언트 필터 함수만 수정해 배포 리스크를 최소화함.
+
+### 10.8 키워드 그룹 완전 폐기 → 실제 라벨 백필 + 한/영 중복 라벨 정리 + Trends→ETC 개명 (2026-08-16)
+- **문제의식**: 10.7의 키워드 그룹 방식은 여전히 "글이 늘어날수록 유지보수해야 할 목록"이라는 근본적 확장성 문제가 있었다. 또한 초기엔 저자가 `기초`와 `Basics`를 **동시에** 붙이는 습관이 있어 라벨이 중복되어 있었다.
+- **해결 패턴 (3단계, 전부 `src/tools/`에 재사용 가능한 도구로 구현하고 Blogger API로 라이브에 직접 반영)**:
+  1. `apply_nav_labels.py`: 38개 기존 글 전수를 조회해 Basics(기초/Basics 라벨 보유)를 제외한 나머지에 `Advanced` 또는 `Trends`(AI Agent/GraphRAG/Kubernetes/DevOps/HTTP3 등 특정 키워드 라벨 보유 시) 라벨을 실제로 추가.
+  2. `dedupe_basics_label.py`: `기초`+`Basics`를 동시에 가진 21개 글에서 한국어 `기초`를 제거하고 영어 `Basics`만 남김 (Advanced/Trends가 영어 단일 라벨인 것과 통일).
+  3. `rename_trends_to_etc.py`: `Trends` 탭을 `ETC`로 개명(4개 글 라벨을 실제로 `Trends`→`ETC` 치환). AI/Kubernetes/DevOps 등 극소수 특정 주제만 모으는 카테고리라 "트렌드"보다 "기타(ETC)"가 실제 성격에 더 맞다는 판단.
+  4. 위 백필이 끝난 뒤 `postMatchesFilter()`를 `lowerLabels.indexOf('basics'/'advanced'/'etc') !== -1` 수준의 **단순 라벨 조회 O(1)**로 완전히 단순화. 키워드 그룹 유지보수가 영구히 불필요해짐.
+- **예방 규칙**: 신규 글은 `wiki/Blog_Writing_Rules.md` 7번 규칙에 따라 Basics/Advanced/ETC 중 정확히 하나만, 영어 단일 라벨로 부여한다(한/영 중복 금지).
+
+### 10.9 "100% 인라인"이 실제로는 부분 인라인이었던 함정 — 외부 `theme-style.css` 삭제 시 버튼/모달 스타일 소실 (2026-08-16)
+- **발생 원인**: v25에서 JS 엔진은 완전히 인라인화됐지만(10.4), CSS는 `<link href='.../theme-style.css?v=...'/>`로 jsDelivr CDN에서 계속 로드하고 있었다. 이 사실을 모른 채 "이미 다 인라인화됐다"고 가정하고, 중복으로 남아있던 `<link>` 두 개(`?v=7.0.0`, `?v=13.0.0`, 둘 다 동일한 캐시된 내용)를 완전 삭제했더니 **페이지네이션 버튼(`.page-btn`)과 카테고리 모달(`.modal-box`/`.modal-header`/`.modal-close-btn`/`.devlog-tags-popup`)의 CSS가 통째로 사라졌다.** 인라인 `<b:skin>`에는 이 셀렉터들이 애초에 한 번도 옮겨진 적이 없었기 때문이다.
+- **교훈**: 외부 `<link>`/`<script>`를 "중복이니 안전하게 지운다"고 판단하기 전에, 반드시 그 파일 실제 내용을 fetch해서 인라인 스킨에 없는 셀렉터가 있는지 diff 확인할 것. jsDelivr `@main` 브랜치 참조는 CORS로 열람 가능하니 브라우저 `fetch()`로 직접 받아 비교하면 된다.
+- **해결**: 누락된 셀렉터(`.page-btn` 전체 상태, `.modal-box`, `.modal-header`, `.modal-close-btn`, `.modal-body`, `.devlog-tags-popup`, `.tech-tag-more-btn`)를 외부 파일에서 인라인 `<b:skin>`으로 이식. 외부 파일에 있던 `.modal-overlay`(오버레이 배경/포지셔닝)는 이식 불필요 — `showCategoriesModal()`/`closeCategoriesModal()` JS가 이미 `style.cssText`로 인라인 직접 지정하고 있었음.
+- **현재 상태**: `content/theme/theme-style.css`, `theme-engine.js`, `content/theme/css/*`, `content/theme/js/*`는 이제 어디서도 참조되지 않는 죽은 파일(저장소에만 존재). 삭제해도 무방하나 미삭제 상태로 남아있음.
+
+### 10.10 `InvalidVariableException` — CSS 주석 속 raw HTML 태그가 `<SkinVariables>` 파싱을 깨뜨림 (2026-08-16)
+- **증상**: `com.google.blogger.b2.layouts.framework.skin.InvalidVariableException: ... not well-formed`. 에러 메시지에 표시된 "Input"이 정상적인 `<Variable>`/`<Group>` 선언 뒤에 `<button class="page-btn"> <a class="page-current">` 같은 엉뚱한 내용이 붙어있었다.
+- **발생 원인**: Blogger는 `<b:skin>` CDATA 내부에서 `<Variable .../>`/`<Group>...</Group>` 태그를 포함한 CSS 주석을 찾아 그 내용을 `<SkinVariables>...</SkinVariables>`로 감싸 별도 XML로 파싱한다. 이때 CSS 주석 안에 raw `<`/`>`가 들어간 다른 텍스트(예: 설명용으로 `<button class="page-btn">`라고 실제 태그처럼 적은 주석)가 있으면, 이 텍스트까지 같은 스킨 변수 문서로 흡수되어 태그가 짝이 안 맞는 잘못된 XML이 되어버린다. `ET.parse()`로 전체 XML 자체는 well-formed로 통과하므로(CDATA 내부라 바깥 파서는 문제 없음) 이 함정은 로컬 XML 검증만으로는 잡히지 않는다.
+- **예방 규칙**: `<b:skin>` 내부 CSS 주석에는 **절대 raw `<`/`>` 문자를 쓰지 말 것** (`<button class="page-btn">` 대신 `button.page-btn`처럼 태그명.클래스명 표기 사용). 편집 후에는 스킨 변수 주석만 추출해 `<SkinVariables>` + 내용 + `</SkinVariables>`로 감싸 별도로 XML 파싱 테스트하면 이 클래스의 오류를 로컬에서 사전에 잡을 수 있다.
+
+### 10.11 서버가 이미 렌더링한 페이지 1을 JS가 다시 그려서 생기는 "변환 딜레이" (2026-08-16)
+- **발생 원인**: Blogger SSR(`<b:loop values='data:posts'>`)이 이미 올바른 카드를 즉시 렌더링해서 내려주는데도, `DOMContentLoaded` 시점에 JS가 `/feeds/posts/summary?...&max-results=150`로 전체 포스트를 다시 fetch해(약 0.9~1.8초 소요) `.tech-featured-grid.innerHTML`을 통째로 덮어썼다. 방문자 대부분이 보는 1페이지에서 "이미 보이던 화면이 잠시 후 다시 그려지는" 눈에 띄는 지연/깜빡임이 발생.
+- **해결**: `renderPage()`에 최초 1회 한정 스킵 플래그(`_initialPage1RenderSkipped`)를 두어, 로드 직후 첫 `renderPage(1)` 호출은 DOM을 건드리지 않고 페이지네이션 컨트롤만 붙이도록 함. 2페이지 이상으로 실제 이동할 때만 정상적으로 재렌더링.
+- **전제 조건(중요)**: 이 최적화가 성립하려면 **SSR 카드 마크업과 JS(`buildPostCardHtml()`)가 만드는 마크업이 클래스명까지 완전히 동일해야 한다.** 원래 SSR은 `h3`+`.tech-post-card`/`.tech-post-body` 클래스를 쓰고 JS는 `h2.post-card-title`+`.post-card-body` 클래스를 써서 서로 다른 셀렉터를 탔었다(초기엔 JS가 항상 덮어썼기 때문에 안 드러났던 drift). 마크업을 통일하지 않고 이 최적화만 넣으면 1페이지만 스타일이 다르게 보이는 새로운 버그가 생긴다.
+- **부수적으로 발견된 결함**: SSR이 `postsPerPage: 4` 위젯 설정과 무관하게 `data:posts`를 더 많이(실측 7개) 내려주고 있었다(지금까지는 JS 재렌더링이 4개로 잘라내서 가려져 있었음). `<b:loop index='i' ...><b:if cond='data:i < 4'>...</b:if></b:loop>`로 SSR 단계에서부터 캡을 씌워 해결.
 
 ---
 

@@ -36,11 +36,11 @@ graph LR
    - 배포 성공 시 파이프라인이 `final.md`에서 내부 검증 메모(`## 사실 검증 결과` 표 등)를 자동 Sanitization 제거 후 배포함과 동시에, **`temp/runs/${run_id}/final.md` 원본을 최종 승인 포스팅으로서 `content/posts/${slug}.md`로 자동 이관 보관**합니다.
 
 7. **상단 탭 분류 라벨 필수 부여 (Nav Classification Label Rule)**:
-   - 블로그 테마 상단 탭(Home/Basics/Advanced/Trends)은 글의 `tags`에 실제로 붙은 라벨만 보고 분류합니다(키워드 추론 없음). 모든 신규 글의 `tags`에는 아래 세 라벨 중 **정확히 하나**를 반드시 포함해야 합니다:
-     - **기초(Basics)**: 개념/정의 위주의 입문 글 → `기초` 또는 `Basics` 라벨
-     - **심화(Advanced)**: 아키텍처 심층 분석, 튜닝, 실무 트레이드오프 글 → `Advanced` 라벨
-     - **트렌드(Trends)**: 최신 기술/emerging 주제 글 → `Trends` 라벨
-   - 분류가 애매한 글은 심화(Advanced)를 기본값으로 사용합니다. 이미 배포된 기존 38개 글은 `src/tools/apply_nav_labels.py`로 일괄 백필했습니다.
+   - 블로그 테마 상단 탭(Home/Basics/Advanced/ETC)은 글의 `tags`에 실제로 붙은 라벨만 보고 분류합니다(키워드 추론 없음). 모든 신규 글의 `tags`에는 아래 세 라벨 중 **정확히 하나만** 영어 단일 표기로 포함해야 합니다 (한/영 중복 라벨 금지 — 예전에 `기초`+`Basics`를 함께 붙였다가 정리한 적 있음):
+     - **Basics**: 개념/정의 위주의 입문 글
+     - **Advanced**: Basics도 ETC도 아닌 나머지 전부 (아키텍처 심층 분석, 튜닝, 실무 트레이드오프 등). 분류가 애매하면 기본값으로 사용
+     - **ETC**: AI 에이전트/Kubernetes/DevOps/HTTP3 등 소수 특정 주제만 모으는 카테고리
+   - 이미 배포된 기존 38개 글은 `src/tools/apply_nav_labels.py`(초기 분류 백필), `src/tools/dedupe_basics_label.py`(기초/Basics 중복 정리), `src/tools/rename_trends_to_etc.py`(Trends→ETC 개명)로 일괄 정리했습니다.
 
 ---
 
