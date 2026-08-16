@@ -1,9 +1,24 @@
-/* ==========================================================================
-   TECH LOG - Unified Site Theme Master CSS (v3.2.0)
-   Fully Extracted & Externalized from Theme XML <head>
-   ========================================================================== */
+/* 0. Modal Popup Overlay Engine (Default Hidden, Active Flex) - Must be loaded first */
+#categories-modal,
+.modal-overlay {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(6px) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 999999 !important;
+  padding: 1rem !important;
+  transition: opacity 0.25s ease-in-out !important;
+}
 
-/* 0. Modern Google Fonts & Pretendard Typography Import */
+/* 1. Modern Google Fonts & Pretendard Typography Import */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
 
