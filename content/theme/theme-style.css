@@ -1,4 +1,11 @@
-/* TECH LOG - Category Chips, 5-Page Block Pager, Modal Overlay & Typography CSS (v2.9.0) */
+/* ==========================================================================
+   TECH LOG - Unified Site Theme Master CSS (v3.2.0)
+   Fully Extracted & Externalized from Theme XML <head>
+   ========================================================================== */
+
+/* 0. Modern Google Fonts & Pretendard Typography Import */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
 
 /* 1. Post Title Typography Restoration (제목 색상 & 크기 최상위 고정) */
 #main-posts-grid .post-card-title,
@@ -143,7 +150,8 @@ article h2 a:hover {
   box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
 }
 
-/* 4. Modal Popup Overlay (Default Hidden) */
+/* 4. Modal Popup Overlay Engine (Default Hidden, Active Flex) */
+#categories-modal,
 .modal-overlay {
   display: none !important;
   visibility: hidden !important;
@@ -161,6 +169,7 @@ article h2 a:hover {
   padding: 1rem !important;
   transition: opacity 0.25s ease-in-out !important;
 }
+#categories-modal.active,
 .modal-overlay.active {
   display: flex !important;
   visibility: visible !important;
@@ -180,6 +189,7 @@ article h2 a:hover {
   transform: scale(0.95);
   transition: transform 0.25s ease-in-out !important;
 }
+#categories-modal.active .modal-box,
 .modal-overlay.active .modal-box {
   transform: scale(1) !important;
 }

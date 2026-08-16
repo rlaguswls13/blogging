@@ -1,9 +1,23 @@
 /**
- * TECH LOG - Unified Site Theme JS Engine (v2.9.0)
- * 1. Guaranteed Global Category Modal Toggle Engine (Open / Close)
- * 2. Title Typography & Grid Enforcer
- * 3. 5-Page Block Numbered Pager
+ * TECH LOG - Unified Site Theme JS Engine (v3.2.0)
+ * Fully Extracted & Externalized JS Engine
+ * 1. Immediate Label Redirect Enforcer
+ * 2. Dynamic Category Modal Toggle Engine (Open / Close)
+ * 3. Title Typography & Grid Standardizer
+ * 4. 5-Page Block Numbered Pager Engine
  */
+
+// Immediate Label Redirect Execution
+(function() {
+  var path = window.location.pathname;
+  if (path === '/label' || path === '/label/') {
+    window.location.replace('/search/label?max-results=4');
+  } else if (path.indexOf('/label/') === 0) {
+    var category = path.substring(7);
+    window.location.replace('/search/label/' + category + '?max-results=4');
+  }
+})();
+
 (function() {
   'use strict';
 
@@ -24,7 +38,7 @@
       '<div class="modal-box">' +
         '<div class="modal-header">' +
           '<h3>전체 카테고리</h3>' +
-          '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="window.closeCategoriesModal()">×</button>' +
+          '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;">×</button>' +
         '</div>' +
         '<div class="modal-body">' +
           '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
@@ -354,7 +368,7 @@
   };
 
   // =========================================================
-  // 3. Event Listeners and Initialization
+  // 5. Event Listeners and Initialization
   // =========================================================
   document.addEventListener("DOMContentLoaded", function() {
     ensureCategoriesModalExists();
