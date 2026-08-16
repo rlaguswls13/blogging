@@ -1,1485 +1,1460 @@
-  <?xml version="1.0" encoding="UTF-8" ?>
-  <!DOCTYPE html>
-  <html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' class='v3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
-    <head>
-      <!-- TECH LOG Fail-Safe Instant UI Guard (Instant Typography &amp; Layout Lock) -->
-      <style>
-        .post-card-title, .post-card-title a, .tech-post-title, .tech-post-title a { font-size: 1.05rem !important; font-weight: 700 !important; color: #1e293b !important; text-decoration: none !important; line-height: 1.4 !important; }
-        .post-card-title a:hover, .tech-post-title a:hover { color: #2563eb !important; }
-        .post-card-title { display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
-      </style>
-      <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
-      <title><data:view.title.escaped/></title>
-      <b:include data='blog' name='all-head-content'/>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' class='v3' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <!-- TECH LOG Fail-Safe Instant UI Guard (Instant Typography &amp; Layout Lock) -->
+    <style>
+      .post-card-title, .post-card-title a, .tech-post-title, .tech-post-title a { font-size: 1.05rem !important; font-weight: 700 !important; color: #1e293b !important; text-decoration: none !important; line-height: 1.4 !important; }
+      .post-card-title a:hover, .tech-post-title a:hover { color: #2563eb !important; }
+      .post-card-title { display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
+    </style>
+    <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
+    <title><data:view.title.escaped/></title>
+    <b:include data='blog' name='all-head-content'/>
 
-      <!-- Google Web Fonts -->
-      <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
+    <!-- Google Web Fonts -->
+    <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
 
-      <b:skin><![CDATA[
-  /*
-  <!-- Constants -->
+    <b:skin><![CDATA[
+/*
+<!-- Constants -->
 
-  <Variable name="keycolor" description="Main Color" type="color" default="#3b82f6" hideEditor="true" value="#3b82f6"/>
-  <Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true"/>
-  <Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true"/>
+<Variable name="keycolor" description="Main Color" type="color" default="#3b82f6" hideEditor="true" value="#3b82f6"/>
+<Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true"/>
+<Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true"/>
 
-  <!-- Variable definitions -->
+<!-- Variable definitions -->
 
-  <Group description="Body">
-    <Variable name="body.background.color" description="Body background color" type="color" default="#faf8f5" value="#faf8f5"/>
-    <Variable name="body.text.color" description="Main text color" type="color" default="#1f2937" value="#1f2937"/>
-    <Variable name="body.link.color" description="Link color" type="color" default="#3b82f6" value="#3b82f6"/>
-    <Variable name="body.link.hover.color" description="Link Hover color" type="color" default="#1d4ed8" value="#1d4ed8"/>
-  </Group>
+<Group description="Body">
+  <Variable name="body.background.color" description="Body background color" type="color" default="#faf8f5" value="#faf8f5"/>
+  <Variable name="body.text.color" description="Main text color" type="color" default="#1f2937" value="#1f2937"/>
+  <Variable name="body.link.color" description="Link color" type="color" default="#3b82f6" value="#3b82f6"/>
+  <Variable name="body.link.hover.color" description="Link Hover color" type="color" default="#1d4ed8" value="#1d4ed8"/>
+</Group>
 
-  <Group description="Header">
-    <Variable name="header.background.color" description="Navbar background color" type="color" default="#ffffff" value="#ffffff"/>
-    <Variable name="header.brand.color" description="Brand accent color" type="color" default="#3b82f6" value="#3b82f6"/>
-  </Group>
+<Group description="Header">
+  <Variable name="header.background.color" description="Navbar background color" type="color" default="#ffffff" value="#ffffff"/>
+  <Variable name="header.brand.color" description="Brand accent color" type="color" default="#3b82f6" value="#3b82f6"/>
+</Group>
 
-  <Group description="Feed">
-    <Variable name="feed.title.color" description="Post title color" type="color" default="#1e293b" value="#1e293b"/>
-    <Variable name="feed.card.bg" description="Card background color" type="color" default="#ffffff" value="#ffffff"/>
-  </Group>
+<Group description="Feed">
+  <Variable name="feed.title.color" description="Post title color" type="color" default="#1e293b" value="#1e293b"/>
+  <Variable name="feed.card.bg" description="Card background color" type="color" default="#ffffff" value="#ffffff"/>
+</Group>
 
-  <Group description="Widths">
-    <Variable name="sidebar.width" description="Sidebar width" type="length" min="240px" max="480px" default="320px" value="320px"/>
-    <Variable name="feed.width" description="Content max width" type="length" min="860px" max="1440px" default="1200px" value="1200px"/>
-  </Group>
-  */
+<Group description="Widths">
+  <Variable name="sidebar.width" description="Sidebar width" type="length" min="240px" max="480px" default="320px" value="320px"/>
+  <Variable name="feed.width" description="Content max width" type="length" min="860px" max="1440px" default="1200px" value="1200px"/>
+</Group>
+*/
 
-        html {
-          scroll-behavior: smooth;
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        /* Global CSS Variables and Reset */
-        :root {
-          --primary-color: $(body.link.color);
-          --primary-light: #eff6ff;
-          --primary-dark: $(body.link.hover.color);
-          --bg-color: $(body.background.color);
-          --card-bg: $(feed.card.bg);
-          --text-main: $(body.text.color);
-          --text-muted: #4b5563;
-          --terminal-bg: #1e222b;
-          --accent-color: #f43f5e;
-          --font-family: 'Inter', 'Noto Sans KR', sans-serif;
-        }
+      /* Global CSS Variables and Reset */
+      :root {
+        --primary-color: $(body.link.color);
+        --primary-light: #eff6ff;
+        --primary-dark: $(body.link.hover.color);
+        --bg-color: $(body.background.color);
+        --card-bg: $(feed.card.bg);
+        --text-main: $(body.text.color);
+        --text-muted: #4b5563;
+        --terminal-bg: #1e222b;
+        --accent-color: #f43f5e;
+        --font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      }
 
-        body {
-          font-family: var(--font-family);
-          background-color: var(--bg-color);
-          color: var(--text-main);
-          margin: 0;
-          padding: 0;
-          line-height: 1.65;
-          overflow-x: hidden;
-        }
+      body {
+        font-family: var(--font-family);
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        margin: 0;
+        padding: 0;
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
 
-        /* Container Top Spacing to prevent Sticky Nav Overlap */
-        .main_content_container, .page {
-          padding-top: 1rem !important;
-        }
+      /* Container Top Spacing to prevent Sticky Nav Overlap */
+      .main_content_container, .page {
+        padding-top: 1rem !important;
+      }
 
-        .sidebar {
-          margin-top: 90px !important;
-        }
+      .sidebar {
+        margin-top: 90px !important;
+      }
 
-        /* Post Card Title Word-Break & Formatting */
-        .tech-post-card h3, .post-card-title, .post-card-title a {
-          word-break: keep-all !important;
-          overflow-wrap: break-word !important;
-        }
+      /* Post Card Title Word-Break & Formatting */
+      .tech-post-card h3, .post-card-title, .post-card-title a {
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+      }
 
-        a {
-          color: var(--primary-color);
-          text-decoration: none;
-          transition: color 0.15s ease;
-        }
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
 
-        a:hover {
-          color: var(--primary-dark);
-        }
+      a:hover {
+        color: var(--primary-dark);
+      }
 
-        /* Header and Sticky Navbar (Floating Glassmorphism) */
-        .nav-bar-wrapper {
-          position: sticky;
-          top: 12px;
-          margin: 0 16px 12px 16px;
-          z-index: 100;
-          background-color: rgba(255, 255, 255, 0.75);
-          backdrop-filter: blur(16px) saturate(180%);
-          -webkit-backdrop-filter: blur(16px) saturate(180%);
-          border: 1px solid rgba(226, 232, 240, 0.8);
-          border-radius: 20px;
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
-          transition: all 0.3s ease;
-        }
+      /* Header and Sticky Navbar (Floating Glassmorphism) */
+      .nav-bar-wrapper {
+        position: sticky;
+        top: 12px;
+        margin: 0 16px 12px 16px;
+        z-index: 100;
+        background-color: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+        transition: all 0.3s ease;
+      }
 
-        .nav-bar {
-          padding: 0.75rem 1.75rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          max-width: 1200px;
-          margin: 0 auto;
-          box-sizing: border-box;
-        }
+      .nav-bar {
+        padding: 0.75rem 1.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
 
-        .brand-title a {
-          font-size: 1.4rem;
-          font-weight: 800;
-          color: var(--text-main);
-          display: inline-flex;
-          align-items: center;
-          gap: 0.25rem;
-          min-height: 44px;
-          box-sizing: border-box;
-        }
+      .brand-title a {
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--text-main);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        min-height: 44px;
+        box-sizing: border-box;
+      }
 
-        .nav-brand-tech {
-          color: var(--primary-color);
-        }
+      .nav-brand-tech {
+        color: var(--primary-color);
+      }
 
-        .nav-brand-signature {
-          font-size: 1.1rem;
-          color: var(--text-muted);
-          font-weight: 500;
-          margin-left: 0.25rem;
-        }
+      .nav-brand-signature {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-left: 0.25rem;
+      }
 
-        .nav-links {
-          display: flex;
-          gap: 0.4rem;
-          align-items: center;
-          overflow-x: auto;
-          scrollbar-width: none;
-        }
-        .nav-links::-webkit-scrollbar {
-          display: none;
-        }
+      .nav-links {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
 
+      .nav-hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        min-height: 44px;
+        min-width: 44px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+      }
+
+      .nav-hamburger:hover {
+        background-color: var(--primary-light);
+      }
+
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: var(--text-main);
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+        position: relative;
+      }
+
+      .nav-hamburger span::before,
+      .nav-hamburger span::after {
+        content: '';
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: var(--text-main);
+        border-radius: 2px;
+        position: absolute;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .nav-hamburger span::before { top: -7px; }
+      .nav-hamburger span::after  { top: 7px; }
+
+      @media(max-width: 768px) {
         .nav-hamburger {
+          display: inline-flex;
+        }
+        .nav-links {
           display: none;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.5rem;
-          min-height: 44px;
-          min-width: 44px;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          transition: background-color 0.2s;
-        }
-
-        .nav-hamburger:hover {
-          background-color: var(--primary-light);
-        }
-
-        .nav-hamburger span {
-          display: block;
-          width: 22px;
-          height: 2px;
-          background-color: var(--text-main);
-          border-radius: 2px;
-          transition: transform 0.3s, opacity 0.3s;
-          position: relative;
-        }
-
-        .nav-hamburger span::before,
-        .nav-hamburger span::after {
-          content: '';
-          display: block;
-          width: 22px;
-          height: 2px;
-          background-color: var(--text-main);
-          border-radius: 2px;
+          flex-direction: column;
+          gap: 0.5rem;
           position: absolute;
-          transition: transform 0.3s, opacity 0.3s;
-        }
-
-        .nav-hamburger span::before { top: -7px; }
-        .nav-hamburger span::after  { top: 7px; }
-
-        @media(max-width: 768px) {
-          .nav-hamburger {
-            display: inline-flex;
-          }
-          .nav-links {
-            display: none;
-            flex-direction: column;
-            gap: 0.5rem;
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 0;
-            right: 0;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 1rem;
-            z-index: 99;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-          }
-          .nav-links.is-open {
-            display: flex;
-          }
-          .nav-links a {
-            padding: 0.6rem 1.2rem;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 10px;
-            margin: 0;
-          }
-        }
-
-        /* Responsive tablet/small PC settings to prevent GNB wrapping */
-        @media(min-width: 769px) and (max-width: 1024px) {
-          .nav-links {
-            gap: 0.3rem !important;
-          }
-          .nav-links a {
-          color: #475569;
-          font-weight: 500;
-          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-          font-size: 0.88rem;
-          display: inline-flex;
-          align-items: center;
-          min-height: 36px;
-          padding: 0.4rem 0.65rem !important;
-          box-sizing: border-box;
-          border-radius: 20px;
-          margin: 0;
-          white-space: nowrap !important;
-          flex-shrink: 0 !important;
-          word-break: keep-all !important;
-        }
-        }
-
-        .nav-links a {
-          color: #475569;
-          font-weight: 500;
-          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-          font-size: 0.93rem;
-          display: inline-flex;
-          align-items: center;
-          min-height: 38px;
-          padding: 0.4rem 1.1rem;
-          box-sizing: border-box;
-          border-radius: 20px;
-          margin: 0 0.1rem;
-        }
-
-        .nav-links a:hover {
-          color: var(--primary-color);
-          background-color: rgba(59, 130, 246, 0.06);
-        }
-
-        .nav-links a.active {
-          color: var(--primary-color);
-          background-color: rgba(59, 130, 246, 0.1);
-          font-weight: 600;
-        }
-
-        /* Reading Progress Bar */
-        .reading-progress {
-          position: fixed;
-          top: 0;
+          top: calc(100% + 8px);
           left: 0;
-          width: 0%;
-          height: 3px;
-          background: linear-gradient(90deg, var(--primary-color), #60a5fa);
-          z-index: 200;
-          transition: width 0.1s linear;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(20px);
+          border: 1px solid var(--border-color);
+          border-radius: 14px;
+          padding: 1rem;
+          z-index: 99;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
         }
-
-        /* Scroll-to-Top FAB */
-        .scroll-top-btn {
-          position: fixed;
-          bottom: 2rem;
-          right: 2rem;
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          background-color: var(--primary-color);
-          color: #ffffff;
-          border: none;
-          cursor: pointer;
-          display: none;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.2rem;
-          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-          transition: background-color 0.2s, transform 0.2s, opacity 0.3s;
-          z-index: 150;
-          opacity: 0;
-        }
-
-        .scroll-top-btn.is-visible {
+        .nav-links.is-open {
           display: flex;
-          opacity: 1;
         }
-
-        .scroll-top-btn:hover {
-          background-color: var(--primary-dark);
-          transform: translateY(-3px);
+        .nav-links a {
+          padding: 0.6rem 1.2rem;
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 10px;
+          margin: 0;
         }
+      }
 
-        /* Homepage Hero Section */
+      /* Responsive tablet/small PC settings to prevent GNB wrapping */
+      @media(min-width: 769px) and (max-width: 1024px) {
+        .nav-links {
+          gap: 0.3rem !important;
+        }
+        .nav-links a {
+        color: #475569;
+        font-weight: 500;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.88rem;
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0.4rem 0.65rem !important;
+        box-sizing: border-box;
+        border-radius: 20px;
+        margin: 0;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        word-break: keep-all !important;
+      }
+      }
+
+      .nav-links a {
+        color: #475569;
+        font-weight: 500;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.93rem;
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0.4rem 1.1rem;
+        box-sizing: border-box;
+        border-radius: 20px;
+        margin: 0 0.1rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+        background-color: rgba(59, 130, 246, 0.06);
+      }
+
+      .nav-links a.active {
+        color: var(--primary-color);
+        background-color: rgba(59, 130, 246, 0.1);
+        font-weight: 600;
+      }
+
+      /* Reading Progress Bar */
+      .reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), #60a5fa);
+        z-index: 200;
+        transition: width 0.1s linear;
+      }
+
+      /* Scroll-to-Top FAB */
+      .scroll-top-btn {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+        transition: background-color 0.2s, transform 0.2s, opacity 0.3s;
+        z-index: 150;
+        opacity: 0;
+      }
+
+      .scroll-top-btn.is-visible {
+        display: flex;
+        opacity: 1;
+      }
+
+      .scroll-top-btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+      }
+
+      /* Homepage Hero Section */
+      .tech-hero {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+        max-width: 1200px;
+        margin: 2.5rem auto 3rem auto;
+        padding: 3rem 2.5rem;
+        background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(239, 246, 255, 0.75) 100%);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.06);
+        box-sizing: border-box;
+      }
+
+      @media(min-width: 992px) {
         .tech-hero {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 3rem;
-          align-items: center;
-          max-width: 1200px;
-          margin: 2.5rem auto 3rem auto;
-          padding: 3rem 2.5rem;
-          background: linear-gradient(135deg, rgba(248, 250, 252, 0.95) 0%, rgba(239, 246, 255, 0.75) 100%);
-          border: 1px solid rgba(226, 232, 240, 0.8);
-          border-radius: 20px;
-          box-shadow: 0 20px 40px -15px rgba(37, 99, 235, 0.06);
-          box-sizing: border-box;
+          grid-template-columns: 1.25fr 0.75fr;
         }
+      }
 
-        @media(min-width: 992px) {
-          .tech-hero {
-            grid-template-columns: 1.25fr 0.75fr;
-          }
-        }
+      .tech-hero-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        .tech-hero-copy {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
+      .tech-hero-kicker {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        background-color: var(--primary-light);
+        padding: 0.35rem 0.75rem;
+        border-radius: 9999px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+      }
 
-        .tech-hero-kicker {
-          font-size: 0.78rem;
-          font-weight: 700;
-          color: var(--primary-color);
-          background-color: var(--primary-light);
-          padding: 0.35rem 0.75rem;
-          border-radius: 9999px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: 1.5rem;
-        }
+      .tech-hero h1 {
+        font-size: 2.85rem;
+        font-weight: 800;
+        line-height: 1.25;
+        color: var(--text-main);
+        margin: 0 0 1.25rem 0;
+        letter-spacing: -0.02em;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
+      }
 
-        .tech-hero h1 {
-          font-size: 2.85rem;
-          font-weight: 800;
-          line-height: 1.25;
-          color: var(--text-main);
-          margin: 0 0 1.25rem 0;
-          letter-spacing: -0.02em;
-          word-break: keep-all !important;
-          overflow-wrap: break-word !important;
-        }
+      .tech-hero p {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        margin: 0 0 2rem 0;
+      }
 
-        .tech-hero p {
-          font-size: 1.15rem;
-          color: var(--text-muted);
-          margin: 0 0 2rem 0;
-        }
+      .tech-hero-actions {
+        display: flex;
+        gap: 1rem;
+      }
 
-        .tech-hero-actions {
-          display: flex;
-          gap: 1rem;
-        }
+      .tech-primary-button {
+        background-color: var(--primary-color);
+        color: #ffffff !important;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: background-color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        .tech-primary-button {
-          background-color: var(--primary-color);
-          color: #ffffff !important;
-          font-weight: 600;
-          padding: 0.75rem 1.5rem;
-          border-radius: 8px;
-          transition: background-color 0.2s;
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
+      .tech-primary-button:hover {
+        background-color: var(--primary-dark);
+      }
 
-        .tech-primary-button:hover {
-          background-color: var(--primary-dark);
-        }
+      .tech-secondary-button {
+        border: 1px solid var(--border-color);
+        background-color: #ffffff;
+        color: var(--text-main);
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: background-color 0.2s, border-color 0.2s;
+      }
 
-        .tech-secondary-button {
-          border: 1px solid var(--border-color);
-          background-color: #ffffff;
-          color: var(--text-main);
-          font-weight: 600;
-          padding: 0.75rem 1.5rem;
-          border-radius: 8px;
-          transition: background-color 0.2s, border-color 0.2s;
-        }
+      .tech-secondary-button:hover {
+        background-color: var(--bg-color);
+        border-color: #cbd5e1;
+      }
 
-        .tech-secondary-button:hover {
-          background-color: var(--bg-color);
-          border-color: #cbd5e1;
-        }
+      /* Visual Motion Graphics */
+      .tech-hero-visual {
+        position: relative;
+        height: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: visible;
+      }
 
-        /* Visual Motion Graphics */
-        .tech-hero-visual {
-          position: relative;
-          height: 320px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: visible;
-        }
+      /* Orbit circles */
+      .tech-orbit {
+        position: absolute;
+        border: 1px dashed #cbd5e1;
+        border-radius: 50%;
+        animation: spin linear infinite;
+      }
 
-        /* Orbit circles */
-        .tech-orbit {
-          position: absolute;
-          border: 1px dashed #cbd5e1;
-          border-radius: 50%;
-          animation: spin linear infinite;
-        }
+      .tech-orbit-one {
+        width: 240px;
+        height: 240px;
+        animation-duration: 20s;
+      }
 
-        .tech-orbit-one {
-          width: 240px;
-          height: 240px;
-          animation-duration: 20s;
-        }
+      .tech-orbit-two {
+        width: 160px;
+        height: 160px;
+        animation-duration: 12s;
+        animation-direction: reverse;
+      }
 
-        .tech-orbit-two {
-          width: 160px;
-          height: 160px;
-          animation-duration: 12s;
-          animation-direction: reverse;
-        }
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
 
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
+      /* Floating Code Layers */
+      .tech-code-layer {
+        position: absolute;
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 0.4rem 0.8rem;
+        font-family: monospace;
+        font-size: 0.85rem;
+        font-weight: 600;
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      }
 
-        /* Floating Code Layers */
-        .tech-code-layer {
-          position: absolute;
-          background-color: #ffffff;
-          border: 1px solid #e2e8f0;
-          border-radius: 6px;
-          padding: 0.4rem 0.8rem;
-          font-family: monospace;
-          font-size: 0.85rem;
-          font-weight: 600;
-          box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
+      .tech-code-layer-back {
+        top: 15%;
+        left: 5%;
+        color: #6366f1;
+      }
 
-        .tech-code-layer-back {
-          top: 15%;
-          left: 5%;
-          color: #6366f1;
-        }
+      .tech-code-layer-mid {
+        bottom: 20%;
+        right: 5%;
+        color: #ec4899;
+      }
 
-        .tech-code-layer-mid {
-          bottom: 20%;
-          right: 5%;
-          color: #ec4899;
-        }
+      .tech-code-layer-front {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        background-color: var(--primary-light);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+        z-index: 5;
+      }
 
-        .tech-code-layer-front {
-          font-size: 1.25rem;
-          color: var(--primary-color);
-          border: 2px solid var(--primary-color);
-          background-color: var(--primary-light);
-          border-radius: 50%;
-          width: 44px;
-          height: 44px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
-          z-index: 5;
-        }
+      /* Mini Terminal screen */
+      .tech-mini-code {
+        position: absolute;
+        bottom: 5%;
+        left: 10%;
+        background-color: var(--terminal-bg);
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.15);
+        font-family: monospace;
+        font-size: 0.82rem;
+        color: #38bdf8;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        width: 170px;
+      }
 
-        /* Mini Terminal screen */
-        .tech-mini-code {
-          position: absolute;
-          bottom: 5%;
-          left: 10%;
-          background-color: var(--terminal-bg);
-          border-radius: 8px;
-          padding: 0.6rem 1rem;
-          box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.15);
-          font-family: monospace;
-          font-size: 0.82rem;
-          color: #38bdf8;
-          display: flex;
-          flex-direction: column;
-          gap: 0.4rem;
-          width: 170px;
-        }
+      .tech-mini-code-header {
+        display: flex;
+        gap: 4px;
+      }
 
-        .tech-mini-code-header {
-          display: flex;
-          gap: 4px;
-        }
+      .tech-mini-code i {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
 
-        .tech-mini-code i {
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-        }
+      .tech-mini-code i:nth-child(1) { background-color: #ef4444; }
+      .tech-mini-code i:nth-child(2) { background-color: #eab308; }
+      .tech-mini-code i:nth-child(3) { background-color: #22c55e; }
 
-        .tech-mini-code i:nth-child(1) { background-color: #ef4444; }
-        .tech-mini-code i:nth-child(2) { background-color: #eab308; }
-        .tech-mini-code i:nth-child(3) { background-color: #22c55e; }
+      .tech-mini-code b {
+        color: #e2e8f0;
+        font-weight: 500;
+        margin-top: 2px;
+      }
 
-        .tech-mini-code b {
-          color: #e2e8f0;
-          font-weight: 500;
-          margin-top: 2px;
-        }
+      /* Category filter bar */
+      .tech-category-bar {
+        display: flex;
+        gap: 0.75rem;
+        max-width: 1200px;
+        margin: 1.5rem auto;
+        padding: 0 2rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        box-sizing: border-box;
+      }
 
-        /* Category filter bar */
-        .tech-category-bar {
-          display: flex;
-          gap: 0.75rem;
-          max-width: 1200px;
-          margin: 1.5rem auto;
-          padding: 0 2rem;
-          overflow-x: auto;
-          white-space: nowrap;
-          box-sizing: border-box;
-        }
+      .tech-category-bar a {
+        background-color: #ffffff;
+        border: 1px solid var(--border-color);
+        color: var(--text-main);
+        padding: 0 1.1rem;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        transition: all 0.2s;
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        box-sizing: border-box;
+      }
 
-        .tech-category-bar a {
-          background-color: #ffffff;
-          border: 1px solid var(--border-color);
-          color: var(--text-main);
-          padding: 0 1.1rem;
-          border-radius: 8px;
-          font-size: 0.88rem;
-          font-weight: 600;
-          transition: all 0.2s;
-          display: inline-flex;
-          align-items: center;
-          min-height: 44px;
-          box-sizing: border-box;
-        }
+      .tech-category-bar a:hover, .tech-category-bar a.active {
+        background-color: var(--primary-color);
+        color: #ffffff !important;
+        border-color: var(--primary-color);
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
+      }
 
-        .tech-category-bar a:hover, .tech-category-bar a.active {
-          background-color: var(--primary-color);
-          color: #ffffff !important;
-          border-color: var(--primary-color);
-          box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15);
-        }
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        box-sizing: border-box;
+      }
 
-        /* Main Container */
+      @media(min-width: 992px) {
         .container {
-          max-width: 1200px;
-          margin: 2rem auto;
-          padding: 0 2rem;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2.5rem;
-          box-sizing: border-box;
+          grid-template-columns: 2.8fr 1.2fr;
         }
+      }
 
-        @media(min-width: 992px) {
-          .container {
-            grid-template-columns: 2.8fr 1.2fr;
-          }
-        }
+      .container.is-single-column {
+        grid-template-columns: 1fr !important;
+        max-width: 1200px;
+      }
 
-        .container.is-single-column {
-          grid-template-columns: 1fr !important;
-          max-width: 1200px;
-        }
+      /* Recent Posts Title Section */
+      .tech-section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
 
-        /* Recent Posts Title Section */
-        .tech-section-heading {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          border-bottom: 2px solid var(--border-color);
-          padding-bottom: 1rem;
-          margin-bottom: 2rem;
-        }
+      .tech-section-heading-text span {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+      }
 
-        .tech-section-heading-text span {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--text-muted);
-          letter-spacing: 0.05em;
-        }
+      .tech-section-heading-text h2 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin: 0.25rem 0 0 0;
+        color: var(--text-main);
+      }
 
-        .tech-section-heading-text h2 {
-          font-size: 1.6rem;
-          font-weight: 800;
-          margin: 0.25rem 0 0 0;
-          color: var(--text-main);
-        }
+      .tech-section-heading a {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--primary-color);
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        box-sizing: border-box;
+      }
 
-        .tech-section-heading a {
-          font-size: 0.9rem;
-          font-weight: 600;
-          color: var(--primary-color);
-          display: inline-flex;
-          align-items: center;
-          min-height: 44px;
-          box-sizing: border-box;
-        }
+      /* Post Cards Grid */
+      .tech-featured-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: 550px;
+      }
 
-        /* Post Cards Grid */
-        .tech-featured-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          min-height: 550px;
-        }
+      /* Blog Pager / Numbered Pagination Styles */
+      .blog-pager {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 3.5rem auto 1.5rem auto;
+        padding: 0 1rem;
+        max-width: 800px;
+        clear: both;
+        box-sizing: border-box;
+      }
 
-        /* Blog Pager / Numbered Pagination Styles */
+      .blog-pager a, .blog-pager .page-current {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+
+      .blog-pager a.page-prev, .blog-pager a.page-next {
+        width: auto;
+        padding: 0 1.25rem;
+        border-radius: 30px;
+      }
+
+      .blog-pager a:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-color: var(--primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .blog-pager .page-current {
+        color: #ffffff;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        cursor: default;
+      }
+
+      /* Hide Blogger Default Navigation Elements to prevent duplicates */
+      .blog-pager-older-link, .blog-pager-newer-link, .home-link,
+      #blog-pager-older-link, #blog-pager-newer-link {
+        display: none !important;
+      }
+
+      /* Responsive Mobile Styles for Pagination */
+      @media (max-width: 480px) {
         .blog-pager {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
-          margin: 3.5rem auto 1.5rem auto;
-          padding: 0 1rem;
-          max-width: 800px;
-          clear: both;
-          box-sizing: border-box;
+          gap: 0.25rem !important;
+          margin: 2.5rem auto 1rem auto !important;
         }
-
         .blog-pager a, .blog-pager .page-current {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          font-size: 0.95rem;
-          font-weight: 600;
-          color: var(--text-muted);
-          background-color: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-radius: 50%;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-          transition: all 0.2s ease-in-out;
-          cursor: pointer;
-          text-decoration: none;
-          box-sizing: border-box;
+          width: 34px !important;
+          height: 34px !important;
+          font-size: 0.85rem !important;
         }
-
         .blog-pager a.page-prev, .blog-pager a.page-next {
-          width: auto;
-          padding: 0 1.25rem;
-          border-radius: 30px;
+          padding: 0 0.85rem !important;
+          border-radius: 20px !important;
         }
+      }
 
-        .blog-pager a:hover {
-          color: var(--primary-color);
-          border-color: var(--primary-color);
-          background-color: var(--primary-light);
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+      /* JS 카드 페이저가 실제로 만드는 button.page-btn 요소용 스타일.
+         위 .blog-pager a 규칙은 옛 a.page-current 마크업 전용이라 지금은 적용되지 않는다. */
+      .page-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 1rem;
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: all 0.2s ease;
+      }
+      .page-btn:hover:not(:disabled) {
+        background-color: var(--primary-light);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        transform: translateY(-1px);
+      }
+      .page-btn.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #ffffff;
+        font-weight: 700;
+        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+      }
+      .page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
 
-        .blog-pager .page-current {
-          color: #ffffff;
-          background-color: var(--primary-color);
-          border-color: var(--primary-color);
-          cursor: default;
+      @media(min-width: 640px) {
+        .tech-featured-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
+      }
 
-        /* Hide Blogger Default Navigation Elements to prevent duplicates */
-        .blog-pager-older-link, .blog-pager-newer-link, .home-link,
-        #blog-pager-older-link, #blog-pager-newer-link {
-          display: none !important;
-        }
+      .tech-post-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.75rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+        box-sizing: border-box;
+      }
 
-        /* Responsive Mobile Styles for Pagination */
-        @media (max-width: 480px) {
-          .blog-pager {
-            gap: 0.25rem !important;
-            margin: 2.5rem auto 1rem auto !important;
-          }
-          .blog-pager a, .blog-pager .page-current {
-            width: 34px !important;
-            height: 34px !important;
-            font-size: 0.85rem !important;
-          }
-          .blog-pager a.page-prev, .blog-pager a.page-next {
-            padding: 0 0.85rem !important;
-            border-radius: 20px !important;
-          }
-        }
+      .tech-post-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.1);
+        border-color: var(--primary-color);
+      }
 
-        /* JS 카드 페이저가 실제로 만드는 button.page-btn 요소용 스타일.
-           위 .blog-pager a 규칙은 옛 a.page-current 마크업 전용이라 지금은 적용되지 않는다. */
-        .page-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          min-width: 40px;
-          height: 40px;
-          padding: 0 1rem;
-          background-color: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-radius: 20px;
-          color: var(--text-muted);
-          font-weight: 600;
-          font-size: 0.9rem;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-          cursor: pointer;
-          box-sizing: border-box;
-          transition: all 0.2s ease;
-        }
-        .page-btn:hover:not(:disabled) {
-          background-color: var(--primary-light);
-          border-color: var(--primary-color);
-          color: var(--primary-color);
-          transform: translateY(-1px);
-        }
-        .page-btn.active {
-          background-color: var(--primary-color);
-          border-color: var(--primary-color);
-          color: #ffffff;
-          font-weight: 700;
-          box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
-        }
-        .page-btn:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
+      .tech-post-category {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        background-color: var(--primary-light);
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        display: inline-block;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        width: fit-content;
+      }
 
-        @media(min-width: 640px) {
-          .tech-featured-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
+      .tech-post-card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin: 0 0 1.25rem 0;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
 
-        .tech-post-card {
-          background: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-radius: 12px;
-          padding: 1.75rem;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.01);
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-          box-sizing: border-box;
-        }
+      .devlog-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+      }
 
-        .tech-post-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 16px 32px -8px rgba(37, 99, 235, 0.1);
-          border-color: var(--primary-color);
-        }
+      .tech-tag {
+        background-color: var(--bg-color);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+        font-size: 0.72rem;
+        font-weight: 500;
+        padding: 0 0.65rem;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+      }
 
-        .tech-post-category {
-          font-size: 0.75rem;
-          font-weight: 700;
-          color: var(--primary-color);
-          background-color: var(--primary-light);
-          padding: 0.25rem 0.6rem;
-          border-radius: 4px;
-          display: inline-block;
-          margin-bottom: 1rem;
-          text-transform: uppercase;
-          width: fit-content;
-        }
+      .tech-tag:hover {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
 
-        .tech-post-card p {
-          color: var(--text-muted);
-          font-size: 0.95rem;
-          margin: 0 0 1.25rem 0;
-          line-height: 1.5;
-          flex-grow: 1;
-        }
+      .tech-tag-more-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 0.65rem;
+        min-height: 30px;
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        cursor: pointer;
+        box-sizing: border-box;
+        transition: background-color 0.2s, border-color 0.2s;
+      }
+      .tech-tag-more-btn:hover {
+        background-color: var(--primary-light);
+        border-color: var(--primary-color);
+      }
 
-        .devlog-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.4rem;
-          margin-bottom: 1.25rem;
-        }
+      /* 카테고리 전체보기 모달 (position:fixed 등 오버레이 자체는 showCategoriesModal()에서
+         인라인 style로 직접 지정하므로 여기서는 카드 내부(.modal-box 이하)만 스타일링한다) */
+      .modal-box {
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        max-width: 650px;
+        width: 100%;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--border-color);
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .modal-header h3 {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--text-main);
+        margin: 0;
+      }
+      .modal-close-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--text-muted);
+        padding: 0.2rem 0.5rem;
+      }
+      .modal-body {
+        padding: 1.5rem;
+        overflow-y: auto;
+      }
+      .devlog-tags-popup {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
 
-        .tech-tag {
-          background-color: var(--bg-color);
-          color: var(--text-muted);
-          border: 1px solid var(--border-color);
-          font-size: 0.72rem;
-          font-weight: 500;
-          padding: 0 0.65rem;
-          border-radius: 4px;
-          display: inline-flex;
-          align-items: center;
-          min-height: 30px;
-          box-sizing: border-box;
-          border: 1px solid transparent;
-          transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        }
+      .tech-post-meta {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border-color);
+        padding-top: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
 
-        .tech-tag:hover {
-          background-color: var(--primary-light);
-          color: var(--primary-color);
-          border-color: var(--primary-color);
-        }
+      /* Single Post Detail Page */
+      .post-detail {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2.5rem 3rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+        box-sizing: border-box;
+      }
 
-        .tech-tag-more-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0 0.65rem;
-          min-height: 30px;
-          background-color: var(--bg-color);
-          border: 1px solid var(--border-color);
-          border-radius: 4px;
-          font-size: 0.72rem;
-          font-weight: 700;
-          color: var(--primary-color);
-          cursor: pointer;
-          box-sizing: border-box;
-          transition: background-color 0.2s, border-color 0.2s;
-        }
-        .tech-tag-more-btn:hover {
-          background-color: var(--primary-light);
-          border-color: var(--primary-color);
-        }
+      .post-body {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--text-main);
+      }
 
-        /* 카테고리 전체보기 모달 (position:fixed 등 오버레이 자체는 showCategoriesModal()에서
-           인라인 style로 직접 지정하므로 여기서는 카드 내부(.modal-box 이하)만 스타일링한다) */
-        .modal-box {
-          background-color: var(--card-bg);
-          border-radius: 20px;
-          max-width: 650px;
-          width: 100%;
-          max-height: 80vh;
-          display: flex;
-          flex-direction: column;
-          box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-          border: 1px solid var(--border-color);
-          overflow: hidden;
-          box-sizing: border-box;
-        }
-        .modal-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1.25rem 1.5rem;
-          border-bottom: 1px solid var(--border-color);
-        }
-        .modal-header h3 {
-          font-size: 1.15rem;
-          font-weight: 700;
-          color: var(--text-main);
-          margin: 0;
-        }
-        .modal-close-btn {
-          background: none;
-          border: none;
-          font-size: 1.5rem;
-          line-height: 1;
-          cursor: pointer;
-          color: var(--text-muted);
-          padding: 0.2rem 0.5rem;
-        }
-        .modal-body {
-          padding: 1.5rem;
-          overflow-y: auto;
-        }
-        .devlog-tags-popup {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
+      .back-button:hover {
+        color: var(--primary-color) !important;
+      }
 
-        .tech-post-meta {
-          font-size: 0.82rem;
-          color: var(--text-muted);
-          border-top: 1px solid var(--border-color);
-          padding-top: 0.9rem;
-          display: flex;
-          align-items: center;
-          gap: 0.25rem;
-        }
+      .post-header {
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1.5rem;
+      }
 
-        /* Single Post Detail Page */
-        .post-detail {
-          background: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-radius: 12px;
-          padding: 2.5rem 3rem;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.01);
-          box-sizing: border-box;
-        }
+      .post-title {
+        font-size: 2.35rem;
+        font-weight: 800;
+        color: var(--text-main);
+        margin: 0 0 1rem 0;
+        line-height: 1.25;
+      }
 
-        .post-body {
-          font-size: 1.05rem;
-          line-height: 1.8;
-          color: var(--text-main);
-        }
+      .post-meta {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
 
-        .back-button:hover {
-          color: var(--primary-color) !important;
-        }
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
 
-        .post-header {
-          margin-bottom: 2rem;
-          border-bottom: 1px solid var(--border-color);
-          padding-bottom: 1.5rem;
+      @media(min-width: 992px) {
+        .container {
+          align-items: stretch !important;
         }
-
-        .post-title {
-          font-size: 2.35rem;
-          font-weight: 800;
-          color: var(--text-main);
-          margin: 0 0 1rem 0;
-          line-height: 1.25;
-        }
-
-        .post-meta {
-          color: var(--text-muted);
-          font-size: 0.9rem;
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-        }
-
-        /* Sidebar */
         .sidebar {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
         }
-
-        @media(min-width: 992px) {
-          .container {
-            align-items: stretch !important;
-          }
-          .sidebar {
-            height: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-          }
-          #sidebar-section {
-            height: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-            flex: 1 !important;
-          }
-          #Label1 {
-            display: block !important;
-            height: auto !important;
-          }
-          #Label1 .widget-box {
-            display: block !important;
-            height: auto !important;
-          }
+        #sidebar-section {
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          flex: 1 !important;
         }
-
-        .widget-box {
-          background: var(--card-bg);
-          border: 1px solid var(--border-color);
-          border-radius: 12px;
-          padding: 1.5rem;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.01);
-          box-sizing: border-box;
+        #Label1 {
+          display: block !important;
+          height: auto !important;
         }
-
-        .widget-title {
-          font-size: 1.15rem;
-          font-weight: 700;
-          margin: 0 0 1.2rem 0;
-          color: var(--text-main);
-          border-bottom: 2px solid var(--border-color);
-          padding-bottom: 0.5rem;
+        #Label1 .widget-box {
+          display: block !important;
+          height: auto !important;
         }
+      }
 
-        .widget-content {
-          color: var(--text-muted);
-          line-height: 1.7;
-        }
+      .widget-box {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+        box-sizing: border-box;
+      }
 
-        .widget-more-link {
-          display: inline-flex;
-          align-items: center;
-          min-height: 44px;
-          margin-top: 0.75rem;
-          color: var(--primary-color);
-          font-size: 0.9rem;
-          font-weight: 700;
-        }
+      .widget-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 0 0 1.2rem 0;
+        color: var(--text-main);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+      }
 
-        .popular-posts-list {
-          display: flex;
-          flex-direction: column;
-          gap: 0.85rem;
-        }
+      .widget-content {
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
 
-        .popular-post-item {
-          border-bottom: 1px solid var(--border-color);
-          padding-bottom: 0.65rem;
-        }
+      .widget-more-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        margin-top: 0.75rem;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
 
-        .popular-post-item:last-child {
-          border-bottom: none;
-          padding-bottom: 0;
-        }
+      .popular-posts-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
 
-        .popular-post-item a {
-          color: #334155;
-          font-size: 0.92rem;
-          font-weight: 600;
-          line-height: 1.4;
-          transition: color 0.2s;
-        }
+      .popular-post-item {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.65rem;
+      }
 
-        .popular-post-item a:hover {
-          color: var(--primary-color);
-        }
+      .popular-post-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
 
-        .widget-content {
-          font-size: 0.95rem;
-          color: var(--text-muted);
-          line-height: 1.6;
-        }
+      .popular-post-item a {
+        color: #334155;
+        font-size: 0.92rem;
+        font-weight: 600;
+        line-height: 1.4;
+        transition: color 0.2s;
+      }
 
-        /* Gadgets List and Tree Formatting */
-        .widget-content ul {
-          list-style: none;
-          padding-left: 0;
-          margin: 0;
-        }
+      .popular-post-item a:hover {
+        color: var(--primary-color);
+      }
 
-        .widget-content li {
-          padding: 0.4rem 0;
-          border-bottom: 1px dashed var(--border-color);
-          font-size: 0.9rem;
-          color: #475569;
-        }
+      .widget-content {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
 
-        .widget-content li:last-child {
-          border-bottom: none;
-        }
+      /* Gadgets List and Tree Formatting */
+      .widget-content ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+      }
 
-        .widget-content a {
-          color: #334155;
-          font-weight: 500;
-          text-decoration: none;
-          transition: color 0.2s;
-        }
+      .widget-content li {
+        padding: 0.4rem 0;
+        border-bottom: 1px dashed var(--border-color);
+        font-size: 0.9rem;
+        color: #475569;
+      }
 
-        .widget-content a:hover {
-          color: var(--primary-color);
-        }
+      .widget-content li:last-child {
+        border-bottom: none;
+      }
 
-        /* Site Footer */
-        .site-footer {
-          background-color: #ffffff;
-          border-top: 1px solid var(--border-color);
-          margin-top: 4rem;
-          padding: 3rem 2rem 2rem 2rem;
-          color: var(--text-muted);
-          font-size: 0.9rem;
-        }
+      .widget-content a {
+        color: #334155;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
 
+      .widget-content a:hover {
+        color: var(--primary-color);
+      }
+
+      /* Site Footer */
+      .site-footer {
+        background-color: #ffffff;
+        border-top: 1px solid var(--border-color);
+        margin-top: 4rem;
+        padding: 3rem 2rem 2rem 2rem;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      @media(min-width: 768px) {
         .footer-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
         }
+      }
 
-        @media(min-width: 768px) {
-          .footer-inner {
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-          }
-        }
+      .footer-brand {
+        font-weight: 700;
+        color: var(--text-main);
+        font-size: 1.1rem;
+      }
 
-        .footer-brand {
-          font-weight: 700;
-          color: var(--text-main);
-          font-size: 1.1rem;
-        }
+      .footer-links {
+        display: flex;
+        gap: 1.5rem;
+      }
 
-        .footer-links {
-          display: flex;
-          gap: 1.5rem;
-        }
+      .footer-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
 
-        .footer-links a {
-          color: var(--text-muted);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
+      .footer-links a:hover {
+        color: var(--primary-color);
+      }
 
-        .footer-links a:hover {
-          color: var(--primary-color);
-        }
+      /* BlogSearch Widget */
+      .BlogSearch .search-input input {
+        width: 100%;
+        padding: 0.6rem 0.85rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+      }
 
-        /* BlogSearch Widget */
-        .BlogSearch .search-input input {
-          width: 100%;
-          padding: 0.6rem 0.85rem;
-          border: 1px solid var(--border-color);
-          border-radius: 8px;
-          font-size: 0.9rem;
-          outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s;
-          box-sizing: border-box;
-        }
+      .BlogSearch .search-input input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--primary-light);
+      }
 
-        .BlogSearch .search-input input:focus {
-          border-color: var(--primary-color);
-          box-shadow: 0 0 0 3px var(--primary-light);
-        }
+      .BlogSearch .search-action {
+        margin-top: 0.6rem;
+        background-color: var(--primary-color);
+        color: #ffffff;
+        border: none;
+        padding: 0.55rem 1.25rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        width: 100%;
+      }
 
-        .BlogSearch .search-action {
-          margin-top: 0.6rem;
-          background-color: var(--primary-color);
-          color: #ffffff;
-          border: none;
-          padding: 0.55rem 1.25rem;
-          border-radius: 8px;
-          font-weight: 600;
-          font-size: 0.88rem;
-          cursor: pointer;
-          transition: background-color 0.2s;
-          width: 100%;
-        }
+      .BlogSearch .search-action:hover {
+        background-color: #1d4ed8;
+      }
 
-        .BlogSearch .search-action:hover {
-          background-color: #1d4ed8;
-        }
+      /* BlogArchive Widget Folder Tree */
+      .BlogArchive .hierarchy {
+        list-style: none;
+        padding-left: 0.5rem;
+      }
 
-        /* BlogArchive Widget Folder Tree */
-        .BlogArchive .hierarchy {
-          list-style: none;
-          padding-left: 0.5rem;
-        }
+      .BlogArchive .hierarchy-title {
+        font-weight: 600;
+        padding: 0.3rem 0;
+      }
 
-        .BlogArchive .hierarchy-title {
-          font-weight: 600;
-          padding: 0.3rem 0;
-        }
+      .BlogArchive .post-count {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.82rem;
+        margin-left: 0.25rem;
+      }
 
-        .BlogArchive .post-count {
-          color: var(--primary-color);
-          font-weight: 600;
-          font-size: 0.82rem;
-          margin-left: 0.25rem;
-        }
-
-        /* GNB Search Bar Styling */
+      /* GNB Search Bar Styling */
+      .gnb-center-search {
+        flex-grow: 1;
+        max-width: 400px;
+        margin: 0 2rem;
+      }
+      .gnb-search-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+      .gnb-search-input-wrapper input {
+        width: 100%;
+        padding: 0.55rem 2.5rem 0.55rem 1rem;
+        background-color: var(--bg-color);
+        border: 1px solid var(--border-color);
+        border-radius: 9999px;
+        font-size: 0.88rem;
+        color: var(--text-main);
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        box-sizing: border-box;
+      }
+      .gnb-search-input-wrapper input:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--primary-light);
+        background-color: var(--card-bg);
+      }
+      .gnb-search-btn {
+        position: absolute;
+        right: 0.4rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.4rem;
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+        min-width: 32px;
+        border-radius: 50%;
+      }
+      .gnb-search-btn:hover {
+        color: var(--primary-color);
+        background-color: var(--primary-light);
+      }
+      @media (max-width: 768px) {
         .gnb-center-search {
-          flex-grow: 1;
-          max-width: 400px;
-          margin: 0 2rem;
+          display: none; /* Hide GNB search in mobile, keeping it clean */
         }
-        .gnb-search-input-wrapper {
-          position: relative;
-          display: flex;
-          align-items: center;
-          width: 100%;
-        }
-        .gnb-search-input-wrapper input {
-          width: 100%;
-          padding: 0.55rem 2.5rem 0.55rem 1rem;
-          background-color: var(--bg-color);
-          border: 1px solid var(--border-color);
-          border-radius: 9999px;
-          font-size: 0.88rem;
-          color: var(--text-main);
-          outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s;
-          box-sizing: border-box;
-        }
-        .gnb-search-input-wrapper input:focus {
-          border-color: var(--primary-color);
-          box-shadow: 0 0 0 3px var(--primary-light);
-          background-color: var(--card-bg);
-        }
-        .gnb-search-btn {
-          position: absolute;
-          right: 0.4rem;
-          background: none;
-          border: none;
-          cursor: pointer;
-          padding: 0.4rem;
-          font-size: 0.95rem;
-          color: var(--text-muted);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 32px;
-          min-width: 32px;
-          border-radius: 50%;
-        }
-        .gnb-search-btn:hover {
-          color: var(--primary-color);
-          background-color: var(--primary-light);
-        }
-        @media (max-width: 768px) {
-          .gnb-center-search {
-            display: none; /* Hide GNB search in mobile, keeping it clean */
-          }
-        }
+      }
 
-        /* Footer Grid and Widgets */
-        .site-footer {
-          background: var(--card-bg);
-          border-top: 1px solid var(--border-color);
-          margin-top: 5rem;
-          box-sizing: border-box;
-        }
-        .footer-widgets-grid {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 3rem 2.5rem;
-          border-bottom: 1px solid var(--border-color);
-          box-sizing: border-box;
-        }
+      /* Footer Grid and Widgets */
+      .site-footer {
+        background: var(--card-bg);
+        border-top: 1px solid var(--border-color);
+        margin-top: 5rem;
+        box-sizing: border-box;
+      }
+      .footer-widgets-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2.5rem;
+        border-bottom: 1px solid var(--border-color);
+        box-sizing: border-box;
+      }
+      .footer-widgets-grid #footer-widgets-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      @media (min-width: 768px) {
         .footer-widgets-grid #footer-widgets-section {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2.5rem;
+          grid-template-columns: repeat(2, 1fr);
         }
-        @media (min-width: 768px) {
-          .footer-widgets-grid #footer-widgets-section {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        .footer-widgets-grid .widget-box {
-          background: transparent;
-          border: none;
-          box-shadow: none;
-          padding: 0;
-        }
-        .footer-widgets-grid .widget-title {
-          font-size: 1.1rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
-          color: var(--text-main);
-          border-bottom: 1px solid var(--border-color);
-          padding-bottom: 0.5rem;
-        }
-        .footer-bottom {
-          padding: 2rem 2.5rem;
-          box-sizing: border-box;
-        }
-        .footer-copyright {
-          font-size: 0.88rem;
-          color: var(--text-muted);
-        }
-      ]]></b:skin>
+      }
+      .footer-widgets-grid .widget-box {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+      .footer-widgets-grid .widget-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-main);
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 0.5rem;
+      }
+      .footer-bottom {
+        padding: 2rem 2.5rem;
+        box-sizing: border-box;
+      }
+      .footer-copyright {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+      }
+    ]]></b:skin>
 
-      <b:template-skin>
-        <![CDATA[
-        body#layout .nav-bar-wrapper,
-        body#layout .tech-hero {
-          display: none;
-        }
-        body#layout .container {
-          display: block;
-        }
-        ]]>
-      </b:template-skin>
+    <b:template-skin>
+      <![CDATA[
+      body#layout .nav-bar-wrapper,
+      body#layout .tech-hero {
+        display: none;
+      }
+      body#layout .container {
+        display: block;
+      }
+      ]]>
+    </b:template-skin>
 
-      <b:defaultmarkups>
-        <b:defaultmarkup type='Blog'>
-          <b:includable id='feedLinks'><!-- Hide default feed links --></b:includable>
-          <b:includable id='previousPageLink'><!-- Controlled by custom JS pager --></b:includable>
-          <b:includable id='homePageLink'><!-- Controlled by custom JS pager --></b:includable>
-          <b:includable id='nextPageLink'>
-            <a class='blog-pager-older-link flat-button' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts'>
-              <data:messages.morePosts/>
-            </a>
-          </b:includable>
-        </b:defaultmarkup>
-      </b:defaultmarkups>
-    </head>
-    <body>
-      <!-- Navigation -->
-      <div class='nav-bar-wrapper'>
-        <nav class='nav-bar'>
-          <div class='brand-title'>
-            <a class='nav-brand' expr:href='data:blog.homepageUrl'>
-              <span class='nav-brand-tech'>TECH</span> LOG <span class='nav-brand-signature'>&amp;lt;BEJI/&amp;gt;</span>
-            </a>
-          </div>
-          <div class='gnb-center-search'>
-            <b:section id='gnb-search-section' showaddelement='true' maxwidgets='1'>
-              <b:widget id='BlogSearch1' locked='false' title='이 블로그 검색' type='BlogSearch' visible='true'>
-                <b:includable id='main'>
-                  <b:include name='content'/>
-                </b:includable>
-                <b:includable id='content'>
-                  <div class='gnb-search-box' role='search'>
-                    <b:include name='searchForm'/>
+    <b:defaultmarkups>
+      <b:defaultmarkup type='Blog'>
+        <b:includable id='feedLinks'><!-- Hide default feed links --></b:includable>
+        <b:includable id='previousPageLink'><!-- Controlled by custom JS pager --></b:includable>
+        <b:includable id='homePageLink'><!-- Controlled by custom JS pager --></b:includable>
+        <b:includable id='nextPageLink'>
+          <a class='blog-pager-older-link flat-button' expr:href='data:olderPageUrl' expr:title='data:messages.morePosts'>
+            <data:messages.morePosts/>
+          </a>
+        </b:includable>
+      </b:defaultmarkup>
+    </b:defaultmarkups>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class='nav-bar-wrapper'>
+      <nav class='nav-bar'>
+        <div class='brand-title'>
+          <a class='nav-brand' expr:href='data:blog.homepageUrl'>
+            <span class='nav-brand-tech'>TECH</span> LOG <span class='nav-brand-signature'>&amp;lt;BEJI/&amp;gt;</span>
+          </a>
+        </div>
+        <div class='gnb-center-search'>
+          <b:section id='gnb-search-section' showaddelement='true' maxwidgets='1'>
+            <b:widget id='BlogSearch1' locked='false' title='이 블로그 검색' type='BlogSearch' visible='true'>
+              <b:includable id='main'>
+                <b:include name='content'/>
+              </b:includable>
+              <b:includable id='content'>
+                <div class='gnb-search-box' role='search'>
+                  <b:include name='searchForm'/>
+                </div>
+              </b:includable>
+              <b:includable id='searchForm'>
+                <form expr:action='data:blog.searchUrl'>
+                  <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
+                  <b:include name='urlParamsAsFormInput'/>
+                  <div class='gnb-search-input-wrapper'>
+                    <input autocomplete='off' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
+                    <button type='submit' class='gnb-search-btn' aria-label='검색'>🔍</button>
                   </div>
-                </b:includable>
-                <b:includable id='searchForm'>
-                  <form expr:action='data:blog.searchUrl'>
-                    <b:attr cond='not data:view.isPreview' name='target' value='_top'/>
-                    <b:include name='urlParamsAsFormInput'/>
-                    <div class='gnb-search-input-wrapper'>
-                      <input autocomplete='off' expr:aria-label='data:messages.searchThisBlog' expr:placeholder='data:messages.searchThisBlog' expr:value='data:view.isSearch ? data:view.search.query.escaped : &quot;&quot;' name='q'/>
-                      <button type='submit' class='gnb-search-btn' aria-label='검색'>🔍</button>
-                    </div>
-                  </form>
-                </b:includable>
-              </b:widget>
-            </b:section>
-          </div>
-          <button class='nav-hamburger' id='nav-hamburger' aria-label='메뉴 열기' aria-expanded='false'>
-            <span></span>
-          </button>
-          <div class='nav-links' id='nav-links'>
-            <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
-            <a expr:class='data:view.search.label == "Basics" or data:view.search.label == "기초" ? "active" : ""' href='/search/label/Basics'>Basics</a>
-            <a expr:class='data:view.search.label == "Advanced" or data:view.search.label == "응용" ? "active" : ""' href='/search/label/Advanced'>Advanced</a>
-            <a expr:class='data:view.search.label == "ETC" ? "active" : ""' href='/search/label/ETC'>ETC</a>
-            <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
-          </div>
-        </nav>
-      </div>
+                </form>
+              </b:includable>
+            </b:widget>
+          </b:section>
+        </div>
+        <button class='nav-hamburger' id='nav-hamburger' aria-label='메뉴 열기' aria-expanded='false'>
+          <span></span>
+        </button>
+        <div class='nav-links' id='nav-links'>
+          <a expr:class='data:view.isHomepage ? "active" : ""' expr:href='data:blog.homepageUrl'>Home</a>
+          <a expr:class='data:view.search.label == "Basics" or data:view.search.label == "기초" ? "active" : ""' href='/search/label/Basics'>Basics</a>
+          <a expr:class='data:view.search.label == "Advanced" or data:view.search.label == "응용" ? "active" : ""' href='/search/label/Advanced'>Advanced</a>
+          <a expr:class='data:view.search.label == "ETC" ? "active" : ""' href='/search/label/ETC'>ETC</a>
+          <a expr:class='data:view.isPage ? "active" : ""' href='/p/about.html'>About</a>
+        </div>
+      </nav>
+    </div>
 
-      <!-- Homepage Hero Section -->
-      <b:if cond='data:view.isHomepage'>
-        <section class='tech-hero'>
-          <div class='tech-hero-copy'>
-            <span class='tech-hero-kicker'>DEVELOPER NOTES</span>
-            <h1>개발 지식과 경험을<br/>기록합니다</h1>
-            <p>Java, Spring Boot, 아키텍처와 DevOps까지.<br/>실무에서 배운 문제 해결 과정과 기술적 인사이트를 공유합니다.</p>
-          </div>
-          <div aria-hidden='true' class='tech-hero-visual'>
-            <div class='tech-orbit tech-orbit-one'/>
-            <div class='tech-orbit tech-orbit-two'/>
-            <div class='tech-code-layer tech-code-layer-back'><span>DATA</span></div>
-            <div class='tech-code-layer tech-code-layer-mid'><span>API</span></div>
-            <div class='tech-code-layer tech-code-layer-front'><strong>&amp;lt;/&amp;gt;</strong></div>
-            <div class='tech-mini-code'>
-              <div class='tech-mini-code-header'>
-                <i/>
-                <i/>
-                <i/>
-              </div>
-              <b>spring.boot.run()</b>
+    <!-- Homepage Hero Section -->
+    <b:if cond='data:view.isHomepage'>
+      <section class='tech-hero'>
+        <div class='tech-hero-copy'>
+          <span class='tech-hero-kicker'>DEVELOPER NOTES</span>
+          <h1>개발 지식과 경험을<br/>기록합니다</h1>
+          <p>Java, Spring Boot, 아키텍처와 DevOps까지.<br/>실무에서 배운 문제 해결 과정과 기술적 인사이트를 공유합니다.</p>
+        </div>
+        <div aria-hidden='true' class='tech-hero-visual'>
+          <div class='tech-orbit tech-orbit-one'/>
+          <div class='tech-orbit tech-orbit-two'/>
+          <div class='tech-code-layer tech-code-layer-back'><span>DATA</span></div>
+          <div class='tech-code-layer tech-code-layer-mid'><span>API</span></div>
+          <div class='tech-code-layer tech-code-layer-front'><strong>&amp;lt;/&amp;gt;</strong></div>
+          <div class='tech-mini-code'>
+            <div class='tech-mini-code-header'>
+              <i/>
+              <i/>
+              <i/>
             </div>
+            <b>spring.boot.run()</b>
           </div>
-        </section>
-      </b:if>
+        </div>
+      </section>
+    </b:if>
 
-      <!-- Main Container (centered single column on post/page view) -->
-      <div expr:class='data:view.isSingleItem ? &quot;container is-single-column&quot; : &quot;container&quot;'>
-        <!-- Post Body / Content -->
-        <b:section id='main-section' showaddelement='false'>
-          <b:widget id='Blog1' locked='true' title='블로그 게시물' type='Blog' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-              <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='showShareButtons'>true</b:widget-setting>
-              <b:widget-setting name='showCommentLink'>true</b:widget-setting>
-              <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='showAuthor'>false</b:widget-setting>
-              <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
-              <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='timestampLabel'/>
-              <b:widget-setting name='reactionsLabel'/>
-              <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-              <b:widget-setting name='style.layout'>1x1</b:widget-setting>
-              <b:widget-setting name='showLabels'>true</b:widget-setting>
-              <b:widget-setting name='showLocation'>true</b:widget-setting>
-              <b:widget-setting name='postLabelsLabel'/>
-              <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-              <b:widget-setting name='postsPerPage'>4</b:widget-setting>
-              <b:widget-setting name='postsPerAd'>1</b:widget-setting>
-              <b:widget-setting name='showBacklinks'>false</b:widget-setting>
-              <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
-              <b:widget-setting name='showInlineAds'>false</b:widget-setting>
-              <b:widget-setting name='showReactions'>false</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main' var='top'>
-              <b:if cond='data:view.isMultipleItems'>
-                <!-- Post Cards List (Home/Index/Archive) -->
-                <div class='tech-posts-section'>
-                  <div class='tech-section-heading'>
-                    <div class='tech-section-heading-text'>
-                      <b:if cond='data:view.search.label'>
-                        <span>CATEGORY</span>
-                        <h2><data:view.search.label/>에 등록된 기록</h2>
-                      <b:elseif cond='data:view.isHomepage'/>
-                        <span>RECENT POSTS</span>
-                        <h2>최근 등록된 기록</h2>
-                      <b:else/>
-                        <span>ALL POSTS</span>
-                        <h2>모든 기록 검색</h2>
-                      </b:if>
-                    </div>
-                    <!-- 홈페이지이거나, search 경로 하위(라벨 검색 결과 포함) 일 때 전체 글보기 버튼 단 하나만 상시 노출 -->
+    <!-- Main Container (centered single column on post/page view) -->
+    <div expr:class='data:view.isSingleItem ? &quot;container is-single-column&quot; : &quot;container&quot;'>
+      <!-- Post Body / Content -->
+      <b:section id='main-section' showaddelement='false'>
+        <b:widget id='Blog1' locked='true' title='블로그 게시물' type='Blog' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>true</b:widget-setting>
+            <b:widget-setting name='showCommentLink'>true</b:widget-setting>
+            <b:widget-setting name='style.urlcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showAuthor'>false</b:widget-setting>
+            <b:widget-setting name='style.linkcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='style.unittype'>TextAndImage</b:widget-setting>
+            <b:widget-setting name='style.bgcolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='timestampLabel'/>
+            <b:widget-setting name='reactionsLabel'/>
+            <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+            <b:widget-setting name='style.layout'>1x1</b:widget-setting>
+            <b:widget-setting name='showLabels'>true</b:widget-setting>
+            <b:widget-setting name='showLocation'>true</b:widget-setting>
+            <b:widget-setting name='postLabelsLabel'/>
+            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+            <b:widget-setting name='postsPerPage'>4</b:widget-setting>
+            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+            <b:widget-setting name='showBacklinks'>false</b:widget-setting>
+            <b:widget-setting name='style.bordercolor'>#ffffff</b:widget-setting>
+            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main' var='top'>
+            <b:if cond='data:view.isMultipleItems'>
+              <!-- Post Cards List (Home/Index/Archive) -->
+              <div class='tech-posts-section'>
+                <div class='tech-section-heading'>
+                  <div class='tech-section-heading-text'>
                     <b:if cond='data:view.search.label'>
-                      <a class='tech-primary-button' href='/search?max-results=4'>전체 글 보기 &#8594;</a>
+                      <span>CATEGORY</span>
+                      <h2><data:view.search.label/>에 등록된 기록</h2>
+                    <b:elseif cond='data:view.isHomepage'/>
+                      <span>RECENT POSTS</span>
+                      <h2>최근 등록된 기록</h2>
+                    <b:else/>
+                      <span>ALL POSTS</span>
+                      <h2>모든 기록 검색</h2>
                     </b:if>
                   </div>
-
-                  <div class='tech-featured-grid'>
-                    <b:loop index='i' values='data:posts' var='post'>
-                    <b:if cond='data:i &lt; 4'>
-                      <article class='post-card tech-post-card'>
-                          <div class='post-card-body tech-post-body'>
-                            <span class='post-category-badge tech-post-category'>
-                              <b:if cond='data:post.labels'>
-                                <b:loop index='idx' values='data:post.labels' var='label'>
-                                  <b:if cond='data:idx == 0'>
-                                    <data:label.name/>
-                                  </b:if>
-                                </b:loop>
-                              <b:else/>
-                                DEVLOG
-                              </b:if>
-                            </span>
-                            <h2 class='post-card-title'>
-                              <a expr:href='data:post.url'><data:post.title/></a>
-                            </h2>
-                            <!-- Clickable Tags (최대 4개, JS buildPostCardHtml()의 slice(0,4)와 동일한 개수로 맞춤) -->
-                            <b:if cond='data:post.labels'>
-                              <div class='devlog-tags post-tags'>
-                                <b:loop index='li' values='data:post.labels' var='label'>
-                                  <b:if cond='data:li &lt; 4'>
-                                    <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
-                                  </b:if>
-                                </b:loop>
-                              </div>
-                            </b:if>
-                          </div>
-
-                          <div class='post-card-meta tech-post-meta'>
-                            <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
-                              <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
-                              <line x1='16' x2='16' y1='2' y2='6'/>
-                              <line x1='8' x2='8' y1='2' y2='6'/>
-                              <line x1='3' x2='21' y1='10' y2='10'/>
-                            </svg>
-                            <span><data:post.date/></span>
-                          </div>
-                        </article>
-                    </b:if>
-                    </b:loop>
-                  </div>
-                  <b:if cond='not data:view.isHomepage or data:posts.length &gt; 4'>
-                    <b:include name='nextprev'/>
+                  <!-- 홈페이지이거나, search 경로 하위(라벨 검색 결과 포함) 일 때 전체 글보기 버튼 단 하나만 상시 노출 -->
+                  <b:if cond='data:view.search.label'>
+                    <a class='tech-primary-button' href='/search?max-results=4'>전체 글 보기 &#8594;</a>
                   </b:if>
                 </div>
-              <b:else/>
-                <!-- Single Item View (Post or Page) -->
-                <b:loop values='data:posts' var='post'>
-                  <b:if cond='data:view.isPost'>
-                    <!-- Single Post Detail Page -->
-                    <article class='post-detail'>
-                      <header class='post-header'>
-                        <h1 class='post-title'><data:post.title/></h1>
-                        <div class='post-meta'>
+
+                <div class='tech-featured-grid'>
+                  <b:loop index='i' values='data:posts' var='post'>
+                  <b:if cond='data:i &lt; 4'>
+                    <article class='post-card tech-post-card'>
+                        <div class='post-card-body tech-post-body'>
+                          <span class='post-category-badge tech-post-category'>
+                            <b:if cond='data:post.labels'>
+                              <b:loop index='idx' values='data:post.labels' var='label'>
+                                <b:if cond='data:idx == 0'>
+                                  <data:label.name/>
+                                </b:if>
+                              </b:loop>
+                            <b:else/>
+                              DEVLOG
+                            </b:if>
+                          </span>
+                          <h2 class='post-card-title'>
+                            <a expr:href='data:post.url'><data:post.title/></a>
+                          </h2>
+                          <!-- Clickable Tags (최대 4개, JS buildPostCardHtml()의 slice(0,4)와 동일한 개수로 맞춤) -->
+                          <b:if cond='data:post.labels'>
+                            <div class='devlog-tags post-tags'>
+                              <b:loop index='li' values='data:post.labels' var='label'>
+                                <b:if cond='data:li &lt; 4'>
+                                  <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
+                                </b:if>
+                              </b:loop>
+                            </div>
+                          </b:if>
+                        </div>
+
+                        <div class='post-card-meta tech-post-meta'>
                           <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
                             <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
                             <line x1='16' x2='16' y1='2' y2='6'/>
@@ -1487,1016 +1462,1041 @@
                             <line x1='3' x2='21' y1='10' y2='10'/>
                           </svg>
                           <span><data:post.date/></span>
-                          <b:if cond='data:post.author'>
-                            <span> by <data:post.author.name/></span>
-                          </b:if>
                         </div>
-                      </header>
-                      <div class='post-body'>
-                        <!-- This outputs our pre-styled post HTML from converter.py -->
-                        <data:post.body/>
-                      </div>
-                      <!-- Clickable tags list at the bottom of the article -->
-                      <b:if cond='data:post.labels'>
-                        <div class='devlog-tags' style='margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;'>
-                          <b:loop values='data:post.labels' var='label'>
-                            <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
-                          </b:loop>
-                        </div>
-                      </b:if>
-
-                      <!-- Comments Section -->
-                      <hr class='comment-separator' style='border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;'/>
-                      <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
-                    </article>
-                  <b:else/>
-                    <!-- Static Page View (e.g. About, Contact) -->
-                    <article class='post-detail'>
-                      <header class='post-header' style='margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;'>
-                        <h1 class='post-title' style='margin-bottom: 0;'><data:post.title/></h1>
-                      </header>
-                      <div class='post-body'>
-                        <data:post.body/>
-                      </div>
-                    </article>
+                      </article>
                   </b:if>
-                </b:loop>
-              </b:if>
-            </b:includable>
-            <b:includable id='aboutPostAuthor'>
-    <div class='author-name'>
-      <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
-        <span>
-          <data:post.author.name/>
-        </span>
-      </a>
-    </div>
-    <div>
-      <span class='author-desc'>
-        <data:post.author.aboutMe/>
-      </span>
-    </div>
-  </b:includable>
-            <b:includable id='addComments'>
-    <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
-      <b:message name='messages.postAComment'/>
-    </a>
-  </b:includable>
-            <b:includable id='commentAuthorAvatar'>
-    <div class='avatar-image-container'>
-      <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
-    </div>
-  </b:includable>
-            <b:includable id='commentDeleteIcon' var='comment'>
-    <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
-      <b:if cond='data:showCmtPopup'>
-        <div class='goog-toggle-button'>
-          <div class='goog-inline-block comment-action-icon'/>
-        </div>
-      <b:else/>
-        <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
-          <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
-        </a>
-      </b:if>
-    </span>
-  </b:includable>
-            <b:includable id='commentForm' var='post'>
-    <div class='comment-form'>
-      <a name='comment-form'/>
-      <h4 id='comment-post-message'><data:messages.postAComment/></h4>
-      <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
-        <p><data:this.messages.blogComment/></p>
-      </b:if>
-      <b:include data='post' name='commentFormIframeSrc'/>
-      <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
-      <data:post.cmtfpIframe/>
-      <script type='text/javascript'>
-        BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
-      </script>
-    </div>
-  </b:includable>
-            <b:includable id='commentFormIframeSrc' var='post'>
-    <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
-  </b:includable>
-            <b:includable id='commentItem' var='comment'>
-    <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
-      <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
-
-      <div class='comment-block'>
-        <div class='comment-author'>
-          <b:if cond='data:comment.authorUrl'>
-            <b:message name='messages.authorSaidWithLink'>
-              <b:param expr:value='data:comment.author' name='authorName'/>
-              <b:param expr:value='data:comment.authorUrl' name='authorUrl'/>
-            </b:message>
-          <b:else/>
-            <b:message name='messages.authorSaid'>
-              <b:param expr:value='data:comment.author' name='authorName'/>
-            </b:message>
-          </b:if>
-        </div>
-        <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
-          <data:comment.body/>
-        </div>
-        <div class='comment-footer'>
-          <span class='comment-timestamp'>
-            <a expr:href='data:comment.url' title='comment permalink'>
-              <data:comment.timestamp/>
-            </a>
-            <b:include data='comment' name='commentDeleteIcon'/>
-          </span>
-        </div>
-      </div>
-    </div>
-  </b:includable>
-            <b:includable id='commentList' var='comments'>
-    <div id='comments-block'>
-      <b:loop values='data:comments' var='comment'>
-        <b:include data='comment' name='commentItem'/>
-      </b:loop>
-    </div>
-  </b:includable>
-            <b:includable id='commentPicker' var='post'>
-    <b:if cond='data:post.showThreadedComments'>
-      <b:include data='post' name='threadedComments'/>
-    <b:else/>
-      <b:include data='post' name='comments'/>
-    </b:if>
-  </b:includable>
-            <b:includable id='comments' var='post'>
-    <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
-      <a name='comments'/>
-      <b:if cond='data:post.allowComments'>
-
-        <b:include name='commentsTitle'/>
-
-        <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
-          <b:include cond='data:post.comments' data='post.comments' name='commentList'/>
-        </div>
-
-        <b:if cond='data:post.commentPagingRequired'>
-          <div class='paging-control-container'>
-            <b:if cond='data:post.hasOlderLinks'>
-              <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
-                <data:messages.oldest/>
-              </a>
-              <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
-                <data:messages.older/>
-              </a>
-            </b:if>
-
-            <span class='comment-range-text'>
-              <data:post.commentRangeText/>
-            </span>
-
-            <b:if cond='data:post.hasNewerLinks'>
-              <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
-                <data:messages.newer/>
-              </a>
-              <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
-                <data:messages.newest/>
-              </a>
-            </b:if>
-          </div>
-        </b:if>
-
-        <div class='footer'>
-          <b:if cond='data:post.embedCommentForm'>
-            <b:if cond='data:post.allowNewComments'>
-              <b:include data='post' name='commentForm'/>
+                  </b:loop>
+                </div>
+                <b:if cond='not data:view.isHomepage or data:posts.length &gt; 4'>
+                  <b:include name='nextprev'/>
+                </b:if>
+              </div>
             <b:else/>
-              <data:post.noNewCommentsText/>
+              <!-- Single Item View (Post or Page) -->
+              <b:loop values='data:posts' var='post'>
+                <b:if cond='data:view.isPost'>
+                  <!-- Single Post Detail Page -->
+                  <article class='post-detail'>
+                    <header class='post-header'>
+                      <h1 class='post-title'><data:post.title/></h1>
+                      <div class='post-meta'>
+                        <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
+                          <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
+                          <line x1='16' x2='16' y1='2' y2='6'/>
+                          <line x1='8' x2='8' y1='2' y2='6'/>
+                          <line x1='3' x2='21' y1='10' y2='10'/>
+                        </svg>
+                        <span><data:post.date/></span>
+                        <b:if cond='data:post.author'>
+                          <span> by <data:post.author.name/></span>
+                        </b:if>
+                      </div>
+                    </header>
+                    <div class='post-body'>
+                      <!-- This outputs our pre-styled post HTML from converter.py -->
+                      <data:post.body/>
+                    </div>
+                    <!-- Clickable tags list at the bottom of the article -->
+                    <b:if cond='data:post.labels'>
+                      <div class='devlog-tags' style='margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;'>
+                        <b:loop values='data:post.labels' var='label'>
+                          <a class='tech-tag' expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
+                        </b:loop>
+                      </div>
+                    </b:if>
+
+                    <!-- Comments Section -->
+                    <hr class='comment-separator' style='border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0;'/>
+                    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
+                  </article>
+                <b:else/>
+                  <!-- Static Page View (e.g. About, Contact) -->
+                  <article class='post-detail'>
+                    <header class='post-header' style='margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;'>
+                      <h1 class='post-title' style='margin-bottom: 0;'><data:post.title/></h1>
+                    </header>
+                    <div class='post-body'>
+                      <data:post.body/>
+                    </div>
+                  </article>
+                </b:if>
+              </b:loop>
             </b:if>
-          <b:else/>
-            <b:if cond='data:post.allowComments'>
-              <b:include data='post' name='addComments'/>
-            </b:if>
-          </b:if>
-        </div>
-      </b:if>
-      <b:if cond='data:showCmtPopup'>
-        <div id='comment-popup'>
-          <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
-          </iframe>
-        </div>
-      </b:if>
-    </section>
-  </b:includable>
-            <b:includable id='commentsTitle'>
-    <h3 class='title'><data:messages.comments/></h3>
-  </b:includable>
-            <b:includable id='feedLinks'>
-    <b:if cond='!data:view.isPost'> <!-- Blog feed links -->
-      <b:if cond='data:feedLinks'>
-        <div class='blog-feeds'>
-          <b:include data='feedLinks' name='feedLinksBody'/>
-        </div>
-      </b:if>
-    <b:else/> <!--Post feed links -->
-      <div class='post-feeds'>
-        <b:loop values='data:posts' var='post'>
-          <b:if cond='data:post.allowComments and data:post.feedLinks'>
-            <b:include data='post.feedLinks' name='feedLinksBody'/>
-          </b:if>
-        </b:loop>
-      </div>
-    </b:if>
-  </b:includable>
-            <b:includable id='feedLinksBody' var='links'>
-    <div class='feed-links'>
-    <data:messages.subscribeTo/>
-    <b:loop values='data:links' var='f'>
-       <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
-    </b:loop>
-    </div>
-  </b:includable>
-            <b:includable id='homePageLink'>
-    <a class='home-link' expr:href='data:blog.homepageUrl'>
-      <data:messages.home/>
-    </a>
-  </b:includable>
-            <b:includable id='iframeComments' var='post'>
-    <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
-  </b:includable>
-            <b:includable id='inlineAd' var='post'>
-    <b:if cond='!data:view.isPreview'>
-      <b:if cond='data:this.adCode or data:this.adClientId or data:blog.adsenseClientId'>
-        <!-- Ad -->
-        <div class='inline-ad'>
-          <b:if cond='data:this.adCode != &quot;&quot;'>
-            <data:this.adCode/>
-          <b:else/>
-            <b:include cond='data:this.adClientId or data:blog.adsenseClientId' name='defaultAdUnit'/>
-          </b:if>
-        </div>
-      </b:if>
-    <b:else/>
-      <div class='inline-ad'>
-        <div class='inline-ad-placeholder'>
-          <span><b:message name='messages.adsGoHere'/></span>
-        </div>
-      </div>
-    </b:if>
-  </b:includable>
-            <b:includable id='nextPageLink'>
-    <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
-      <data:messages.olderPosts/> &#8594;
-    </a>
-  </b:includable>
-            <b:includable id='post' var='post'>
-    <div class='post'>
-      <b:include data='post' name='postMeta'/>
-      <b:include data='post' name='postTitle'/>
-      <b:include name='headerByline'/>
-      <b:if cond='data:view.isSingleItem'>
-        <b:include data='post' name='postBody'/>
-      <b:else/>
-        <b:include data='post' name='postBodySnippet'/>
-        <b:include data='post' name='postJumpLink'/>
-      </b:if>
-      <b:include data='post' name='postFooter'/>
-    </div>
-  </b:includable>
-            <b:includable id='postBody' var='post'>
-    <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
-    <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
-      <data:post.body/>
-    </div>
-  </b:includable>
-            <b:includable id='postBodySnippet' var='post'>
-    <b:include data='post' name='postBody'/>
-  </b:includable>
-            <b:includable id='postCommentsAndAd' var='post'>
-    <article class='post-outer-container'>
-      <!-- Post title and body -->
-      <div class='post-outer'>
-        <b:include data='post' name='post'/>
-      </div>
-
-      <!-- Comments -->
-      <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
-
-      <!-- Show ad inside post container, after comments, if single item. -->
-      <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
-    </article>
-
-    <!-- Show ad outside post container (between posts) for feed pages. -->
-    <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
-  </b:includable>
-            <b:includable id='postCommentsLink'>
-    <b:if cond='data:view.isMultipleItems'>
-      <span class='byline post-comment-link container'>
-        <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+          </b:includable>
+          <b:includable id='aboutPostAuthor'>
+  <div class='author-name'>
+    <a class='g-profile' expr:href='data:post.author.profileUrl' rel='author' title='author profile'>
+      <span>
+        <data:post.author.name/>
       </span>
+    </a>
+  </div>
+  <div>
+    <span class='author-desc'>
+      <data:post.author.aboutMe/>
+    </span>
+  </div>
+</b:includable>
+          <b:includable id='addComments'>
+  <a expr:href='data:post.commentsUrl' expr:onclick='data:post.commentsUrlOnclick'>
+    <b:message name='messages.postAComment'/>
+  </a>
+</b:includable>
+          <b:includable id='commentAuthorAvatar'>
+  <div class='avatar-image-container'>
+    <img class='author-avatar' expr:src='data:comment.authorAvatarSrc' height='35' width='35'/>
+  </div>
+</b:includable>
+          <b:includable id='commentDeleteIcon' var='comment'>
+  <span expr:class='&quot;item-control &quot; + data:comment.adminClass'>
+    <b:if cond='data:showCmtPopup'>
+      <div class='goog-toggle-button'>
+        <div class='goog-inline-block comment-action-icon'/>
+      </div>
+    <b:else/>
+      <a class='comment-delete' expr:href='data:comment.deleteUrl' expr:title='data:messages.deleteComment'>
+        <img src='https://resources.blogblog.com/img/icon_delete13.gif'/>
+      </a>
     </b:if>
-  </b:includable>
-            <b:includable id='postFooter' var='post'>
-    <div class='post-footer'>
-      <b:include name='footerBylines'/>
-      <b:include data='post' name='postFooterAuthorProfile'/>
-    </div>
-  </b:includable>
-            <b:includable id='postFooterAuthorProfile' var='post'>
-    <b:if cond='data:post.author.aboutMe and data:view.isPost'>
-      <div class='author-profile'>
-        <b:if cond='data:post.author.authorPhoto.url'>
-          <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
-          <div class='author-about'>
-            <b:include data='post' name='aboutPostAuthor'/>
-          </div>
+  </span>
+</b:includable>
+          <b:includable id='commentForm' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+    <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+      <p><data:this.messages.blogComment/></p>
+    </b:if>
+    <b:include data='post' name='commentFormIframeSrc'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+          <b:includable id='commentFormIframeSrc' var='post'>
+  <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+</b:includable>
+          <b:includable id='commentItem' var='comment'>
+  <div class='comment' expr:id='&quot;c&quot; + data:comment.id'>
+    <b:include cond='data:blog.enabledCommentProfileImages' name='commentAuthorAvatar'/>
+
+    <div class='comment-block'>
+      <div class='comment-author'>
+        <b:if cond='data:comment.authorUrl'>
+          <b:message name='messages.authorSaidWithLink'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+            <b:param expr:value='data:comment.authorUrl' name='authorUrl'/>
+          </b:message>
         <b:else/>
-          <b:include data='post' name='aboutPostAuthor'/>
+          <b:message name='messages.authorSaid'>
+            <b:param expr:value='data:comment.author' name='authorName'/>
+          </b:message>
         </b:if>
       </div>
-    </b:if>
-  </b:includable>
-            <b:includable id='postHeader' var='post'>
-    <b:include name='headerByline'/>
-  </b:includable>
-            <b:includable id='postMeta' var='post'>
-    <b:include data='post' name='postMetadataJSON'/>
-  </b:includable>
-            <b:includable id='nextprev'>
-    <div class='blog-pager' id='blog-pager'>
-      <b:if cond='data:newerPageUrl'>
-        <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
-          &#8592; <data:messages.newerPosts/>
-        </a>
-      </b:if>
-      <b:if cond='data:view.url != data:blog.homepageUrl'>
-        <a class='home-link' expr:href='data:blog.homepageUrl'>
-          <data:messages.home/>
-        </a>
-      </b:if>
-      <b:if cond='data:olderPageUrl'>
-        <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
-          <data:messages.olderPosts/> &#8594;
-        </a>
-      </b:if>
+      <div expr:class='&quot;comment-body&quot; + (data:comment.isDeleted ? &quot; deleted&quot; : &quot;&quot;)'>
+        <data:comment.body/>
+      </div>
+      <div class='comment-footer'>
+        <span class='comment-timestamp'>
+          <a expr:href='data:comment.url' title='comment permalink'>
+            <data:comment.timestamp/>
+          </a>
+          <b:include data='comment' name='commentDeleteIcon'/>
+        </span>
+      </div>
     </div>
-    <div class='clear'/>
-  </b:includable>
-            <b:includable id='postPagination'>
-    <div class='blog-pager' id='blog-pager'>
-      <b:include cond='data:newerPageUrl' name='previousPageLink'/>
-      <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
-      <b:include cond='data:olderPageUrl' name='nextPageLink'/>
-    </div>
-  </b:includable>
-            <b:includable id='postTitle' var='post'>
-    <a expr:name='data:post.id'/>
-    <b:if cond='data:post.title != &quot;&quot;'>
-      <h3 class='post-title entry-title'>
-        <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
-          <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
-        <b:else/>
-          <data:post.title/>
-        </b:if>
-      </h3>
-    </b:if>
-  </b:includable>
-            <b:includable id='previousPageLink'>
-    <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
-      &#8592; <data:messages.newerPosts/>
-    </a>
-  </b:includable>
-            <b:includable id='threadedCommentForm' var='post'>
-    <div class='comment-form'>
-      <a name='comment-form'/>
-      <h4 id='comment-post-message'><data:messages.postAComment/></h4>
-      <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
-        <p><data:this.messages.blogComment/></p>
-      </b:if>
-      <b:include data='post' name='commentFormIframeSrc'/>
-      <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
-      <data:post.cmtfpIframe/>
-      <script type='text/javascript'>
-        BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
-      </script>
-    </div>
-  </b:includable>
-            <b:includable id='threadedCommentJs' var='post'>
-    <script async='async' expr:src='data:post.commentSrc' type='text/javascript'></script>
-    <b:template-script inline='true' name='threaded_comments'/>
-    <script type='text/javascript'>
-      blogger.widgets.blog.initThreadedComments(
-          <data:post.commentJso/>,
-          <data:post.commentMsgs/>,
-          <data:post.commentConfig/>);
-    </script>
-  </b:includable>
-            <b:includable id='threadedComments' var='post'>
-    <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
-      <a name='comments'/>
+  </div>
+</b:includable>
+          <b:includable id='commentList' var='comments'>
+  <div id='comments-block'>
+    <b:loop values='data:comments' var='comment'>
+      <b:include data='comment' name='commentItem'/>
+    </b:loop>
+  </div>
+</b:includable>
+          <b:includable id='commentPicker' var='post'>
+  <b:if cond='data:post.showThreadedComments'>
+    <b:include data='post' name='threadedComments'/>
+  <b:else/>
+    <b:include data='post' name='comments'/>
+  </b:if>
+</b:includable>
+          <b:includable id='comments' var='post'>
+  <section expr:class='&quot;comments&quot; + (data:post.embedCommentForm ? &quot; embed&quot; : &quot;&quot;)' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+    <a name='comments'/>
+    <b:if cond='data:post.allowComments'>
 
       <b:include name='commentsTitle'/>
 
-      <div class='comments-content'>
-        <b:if cond='data:post.embedCommentForm'>
-          <b:include data='post' name='threadedCommentJs'/>
-        </b:if>
-        <div id='comment-holder'>
-           <data:post.commentHtml/>
-        </div>
+      <div expr:id='data:widget.instanceId + &quot;_comments-block-wrapper&quot;'>
+        <b:include cond='data:post.comments' data='post.comments' name='commentList'/>
       </div>
 
-      <p class='comment-footer'>
-        <b:if cond='data:post.allowNewComments'>
-          <b:include data='post' name='threadedCommentForm'/>
-        <b:else/>
-          <data:post.noNewCommentsText/>
-        </b:if>
-        <b:if cond='data:post.showManageComments'>
-          <b:include data='post' name='manageComments'/>
-        </b:if>
-      </p>
+      <b:if cond='data:post.commentPagingRequired'>
+        <div class='paging-control-container'>
+          <b:if cond='data:post.hasOlderLinks'>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.oldestLinkUrl'>
+              <data:messages.oldest/>
+            </a>
+            <a expr:class='data:post.oldLinkClass' expr:href='data:post.olderLinkUrl'>
+              <data:messages.older/>
+            </a>
+          </b:if>
 
-      <b:if cond='data:showCmtPopup'>
-        <div id='comment-popup'>
-          <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
-          </iframe>
+          <span class='comment-range-text'>
+            <data:post.commentRangeText/>
+          </span>
+
+          <b:if cond='data:post.hasNewerLinks'>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newerLinkUrl'>
+              <data:messages.newer/>
+            </a>
+            <a expr:class='data:post.newLinkClass' expr:href='data:post.newestLinkUrl'>
+              <data:messages.newest/>
+            </a>
+          </b:if>
         </div>
       </b:if>
-    </section>
-  </b:includable>
-            <b:includable id='tooltipCss'>
-    <!-- LINT.IfChange -->
-    <style>
-      .post-body a.b-tooltip-container {
-        position: relative;
-        display: inline-block;
-      }
 
-      .post-body a.b-tooltip-container .b-tooltip {
-        display: block !important;
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translate(-20%, 1px);
-        visibility: hidden;
-        opacity: 0;
-        z-index: 1;
-        transition: opacity 0.2s ease-in-out;
-      }
-
-      .post-body a.b-tooltip-container .b-tooltip iframe {
-        width: 200px;
-        height: 198px;
-        max-width: none;
-        border: none;
-        border-radius: 20px;
-        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
-      }
-
-      @media (hover: hover) {
-        .post-body a.b-tooltip-container:hover .b-tooltip {
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    </style>
-    <!-- LINT.ThenChange(//depot/google3/java/com/google/blogger/b2/layouts/widgets/v2-style.css) -->
-  </b:includable>
-          </b:widget>
-        </b:section>
-
-        <!-- Sidebar Widgets (Hidden on single item post/page views) -->
-        <b:if cond='!data:view.isSingleItem'>
-          <aside class='sidebar'>
-            <!-- About 요약은 Blogger 레이아웃의 HTML 가젯에서 수정합니다. -->
-            <b:section id='about-summary-section' showaddelement='true'>
-              <b:widget id='HTML1' locked='false' title='About' type='HTML' visible='true'>
-                <b:widget-settings>
-                  <b:widget-setting name='content'><![CDATA[About 페이지에 블로그의 방향과 운영 원칙을 요약해서 작성해 주세요.]]></b:widget-setting>
-                </b:widget-settings>
-                <b:includable id='main'>
-                  <div class='widget-box'>
-                    <b:if cond='data:title != &quot;&quot;'>
-                      <h3 class='widget-title'><data:title/></h3>
-                    </b:if>
-                    <div class='widget-content'><data:content/></div>
-                    <a class='widget-more-link' href='/p/about.html'>About 페이지 읽기 &#8594;</a>
-                  </div>
-                </b:includable>
-              </b:widget>
-            </b:section>
-
-            <b:section id='sidebar-section' showaddelement='true'>
-              <!-- 1. 카테고리 (Label1) -->
-              <b:widget id='Label1' locked='false' title='카테고리' type='Label' visible='true'>
-                <b:widget-settings>
-                  <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-                  <b:widget-setting name='display'>LIST</b:widget-setting>
-                  <b:widget-setting name='selectedLabelsList'/>
-                  <b:widget-setting name='showType'>ALL</b:widget-setting>
-                  <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
-                </b:widget-settings>
-                <b:includable id='main' var='this'>
-                  <div class='widget-box'>
-                    <b:if cond='data:title != ""'>
-                      <h3 class='widget-title'><data:title/></h3>
-                    </b:if>
-                    <div class='widget-content'>
-                      <ul>
-                        <b:loop values='data:labels' var='label'>
-                          <li>
-                            <a expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
-                            <b:if cond='data:this.showFreqNumbers'>
-                              <span class='label-count'>(<data:label.count/>)</span>
-                            </b:if>
-                          </li>
-                        </b:loop>
-                      </ul>
-                    </div>
-                  </div>
-                </b:includable>
-              </b:widget>
-            </b:section>
-          </aside>
+      <div class='footer'>
+        <b:if cond='data:post.embedCommentForm'>
+          <b:if cond='data:post.allowNewComments'>
+            <b:include data='post' name='commentForm'/>
+          <b:else/>
+            <data:post.noNewCommentsText/>
+          </b:if>
+        <b:else/>
+          <b:if cond='data:post.allowComments'>
+            <b:include data='post' name='addComments'/>
+          </b:if>
         </b:if>
-      </div> <!-- Closing container div -->
+      </div>
+    </b:if>
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+  </section>
+</b:includable>
+          <b:includable id='commentsTitle'>
+  <h3 class='title'><data:messages.comments/></h3>
+</b:includable>
+          <b:includable id='feedLinks'>
+  <b:if cond='!data:view.isPost'> <!-- Blog feed links -->
+    <b:if cond='data:feedLinks'>
+      <div class='blog-feeds'>
+        <b:include data='feedLinks' name='feedLinksBody'/>
+      </div>
+    </b:if>
+  <b:else/> <!--Post feed links -->
+    <div class='post-feeds'>
+      <b:loop values='data:posts' var='post'>
+        <b:if cond='data:post.allowComments and data:post.feedLinks'>
+          <b:include data='post.feedLinks' name='feedLinksBody'/>
+        </b:if>
+      </b:loop>
+    </div>
+  </b:if>
+</b:includable>
+          <b:includable id='feedLinksBody' var='links'>
+  <div class='feed-links'>
+  <data:messages.subscribeTo/>
+  <b:loop values='data:links' var='f'>
+     <a class='feed-link' expr:href='data:f.url' expr:type='data:f.mimeType' target='_blank'><data:f.name/> (<data:f.feedType/>)</a>
+  </b:loop>
+  </div>
+</b:includable>
+          <b:includable id='homePageLink'>
+  <a class='home-link' expr:href='data:blog.homepageUrl'>
+    <data:messages.home/>
+  </a>
+</b:includable>
+          <b:includable id='iframeComments' var='post'>
+  <!-- G+ comments, no longer available. The includable is retained for backwards-compatibility. -->
+</b:includable>
+          <b:includable id='inlineAd' var='post'>
+  <b:if cond='!data:view.isPreview'>
+    <b:if cond='data:this.adCode or data:this.adClientId or data:blog.adsenseClientId'>
+      <!-- Ad -->
+      <div class='inline-ad'>
+        <b:if cond='data:this.adCode != &quot;&quot;'>
+          <data:this.adCode/>
+        <b:else/>
+          <b:include cond='data:this.adClientId or data:blog.adsenseClientId' name='defaultAdUnit'/>
+        </b:if>
+      </div>
+    </b:if>
+  <b:else/>
+    <div class='inline-ad'>
+      <div class='inline-ad-placeholder'>
+        <span><b:message name='messages.adsGoHere'/></span>
+      </div>
+    </div>
+  </b:if>
+</b:includable>
+          <b:includable id='nextPageLink'>
+  <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+    <data:messages.olderPosts/> &#8594;
+  </a>
+</b:includable>
+          <b:includable id='post' var='post'>
+  <div class='post'>
+    <b:include data='post' name='postMeta'/>
+    <b:include data='post' name='postTitle'/>
+    <b:include name='headerByline'/>
+    <b:if cond='data:view.isSingleItem'>
+      <b:include data='post' name='postBody'/>
+    <b:else/>
+      <b:include data='post' name='postBodySnippet'/>
+      <b:include data='post' name='postJumpLink'/>
+    </b:if>
+    <b:include data='post' name='postFooter'/>
+  </div>
+</b:includable>
+          <b:includable id='postBody' var='post'>
+  <!-- If metaDescription is empty, use the post body as the schema.org description too, for G+/FB snippeting. -->
+  <div class='post-body entry-content float-container' expr:id='&quot;post-body-&quot; + data:post.id'>
+    <data:post.body/>
+  </div>
+</b:includable>
+          <b:includable id='postBodySnippet' var='post'>
+  <b:include data='post' name='postBody'/>
+</b:includable>
+          <b:includable id='postCommentsAndAd' var='post'>
+  <article class='post-outer-container'>
+    <!-- Post title and body -->
+    <div class='post-outer'>
+      <b:include data='post' name='post'/>
+    </div>
 
-      <!-- Footer Section -->
-      <footer class='site-footer'>
-        <div class='footer-widgets-grid'>
-          <b:section id='footer-widgets-section' showaddelement='true'>
-            <!-- 1. 최근 읽은내역 (BlogArchive1) -->
-            <b:widget id='BlogArchive1' locked='false' title='최근 읽은내역' type='BlogArchive' visible='true'>
+    <!-- Comments -->
+    <b:include cond='data:view.isSingleItem' data='post' name='commentPicker'/>
+
+    <!-- Show ad inside post container, after comments, if single item. -->
+    <b:include cond='data:view.isSingleItem and data:post.includeAd' data='post' name='inlineAd'/>
+  </article>
+
+  <!-- Show ad outside post container (between posts) for feed pages. -->
+  <b:include cond='data:view.isMultipleItems and data:post.includeAd' data='post' name='inlineAd'/>
+</b:includable>
+          <b:includable id='postCommentsLink'>
+  <b:if cond='data:view.isMultipleItems'>
+    <span class='byline post-comment-link container'>
+      <b:include cond='data:post.commentSource != 1' name='commentsLink'/>
+    </span>
+  </b:if>
+</b:includable>
+          <b:includable id='postFooter' var='post'>
+  <div class='post-footer'>
+    <b:include name='footerBylines'/>
+    <b:include data='post' name='postFooterAuthorProfile'/>
+  </div>
+</b:includable>
+          <b:includable id='postFooterAuthorProfile' var='post'>
+  <b:if cond='data:post.author.aboutMe and data:view.isPost'>
+    <div class='author-profile'>
+      <b:if cond='data:post.author.authorPhoto.url'>
+        <img class='author-image' expr:src='data:post.author.authorPhoto.url' width='50px'/>
+        <div class='author-about'>
+          <b:include data='post' name='aboutPostAuthor'/>
+        </div>
+      <b:else/>
+        <b:include data='post' name='aboutPostAuthor'/>
+      </b:if>
+    </div>
+  </b:if>
+</b:includable>
+          <b:includable id='postHeader' var='post'>
+  <b:include name='headerByline'/>
+</b:includable>
+          <b:includable id='postMeta' var='post'>
+  <b:include data='post' name='postMetadataJSON'/>
+</b:includable>
+          <b:includable id='nextprev'>
+  <div class='blog-pager' id='blog-pager'>
+    <b:if cond='data:newerPageUrl'>
+      <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+        &#8592; <data:messages.newerPosts/>
+      </a>
+    </b:if>
+    <b:if cond='data:view.url != data:blog.homepageUrl'>
+      <a class='home-link' expr:href='data:blog.homepageUrl'>
+        <data:messages.home/>
+      </a>
+    </b:if>
+    <b:if cond='data:olderPageUrl'>
+      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:messages.olderPosts'>
+        <data:messages.olderPosts/> &#8594;
+      </a>
+    </b:if>
+  </div>
+  <div class='clear'/>
+</b:includable>
+          <b:includable id='postPagination'>
+  <div class='blog-pager' id='blog-pager'>
+    <b:include cond='data:newerPageUrl' name='previousPageLink'/>
+    <b:include cond='data:view.url != data:blog.homepageUrl' name='homePageLink'/>
+    <b:include cond='data:olderPageUrl' name='nextPageLink'/>
+  </div>
+</b:includable>
+          <b:includable id='postTitle' var='post'>
+  <a expr:name='data:post.id'/>
+  <b:if cond='data:post.title != &quot;&quot;'>
+    <h3 class='post-title entry-title'>
+      <b:if cond='data:post.link or (data:post.url and data:view.url != data:post.url)'>
+        <a expr:href='data:post.link ?: data:post.url'><data:post.title/></a>
+      <b:else/>
+        <data:post.title/>
+      </b:if>
+    </h3>
+  </b:if>
+</b:includable>
+          <b:includable id='previousPageLink'>
+  <a class='blog-pager-newer-link' expr:href='data:newerPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-newer-link&quot;' expr:title='data:messages.newerPosts'>
+    &#8592; <data:messages.newerPosts/>
+  </a>
+</b:includable>
+          <b:includable id='threadedCommentForm' var='post'>
+  <div class='comment-form'>
+    <a name='comment-form'/>
+    <h4 id='comment-post-message'><data:messages.postAComment/></h4>
+    <b:if cond='data:this.messages.blogComment != &quot;&quot;'>
+      <p><data:this.messages.blogComment/></p>
+    </b:if>
+    <b:include data='post' name='commentFormIframeSrc'/>
+    <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post' expr:height='data:cmtIframeInitialHeight ?: &quot;90px&quot;' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+    <data:post.cmtfpIframe/>
+    <script type='text/javascript'>
+      BLOG_CMT_createIframe(&#39;<data:post.appRpcRelayPath/>&#39;);
+    </script>
+  </div>
+</b:includable>
+          <b:includable id='threadedCommentJs' var='post'>
+  <script async='async' expr:src='data:post.commentSrc' type='text/javascript'></script>
+  <b:template-script inline='true' name='threaded_comments'/>
+  <script type='text/javascript'>
+    blogger.widgets.blog.initThreadedComments(
+        <data:post.commentJso/>,
+        <data:post.commentMsgs/>,
+        <data:post.commentConfig/>);
+  </script>
+</b:includable>
+          <b:includable id='threadedComments' var='post'>
+  <section class='comments threaded' expr:data-embed='data:post.embedCommentForm' expr:data-num-comments='data:post.numberOfComments' id='comments'>
+    <a name='comments'/>
+
+    <b:include name='commentsTitle'/>
+
+    <div class='comments-content'>
+      <b:if cond='data:post.embedCommentForm'>
+        <b:include data='post' name='threadedCommentJs'/>
+      </b:if>
+      <div id='comment-holder'>
+         <data:post.commentHtml/>
+      </div>
+    </div>
+
+    <p class='comment-footer'>
+      <b:if cond='data:post.allowNewComments'>
+        <b:include data='post' name='threadedCommentForm'/>
+      <b:else/>
+        <data:post.noNewCommentsText/>
+      </b:if>
+      <b:if cond='data:post.showManageComments'>
+        <b:include data='post' name='manageComments'/>
+      </b:if>
+    </p>
+
+    <b:if cond='data:showCmtPopup'>
+      <div id='comment-popup'>
+        <iframe allowtransparency='allowtransparency' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'>
+        </iframe>
+      </div>
+    </b:if>
+  </section>
+</b:includable>
+          <b:includable id='tooltipCss'>
+  <!-- LINT.IfChange -->
+  <style>
+    .post-body a.b-tooltip-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .post-body a.b-tooltip-container .b-tooltip {
+      display: block !important;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-20%, 1px);
+      visibility: hidden;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+
+    .post-body a.b-tooltip-container .b-tooltip iframe {
+      width: 200px;
+      height: 198px;
+      max-width: none;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (hover: hover) {
+      .post-body a.b-tooltip-container:hover .b-tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  </style>
+  <!-- LINT.ThenChange(//depot/google3/java/com/google/blogger/b2/layouts/widgets/v2-style.css) -->
+</b:includable>
+        </b:widget>
+      </b:section>
+
+      <!-- Sidebar Widgets (Hidden on single item post/page views) -->
+      <b:if cond='!data:view.isSingleItem'>
+        <aside class='sidebar'>
+          <!-- About 요약은 Blogger 레이아웃의 HTML 가젯에서 수정합니다. -->
+          <b:section id='about-summary-section' showaddelement='true'>
+            <b:widget id='HTML1' locked='false' title='About' type='HTML' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-                <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-                <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-                <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
-                <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-                <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-                <b:widget-setting name='chronological'>false</b:widget-setting>
-                <b:widget-setting name='showPosts'>true</b:widget-setting>
-                <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+                <b:widget-setting name='content'><![CDATA[About 페이지에 블로그의 방향과 운영 원칙을 요약해서 작성해 주세요.]]></b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+                <div class='widget-box'>
+                  <b:if cond='data:title != &quot;&quot;'>
+                    <h3 class='widget-title'><data:title/></h3>
+                  </b:if>
+                  <div class='widget-content'><data:content/></div>
+                  <a class='widget-more-link' href='/p/about.html'>About 페이지 읽기 &#8594;</a>
+                </div>
+              </b:includable>
+            </b:widget>
+          </b:section>
+
+          <b:section id='sidebar-section' showaddelement='true'>
+            <!-- 1. 카테고리 (Label1) -->
+            <b:widget id='Label1' locked='false' title='카테고리' type='Label' visible='true'>
+              <b:widget-settings>
+                <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+                <b:widget-setting name='display'>LIST</b:widget-setting>
+                <b:widget-setting name='selectedLabelsList'/>
+                <b:widget-setting name='showType'>ALL</b:widget-setting>
+                <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
               </b:widget-settings>
               <b:includable id='main' var='this'>
                 <div class='widget-box'>
                   <b:if cond='data:title != ""'>
                     <h3 class='widget-title'><data:title/></h3>
                   </b:if>
-                  <b:include name='content'/>
-                </div>
-              </b:includable>
-              <b:includable id='content'>
-                <div class='widget-content'>
-                  <div id='ArchiveList'>
-                    <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-                      <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
-                      <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-                    </div>
-                  </div>
-                </div>
-              </b:includable>
-              <b:includable id='flat'>
-                <ul class='flat'>
-                  <b:loop values='data:data' var='i'>
-                    <li class='archivedate'>
-                      <a expr:href='data:i.url'>
-                        <data:i.name/><span class='post-count'><data:i.post-count/></span>
-                      </a>
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-              <b:includable id='hierarchy'>
-                <b:include data='data' name='interval'/>
-              </b:includable>
-              <b:includable id='interval' var='intervals'>
-                <ul class='hierarchy'>
-                  <b:loop values='data:intervals' var='interval'>
-                    <li class='archivedate'>
-                      <div class='hierarchy-title'>
-                        <a class='post-count-link' expr:href='data:interval.url'>
-                          <data:interval.name/>
-                          <span class='post-count'><data:interval.post-count/></span>
-                        </a>
-                      </div>
-                      <div class='hierarchy-content'>
-                        <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-                        <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-                      </div>
-                    </li>
-                  </b:loop>
-                </ul>
-              </b:includable>
-              <b:includable id='posts' var='posts'>
-                <ul class='posts hierarchy'>
-                  <b:loop index='i' values='data:posts' var='post'>
-                    <b:if cond='data:i &lt; 10'>
-                      <li>
-                        <a expr:href='data:post.url'><data:post.title/></a>
-                      </li>
-                    </b:if>
-                  </b:loop>
-                </ul>
-              </b:includable>
-            </b:widget>
-
-            <!-- 2. 번역 (Translate1) -->
-            <b:widget id='Translate1' locked='false' title='Translate' type='Translate' visible='true'>
-              <b:widget-settings>
-                <b:widget-setting name='displayMode'>VERTICAL</b:widget-setting>
-              </b:widget-settings>
-              <b:includable id='main'>
-                <div class='widget-box'>
-                  <b:if cond='data:title != ""'>
-                    <h3 class='widget-title'><data:title/></h3>
-                  </b:if>
                   <div class='widget-content'>
-                    <div id='google_translate_element'/>
-                    <script>
-                      function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({
-                          pageLanguage: &#39;<b:eval expr='data:blog.locale.language ?: &quot;auto&quot;'/>&#39;,
-                          autoDisplay: &#39;true&#39;,
-                          layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-                        }, &#39;google_translate_element&#39;);
-                      }
-                    </script>
-                    <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+                    <ul>
+                      <b:loop values='data:labels' var='label'>
+                        <li>
+                          <a expr:href='"/search/label/" + data:label.name + "?max-results=4"'><data:label.name/></a>
+                          <b:if cond='data:this.showFreqNumbers'>
+                            <span class='label-count'>(<data:label.count/>)</span>
+                          </b:if>
+                        </li>
+                      </b:loop>
+                    </ul>
                   </div>
                 </div>
               </b:includable>
             </b:widget>
           </b:section>
-        </div>
-      </footer>
+        </aside>
+      </b:if>
+    </div> <!-- Closing container div -->
 
-      <!-- Permanent Fixed Categories Full Modal Popup (Body Level Root) -->
-      <div class='modal-overlay' id='categories-modal' style='display: none !important;'>
-        <div class='modal-box'>
-          <div class='modal-header'>
-            <h3>전체 카테고리</h3>
-            <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
-          </div>
-          <div class='modal-body'>
-            <div class='devlog-tags-popup' id='modal-tags-container'></div>
-          </div>
+    <!-- Footer Section -->
+    <footer class='site-footer'>
+      <div class='footer-widgets-grid'>
+        <b:section id='footer-widgets-section' showaddelement='true'>
+          <!-- 1. 최근 읽은내역 (BlogArchive1) -->
+          <b:widget id='BlogArchive1' locked='false' title='최근 읽은내역' type='BlogArchive' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
+              <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
+              <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
+              <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
+              <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
+              <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
+              <b:widget-setting name='chronological'>false</b:widget-setting>
+              <b:widget-setting name='showPosts'>true</b:widget-setting>
+              <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main' var='this'>
+              <div class='widget-box'>
+                <b:if cond='data:title != ""'>
+                  <h3 class='widget-title'><data:title/></h3>
+                </b:if>
+                <b:include name='content'/>
+              </div>
+            </b:includable>
+            <b:includable id='content'>
+              <div class='widget-content'>
+                <div id='ArchiveList'>
+                  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
+                    <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
+                    <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
+                  </div>
+                </div>
+              </div>
+            </b:includable>
+            <b:includable id='flat'>
+              <ul class='flat'>
+                <b:loop values='data:data' var='i'>
+                  <li class='archivedate'>
+                    <a expr:href='data:i.url'>
+                      <data:i.name/><span class='post-count'><data:i.post-count/></span>
+                    </a>
+                  </li>
+                </b:loop>
+              </ul>
+            </b:includable>
+            <b:includable id='hierarchy'>
+              <b:include data='data' name='interval'/>
+            </b:includable>
+            <b:includable id='interval' var='intervals'>
+              <ul class='hierarchy'>
+                <b:loop values='data:intervals' var='interval'>
+                  <li class='archivedate'>
+                    <div class='hierarchy-title'>
+                      <a class='post-count-link' expr:href='data:interval.url'>
+                        <data:interval.name/>
+                        <span class='post-count'><data:interval.post-count/></span>
+                      </a>
+                    </div>
+                    <div class='hierarchy-content'>
+                      <b:include cond='data:interval.data' data='interval.data' name='interval'/>
+                      <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
+                    </div>
+                  </li>
+                </b:loop>
+              </ul>
+            </b:includable>
+            <b:includable id='posts' var='posts'>
+              <ul class='posts hierarchy'>
+                <b:loop index='i' values='data:posts' var='post'>
+                  <b:if cond='data:i &lt; 10'>
+                    <li>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                    </li>
+                  </b:if>
+                </b:loop>
+              </ul>
+            </b:includable>
+          </b:widget>
+
+          <!-- 2. 번역 (Translate1) -->
+          <b:widget id='Translate1' locked='false' title='Translate' type='Translate' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='displayMode'>VERTICAL</b:widget-setting>
+            </b:widget-settings>
+            <b:includable id='main'>
+              <div class='widget-box'>
+                <b:if cond='data:title != ""'>
+                  <h3 class='widget-title'><data:title/></h3>
+                </b:if>
+                <div class='widget-content'>
+                  <div id='google_translate_element'/>
+                  <script>
+                    function googleTranslateElementInit() {
+                      new google.translate.TranslateElement({
+                        pageLanguage: &#39;<b:eval expr='data:blog.locale.language ?: &quot;auto&quot;'/>&#39;,
+                        autoDisplay: &#39;true&#39;,
+                        layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+                      }, &#39;google_translate_element&#39;);
+                    }
+                  </script>
+                  <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
+                </div>
+              </div>
+            </b:includable>
+          </b:widget>
+        </b:section>
+      </div>
+    </footer>
+
+    <!-- Permanent Fixed Categories Full Modal Popup (Body Level Root) -->
+    <div class='modal-overlay' id='categories-modal' style='display: none !important;'>
+      <div class='modal-box'>
+        <div class='modal-header'>
+          <h3>전체 카테고리</h3>
+          <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
+        </div>
+        <div class='modal-body'>
+          <div class='devlog-tags-popup' id='modal-tags-container'></div>
         </div>
       </div>
+    </div>
 
-      <!-- TECH LOG Site Footer -->
-      <footer class='site-footer'>
-        <div class='site-footer-inner'>
-          <div class='footer-text'>
-            <p>© 2026 <strong>BEJI TECH LOG</strong>. All rights reserved.</p>
-            <p>Powered by Google Blogger &amp; Custom Engine Architecture.</p>
-          </div>
+    <!-- TECH LOG Site Footer -->
+    <footer class='site-footer'>
+      <div class='site-footer-inner'>
+        <div class='footer-text'>
+          <p>© 2026 <strong>BEJI TECH LOG</strong>. All rights reserved.</p>
+          <p>Powered by Google Blogger &amp; Custom Engine Architecture.</p>
         </div>
-      </footer>
+      </div>
+    </footer>
 
 
-      <!-- TECH LOG Unified Site Theme JS Engine (v25.0.0 Full Inline) -->
-      <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-      <script type='text/javascript'>
-      //<![CDATA[
+    <!-- TECH LOG Unified Site Theme JS Engine (v25.0.0 Full Inline) -->
+    <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
+    <script type='text/javascript'>
+    //<![CDATA[
 
-      // ---- URL Filter Label Parser ----
-      function getTargetFilterLabel() {
-        var pathname = window.location.pathname;
-        var search = window.location.search;
-        if (pathname.indexOf('/search/label/') !== -1) {
-          var parts = pathname.split('/search/label/');
-          if (parts.length > 1 && parts[1]) {
-            return decodeURIComponent(parts[1].split('?')[0]).trim().toLowerCase();
-          }
+    // ---- URL Filter Label Parser ----
+    function getTargetFilterLabel() {
+      var pathname = window.location.pathname;
+      var search = window.location.search;
+      if (pathname.indexOf('/search/label/') !== -1) {
+        var parts = pathname.split('/search/label/');
+        if (parts.length > 1 && parts[1]) {
+          return decodeURIComponent(parts[1].split('?')[0]).trim().toLowerCase();
         }
-        if (search && search.indexOf('q=') !== -1) {
-          try {
-            var urlParams = new URLSearchParams(search);
-            var q = urlParams.get('q');
-            if (q) {
-              q = decodeURIComponent(q).trim().toLowerCase();
-              if (q.indexOf('label:') !== -1) return q;
-            }
-          } catch(e2) {}
-        }
-        return null;
       }
-
-      // ---- Post Label Matcher ----
-      // 모든 게시물이 작성 시점에 Basics/Advanced/ETC 중 정확히 하나의 실제 라벨을 부여받으므로
-      // (위키 Blog_Writing_Rules.md 7번 규칙, src/tools/apply_nav_labels.py로 기존 38개 글에
-      // 일괄 백필 완료. 한/영 중복 라벨은 쓰지 않기로 하여 영어 단일 라벨만 사용), 키워드 그룹을
-      // 추론할 필요 없이 라벨 존재 여부만 확인하면 된다. 글이 아무리 늘어나도 손댈 필요가 없다.
-      function postMatchesFilter(post, targetFilter) {
-        var lowerLabels = post.labels.map(function(l) { return l.toLowerCase(); });
-        if (targetFilter.indexOf('basics') !== -1) return lowerLabels.indexOf('basics') !== -1;
-        if (targetFilter.indexOf('advanced') !== -1) return lowerLabels.indexOf('advanced') !== -1;
-        if (targetFilter.indexOf('etc') !== -1) return lowerLabels.indexOf('etc') !== -1;
-        return lowerLabels.indexOf(targetFilter) !== -1;
-      }
-
-      // ---- Date Formatter ----
-      function formatBloggerDate(dateStr) {
-        if (!dateStr) return '';
+      if (search && search.indexOf('q=') !== -1) {
         try {
-          var d = new Date(dateStr);
-          if (isNaN(d.getTime())) return dateStr;
-          return (d.getMonth() + 1) + '월 ' + d.getDate() + ', ' + d.getFullYear();
-        } catch(e3) { return dateStr; }
+          var urlParams = new URLSearchParams(search);
+          var q = urlParams.get('q');
+          if (q) {
+            q = decodeURIComponent(q).trim().toLowerCase();
+            if (q.indexOf('label:') !== -1) return q;
+          }
+        } catch(e2) {}
       }
+      return null;
+    }
 
-      // ---- Post Card HTML Builder ----
-      function buildPostCardHtml(post) {
-        var badge = (post.labels && post.labels.length > 0) ? post.labels[0] : 'TECH';
-        var tagsHtml = '';
-        if (post.labels && post.labels.length > 0) {
-          tagsHtml = '<div class="devlog-tags post-tags">';
-          post.labels.slice(0, 4).forEach(function(lbl) {
-            tagsHtml += '<a class="tech-tag" href="/search/label/' + encodeURIComponent(lbl) + '?max-results=4">' + lbl + '</a>';
-          });
-          tagsHtml += '</div>';
-        }
-        return '<article class="post-card tech-post-card">' +
-          '<div class="post-card-body tech-post-body">' +
-            '<span class="post-category-badge tech-post-category">' + badge + '</span>' +
-            '<h2 class="post-card-title"><a href="' + post.url + '">' + post.title + '</a></h2>' +
-            tagsHtml +
-          '</div>' +
-          '<div class="post-card-meta tech-post-meta"><span>📅 ' + formatBloggerDate(post.published) + '</span></div>' +
-        '</article>';
-      }
+    // ---- Post Label Matcher ----
+    // 모든 게시물이 작성 시점에 Basics/Advanced/ETC 중 정확히 하나의 실제 라벨을 부여받으므로
+    // (위키 Blog_Writing_Rules.md 7번 규칙, src/tools/apply_nav_labels.py로 기존 38개 글에
+    // 일괄 백필 완료. 한/영 중복 라벨은 쓰지 않기로 하여 영어 단일 라벨만 사용), 키워드 그룹을
+    // 추론할 필요 없이 라벨 존재 여부만 확인하면 된다. 글이 아무리 늘어나도 손댈 필요가 없다.
+    function postMatchesFilter(post, targetFilter) {
+      var lowerLabels = post.labels.map(function(l) { return l.toLowerCase(); });
+      if (targetFilter.indexOf('basics') !== -1) return lowerLabels.indexOf('basics') !== -1;
+      if (targetFilter.indexOf('advanced') !== -1) return lowerLabels.indexOf('advanced') !== -1;
+      if (targetFilter.indexOf('etc') !== -1) return lowerLabels.indexOf('etc') !== -1;
+      return lowerLabels.indexOf(targetFilter) !== -1;
+    }
 
-      // ---- State ----
-      var _allPosts = [];
-      var _currentPage = 1;
-      var _postPerPage = 4;
-      var _pageBlockSize = 5;
+    // ---- Date Formatter ----
+    function formatBloggerDate(dateStr) {
+      if (!dateStr) return '';
+      try {
+        var d = new Date(dateStr);
+        if (isNaN(d.getTime())) return dateStr;
+        return (d.getMonth() + 1) + '월 ' + d.getDate() + ', ' + d.getFullYear();
+      } catch(e3) { return dateStr; }
+    }
 
-      // ---- Pagination Controls ----
-      function renderPaginationControls(totalPages) {
-        var pager = document.getElementById('blog-pager');
-        if (!pager) return;
-        if (totalPages <= 1) { pager.style.display = 'none'; return; }
-        pager.style.display = 'flex';
-        var currentBlock = Math.ceil(_currentPage / _pageBlockSize);
-        var startPage = (currentBlock - 1) * _pageBlockSize + 1;
-        var endPage = Math.min(totalPages, startPage + _pageBlockSize - 1);
-        var html = '<div class="tech-pagination-numbers" style="display:inline-flex;gap:0.5rem;align-items:center;">';
-        html += startPage > 1
-          ? '<button class="page-btn" data-page="' + (startPage - 1) + '">« 이전</button>'
-          : '<button class="page-btn" style="opacity:0.4;cursor:not-allowed;" disabled>« 이전</button>';
-        for (var p = startPage; p <= endPage; p++) {
-          var isActive = p === _currentPage;
-          html += '<button class="page-btn' + (isActive ? ' active' : '') + '" data-page="' + p + '"' +
-            (isActive ? ' style="background:var(--primary-color,#2563eb);color:#fff;font-weight:700;"' : '') + '>' + p + '</button>';
-        }
-        html += endPage < totalPages
-          ? '<button class="page-btn" data-page="' + (endPage + 1) + '">다음 »</button>'
-          : '<button class="page-btn" style="opacity:0.4;cursor:not-allowed;" disabled>다음 »</button>';
-        html += '</div>';
-        pager.innerHTML = html;
-        pager.querySelectorAll('.page-btn[data-page]').forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            var targetP = parseInt(btn.getAttribute('data-page'), 10);
-            if (targetP && targetP !== _currentPage) window.renderPage(targetP);
-          });
+    // ---- Post Card HTML Builder ----
+    function buildPostCardHtml(post) {
+      var badge = (post.labels && post.labels.length > 0) ? post.labels[0] : 'TECH';
+      var tagsHtml = '';
+      if (post.labels && post.labels.length > 0) {
+        tagsHtml = '<div class="devlog-tags post-tags">';
+        post.labels.slice(0, 4).forEach(function(lbl) {
+          tagsHtml += '<a class="tech-tag" href="/search/label/' + encodeURIComponent(lbl) + '?max-results=4">' + lbl + '</a>';
         });
+        tagsHtml += '</div>';
       }
+      return '<article class="post-card tech-post-card">' +
+        '<div class="post-card-body tech-post-body">' +
+          '<span class="post-category-badge tech-post-category">' + badge + '</span>' +
+          '<h2 class="post-card-title"><a href="' + post.url + '">' + post.title + '</a></h2>' +
+          tagsHtml +
+        '</div>' +
+        '<div class="post-card-meta tech-post-meta"><span>📅 ' + formatBloggerDate(post.published) + '</span></div>' +
+      '</article>';
+    }
 
-      // ---- Core Page Renderer (Global) ----
-      // 서버(Blogger SSR)가 이미 1페이지 카드를 정확히 렌더링해서 내려주므로, 로드 직후 최초
-      // renderPage(1) 호출까지 그대로 JS로 다시 그리면 화면이 "이미 보이던 카드를 지웠다가 다시
-      // 그리는" 눈에 띄는 딜레이/깜빡임이 생긴다. 그래서 최초 1회에 한해 페이지 1 재요청은
-      // DOM을 건드리지 않고 페이지네이션 컨트롤만 붙인다. 이후 실제로 다른 페이지로 이동했다가
-      // 1페이지로 돌아오는 경우는 이미 JS가 DOM을 점유한 상태이므로 정상적으로 다시 그린다.
-      var _initialPage1RenderSkipped = false;
-      window.renderPage = function(page) {
-        var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
-        if (!container) return;
-        _currentPage = page;
-        var totalPages = Math.ceil(_allPosts.length / _postPerPage);
-        if (_currentPage < 1) _currentPage = 1;
-        if (_currentPage > totalPages) _currentPage = totalPages;
+    // ---- State ----
+    var _allPosts = [];
+    var _currentPage = 1;
+    var _postPerPage = 4;
+    var _pageBlockSize = 5;
 
-        if (!_initialPage1RenderSkipped && _currentPage === 1) {
-          _initialPage1RenderSkipped = true;
-          renderPaginationControls(totalPages);
-          return;
-        }
+    // ---- Pagination Controls ----
+    function renderPaginationControls(totalPages) {
+      var pager = document.getElementById('blog-pager');
+      if (!pager) return;
+      if (totalPages <= 1) { pager.style.display = 'none'; return; }
+      pager.style.display = 'flex';
+      var currentBlock = Math.ceil(_currentPage / _pageBlockSize);
+      var startPage = (currentBlock - 1) * _pageBlockSize + 1;
+      var endPage = Math.min(totalPages, startPage + _pageBlockSize - 1);
+      var html = '<div class="tech-pagination-numbers" style="display:inline-flex;gap:0.5rem;align-items:center;">';
+      html += startPage > 1
+        ? '<button class="page-btn" data-page="' + (startPage - 1) + '">« 이전</button>'
+        : '<button class="page-btn" style="opacity:0.4;cursor:not-allowed;" disabled>« 이전</button>';
+      for (var p = startPage; p <= endPage; p++) {
+        var isActive = p === _currentPage;
+        html += '<button class="page-btn' + (isActive ? ' active' : '') + '" data-page="' + p + '"' +
+          (isActive ? ' style="background:var(--primary-color,#2563eb);color:#fff;font-weight:700;"' : '') + '>' + p + '</button>';
+      }
+      html += endPage < totalPages
+        ? '<button class="page-btn" data-page="' + (endPage + 1) + '">다음 »</button>'
+        : '<button class="page-btn" style="opacity:0.4;cursor:not-allowed;" disabled>다음 »</button>';
+      html += '</div>';
+      pager.innerHTML = html;
+      pager.querySelectorAll('.page-btn[data-page]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          var targetP = parseInt(btn.getAttribute('data-page'), 10);
+          if (targetP && targetP !== _currentPage) window.renderPage(targetP);
+        });
+      });
+    }
 
-        var pagePosts = _allPosts.slice((_currentPage - 1) * _postPerPage, _currentPage * _postPerPage);
-        var html = '';
-        pagePosts.forEach(function(post) { html += buildPostCardHtml(post); });
-        container.innerHTML = html;
+    // ---- Core Page Renderer (Global) ----
+    // 서버(Blogger SSR)가 이미 1페이지 카드를 정확히 렌더링해서 내려주므로, 로드 직후 최초
+    // renderPage(1) 호출까지 그대로 JS로 다시 그리면 화면이 "이미 보이던 카드를 지웠다가 다시
+    // 그리는" 눈에 띄는 딜레이/깜빡임이 생긴다. 그래서 최초 1회에 한해 페이지 1 재요청은
+    // DOM을 건드리지 않고 페이지네이션 컨트롤만 붙인다. 이후 실제로 다른 페이지로 이동했다가
+    // 1페이지로 돌아오는 경우는 이미 JS가 DOM을 점유한 상태이므로 정상적으로 다시 그린다.
+    var _initialPage1RenderSkipped = false;
+    window.renderPage = function(page) {
+      var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
+      if (!container) return;
+      _currentPage = page;
+      var totalPages = Math.ceil(_allPosts.length / _postPerPage);
+      if (_currentPage < 1) _currentPage = 1;
+      if (_currentPage > totalPages) _currentPage = totalPages;
+
+      if (!_initialPage1RenderSkipped && _currentPage === 1) {
+        _initialPage1RenderSkipped = true;
         renderPaginationControls(totalPages);
-        window.scrollTo({ top: container.offsetTop - 100, behavior: 'smooth' });
-      };
-
-      // ---- Feed Pagination Callback (Global) ----
-      window.initBloggerFeedPagination = function(json) {
-        var entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
-        _allPosts = [];
-        entries.forEach(function(entry) {
-          var url = '';
-          if (entry.link) {
-            for (var i = 0; i < entry.link.length; i++) {
-              if (entry.link[i].rel === 'alternate') { url = entry.link[i].href; break; }
-            }
-          }
-          var labels = [];
-          if (entry.category) entry.category.forEach(function(cat) { if (cat.term) labels.push(cat.term); });
-          _allPosts.push({
-            title: entry.title ? entry.title.$t : '',
-            published: entry.published ? entry.published.$t : '',
-            url: url,
-            labels: labels
-          });
-        });
-        var targetFilter = getTargetFilterLabel();
-        if (targetFilter) {
-          _allPosts = _allPosts.filter(function(post) { return postMatchesFilter(post, targetFilter); });
-        }
-        if (_allPosts.length > 0) {
-          window.renderPage(1);
-        } else if (targetFilter) {
-          var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
-          if (container) {
-            container.innerHTML = '<div style="text-align:center;padding:4rem 1rem;color:#64748b;background:#fff;border-radius:12px;">' +
-              '<h3 style="font-size:1.25rem;font-weight:600;color:#1e293b;">해당 카테고리의 포스팅이 없습니다</h3>' +
-              '<p style="font-size:0.95rem;">라벨: "' + targetFilter + '"</p></div>';
-          }
-        }
-      };
-
-      // ---- Category Modal & Tag Chips Limits Engine ----
-      var currentTagsData = [];
-
-      function ensureCategoriesModalExists() {
-        var existingModal = document.getElementById('categories-modal');
-        if (existingModal) return existingModal;
-
-        var modalDiv = document.createElement('div');
-        modalDiv.id = 'categories-modal';
-        modalDiv.className = 'modal-overlay';
-        modalDiv.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
-        modalDiv.innerHTML =
-          '<div class="modal-box">' +
-            '<div class="modal-header">' +
-              '<h3>전체 카테고리</h3>' +
-              '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;">×</button>' +
-            '</div>' +
-            '<div class="modal-body">' +
-              '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
-            '</div>' +
-          '</div>';
-
-        document.body.appendChild(modalDiv);
-        modalDiv.addEventListener('click', function(e) {
-          if (e.target === modalDiv) window.closeCategoriesModal();
-        });
-        return modalDiv;
+        return;
       }
 
-      window.showCategoriesModal = function() {
-        var modal = ensureCategoriesModalExists();
-        if (!modal) return;
-        if (modal.parentElement !== document.body) document.body.appendChild(modal);
+      var pagePosts = _allPosts.slice((_currentPage - 1) * _postPerPage, _currentPage * _postPerPage);
+      var html = '';
+      pagePosts.forEach(function(post) { html += buildPostCardHtml(post); });
+      container.innerHTML = html;
+      renderPaginationControls(totalPages);
+      window.scrollTo({ top: container.offsetTop - 100, behavior: 'smooth' });
+    };
 
-        var modalContainer = document.getElementById('modal-tags-container');
-        if (!modalContainer) return;
-
-        if (!currentTagsData || currentTagsData.length === 0) {
-          var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
-          if (widget) {
-            var anchors = Array.from((widget.querySelector('.widget-content') || widget).querySelectorAll('a'));
-            currentTagsData = anchors.map(function(a) {
-              return { name: a.textContent.trim(), url: a.getAttribute('href') };
-            });
+    // ---- Feed Pagination Callback (Global) ----
+    window.initBloggerFeedPagination = function(json) {
+      var entries = (json.feed && json.feed.entry) ? json.feed.entry : [];
+      _allPosts = [];
+      entries.forEach(function(entry) {
+        var url = '';
+        if (entry.link) {
+          for (var i = 0; i < entry.link.length; i++) {
+            if (entry.link[i].rel === 'alternate') { url = entry.link[i].href; break; }
           }
         }
+        var labels = [];
+        if (entry.category) entry.category.forEach(function(cat) { if (cat.term) labels.push(cat.term); });
+        _allPosts.push({
+          title: entry.title ? entry.title.$t : '',
+          published: entry.published ? entry.published.$t : '',
+          url: url,
+          labels: labels
+        });
+      });
+      var targetFilter = getTargetFilterLabel();
+      if (targetFilter) {
+        _allPosts = _allPosts.filter(function(post) { return postMatchesFilter(post, targetFilter); });
+      }
+      if (_allPosts.length > 0) {
+        window.renderPage(1);
+      } else if (targetFilter) {
+        var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
+        if (container) {
+          container.innerHTML = '<div style="text-align:center;padding:4rem 1rem;color:#64748b;background:#fff;border-radius:12px;">' +
+            '<h3 style="font-size:1.25rem;font-weight:600;color:#1e293b;">해당 카테고리의 포스팅이 없습니다</h3>' +
+            '<p style="font-size:0.95rem;">라벨: "' + targetFilter + '"</p></div>';
+        }
+      }
+    };
 
-        modalContainer.innerHTML = '';
-        (currentTagsData || []).forEach(function(tag) {
+    // ---- Category Modal & Tag Chips Limits Engine ----
+    var currentTagsData = [];
+
+    function ensureCategoriesModalExists() {
+      var existingModal = document.getElementById('categories-modal');
+      if (existingModal) return existingModal;
+
+      var modalDiv = document.createElement('div');
+      modalDiv.id = 'categories-modal';
+      modalDiv.className = 'modal-overlay';
+      modalDiv.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
+      modalDiv.innerHTML =
+        '<div class="modal-box">' +
+          '<div class="modal-header">' +
+            '<h3>전체 카테고리</h3>' +
+            '<button class="modal-close-btn" id="modal-close-btn-x" type="button" onclick="if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;">×</button>' +
+          '</div>' +
+          '<div class="modal-body">' +
+            '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
+          '</div>' +
+        '</div>';
+
+      document.body.appendChild(modalDiv);
+      modalDiv.addEventListener('click', function(e) {
+        if (e.target === modalDiv) window.closeCategoriesModal();
+      });
+      return modalDiv;
+    }
+
+    window.showCategoriesModal = function() {
+      var modal = ensureCategoriesModalExists();
+      if (!modal) return;
+      if (modal.parentElement !== document.body) document.body.appendChild(modal);
+
+      var modalContainer = document.getElementById('modal-tags-container');
+      if (!modalContainer) return;
+
+      if (!currentTagsData || currentTagsData.length === 0) {
+        var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+        if (widget) {
+          var anchors = Array.from((widget.querySelector('.widget-content') || widget).querySelectorAll('a'));
+          currentTagsData = anchors.map(function(a) {
+            return { name: a.textContent.trim(), url: a.getAttribute('href') };
+          });
+        }
+      }
+
+      modalContainer.innerHTML = '';
+      (currentTagsData || []).forEach(function(tag) {
+        var tagEl = document.createElement('a');
+        tagEl.href = tag.url;
+        tagEl.className = 'tech-tag';
+        tagEl.textContent = tag.name;
+        tagEl.style.display = 'inline-flex';
+        modalContainer.appendChild(tagEl);
+      });
+
+      modal.className = 'modal-overlay active';
+      modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeCategoriesModal = function() {
+      var modal = document.getElementById('categories-modal');
+      if (modal) {
+        modal.className = 'modal-overlay';
+        modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+        document.body.style.overflow = '';
+      }
+    };
+
+    function initCategoryTagsLimit() {
+      ensureCategoriesModalExists();
+      var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+      if (!widget) return;
+
+      var container = widget.querySelector('.widget-content') || widget;
+      if (!container || container.querySelector('.devlog-tags')) return;
+
+      var anchors = Array.from(container.querySelectorAll('a'));
+      if (anchors.length === 0) return;
+
+      var tagsData = [];
+      anchors.forEach(function(a) {
+        var rawText = a.textContent.trim();
+        if (!rawText) return;
+        var name = rawText, count = '';
+        var match = rawText.match(/(.+?)\s*\((\d+)\)$/);
+        if (match) { name = match[1].trim(); count = match[2]; }
+        else {
+          var nextSpan = a.nextElementSibling;
+          if (nextSpan && nextSpan.classList.contains('label-count')) {
+            count = nextSpan.textContent.replace(/[()]/g, '').trim();
+          }
+        }
+        tagsData.push({ name: name, count: count, url: a.getAttribute('href') });
+      });
+
+      if (tagsData.length === 0) return;
+      tagsData.sort(function(a, b) {
+        var countA = a.count ? parseInt(a.count, 10) : 0;
+        var countB = b.count ? parseInt(b.count, 10) : 0;
+        if (countA !== countB) return countB - countA;
+        return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
+      });
+
+      currentTagsData = tagsData;
+      container.innerHTML = '';
+      var tagsBox = document.createElement('div');
+      tagsBox.className = 'devlog-tags';
+      container.appendChild(tagsBox);
+
+      tagsData.forEach(function(tag, idx) {
+        if (idx < 8) {
           var tagEl = document.createElement('a');
           tagEl.href = tag.url;
           tagEl.className = 'tech-tag';
           tagEl.textContent = tag.name;
-          tagEl.style.display = 'inline-flex';
-          modalContainer.appendChild(tagEl);
-        });
-
-        modal.className = 'modal-overlay active';
-        modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
-        document.body.style.overflow = 'hidden';
-      };
-
-      window.closeCategoriesModal = function() {
-        var modal = document.getElementById('categories-modal');
-        if (modal) {
-          modal.className = 'modal-overlay';
-          modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
-          document.body.style.overflow = '';
-        }
-      };
-
-      function initCategoryTagsLimit() {
-        ensureCategoriesModalExists();
-        var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
-        if (!widget) return;
-
-        var container = widget.querySelector('.widget-content') || widget;
-        if (!container || container.querySelector('.devlog-tags')) return;
-
-        var anchors = Array.from(container.querySelectorAll('a'));
-        if (anchors.length === 0) return;
-
-        var tagsData = [];
-        anchors.forEach(function(a) {
-          var rawText = a.textContent.trim();
-          if (!rawText) return;
-          var name = rawText, count = '';
-          var match = rawText.match(/(.+?)\s*\((\d+)\)$/);
-          if (match) { name = match[1].trim(); count = match[2]; }
-          else {
-            var nextSpan = a.nextElementSibling;
-            if (nextSpan && nextSpan.classList.contains('label-count')) {
-              count = nextSpan.textContent.replace(/[()]/g, '').trim();
-            }
+          if (tag.count) {
+            var cEl = document.createElement('span');
+            cEl.className = 'label-count';
+            cEl.style.cssText = 'margin-left:4px;font-weight:700;color:var(--primary-color, #2563eb);';
+            cEl.textContent = '(' + tag.count + ')';
+            tagEl.appendChild(cEl);
           }
-          tagsData.push({ name: name, count: count, url: a.getAttribute('href') });
-        });
-
-        if (tagsData.length === 0) return;
-        tagsData.sort(function(a, b) {
-          var countA = a.count ? parseInt(a.count, 10) : 0;
-          var countB = b.count ? parseInt(b.count, 10) : 0;
-          if (countA !== countB) return countB - countA;
-          return a.name.localeCompare(b.name, 'ko', { sensitivity: 'base' });
-        });
-
-        currentTagsData = tagsData;
-        container.innerHTML = '';
-        var tagsBox = document.createElement('div');
-        tagsBox.className = 'devlog-tags';
-        container.appendChild(tagsBox);
-
-        tagsData.forEach(function(tag, idx) {
-          if (idx < 8) {
-            var tagEl = document.createElement('a');
-            tagEl.href = tag.url;
-            tagEl.className = 'tech-tag';
-            tagEl.textContent = tag.name;
-            if (tag.count) {
-              var cEl = document.createElement('span');
-              cEl.className = 'label-count';
-              cEl.style.cssText = 'margin-left:4px;font-weight:700;color:var(--primary-color, #2563eb);';
-              cEl.textContent = '(' + tag.count + ')';
-              tagEl.appendChild(cEl);
-            }
-            tagsBox.appendChild(tagEl);
-          }
-        });
-
-        if (tagsData.length > 8) {
-          var moreBtn = document.createElement('button');
-          moreBtn.type = 'button';
-          moreBtn.className = 'tech-tag-more-btn';
-          moreBtn.id = 'tech-tag-more-btn';
-          moreBtn.textContent = '...';
-          moreBtn.onclick = function(e) {
-            if (e) { e.preventDefault(); e.stopPropagation(); }
-            window.showCategoriesModal();
-            return false;
-          };
-          tagsBox.appendChild(moreBtn);
-        }
-      }
-
-      // ---- DOMContentLoaded ----
-      document.addEventListener('DOMContentLoaded', function() {
-        ensureCategoriesModalExists();
-        initCategoryTagsLimit();
-
-        var isPostPage = window.location.pathname.indexOf('/20') === 0 && window.location.pathname.indexOf('.html') !== -1;
-        if (!isPostPage) {
-          var script = document.createElement('script');
-          script.src = '/feeds/posts/summary?alt=json-in-script&max-results=150&callback=initBloggerFeedPagination';
-          document.body.appendChild(script);
-        }
-        var mermaidEls = document.querySelectorAll('.mermaid');
-        if (mermaidEls.length > 0 && typeof mermaid !== 'undefined') {
-          mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+          tagsBox.appendChild(tagEl);
         }
       });
 
-      document.addEventListener('click', function(e) {
-        var target = e.target;
-        if (target && (target.classList.contains('tech-tag-more-btn') || target.id === 'tech-tag-more-btn')) {
+      if (tagsData.length > 8) {
+        var moreBtn = document.createElement('button');
+        moreBtn.type = 'button';
+        moreBtn.className = 'tech-tag-more-btn';
+        moreBtn.id = 'tech-tag-more-btn';
+        moreBtn.textContent = '...';
+        moreBtn.onclick = function(e) {
           if (e) { e.preventDefault(); e.stopPropagation(); }
           window.showCategoriesModal();
           return false;
-        }
-      }, true);
+        };
+        tagsBox.appendChild(moreBtn);
+      }
+    }
 
-      //]]>
-      </script>
-    </body>
-  </html>
+    // ---- DOMContentLoaded ----
+    document.addEventListener('DOMContentLoaded', function() {
+      ensureCategoriesModalExists();
+      initCategoryTagsLimit();
+
+      var isPostPage = window.location.pathname.indexOf('/20') === 0 && window.location.pathname.indexOf('.html') !== -1;
+      if (!isPostPage) {
+        var script = document.createElement('script');
+        script.src = '/feeds/posts/summary?alt=json-in-script&max-results=150&callback=initBloggerFeedPagination';
+        document.body.appendChild(script);
+      }
+      var mermaidEls = document.querySelectorAll('.mermaid');
+      if (mermaidEls.length > 0 && typeof mermaid !== 'undefined') {
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      if (target && (target.classList.contains('tech-tag-more-btn') || target.id === 'tech-tag-more-btn')) {
+        if (e) { e.preventDefault(); e.stopPropagation(); }
+        window.showCategoriesModal();
+        return false;
+      }
+    }, true);
+
+    //]]>
+    </script>
+  </body>
+</html>
 
