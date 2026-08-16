@@ -7,7 +7,7 @@
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <title><data:view.title/></title>
     
-    <!-- TECH LOG Unified Site Theme CSS Engine (v5.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v5.1.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.4.0' rel='stylesheet'/>
     
     <!-- Google Web Fonts -->
@@ -1964,10 +1964,10 @@
         </div>
       </div>
     </footer>
-    <!-- TECH LOG Unified Site Theme CSS Engine (v5.0.0) -->
+    <!-- TECH LOG Unified Site Theme CSS Engine (v5.1.0) -->
     <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.3.0' rel='stylesheet'/>
     
-    <!-- TECH LOG Unified Site Theme JS Engine (v5.0.0) -->
+    <!-- TECH LOG Unified Site Theme JS Engine (v5.1.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
     <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=3.4.0'></script>
   </body>

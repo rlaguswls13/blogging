@@ -81,7 +81,7 @@
     });
 
     modal.className = 'modal-overlay active';
-    modal.setAttribute('style', 'display: flex !important; visibility: visible !important; opacity: 1 !important; z-index: 999999 !important;');
+    modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
     document.body.style.overflow = 'hidden';
   };
 
@@ -89,7 +89,7 @@
     var modal = document.getElementById('categories-modal');
     if (modal) {
       modal.className = 'modal-overlay';
-      modal.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
+      modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
       document.body.style.overflow = '';
     }
   };
