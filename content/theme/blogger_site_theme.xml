@@ -2090,23 +2090,24 @@
     }
 
     // ---- Post Label Matcher ----
+    // Basics/Trends는 저자가 실제로 붙인 명시적 라벨(기초/Basics, 트렌드 그룹)로만 판정하고,
+    // Advanced는 "Basics도 Trends도 아닌 나머지 전부"로 판정하는 상호 배타적(mutually exclusive)
+    // 규칙이다. 과거에는 database/sql/concurrency 등 지나치게 범용적인 키워드를 Basics와 Advanced
+    // 양쪽에 동시에 넣어 같은 글이 두 탭에 중복 노출되거나(예: MySQL B+Tree 튜닝 글이 기초/심화 둘 다),
+    // 반대로 어느 그룹에도 안 걸리는 글(Google Blogger API 연동 글)이 생기는 문제가 있었다.
     function postMatchesFilter(post, targetFilter) {
       var lowerLabels = post.labels.map(function(l) { return l.toLowerCase(); });
-      if (targetFilter.indexOf('basics') !== -1) {
-        var bg = ['basics','기초','database','rdbms','sql','nosql','gof','design patterns','java','mvc','btreeindex','coveringindex','operatingsystem','concurrency'];
-        for (var i = 0; i < bg.length; i++) { if (lowerLabels.indexOf(bg[i]) !== -1) return true; }
+      var hasAny = function(list) {
+        for (var i = 0; i < list.length; i++) { if (lowerLabels.indexOf(list[i]) !== -1) return true; }
         return false;
-      }
-      if (targetFilter.indexOf('advanced') !== -1) {
-        var ag = ['advanced','응용','실무','system architecture','microservices','kafka','redis','distributed lock','concurrency','saga pattern','software engineering','software architecture','spring aop','cg-lib','aspectj','spring boot','msa','btreeindex','coveringindex','operatingsystem'];
-        for (var j = 0; j < ag.length; j++) { if (lowerLabels.indexOf(ag[j]) !== -1) return true; }
-        return false;
-      }
-      if (targetFilter.indexOf('trends') !== -1) {
-        var tg = ['trends','트렌드','ai agent','graphrag','ai framework','llm','llm agent','kubernetes','cloud-native','devops','http3','quic','autogen'];
-        for (var k = 0; k < tg.length; k++) { if (lowerLabels.indexOf(tg[k]) !== -1) return true; }
-        return false;
-      }
+      };
+      var basicsLabels = ['basics', '기초'];
+      var trendsLabels = ['trends', '트렌드', 'ai agent', 'graphrag', 'ai framework', 'llm', 'llm agent', 'kubernetes', 'cloud-native', 'devops', 'http3', 'quic', 'autogen'];
+      var isBasics = hasAny(basicsLabels);
+      var isTrends = hasAny(trendsLabels);
+      if (targetFilter.indexOf('basics') !== -1) return isBasics;
+      if (targetFilter.indexOf('trends') !== -1) return isTrends;
+      if (targetFilter.indexOf('advanced') !== -1) return !isBasics && !isTrends;
       return lowerLabels.indexOf(targetFilter) !== -1;
     }
 

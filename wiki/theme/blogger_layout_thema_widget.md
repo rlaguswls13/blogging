@@ -436,6 +436,10 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
 - **조치 방향**: 로컬 XML에 없는 위젯이 라이브에만 존재하는 경우 XML 편집으로는 제거되지 않으므로, **Blogger 대시보드 → 레이아웃 → 해당 가젯 편집 → 삭제** 로 직접 제거하는 것이 코드 수정 없이 회귀 위험이 가장 낮음.
 - **예방 규칙**: 레이아웃 탭에서 새 가젯을 추가하기 전, 반드시 (1) 해당 타입이 `<b:defaultmarkups>`에 정의되어 있는지, (2) 정의되어 있다면 실제로 `tech-*`/`post-card` 계열 클래스로 스타일링되는지 먼저 확인. 스타일이 없다면 추가하지 않거나, 추가 전 defaultmarkup을 먼저 작성해야 함.
 
+### 10.7 상단 탭(Basics/Advanced/Trends) 키워드 그룹 매칭 중복·누락 결함 (2026-08-16 발견)
+- **발생 원인**: `postMatchesFilter()`의 Basics/Advanced 키워드 그룹(`bg`/`ag`)에 `database`, `sql`, `concurrency`, `operatingsystem`, `btreeindex`, `coveringindex` 등 지나치게 범용적인 라벨을 **양쪽 그룹에 중복 등록**해 두어, 실제로는 심화(Advanced) 성격의 글(예: MySQL B+Tree 커버링 인덱스 튜닝, Kafka 파티셔닝)이 Basics 탭에도 동시에 노출되었다. 반대로 어느 그룹 키워드에도 걸리지 않는 글(`Google Blogger API` 연동 가이드, `Spring IoC/DI` — 후자는 `java`라는 범용 라벨 때문에 오히려 Basics로 잘못 분류)은 Advanced/Trends 어디에도 나타나지 않는 결함이 있었다.
+- **해결 패턴**: 저자가 실제로 붙이는 명시적 라벨(`기초`/`Basics`)로만 Basics를 판정하고, Trends는 기존 특화 키워드 그룹을 유지하며, **Advanced는 "Basics도 Trends도 아닌 나머지 전부"로 판정하는 상호 배타적 규칙**으로 재설계(`postMatchesFilter()`, `content/theme/blogger_site_theme.xml`). 개별 포스트에 태그를 추가/재분류하는 방식(Blogger API로 라이브 포스트 라벨 수정) 대신 클라이언트 필터 함수만 수정해 배포 리스크를 최소화함 — 기존 38개 게시물 라벨은 그대로 유지된다.
+
 ---
 
 ## 11. 공식 참고문헌
