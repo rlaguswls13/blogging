@@ -37,7 +37,7 @@ tags: ["Basics","Design Patterns","GoF","Java","기초"]
 #### ☕ 비유: 에스프레소 베이스에 토핑 추가
 
       
-에스프레소 원형은 건드리지 않고, 손님 취향에 따라 우유 추가, 시럽 추가, 휘핑크림 토핑을 포장지로 겹겹이 싸�� 새로운 메뉴를 만들어 냅니다.
+에스프레소 원형은 건드리지 않고, 손님 취향에 따라 우유 추가, 시럽 추가, 휘핑크림 토핑을 포장지로 겹겹이 싸서 새로운 메뉴를 만들어 냅니다.
 
     
   
@@ -64,7 +64,7 @@ interface Coffee {
     int getCost();
 }
 
-// 2. ��본 구현체 (Concrete Component) - 베이스가 되는 원본 객체
+// 2. 기본 구현체 (Concrete Component) - 베이스가 되는 원본 객체
 class Espresso implements Coffee {
     @Override
     public String getDescription() { return "에스프레소"; }
@@ -152,7 +152,7 @@ public class DecoratorDemo {
         // 2. 에스프레소 + 스팀 밀크 + 모카 시럽 (카페모카)
         Coffee cafeMocha = new Espresso();
         cafeMocha = new MilkDecorator(cafeMocha); // 우유 포장
-        cafeMocha = new MochaDecorator(cafeMocha); // 그 위에 모카 ���장
+        cafeMocha = new MochaDecorator(cafeMocha); // 그 위에 모카 포장
         System.out.println("주문 2: " + cafeMocha.getDescription() + " | 가격: " + cafeMocha.getCost() + "원");
 
         // 3. 아메리카노 + 휘핑크림 + 시럽 2번 (Java I/O와 동일한 체이닝 방식)

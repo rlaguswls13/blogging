@@ -57,7 +57,7 @@ SQL & NoSQL 엔지니어링 시리즈 #1
       
 - ✅ **Table / Collection:** SQL의 테이블과 대응되는 NoSQL의 문서 집합 단위.
       
-- ✅ **Row / Document:** SQL의 레코드 행과 대응���는 NoSQL의 BSON/JSON 단일 데이터 객체.
+- ✅ **Row / Document:** SQL의 레코드 행과 대응되는 NoSQL의 BSON/JSON 단일 데이터 객체.
       
 - ✅ **Join / Embedding:** SQL의 테이블 간 참조 연산 vs NoSQL의 단일 문서 내 데이터 내장 방식.
     
@@ -143,7 +143,7 @@ RDBMS는 16KB 크기의 **Page 단위**로 디스크 I/O를 수행하며, 기본
   
     
 
-      1) **SQL 트랜잭션 길어짐 주의:** 외부 HTTP API 호출을 DB 트랜잭션 메서드 안에서 실행하면 커넥션 풀(HikariCP) 고갈 장애��� 발생하므로 트랜잭션 범위를 지극히 조밀하게 유지해야 합니다.
+      1) **SQL 트랜잭션 길어짐 주의:** 외부 HTTP API 호출을 DB 트랜잭션 메서드 안에서 실행하면 커넥션 풀(HikariCP) 고갈 장애가 발생하므로 트랜잭션 범위를 지극히 조밀하게 유지해야 합니다.
       2) **NoSQL Eventual Consistency 시차 주의:** 사용자가 글을 쓰자마자 마이페이지로 이동했을 때 노드 동기화 지연으로 방금 쓴 글이 안 보이는 현상이 발생하므로 핵심 조회는 Read-Your-Writes 일관성을 적용해야 합니다.
     
 

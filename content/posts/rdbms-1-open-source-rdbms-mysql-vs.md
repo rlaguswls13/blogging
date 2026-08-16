@@ -79,7 +79,7 @@ SQL & NoSQL 엔지니어링 시리즈 #2
   
 
   
-## 3. ⚙️ 내부 아키텍처 & 스토리지 엔��� 심층 메커니즘
+## 3. ⚙️ 내부 아키텍처 & 스토리지 엔진 심층 메커니즘
 
   
 ### 3-1. 스토리지 엔진 및 MVCC 구조 비교
@@ -100,7 +100,7 @@ MySQL InnoDB는 **Undo Log**를 따로 두어 롤백 및 이전 버전 Read View
     
     
       
-        인덱스 ���조
+        인덱스 구조
         PK Clustered Index (B+Tree)
         Heap-based + GIN/GiST/BRIN Index
       

@@ -41,7 +41,7 @@ tags: ["btreeindex","coveringindex","database","innodb","mysql"]
 
 ### 1. 개요 및 왜 필요한가? (Background & Motivation)
 
-MySQL InnoDB 스토리지 엔진에서 인덱스를 제대로 활용하지 못하면 Secondary Index를 검색한 후 데이터 레코드를 읽어오기 위해 PK를 통해 Clustered Index를 다시 조회하는 **랜덤 디스크 룩업(Random Lookup)** 과정이 반복 발생합���다.
+MySQL InnoDB 스토리지 엔진에서 인덱스를 제대로 활용하지 못하면 Secondary Index를 검색한 후 데이터 레코드를 읽어오기 위해 PK를 통해 Clustered Index를 다시 조회하는 **랜덤 디스크 룩업(Random Lookup)** 과정이 반복 발생합니다.
 
 본 포스팅에서는 InnoDB의 B+Tree 아키텍처를 세부적으로 파헤치고, 디스크 접근을 원천 차단하여 조회 성능을 극대화하는 **커버링 인덱스(Covering Index)** 튜닝 패턴을 심도 있게 분석합니다.
 

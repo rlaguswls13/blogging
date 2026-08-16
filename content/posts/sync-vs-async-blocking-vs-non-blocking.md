@@ -77,7 +77,7 @@ tags: ["Architecture","AsyncIO","ComputerScience","Networking","OperatingSystem"
 
 - **Async-Blocking (비동기 + 블로킹)**: 비동기로 콜백을 전달하며 요청했지만, 하위 Layer나 라이브러리가 블로킹 요소(예: Blocking DB Driver)를 포함하여 결과적으로 호출 스레드가 대기하게 되는 비효율적 상태입니다 [[2]].
 
-- **Async-Nonblocking (비동기 + 논블로킹)**: 호출 시 제��권을 즉시 반환받으며, 작업 완수와 데이터 복사까지 커널이 끝낸 후 콜백으로 알림을 받습니다. Linux의 POSIX AIO/`io_uring`, Windows의 IOCP, Node.js의 libuv asynchronous I/O 작업이 이에 해당합니다 [[2]][[3]].
+- **Async-Nonblocking (비동기 + 논블로킹)**: 호출 시 제어권을 즉시 반환받으며, 작업 완수와 데이터 복사까지 커널이 끝낸 후 콜백으로 알림을 받습니다. Linux의 POSIX AIO/`io_uring`, Windows의 IOCP, Node.js의 libuv asynchronous I/O 작업이 이에 해당합니다 [[2]][[3]].
 
 ### 5. 실무 아키텍처 및 OS 레벨 적용 예시
 
@@ -95,7 +95,7 @@ Linux `epoll` 시스템 콜은 수만 개의 Socket 소켓 연결을 효율적�
 
 이 섹션은 사실 전달이 아니라 작성자의 해석과 견해를 담고 있습니다.
 
-실무 개발자들이 가장 자주 겪는 혼란은 '고수준 언어의 syntactic sugar(예: JavaScript의 `async/await`)'를 사용할 때 발생합니다. `async/await` 코��는 문법적으로 동기식 코드처럼 읽히지만 내부적으로 프로미스 객체와 이벤트 루프를 사용하는 비동기-논블로킹 처리를 수행합니다. 언어 수준의 표현 방식과 OS 디바이스 드라이버 수준의 I/O 동작 원리를 독립된 레이어로 구분해서 바라보는 직관이 필수적입니다.
+실무 개발자들이 가장 자주 겪는 혼란은 '고수준 언어의 syntactic sugar(예: JavaScript의 `async/await`)'를 사용할 때 발생합니다. `async/await` 코드는 문법적으로 동기식 코드처럼 읽히지만 내부적으로 프로미스 객체와 이벤트 루프를 사용하는 비동기-논블로킹 처리를 수행합니다. 언어 수준의 표현 방식과 OS 디바이스 드라이버 수준의 I/O 동작 원리를 독립된 레이어로 구분해서 바라보는 직관이 필수적입니다.
 
 ## 한계와 반론
 

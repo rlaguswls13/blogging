@@ -78,7 +78,7 @@ class DarkCheckbox implements Checkbox {
     public void render() { System.out.println("✅ [다크 모드] 어두운 체크박스 생성"); }
 }
 
-// 4. 추상 팩토리 (Abstract Factory) - ��품군(세트) 생성 인터페이스
+// 4. 추상 팩토리 (Abstract Factory) - 제품군(세트) 생성 인터페이스
 interface UIFactory {
     Button createButton();
     Checkbox createCheckbox();

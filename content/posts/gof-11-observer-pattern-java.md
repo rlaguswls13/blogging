@@ -108,7 +108,7 @@ GoF 14대 핵심 디자인 패턴
 
       🔑 **해결책:** 
       1) Component 소멸 시점(`onDestroy`, `close()`)에 명시적 `unregisterObserver()` 호출 필수.
-      2) `WeakReference` (약한 참조) 기반의 옵저버 리스트 구조를 채택하�� GC 자동 회수 유도.
+      2) `WeakReference` (약한 참조) 기반의 옵저버 리스트 구조를 채택하여 GC 자동 회수 유도.
     
 
   
@@ -142,7 +142,7 @@ class NewsAgency implements Subject {
     @Override
     public void registerObserver(Observer o) {
         observers.add(o);
-        System.out.println("✅ [구독 완료] 새로운 옵저버가 ��록되었습니다.");
+        System.out.println("✅ [구독 완료] 새로운 옵저버가 등록되었습니다.");
     }
 
     @Override
@@ -230,7 +230,7 @@ public class ObserverPatternMain {
 
   
     
-- Inpa Dev Blog - GoF ���저버(Observer) 패턴 제대로 배워보자: [https://inpa.tistory.com/entry/GOF-...-옵저버-패턴](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90)
+- Inpa Dev Blog - GoF 옵저버(Observer) 패턴 제대로 배워보자: [https://inpa.tistory.com/entry/GOF-...-옵저버-패턴](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90)
     
 - Erich Gamma et al., *Design Patterns: Elements of Reusable Object-Oriented Software* (Addison-Wesley)
     

@@ -37,7 +37,7 @@ Order.builder().menu('떡볶이').spicy('매운맛').addOption('치즈추가').b
 #### 🍔 비유: 서브웨이 샌드위치 / 수제버거 맞춤 주문
 
       
-빵 종류 선택 -> 패티 추가 -> 피클 빼고 -> 올리��� 추가처럼, 원하는 재료 조합을 사용자가 순서대로 조립해서 완성합니다. 순서가 바뀌어도 무방합니다.
+빵 종류 선택 -> 패티 추가 -> 피클 빼고 -> 올리브 추가처럼, 원하는 재료 조합을 사용자가 순서대로 조립해서 완성합니다. 순서가 바뀌어도 무방합니다.
 
     
   
@@ -48,7 +48,7 @@ Order.builder().menu('떡볶이').spicy('매운맛').addOption('치즈추가').b
   
     
 
-      💡 **Lombok 주��:** `@Builder` 사용 시 클래스 레벨에 부여하면 `package-private` 전체 생성자가 노출됩니다. 또한 초기값이 있는 필드는 `@Builder.Default`를 명시해야 값이 덮어씌워지지 않습니다.
+      💡 **Lombok 주의:** `@Builder` 사용 시 클래스 레벨에 부여하면 `package-private` 전체 생성자가 노출됩니다. 또한 초기값이 있는 필드는 `@Builder.Default`를 명시해야 값이 덮어씌워지지 않습니다.
     
 
   
@@ -105,7 +105,7 @@ class Pizza {
             this.sauce = sauce;
         }
 
-        // 체이���(Chaining)을 위해 this를 반환하는 Setter 메서드들
+        // 체이닝(Chaining)을 위해 this를 반환하는 Setter 메서드들
         public PizzaBuilder addCheese() {
             this.cheese = true;
             return this;

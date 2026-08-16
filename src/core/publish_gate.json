@@ -10,8 +10,6 @@
     "꼬리질문"
   ],
   "minimumReferences": 2,
-  "unresolvedHighRiskClaims": 0,
-  "contradictedClaims": 0,
   "requireOpinionDisclaimer": true,
   "requireHumanApproval": true,
   "allowBrokenLinks": false

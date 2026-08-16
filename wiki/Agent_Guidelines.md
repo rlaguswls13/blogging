@@ -32,7 +32,7 @@ graph TD
 | 명령 | 옵션 | 동작 |
 | --- | --- | --- |
 | `new` | `--topic "<주제>"` | `create_run()` — 새 `runId` 생성, `request.md` + `article-template.md` 작성 |
-| `validate` | `--run <runId>` `[--preflight]` | `validate_run()` — 게시 게이트 검사(아래 3절). `--preflight`면 `humanApproved` 체크를 건너뜀 |
+| `validate` | `--run <runId>` `[--preflight]` `[--skip-link-check]` | `validate_run()` — 게시 게이트 검사(아래 3절). `--preflight`면 `humanApproved` 체크를 건너뜀, `--skip-link-check`면 참고문헌 URL 생존 확인(네트워크 호출)을 건너뜀 |
 | `approve` | `--run <runId>` | `approve_run()` — `state.json`의 `humanApproved`를 `true`로 기록 |
 | `publish` | `--run <runId>` `[--platform blogger,notion]` `[--dry-run]` | `publish_to_multi()` — 게이트 재검증 후 실제 게시. `--platform` 미지정 시 기본값 `blogger` |
 | `sync` | – | Notion 페이지를 MDX로 동기화 |
@@ -49,7 +49,9 @@ graph TD
 - **Frontmatter**: `ArticleFrontmatter` Pydantic 모델 검증 (id/title/slug/status/tags/factCheckScore 등)
 - **필수 섹션** (`requiredSections`): `요약`, `본문`, `사실 검증 결과`, `작성자의 견해`, `한계와 반론`, `참고문헌`, `종합적 의견`, `꼬리질문` — 8개 `##` 헤딩이 모두 존재해야 함
 - **최소 참고문헌 수** (`minimumReferences`): `## 참고문헌` 섹션에 리스트 항목 2개 이상
-- **작성자 견해 안내문** (`requireOpinionDisclaimer`): 본문에 `"사실 전달이 아니라 작성자의 해석과 견해"` 문구 포함 필수
+- **참고문헌 링크 유효성**: 각 항목에 `http(s)://` URL이 있는지, 있다면 실제로 접속되는지(`requests.head`/`get`)를 확인합니다. `allowBrokenLinks`가 `false`(기본값)면 URL 누락/접속 불가 시 오류, `true`면 경고로만 표시됩니다. `--skip-link-check`로 이 네트워크 호출 자체를 생략할 수 있습니다.
+- **작성자 견해 안내문** (`requireOpinionDisclaimer`): `> 사실 전달이 아니라 작성자의 해석과 견해...`처럼 인용구(`>`)로 시작하는 줄에 해당 문구가 있어야 함(빈 `>` 뒤에 평문으로 쓰면 게이트 실패)
+- **인코딩 손상 차단**: 본문에 유니코드 손상 문자(U+FFFD, `�`)가 하나라도 있으면 오류
 - **고위험 미검증 주장 차단**: `Risk: high` 뒤 250자 이내에 `Verdict: unverified`가 나오면 오류
 - **반박된 주장 차단**: `Verdict: contradicted`가 하나라도 있으면 오류
 - **사람 승인** (`requireHumanApproval`): `--preflight` 없이 실행 시 `state.json.humanApproved`가 `true`여야 함
@@ -61,7 +63,9 @@ graph TD
 - 게이트 검증(`validate`) 실패 시 오류 메시지가 어느 섹션/필드 문제인지 정확히 알려주므로, `final.md`의 frontmatter와 해당 `##` 섹션 존재 여부부터 확인합니다.
 - `publish`는 내부적으로 `validate_run()`을 다시 호출하므로 게이트를 우회할 수 없습니다. `--dry-run`으로 먼저 검증 없이(단, `humanApproved` 체크는 생략됨) API 호출 없이 확인 가능합니다.
 - 게시 성공 시 `final.md`는 `content/posts/<slug>.md`로 자동 복사되어 정식 자산 저장소에 편입됩니다(`publish_to_multi()` 마지막 단계). 이 파일이 곧 라이브 글의 소스 오브 트루스입니다.
+  - 단, 2026-08-17 이전에 존재하던 기존 글들은 이 경로가 아니라 `src/tools/sync_published_posts.py`(Blogger 공개 피드를 그대로 긁어와 덮어쓰는 별도 백필 도구)로 채워진 것이었고, 그 과정에서 유니코드 손상(U+FFFD)이 섞여 들어간 적이 있습니다(`src/tools/patch_published_posts.py`로 로컬/라이브 양쪽 교정 완료). 앞으로 `content/posts/`를 다시 대량 재동기화할 때는 이 도구가 원본 데이터를 있는 그대로 신뢰하기보다, 손상 여부를 먼저 점검하는 습관을 들일 것.
 - 각 실행의 원본 주제 확인이 필요하면 `temp/runs/<runId>/request.md`, 게시 후 결과 확인은 `publish-result.json`을 참고합니다.
+- **콘텐츠 유지보수 도구**: `src/tools/apply_nav_labels.py`, `dedupe_basics_label.py`, `rename_trends_to_etc.py`, `patch_published_posts.py` — 전부 `--dry-run`을 지원하는 재사용 가능한 Blogger API 콘텐츠 수정 도구. 이미 발행된 글을 일괄 수정해야 하면 새 스크립트를 만들지 말고 이 패턴을 따를 것.
 
 ## 관련 문서
 - [위키 인덱스](README.md)

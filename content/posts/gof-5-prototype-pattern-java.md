@@ -48,7 +48,7 @@ tags: ["Basics","Design Patterns","GoF","Java","기초"]
   
     
 
-      얕은 복사(Shallow) vs 깊은 복사(Deep) 함정: `Object.clone()`은 기본적으로 얕은 복사를 수행하므로 참조 객체(List 등)가 ���유되는 버그가 발생합니다. 깊은 복사를 직접 구현해야 독립성을 보장합니다.
+      얕은 복사(Shallow) vs 깊은 복사(Deep) 함정: `Object.clone()`은 기본적으로 얕은 복사를 수행하므로 참조 객체(List 등)가 공유되는 버그가 발생합니다. 깊은 복사를 직접 구현해야 독립성을 보장합니다.
     
 
   
@@ -136,7 +136,7 @@ public class PrototypeDemo {
 === 2. 프로토타입 복제 (즉시 생성) ===
 
 === 3. 독립성 검증 (깊은 복사) ===
-📄 문서 제목: 표준 근로 계약서 | 형���: PDF | 서명란: [NAME, DATE]
+📄 문서 제목: 표준 근로 계약서 | 형식: PDF | 서명란: [NAME, DATE]
 📄 문서 제목: 홍길동 근로 계약서 | 형식: PDF | 서명란: [NAME, DATE, SIGNATURE]
 📄 문서 제목: 이순신 근로 계약서 | 형식: PDF | 서명란: [NAME, DATE]
 */`

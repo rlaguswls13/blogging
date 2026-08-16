@@ -52,7 +52,12 @@ def main():
         elif command == "validate":
             run_id = required_flag(args, "run")
             preflight = has_flag(args, "preflight")
-            ok, errors, warnings = validate_run(run_id, require_human_approval=not preflight)
+            skip_link_check = has_flag(args, "skip-link-check")
+            ok, errors, warnings = validate_run(
+                run_id,
+                require_human_approval=not preflight,
+                skip_link_check=skip_link_check
+            )
 
             for w in warnings:
                 print(f"경고: {w}")

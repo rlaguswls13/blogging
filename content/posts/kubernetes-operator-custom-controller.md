@@ -73,7 +73,7 @@ Operator를 밑바닥부터 순수 Go 언어의 Kubernetes 클라이언트 패�
 
 - **Kubebuilder**: CNCF 시그니처 프로젝트로, 가볍고 순수한 Go 기반의 컨트롤러 코드를 스캐폴딩하는 데 초점을 맞춤니다 [4]. 군더더기 없는 미니멀리즘 아키텍처를 지향하여, Kubernetes 네이티브 개념에 가장 밀접하게 학습하고 활용하기 좋습니다.
 
-- **Operator SDK**: Red Hat 주도로 개발된 프레임워크로, Go 언어뿐만 아니라 Go를 모르는 엔지니어도 Operator를 만들 수 있도록 **Ansible** 및 **Helm** 기반의 개발 ��플릿을 제공합니다 [4]. 또한, OLM(Operator Lifecycle Manager)과의 연동, 모범 사례 검증 도구(Scorecard), 엔드투엔드(E2E) 테스트 도구를 포함하고 있어 Day 2 운영 및 에코시스템 배포 관점에 특화되어 있습니다 [4].
+- **Operator SDK**: Red Hat 주도로 개발된 프레임워크로, Go 언어뿐만 아니라 Go를 모르는 엔지니어도 Operator를 만들 수 있도록 **Ansible** 및 **Helm** 기반의 개발 템플릿을 제공합니다 [4]. 또한, OLM(Operator Lifecycle Manager)과의 연동, 모범 사례 검증 도구(Scorecard), 엔드투엔드(E2E) 테스트 도구를 포함하고 있어 Day 2 운영 및 에코시스템 배포 관점에 특화되어 있습니다 [4].
 
 따라서 단순하고 가벼운 Go 개발 환경을 원한다면 Kubebuilder가, 복잡한 생명주기 관리 및 Ansible/Helm 자산 재활용이 필요하다면 Operator SDK가 추천됩니다 [4].
 
@@ -123,4 +123,4 @@ Kubernetes Operator 패턴의 성장은 결국 '인프라의 애플리케이션�
 
 - Operator SDK 공식 문서 - Kubebuilder vs Operator SDK Comparison ([https://sdk.operatorframework.io/docs/building-operators/golang/comparison/](https://sdk.operatorframework.io/docs/building-operators/golang/comparison/))
 
-- Kubebuilder 공식 ���이드북 - Design Patterns: Idempotency ([https://book.kubebuilder.io/beyond-commons/idempotency.html](https://book.kubebuilder.io/beyond-commons/idempotency.html))
+- Kubebuilder 공식 가이드북 - Design Patterns: Idempotency ([https://book.kubebuilder.io/beyond-commons/idempotency.html](https://book.kubebuilder.io/beyond-commons/idempotency.html))

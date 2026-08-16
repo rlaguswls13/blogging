@@ -16,7 +16,7 @@ tags: ["Architecture","Basics","Design Patterns","GoF","Java","기초"]
   
     ![GoF 14대 디자인 패턴 마인드맵 인포그래픽](https://raw.githubusercontent.com/rlaguswls13/blogging/main/content/images/gof_14_patterns_map.jpg)
     
-[그림 1] GoF 핵��� 14대 디자인 패턴 분류 체계도 (Creational, Structural, Behavioral)
+[그림 1] GoF 핵심 14대 디자인 패턴 분류 체계도 (Creational, Structural, Behavioral)
 
   
 

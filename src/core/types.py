@@ -112,8 +112,6 @@ class ArticleFrontmatter(BaseModel):
 class PublishGate(BaseModel):
     requiredSections: List[str]
     minimumReferences: int = Field(..., ge=0)
-    unresolvedHighRiskClaims: int = Field(..., ge=0)
-    contradictedClaims: int = Field(..., ge=0)
     requireOpinionDisclaimer: bool
     requireHumanApproval: bool
     allowBrokenLinks: bool

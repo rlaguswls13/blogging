@@ -23,7 +23,7 @@ GoF 14대 핵심 디자인 패턴
 
   
     
-- **불필요한 리소스 남용:** 실제로 사용되지도 않을 무거운 객체를 초기화 시점에 미리 로딩하��� 초기 응답 속도가 현저히 떨어집니다.
+- **불필요한 리소스 남용:** 실제로 사용되지도 않을 무거운 객체를 초기화 시점에 미리 로딩하면 초기 응답 속도가 현저히 떨어집니다.
     
 - **비즈니스 로직의 오염:** 원본 서비스 코드 안에 보안 검사, 트랜잭션, 캐시 확인 로직이 지저분하게 섞여 관리가 불가능해집니다.
   
@@ -35,7 +35,7 @@ GoF 14대 핵심 디자인 패턴
 **프록시 패턴(Proxy Pattern)**은 진짜 객체(Real Subject)와 동일한 인터페이스를 구현하는 대리자(Proxy) 객체를 중간에 배치합니다.
 
   
-클라���언트는 프록시를 통해 요청을 전달하며, 프록시는 요청을 대신 받아 지연 로딩(Lazy Loading), 접근 제어, Caching 등의 부가 작업을 처리한 뒤 필요 시에만 진짜 객체를 호출합니다.
+클라이언트는 프록시를 통해 요청을 전달하며, 프록시는 요청을 대신 받아 지연 로딩(Lazy Loading), 접근 제어, Caching 등의 부가 작업을 처리한 뒤 필요 시에만 진짜 객체를 호출합니다.
 
   
   
@@ -129,7 +129,7 @@ class ProxyVideo implements Video {
             System.out.println("⚡ [프록시] 최초 요청 감지! 진짜 객체를 지연 로딩(Lazy Loading)합니다.");
             realVideo = new RealVideo(fileName);
         } else {
-            System.out.println("🚀 [프록시] 이미 ��딩된 진짜 객체(RealSubject)를 재사용합니다.");
+            System.out.println("🚀 [프록시] 이미 로딩된 진짜 객체(RealSubject)를 재사용합니다.");
         }
 
         realVideo.play();
@@ -161,7 +161,7 @@ public class ProxyPatternMain {
 === 1. 일반 회원 영상 클릭 ===
 🔒 [접근 거부] 오징어게임_시즌2_EP01.mp4 은 VIP 전용 영상입니다. (현재 권한: GUEST)
 
-=== 2. VIP 회원 최초 클릭 (지연 로딩 발��) ===
+=== 2. VIP 회원 최초 클릭 (지연 로딩 발생) ===
 ⚡ [프록시] 최초 요청 감지! 진짜 객체를 지연 로딩(Lazy Loading)합니다.
 💾 [디스크 로딩] 고화질 영상 파일 오징어게임_시즌2_EP01.mp4 읽는 중... (대용량 메모리 소모)
 ▶️ [영상 재생] 오징어게임_시즌2_EP01.mp4 스트리밍을 시작합니다.
@@ -177,7 +177,7 @@ public class ProxyPatternMain {
 
   
     🌱 **Spring AOP:** `@Transactional`, `@Cacheable` 적용 시 CGLIB/JDK Dynamic Proxy 객체가 자동 생성되어 AOP 부가 기능 전파.
-    📦 **Hibernate ORM:** 연관 엔티티 지연 로딩(Lazy Loading) 적용 시 실제 DB 조회 전까지 프록시 엔티티 객�� 유지.
+    📦 **Hibernate ORM:** 연관 엔티티 지연 로딩(Lazy Loading) 적용 시 실제 DB 조회 전까지 프록시 엔티티 객체 유지.
   
 
   

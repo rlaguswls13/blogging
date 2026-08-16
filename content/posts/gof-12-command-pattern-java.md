@@ -133,7 +133,7 @@ public class FactoryMethodDemo {
         PaymentFactory tossFactory = new TossPayFactory();
         tossFactory.checkout(20000);
 
-        // 3. 신용���드 결제 진행
+        // 3. 신용카드 결제 진행
         PaymentFactory cardFactory = new CardPayFactory();
         cardFactory.checkout(35000);
     }
@@ -145,7 +145,7 @@ public class FactoryMethodDemo {
 
 🔄 결제 준비 중... 프로세서 할당 완료
 🟡 [카*오페이] 15000원 결제가 정상적으로 처리되었습니다.
-✅ 결제 완료 처리�� 종료되었습니다.
+✅ 결제 완료 처리 후 종료되었습니다.
 
 🔄 결제 준비 중... 프로세서 할당 완료
 🔵 [토*페이] 20000원 결제가 정상적으로 처리되었습니다.

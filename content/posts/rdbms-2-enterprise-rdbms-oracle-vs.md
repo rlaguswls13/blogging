@@ -45,7 +45,7 @@ SQL & NoSQL 엔지니어링 시리즈 #3
       
 - ✅ **Cache Fusion:** Oracle RAC 노드 간 메모리 블록을 고속 인터커넥트로 교환하는 기술.
       
-- ✅ **Lock Escalation:** MSSQL에서 행 락(Row Lock) 5,000개 이상 시 테이블 락(Table Lock)으로 격상되는 현��.
+- ✅ **Lock Escalation:** MSSQL에서 행 락(Row Lock) 5,000개 이상 시 테이블 락(Table Lock)으로 격상되는 현상.
     
   
 
@@ -114,7 +114,7 @@ SQL & NoSQL 엔지니어링 시리즈 #3
     
 
       1) **Oracle Undo 비블로킹 읽기:** "Reads do not block Writes, Writes do not block Reads" 원칙에 따라 UPDATE 처리 중인 데이터를 SELECT 할 때 락에 걸리지 않고 Undo 세그먼트에서 이전 스냅샷을 읽어옵니다.
-      2) **MSSQL Lock Escalation 함정:** 단일 쿼리가 행 락(Row Lock)을 5,000개 이상 획득하면 DB 전체 **테이블 락(Table Lock)**으��� 격상되므로, 대량 DELETE/UPDATE 시 `ROWLOCK` 힌트나 Chunk 단위 분할 작업이 필수입니다!
+      2) **MSSQL Lock Escalation 함정:** 단일 쿼리가 행 락(Row Lock)을 5,000개 이상 획득하면 DB 전체 **테이블 락(Table Lock)**으로 격상되므로, 대량 DELETE/UPDATE 시 `ROWLOCK` 힌트나 Chunk 단위 분할 작업이 필수입니다!
     
 
   

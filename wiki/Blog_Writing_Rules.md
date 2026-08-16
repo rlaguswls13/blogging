@@ -4,7 +4,7 @@
 
 ---
 
-## 🛑 1. AI Agent 필수 이행 6대 수칙
+## 🛑 1. AI Agent 필수 이행 수칙
 
 1. **일회성 API 푸시 및 스크립트 작성 전면 금지**
    - `scratch/`나 임의 경로에 일회성 API 푸시 스크립트(`enrich_*.js` 등)를 만드는 행위를 전면 금지하며, 오직 **`python main.py` 정식 오케스트레이터 파이프라인**을 구동합니다.
@@ -41,6 +41,11 @@ graph LR
      - **Advanced**: Basics도 ETC도 아닌 나머지 전부 (아키텍처 심층 분석, 튜닝, 실무 트레이드오프 등). 분류가 애매하면 기본값으로 사용
      - **ETC**: AI 에이전트/Kubernetes/DevOps/HTTP3 등 소수 특정 주제만 모으는 카테고리
    - 이미 배포된 기존 38개 글은 `src/tools/apply_nav_labels.py`(초기 분류 백필), `src/tools/dedupe_basics_label.py`(기초/Basics 중복 정리), `src/tools/rename_trends_to_etc.py`(Trends→ETC 개명)로 일괄 정리했습니다.
+
+8. **`final.md`는 항상 UTF-8로 쓰고, 멀티바이트 문자를 자르는 부분 편집 금지**
+   - 2026-08-17에 `content/posts/*.md` 33개 파일·라이브 Blogger 게시물 2개에서 유니코드 손상 문자(U+FFFD, `�`)가 발견되어 `src/tools/patch_published_posts.py`로 전량 교정한 사례가 있습니다. 정확한 발생 지점은 특정하지 못했으나, 한글 같은 멀티바이트 문자를 다루는 도구(에디터, 셸, 부분 문자열 편집)를 파일 인코딩 확인 없이 오갈 때 발생할 수 있는 것으로 추정됩니다.
+   - `final.md`를 쓰거나 수정할 때는 항상 UTF-8 인코딩을 명시하고, 멀티바이트 문자 중간을 잘라내는 바이트 단위/부분 범위 편집을 피합니다.
+   - `python main.py validate`가 이제 본문에 `�`가 하나라도 있으면 게이트에서 자동으로 막으므로(`src/pipeline/validate.py`), 손상이 있으면 발행 전에 반드시 걸러집니다.
 
 ---
 
