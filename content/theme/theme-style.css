@@ -19,10 +19,12 @@
 }
 
 #categories-modal.active,
+div#categories-modal.active,
 .modal-overlay.active {
   display: flex !important;
   visibility: visible !important;
   opacity: 1 !important;
+  z-index: 999999 !important;
 }
 
 /* 1. Modern Google Fonts & Pretendard Typography Import */
