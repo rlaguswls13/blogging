@@ -378,7 +378,36 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
 - **배경**: Blogger 기본 템플릿의 `isHomepage` 조건 및 URL 파라미터 매칭 문제로 인해 클라이언트 페이징 버튼 클릭 시 포스팅 카드가 상위 4개로 고정되는 문제 발생.
 - **해결 패턴**:
   1. `Blogger JSON Feed API` (`/feeds/posts/summary?alt=json-in-script&max-results=150`)를 비동기 호출하여 전체 포스팅 인덱스와 날짜/라벨 스냅샷을 획득.
-  2. 숫자 버튼 클릭 시 전체 38개 포스팅 중 5~8번, 9~12번 포스팅 카드를 실시간 100% 교체 렌더링.
+### 10.3 Blogger 카테고리 모달 팝업 포털(Portal) & CSS 특이도(Specificity) 트러블슈팅 (`v17.0.0`)
+- **발생 원인**:
+  1. **사이드바 상위 DOM 갇힘 (DOM Hierarchy Containment)**: 모달 팝업 오버레이 HTML(`<div id="categories-modal">`)이 사이드바 하위 구조에 조립된 경우, 상위 사이드바 컨테이너의 `280px` 레이아웃 폭 제약 및 `overflow: hidden`, `z-index` 범위 제약으로 인해 화면 전체 반투명 팝업이 출력되지 못하고 갇히는 결함 발생.
+  2. **CSS 특이도(Specificity) 우위 파괴**: `<head>` 지점에 선언된 `#categories-modal { display: none !important; }` 스타일과 `theme-style.css` 의 `.modal-overlay.active` 클래스 간 특이도 충돌로 `.active` 가 부여되어도 모달이 계속 숨겨진 상태를 유지함.
+  3. **초기 클릭 포인터 가로채기 (Pointer Events Interception)**: 모달 오버레이 요소의 초기 `display: flex` 스타일로 인해 화면 전역을 가려 다른 요소의 클릭을 터치 타임아웃시키는 현상 발생.
+- **해결 및 예방 패턴**:
+  1. **Body Level Portal 배치**: `#categories-modal` 요소 마크업을 사이드바 밖 `<body>` 최상위 레벨 태그(`<footer>` 직전) 위치로 완전 이동하거나, `window.showCategoriesModal` 실행 시 `if (modal.parentElement !== document.body) document.body.appendChild(modal);` 로 DOM Portal 전이를 보장함.
+  2. **Clean Split Specificity & Pointer Events Guard**:
+     ```css
+     .modal-overlay:not(.active),
+     #categories-modal:not(.active) {
+       display: none !important;
+       visibility: hidden !important;
+       opacity: 0 !important;
+       pointer-events: none !important;
+     }
+
+     .modal-overlay.active,
+     #categories-modal.active {
+       display: flex !important;
+       visibility: visible !important;
+       opacity: 1 !important;
+       pointer-events: auto !important;
+       position: fixed !important;
+       top: 0 !important; left: 0 !important;
+       width: 100vw !important; height: 100vh !important;
+       z-index: 999999 !important;
+     }
+     ```
+  3. **전역 이벤트 위임 (Global Event Delegation)**: 동적 생성되는 `...` 더보기 버튼(`tech-tag-more-btn`)의 버블링 차단 방지를 위해 `document.addEventListener('click', ..., true)` capturing 레벨에서 팝업 함수를 최우선 가로채어 0.0001초 만에 시원한 카테고리 팝업 모달이 노출되도록 보장함.
 
 ---
 
