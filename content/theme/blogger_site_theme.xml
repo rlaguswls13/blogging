@@ -1952,82 +1952,77 @@
                   </script>
                   <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
                 </div>
-                
-          <!-- Categories Full Modal Popup Container (Permanent 100% Fixed HTML) -->
-          <div class='modal-overlay' id='categories-modal' style='display: none !important; visibility: hidden !important; opacity: 0 !important;'>
-            <div class='modal-box'>
-              <div class='modal-header'>
-                <h3>전체 카테고리</h3>
-                <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
-              </div>
-              <div class='modal-body'>
-                <div class='devlog-tags-popup' id='modal-tags-container'></div>
-              </div>
-            </div>
-          </div>
-          
-          <script>//<![CDATA[
-            window.showCategoriesModal = function() {
-              var modal = document.getElementById('categories-modal');
-              if (!modal) {
-                modal = document.createElement('div');
-                modal.className = 'modal-overlay active';
-                modal.id = 'categories-modal';
-                modal.innerHTML = '<div class="modal-box"><div class="modal-header"><h3>전체 카테고리</h3><button class="modal-close-btn" id="modal-close-btn-x" onclick="window.closeCategoriesModal(); return false;" type="button">×</button></div><div class="modal-body"><div class="devlog-tags-popup" id="modal-tags-container"></div></div></div>';
-                document.body.appendChild(modal);
-              }
-              if (modal.parentElement !== document.body) {
-                document.body.appendChild(modal);
-              }
-              var modalContainer = document.getElementById('modal-tags-container');
-              if (modalContainer) {
-                var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
-                if (widget) {
-                  var container = widget.querySelector('.widget-content') || widget;
-                  var anchors = Array.from(container.querySelectorAll('a'));
-                  modalContainer.innerHTML = '';
-                  anchors.forEach(function(a) {
-                    var tagEl = document.createElement('a');
-                    tagEl.href = a.getAttribute('href');
-                    tagEl.className = 'tech-tag';
-                    tagEl.textContent = a.textContent.trim();
-                    tagEl.style.display = 'inline-flex';
-                    modalContainer.appendChild(tagEl);
-                  });
-                }
-              }
-              modal.className = 'modal-overlay active';
-              modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
-              document.body.style.overflow = 'hidden';
-            };
-
-            window.closeCategoriesModal = function() {
-              var modal = document.getElementById('categories-modal');
-              if (modal) {
-                modal.className = 'modal-overlay';
-                modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
-              }
-              document.body.style.overflow = '';
-            };
-          //]]></script>
-          
-          <!-- TECH LOG Unified Site Theme CSS Engine (v12.0.0) -->
-          <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=11.0.0' rel='stylesheet'/>
-          
-          <!-- TECH LOG Unified Site Theme JS Engine (v12.0.0) -->
-          <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-          <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=11.0.0'></script>
               </div>
             </b:includable>
           </b:widget>
         </b:section>
       </div>
-      <div class='footer-bottom'>
-        <div class='footer-inner'>
-          <div class='footer-brand'>TECH LOG &amp;lt;BEJI/&amp;gt;</div>
-          <div class='footer-copyright'>&amp;copy; 2026 TECH LOG. All rights reserved.</div>
+    </footer>
+    
+    <!-- Permanent Fixed Categories Full Modal Popup (Body Level Root) -->
+    <div class='modal-overlay' id='categories-modal' style='display: none !important; visibility: hidden !important; opacity: 0 !important;'>
+      <div class='modal-box'>
+        <div class='modal-header'>
+          <h3>전체 카테고리</h3>
+          <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
+        </div>
+        <div class='modal-body'>
+          <div class='devlog-tags-popup' id='modal-tags-container'></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH LOG Site Footer -->
+    <footer class='site-footer'>
+      <div class='site-footer-inner'>
+        <div class='footer-text'>
+          <p>© 2026 <strong>BEJI TECH LOG</strong>. All rights reserved.</p>
+          <p>Powered by Google Blogger &amp; Custom Engine Architecture.</p>
         </div>
       </div>
     </footer>
+    
+    <script>//<![CDATA[
+      window.showCategoriesModal = function() {
+        var modal = document.getElementById('categories-modal');
+        if (!modal) return;
+        var modalContainer = document.getElementById('modal-tags-container');
+        if (modalContainer) {
+          var widget = document.getElementById('Label1') || document.querySelector('.widget.Label') || document.querySelector('[id^="Label"]');
+          if (widget) {
+            var container = widget.querySelector('.widget-content') || widget;
+            var anchors = Array.from(container.querySelectorAll('a'));
+            modalContainer.innerHTML = '';
+            anchors.forEach(function(a) {
+              var tagEl = document.createElement('a');
+              tagEl.href = a.getAttribute('href');
+              tagEl.className = 'tech-tag';
+              tagEl.textContent = a.textContent.trim();
+              tagEl.style.display = 'inline-flex';
+              modalContainer.appendChild(tagEl);
+            });
+          }
+        }
+        modal.className = 'modal-overlay active';
+        modal.style.cssText = 'display: flex !important; visibility: visible !important; opacity: 1 !important; position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important; background-color: rgba(15, 23, 42, 0.6) !important; backdrop-filter: blur(6px) !important; align-items: center !important; justify-content: center !important; z-index: 999999 !important; padding: 1rem !important;';
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeCategoriesModal = function() {
+        var modal = document.getElementById('categories-modal');
+        if (modal) {
+          modal.className = 'modal-overlay';
+          modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
+        }
+        document.body.style.overflow = '';
+      };
+    //]]></script>
+    
+    <!-- TECH LOG Unified Site Theme CSS Engine (v13.0.0) -->
+    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=13.0.0' rel='stylesheet'/>
+    
+    <!-- TECH LOG Unified Site Theme JS Engine (v13.0.0) -->
+    <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=13.0.0'></script>
   </body>
 </html>
