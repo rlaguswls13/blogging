@@ -1255,7 +1255,7 @@
                     </b:if>
                   </div>
                   <!-- 홈페이지이거나, search 경로 하위(라벨 검색 결과 포함) 일 때 전체 글보기 버튼 단 하나만 상시 노출 -->
-                  <b:if cond='data:view.isSearch or data:view.search.label'>
+                  <b:if cond='data:view.search.label'>
                     <a class='tech-primary-button' href='/search?max-results=4'>전체 글 보기 &#8594;</a>
                   </b:if>
                 </div>
@@ -2011,10 +2011,10 @@
             };
           //]]></script>
           
-          <!-- TECH LOG Unified Site Theme CSS Engine (v11.0.0) -->
+          <!-- TECH LOG Unified Site Theme CSS Engine (v12.0.0) -->
           <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=11.0.0' rel='stylesheet'/>
           
-          <!-- TECH LOG Unified Site Theme JS Engine (v11.0.0) -->
+          <!-- TECH LOG Unified Site Theme JS Engine (v12.0.0) -->
           <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
           <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=11.0.0'></script>
               </div>
