@@ -81,6 +81,11 @@
       /* Container Top Spacing to prevent Sticky Nav Overlap */
       .container {
         margin-top: 2rem !important;
+        padding-top: 1rem !important;
+      }
+
+      .sidebar {
+        margin-top: 1rem !important;
       }
 
       /* Post Card Title Word-Break & Formatting */
