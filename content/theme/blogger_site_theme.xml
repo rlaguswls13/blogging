@@ -2023,6 +2023,6 @@
     
     <!-- TECH LOG Unified Site Theme JS Engine (v20.0.0) -->
     <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=13.0.0'></script>
+    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=20.0.0'></script>
   </body>
 </html>
