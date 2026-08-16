@@ -1,42 +1,68 @@
 # 에이전트별 지침 및 아키텍처 가이드
 
-이 문서는 `ai-blogging` 프로젝트의 자동화 글쓰기를 이행하는 다중 에이전트들의 역할, 협업 모델, 생성 파일 흐름 및 관리 규칙에 대한 가이드라인입니다.
+이 문서는 `ai-blogging` 프로젝트의 자동화 글쓰기를 이행하는 CLI 파이프라인의 실제 파일 흐름, 게시 게이트 규칙, 관리자 모범 사례에 대한 가이드라인입니다.
 
-## 1. 다중 에이전트 협업 워크플로우
+## 1. 실제 파일 흐름
 
-블로그 글 작성은 다음과 같이 5가지 에이전트가 각 파일을 순차적으로 완성 및 조율하는 형태로 처리됩니다.
+블로그 글 작성은 문서 이론상의 5단계(주제→리서치→초안→팩트체크→편집) 파일 핸드오프가 **아니라**, `python main.py` CLI가 관리하는 단일 실행 디렉토리(`temp/runs/<runId>/`) 안에서 진행됩니다. 리서치·초안 작성·사실 검증은 어디까지나 글을 쓰는 에이전트(Claude 등)가 **내부적으로 수행하는 작업 절차**일 뿐, 시스템이 별도 파일로 강제하지는 않습니다.
 
 ```mermaid
 graph TD
-    A[Topic Agent: topic.md] --> B[Research Agent: research.md]
-    B --> C[Writer Agent: draft.md]
-    C --> D[Fact Check Agent: fact-check.md]
-    D --> E[Editor Agent: final.md]
-    E --> F[배포 validate / publish]
+    A["python main.py new --topic ..."] --> B["request.md + article-template.md 생성"]
+    B --> C["에이전트가 article-template.md를 바탕으로<br/>final.md 직접 작성(리서치·초안·팩트체크는 내부 절차)"]
+    C --> D["python main.py validate --run &lt;runId&gt; [--preflight]"]
+    D --> E["python main.py approve --run &lt;runId&gt;"]
+    E --> F["python main.py publish --run &lt;runId&gt; --platform blogger"]
 ```
 
-## 2. 에이전트별 역할 및 산출 규격
+실행 디렉토리(`temp/runs/<runId>/`)에 실제로 존재하는 파일은 다음 5개뿐입니다.
 
-1. **주제 편집자 (Topic Agent)**:
-   - **산출 파일**: `topic.md`
-   - **규격**: 최종 선정 주제 확정, 5개 이상의 목차(TOC) 설계, 핵심 탐구 질문 3개 이상 도출, 명확한 조사 범위 및 제외 범위 정의.
-   
-2. **리서처 (Research Agent)**:
-   - **산출 파일**: `research.md`
-   - **규격**: 공식 레퍼런스, 백서 등 신뢰할 수 있는 1차 자료 중심 출처 수집(최소 5개 이상). 설계된 각 목차별로 최소 2개 이상의 출처 매핑.
+| 파일 | 생성 시점 | 생성 주체 |
+| --- | --- | --- |
+| `state.json` | `new` 실행 시 | `src/pipeline/new_run.py` (`RunState`) |
+| `request.md` | `new` 실행 시 | `src/pipeline/new_run.py` (주제/생성 시각 기록용 메모) |
+| `article-template.md` | `new` 실행 시 | `wiki/templates/article.md`를 렌더링(`{{articleId}}`/`{{title}}`/`{{slug}}`/`{{createdAt}}` 치환) |
+| `final.md` | 에이전트가 직접 작성 | 글쓰기 에이전트 (시스템이 생성하지 않음) |
+| `publish-result.json` | `publish` 성공 시 | `src/publishers/__init__.py::publish_to_multi` |
 
-3. **작성자 (Writer Agent)**:
-   - **산출 파일**: `draft.md`
-   - **규격**: 템플릿의 필수 섹션(요약, 본문, 사실 검증 결과, 작성자의 견해, 한계와 반론, 참고문헌, 종합적 의견, 꼬리질문, 백링크) 구조 구현. 본문 내 검증 대상에 `CLAIM-NNN` 부여 및 인라인 인용.
+## 2. CLI 명령어
 
-4. **독립 사실 검증인 (Fact Check Agent)**:
-   - **산출 파일**: `fact-check.md`
-   - **규격**: 초안의 `CLAIM-NNN`에 대해 리서치 증거를 바탕으로 verified / unverified / contradicted 최종 판정.
+`main.py`가 지원하는 서브커맨드는 다음과 같습니다 (`python main.py <command> [options]`).
 
-5. **최종 편집자 (Editor Agent)**:
-   - **산출 파일**: `final.md`
-   - **규격**: 반박되거나 미검증된 주장들을 제거/보완. 최종 검토를 마치고 Pydantic 규격에 맞춰 `factCheckScore` (0.0 ~ 1.0) 반영 및 `status: "verified"` 설정.
+| 명령 | 옵션 | 동작 |
+| --- | --- | --- |
+| `new` | `--topic "<주제>"` | `create_run()` — 새 `runId` 생성, `request.md` + `article-template.md` 작성 |
+| `validate` | `--run <runId>` `[--preflight]` | `validate_run()` — 게시 게이트 검사(아래 3절). `--preflight`면 `humanApproved` 체크를 건너뜀 |
+| `approve` | `--run <runId>` | `approve_run()` — `state.json`의 `humanApproved`를 `true`로 기록 |
+| `publish` | `--run <runId>` `[--platform blogger,notion]` `[--dry-run]` | `publish_to_multi()` — 게이트 재검증 후 실제 게시. `--platform` 미지정 시 기본값 `blogger` |
+| `sync` | – | Notion 페이지를 MDX로 동기화 |
+| `todo` | `[--status ...]` | `final.md`의 `## 꼬리질문` 섹션에서 파싱된 후속 질문 TODO 목록 조회 |
+| `backlinks` | – | 지식 그래프 기반 백링크 조회 |
+| `theme` | – | Blogger 테마 관리 (`src/theme/theme.py`) |
 
-## 3. 관리자 모범 사례 (Best Practices)
-- 각 에이전트 프롬프트 템플릿 문서(`agents/*.md`)의 고유 지침과 수정 금지 액션(Forbidden Actions)을 철저히 모니터링해야 합니다.
-- 게이트 검증(`validate`) 실패 시 frontmatter 구조와 Pydantic 형식이 맞는지 디버깅을 우선 수행합니다.
+에이전트가 새 글을 쓸 때의 실제 순서: `new` → (`final.md` 직접 작성) → `validate --preflight`로 사전 점검 → `approve` → `publish`.
+
+## 3. 게시 게이트 규칙 (`src/core/publish_gate.json`)
+
+`validate_run()`(`src/pipeline/validate.py`)이 `final.md`에 대해 검사하는 항목:
+
+- **Frontmatter**: `ArticleFrontmatter` Pydantic 모델 검증 (id/title/slug/status/tags/factCheckScore 등)
+- **필수 섹션** (`requiredSections`): `요약`, `본문`, `사실 검증 결과`, `작성자의 견해`, `한계와 반론`, `참고문헌`, `종합적 의견`, `꼬리질문` — 8개 `##` 헤딩이 모두 존재해야 함
+- **최소 참고문헌 수** (`minimumReferences`): `## 참고문헌` 섹션에 리스트 항목 2개 이상
+- **작성자 견해 안내문** (`requireOpinionDisclaimer`): 본문에 `"사실 전달이 아니라 작성자의 해석과 견해"` 문구 포함 필수
+- **고위험 미검증 주장 차단**: `Risk: high` 뒤 250자 이내에 `Verdict: unverified`가 나오면 오류
+- **반박된 주장 차단**: `Verdict: contradicted`가 하나라도 있으면 오류
+- **사람 승인** (`requireHumanApproval`): `--preflight` 없이 실행 시 `state.json.humanApproved`가 `true`여야 함
+
+이 8개 필수 섹션 구조는 `wiki/templates/article.md`에 기본 스켈레톤으로 이미 포함되어 있으므로, `article-template.md`를 뼈대 삼아 각 섹션을 채워나가면 게이트 통과 요건을 자연히 만족합니다.
+
+## 4. 관리자 모범 사례 (Best Practices)
+
+- 게이트 검증(`validate`) 실패 시 오류 메시지가 어느 섹션/필드 문제인지 정확히 알려주므로, `final.md`의 frontmatter와 해당 `##` 섹션 존재 여부부터 확인합니다.
+- `publish`는 내부적으로 `validate_run()`을 다시 호출하므로 게이트를 우회할 수 없습니다. `--dry-run`으로 먼저 검증 없이(단, `humanApproved` 체크는 생략됨) API 호출 없이 확인 가능합니다.
+- 게시 성공 시 `final.md`는 `content/posts/<slug>.md`로 자동 복사되어 정식 자산 저장소에 편입됩니다(`publish_to_multi()` 마지막 단계). 이 파일이 곧 라이브 글의 소스 오브 트루스입니다.
+- 각 실행의 원본 주제 확인이 필요하면 `temp/runs/<runId>/request.md`, 게시 후 결과 확인은 `publish-result.json`을 참고합니다.
+
+## 관련 문서
+- [위키 인덱스](README.md)
+- [Google Blogger API 사용법](Google_Blogger_API_사용법.md)
