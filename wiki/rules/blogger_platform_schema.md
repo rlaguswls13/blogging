@@ -30,8 +30,6 @@ graph TD
   * `Dynamic Card Pager Engine` (비동기 Feed API 기반 숫자 페이징 동적 카트 교체 및 외부 CDN 의존성 제거 인라인 100% 임베딩) 명세
   * `Category Modal Portal Engine` (DOM Body Portal 전이 & `initCategoryTagsLimit()` 상위 8개 칩 + `...` 더보기 모달 변환) 명세
   * `rockpool Schema & Nav Overlap Resolution` (`b:defaultmessages='false'` 제거, `all-head-content`, `b:defaultmarkups`, `b:template-skin`, `<Variable>` 스키마 정의 및 `padding-top: 80px`, `margin-top: 90px` 이격 레이아웃) 명세
-- **프론트엔드 테마 검증 지식**: [`wiki/theme/frontend-only-style.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/theme/frontend-only-style.md)
-  * Notion/GitBook 스타일의 CSS 변수, 다크모드, 1/2단 반응형 그리드 뷰포트 레이아웃
 
 ---
 

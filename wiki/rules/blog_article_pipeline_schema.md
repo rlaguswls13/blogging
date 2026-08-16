@@ -34,15 +34,15 @@ graph TD
 ---
 
 ### 1.3 Content (글 작성 구분 템플릿 & 배포 자산)
-- **글 작성 구분 템플릿**: [`templates/article.md`](file:///d:/coding-project/2026-project/ai-blogging/templates/article.md) (Frontmatter 및 표준 헤더 골격)
-- **정식 글 저장소**: `content/generated/` (최종 생성 및 승인된 마크다운 아티클 노드)
+- **글 작성 구분 템플릿**: [`wiki/templates/article.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/templates/article.md) (Frontmatter 및 표준 헤더 골격)
+- **정식 글 저장소**: `content/posts/` (최종 승인 및 배포 완료된 마크다운 아티클 노드)
 - **지식 그래프 DB**: `wiki/knowledge-graph.json` (포스팅 간 관련성, 백링크, 연관 관계 지식 네트워크)
 - **이미지 자산**: `content/images/` (포스팅 본문 시각 자산)
 
 ---
 
 ### 1.4 Rule (사용자 지시 및 파이프라인 제약 수칙)
-- **통합 규칙 문서**: [`templates/blogger_rules.md`](file:///d:/coding-project/2026-project/ai-blogging/templates/blogger_rules.md)
+- **통합 규칙 문서**: [`wiki/rules/blogger_rules.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blogger_rules.md)
 - **사용자 필수 지시 4대 핵심 수칙**:
   1. **일회성 스크립트 작성 전면 금지**: `scratch/*.js` 등 임의의 일회성 API 전송 스크립트를 절대 금지하며, 오직 `python main.py` 정식 오케스트레이터를 통한다.
   2. **6단계 정식 라이프사이클 100% 이행**:
@@ -53,5 +53,5 @@ graph TD
 ---
 
 ### 1.5 Schema (위 사항의 통합 링크 & 인덱싱)
-- **전체 글 작성 파이프라인 인덱스**: 본 문서 ([`templates/blog_article_pipeline_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/templates/blog_article_pipeline_schema.md))
-- **에이전트 행동 수칙 인덱스**: 프로젝트 최상위 [`Agent.md`](file:///d:/coding-project/2026-project/ai-blogging/Agent.md)
+- **전체 글 작성 파이프라인 인덱스**: 본 문서 ([`wiki/rules/blog_article_pipeline_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blog_article_pipeline_schema.md))
+- **에이전트 행동 수칙 인덱스**: 프로젝트 최상위 [`AGENTS.md`](file:///d:/coding-project/2026-project/ai-blogging/AGENTS.md)
