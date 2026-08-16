@@ -1952,6 +1952,26 @@
                   </script>
                   <script src='//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'></script>
                 </div>
+                
+          <!-- Categories Full Modal Popup Container (Permanent 100% Fixed HTML) -->
+          <div class='modal-overlay' id='categories-modal' style='display: none !important; visibility: hidden !important; opacity: 0 !important;'>
+            <div class='modal-box'>
+              <div class='modal-header'>
+                <h3>전체 카테고리</h3>
+                <button class='modal-close-btn' id='modal-close-btn-x' onclick='if(window.closeCategoriesModal) window.closeCategoriesModal(); return false;' type='button'>×</button>
+              </div>
+              <div class='modal-body'>
+                <div class='devlog-tags-popup' id='modal-tags-container'/>
+              </div>
+            </div>
+          </div>
+          
+          <!-- TECH LOG Unified Site Theme CSS Engine (v5.2.0) -->
+          <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=5.2.0' rel='stylesheet'/>
+          
+          <!-- TECH LOG Unified Site Theme JS Engine (v5.2.0) -->
+          <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=5.2.0'></script>
               </div>
             </b:includable>
           </b:widget>
@@ -1964,11 +1984,5 @@
         </div>
       </div>
     </footer>
-    <!-- TECH LOG Unified Site Theme CSS Engine (v5.1.0) -->
-    <link href='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-style.css?v=3.3.0' rel='stylesheet'/>
-    
-    <!-- TECH LOG Unified Site Theme JS Engine (v5.1.0) -->
-    <script src='https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/gh/rlaguswls13/blogging@main/content/theme/theme-engine.js?v=3.4.0'></script>
   </body>
 </html>
