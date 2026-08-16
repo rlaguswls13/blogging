@@ -1,9 +1,6 @@
 /**
- * TECH LOG - Unified Site Theme JS Engine (v2.2.0)
- * Order-guaranteed Execution Waterfall:
- * 1. Ensure Modal DOM & Category 12-Chip Limit
- * 2. Strict 4-Card Grid Standardizer
- * 3. 5-Page Block Numbered Pager Engine
+ * TECH LOG - Unified Site Theme JS Engine (v2.3.0)
+ * Fixed Modal Toggle Engine (Default Hidden, Guaranteed Close)
  */
 (function() {
   'use strict';
@@ -12,17 +9,21 @@
   // 1. Dynamic Category Modal Injector & 12-Tag Limit Engine
   // =========================================================
   function ensureCategoriesModalExists() {
-    if (document.getElementById('categories-modal')) return;
+    var existingModal = document.getElementById('categories-modal');
+    if (existingModal) {
+      existingModal.style.setProperty('display', 'none', 'important');
+      return;
+    }
 
     var modalDiv = document.createElement('div');
     modalDiv.id = 'categories-modal';
     modalDiv.className = 'modal-overlay';
-    modalDiv.style.display = 'none';
+    modalDiv.style.setProperty('display', 'none', 'important');
     modalDiv.innerHTML = 
       '<div class="modal-box">' +
         '<div class="modal-header">' +
           '<h3>전체 카테고리</h3>' +
-          '<button class="modal-close-btn" id="modal-close-btn-x">×</button>' +
+          '<button class="modal-close-btn" id="modal-close-btn-x" type="button">×</button>' +
         '</div>' +
         '<div class="modal-body">' +
           '<div class="devlog-tags-popup" id="modal-tags-container"></div>' +
@@ -33,8 +34,18 @@
 
     var closeBtn = document.getElementById('modal-close-btn-x');
     if (closeBtn) {
-      closeBtn.addEventListener('click', closeCategoriesModal);
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeCategoriesModal();
+      });
     }
+
+    modalDiv.addEventListener('click', function(e) {
+      if (e.target === modalDiv) {
+        closeCategoriesModal();
+      }
+    });
   }
 
   function initCategoryTagsLimit() {
@@ -115,22 +126,13 @@
     // 12개 초과 시 '...' 모달 더보기 버튼 렌더링 (13번째 위치)
     if (tagsData.length > 12) {
       var moreBtn = document.createElement('button');
+      moreBtn.type = 'button';
       moreBtn.className = 'tech-tag-more-btn';
       moreBtn.textContent = '...';
-      moreBtn.style.color = 'var(--primary-color, #2563eb)';
-      moreBtn.style.fontWeight = '700';
-      moreBtn.style.padding = '0.35rem 0.75rem';
-      moreBtn.style.background = 'var(--card-bg, #ffffff)';
-      moreBtn.style.border = '1px solid var(--border-color, #e2e8f0)';
-      moreBtn.style.borderRadius = '20px';
-      moreBtn.style.cursor = 'pointer';
-      moreBtn.style.display = 'inline-flex';
-      moreBtn.style.alignItems = 'center';
-      moreBtn.style.justifyContent = 'center';
-      moreBtn.style.transition = 'all 0.2s';
       
       moreBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         showAllCategoriesModal(tagsData);
       });
       tagsBox.appendChild(moreBtn);
@@ -164,14 +166,14 @@
       modalContainer.appendChild(tagEl);
     });
 
-    modal.style.display = 'flex';
+    modal.style.setProperty('display', 'flex', 'important');
     document.body.style.overflow = 'hidden';
   }
 
   function closeCategoriesModal() {
     var modal = document.getElementById('categories-modal');
     if (modal) {
-      modal.style.display = 'none';
+      modal.style.setProperty('display', 'none', 'important');
       document.body.style.overflow = '';
     }
   }
