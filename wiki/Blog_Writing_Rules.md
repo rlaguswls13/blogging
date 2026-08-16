@@ -83,3 +83,12 @@ graph LR
 - **`content/posts/`**: 관리자 승인 및 배포가 완출된 **최종 검토 마크다운 글 저장소**
 - **`content/images/`**: 배포 시 외부 URL 링크 (`![caption](https://.../image.png)`)로 연결되는 **완성형 이미지 저장소 (유지)**
 - **`temp/runs/${run_id}/`**: 파이프라인 구동 중 관리자 검토용 로컬 `final.md`가 생성되는 **임시 작업 디렉토리**
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](sessions/raw/2026-08-16.md)
+
+<!-- AUTO:related-sessions:end -->

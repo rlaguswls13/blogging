@@ -71,3 +71,14 @@ else:
 ## 관련 문서
 - [위키 인덱스](README.md)
 - [Agent Guidelines](Agent_Guidelines.md)
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](sessions/raw/2026-08-16.md)
+- [2026-08-12](sessions/raw/2026-08-12.md)
+- [2026-08-11](sessions/raw/2026-08-11.md)
+
+<!-- AUTO:related-sessions:end -->

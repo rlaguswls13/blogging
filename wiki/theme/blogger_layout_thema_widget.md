@@ -480,3 +480,16 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
 ### 개발자 문서
 - [Blogger Layouts Version 3 공식 발표](https://bloggercode.blogspot.com/2012/06/blogger-layouts-version-3.html)
 - [Blogger API v3](https://developers.google.com/blogger/docs/3.0/using)
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](../sessions/raw/2026-08-16.md)
+- [2026-08-15](../sessions/raw/2026-08-15.md)
+- [2026-08-14](../sessions/raw/2026-08-14.md)
+- [2026-08-13](../sessions/raw/2026-08-13.md)
+- [2026-08-12](../sessions/raw/2026-08-12.md)
+
+<!-- AUTO:related-sessions:end -->

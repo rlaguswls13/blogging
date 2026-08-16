@@ -2,6 +2,8 @@
 
 본 스키마 문서는 구글 Blogger(Blogspot)의 테마 수정, 가젯 연동, 퍼블리싱 규격, 그리고 향후 Naver/Tistory 등 외부 퍼블리싱 플랫폼으로의 확장을 대비하여 관련 자산을 링크 및 인덱싱한 **플랫폼 배포 표준 스키마 문서**입니다.
 
+> 이 문서는 [`AGENTS.md`](../../AGENTS.md) §1·§3이 참조하는 Blogger 배포 영역 SSOT입니다.
+
 ---
 
 ## 1. 플랫폼 구성 요소 인덱싱 (Indexing Schema)
@@ -48,3 +50,14 @@ graph TD
 - **향후 확장 퍼블리싱 플랫폼 인덱스**:
   - **Tistory**: Tistory Skin Tag Schema + Tistory REST API Publisher
   - **Naver**: Naver Blog API + SmartEditor HTML Publisher
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](../sessions/raw/2026-08-16.md)
+- [2026-08-12](../sessions/raw/2026-08-12.md)
+- [2026-08-11](../sessions/raw/2026-08-11.md)
+
+<!-- AUTO:related-sessions:end -->

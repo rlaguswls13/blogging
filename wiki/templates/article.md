@@ -69,3 +69,12 @@ Tier1(IF≥10 논문/IEEE·ACM·Nature급 저널/IETF RFC/W3C 표준) > Tier2(�
 ## 백링크
 
 <!-- 관련 글 및 연관 지식 링크 -->
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](../sessions/raw/2026-08-16.md)
+
+<!-- AUTO:related-sessions:end -->

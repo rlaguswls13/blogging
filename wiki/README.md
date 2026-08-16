@@ -38,4 +38,5 @@ AI Agent는 글을 작성하거나 주제를 추천할 때 아래 RAG 지식 노
 
 
 ## 세션 기록
-- [세션 작업 기록](Session_History.md)
+- [세션 작업 기록 인덱스](Session_Index.md)
+  - 날짜별로 분리 저장되는 세션 원본 아카이브(`sessions/raw/`)의 인덱스입니다. 큐레이션된 최신 작업 상태는 `.agent/session-handoff.md`를 참고하세요.

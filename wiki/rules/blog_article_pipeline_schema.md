@@ -2,6 +2,8 @@
 
 본 스키마 문서는 당사 블로그 시스템에서 **기술 포스팅을 수집, 작성, 검증, 관리 및 파이프라인 구동**하기 위해 지켜야 할 5대 자산과 규칙을 정리하고 인덱싱한 **글 작성 파이프라인 표준 스키마 문서**입니다.
 
+> 이 문서는 [`AGENTS.md`](../../AGENTS.md) §1·§3이 참조하는 Blog 글 작성 영역 SSOT입니다.
+
 ---
 
 ## 1. 글 작성 5대 구성 요소 인덱싱 (Core 5 Elements)
@@ -55,3 +57,16 @@ graph TD
 ### 1.5 Schema (위 사항의 통합 링크 & 인덱싱)
 - **전체 글 작성 파이프라인 인덱스**: 본 문서 ([`wiki/rules/blog_article_pipeline_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blog_article_pipeline_schema.md))
 - **에이전트 행동 수칙 인덱스**: 프로젝트 최상위 [`AGENTS.md`](file:///d:/coding-project/2026-project/ai-blogging/AGENTS.md)
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](../sessions/raw/2026-08-16.md)
+- [2026-08-15](../sessions/raw/2026-08-15.md)
+- [2026-08-14](../sessions/raw/2026-08-14.md)
+- [2026-08-13](../sessions/raw/2026-08-13.md)
+- [2026-08-12](../sessions/raw/2026-08-12.md)
+
+<!-- AUTO:related-sessions:end -->

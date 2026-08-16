@@ -2,6 +2,8 @@
 
 본 가이드는 당사 블로그 프로젝트에서 준수해야 하는 배포/퍼블리싱의 고정 규칙, 6단계 포스팅 라이프사이클, 관리자 명시적 승인 게이트, 그리고 최종 승인 포스팅 자동 이관 규격을 정리한 **단일 진실 출처(Single Source of Truth) 표준 규칙 문서**입니다.
 
+> 이 문서는 [`AGENTS.md`](../../AGENTS.md) §2~3이 요약·참조하는 SSOT입니다. Agent는 요약이 아니라 이 문서의 전문을 따른다.
+
 ---
 
 ## 1. 관리자 컨펌 본문 절대 불가침 및 배포 선택 수칙 (Human Approval Unalterable & Platform Choice) 🛑
@@ -43,9 +45,20 @@ graph LR
 
 ---
 
-## 4. Blogger 테마 XML & SAXParseException 트러블슈팅 지식 수칙 ⚠️
+## 3. Blogger 테마 XML & SAXParseException 트러블슈팅 지식 수칙 ⚠️
 
 - **Blogger SAXParseException 예방 수칙**:
   - 구글 Blogger XML 엔진은 엄격한 SAX 파싱을 수행하므로, 테마 XML 작성 시 자바스크립트나 HTML 속성의 `&` 문자는 반드시 `&amp;&amp;`로 이스케이프하거나 `//<![CDATA[` 블록 내부로 격리 처리해야 합니다 (`SAXParseException: The entity name must immediately follow the '&'` 방지).
 - **지식 베이스(wiki/) 상시 기록 의무**:
   - 구글 특화 위젯/가젯 개편 지식, 트러블슈팅 경험, XML 예외 규칙은 발생 즉시 **[`wiki/theme/blogger_layout_thema_widget.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/theme/blogger_layout_thema_widget.md)** 및 **[`wiki/rules/blogger_platform_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blogger_platform_schema.md)** 지식 문서에 100% 지속 누적 기록 업데이트합니다.
+
+<!-- AUTO:related-sessions:start -->
+
+## 관련 세션
+이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
+
+- [2026-08-16](../sessions/raw/2026-08-16.md)
+- [2026-08-12](../sessions/raw/2026-08-12.md)
+- [2026-08-11](../sessions/raw/2026-08-11.md)
+
+<!-- AUTO:related-sessions:end -->
