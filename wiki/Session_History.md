@@ -1,5 +1,4557 @@
 # Project Session History
 
+### 세션 기록 (2026-08-16 02:56:51)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일에는 어떠한 파싱 구조 오류나 중도 태그 폐쇄도 존재하지 않으며, -->  니가 한말인데 확실해? 어떤걸 근거로 그렇게 자신감 있게 100%라고 하는거야? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:46:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이전에 내가 세팅해놓은거 다 박살내놨네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:47:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 UI/UX 에 알맞다고 생각해서 완벽하다고 하는거니? 1) 페이지네이션은 이제 정상작동하지만, 페이지 넘길때마다 새로고침되니깐 사용이 불편하고, 아래 글자가 다 넘치잖아. 2) 카테고리는 내가 상위 12개 표기하고 나머지는 ..., 그이후에 팝업으로 보여주는걸 구현해놨는데 어디갔어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:53:35+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전혀 적용되지 않았어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:55:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 혹시 너, xml이 너무 길어서 문제면 import 하는 방식으로 섹션별로 개선하는건어떄 필요한 scirpt는 github에 배포해서 불러다 쓰는 방식이 훨씬 좋을거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:56:44+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:56:40)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일에는 어떠한 파싱 구조 오류나 중도 태그 폐쇄도 존재하지 않으며, -->  니가 한말인데 확실해? 어떤걸 근거로 그렇게 자신감 있게 100%라고 하는거야? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:46:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이전에 내가 세팅해놓은거 다 박살내놨네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:47:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 UI/UX 에 알맞다고 생각해서 완벽하다고 하는거니? 1) 페이지네이션은 이제 정상작동하지만, 페이지 넘길때마다 새로고침되니깐 사용이 불편하고, 아래 글자가 다 넘치잖아. 2) 카테고리는 내가 상위 12개 표기하고 나머지는 ..., 그이후에 팝업으로 보여주는걸 구현해놨는데 어디갔어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:53:35+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전혀 적용되지 않았어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:55:56+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:54:05)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일에는 어떠한 파싱 구조 오류나 중도 태그 폐쇄도 존재하지 않으며, -->  니가 한말인데 확실해? 어떤걸 근거로 그렇게 자신감 있게 100%라고 하는거야? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:46:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이전에 내가 세팅해놓은거 다 박살내놨네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:47:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 UI/UX 에 알맞다고 생각해서 완벽하다고 하는거니? 1) 페이지네이션은 이제 정상작동하지만, 페이지 넘길때마다 새로고침되니깐 사용이 불편하고, 아래 글자가 다 넘치잖아. 2) 카테고리는 내가 상위 12개 표기하고 나머지는 ..., 그이후에 팝업으로 보여주는걸 구현해놨는데 어디갔어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:53:35+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:49:33)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일에는 어떠한 파싱 구조 오류나 중도 태그 폐쇄도 존재하지 않으며, -->  니가 한말인데 확실해? 어떤걸 근거로 그렇게 자신감 있게 100%라고 하는거야? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:46:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이전에 내가 세팅해놓은거 다 박살내놨네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:47:42+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:47:38)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일에는 어떠한 파싱 구조 오류나 중도 태그 폐쇄도 존재하지 않으며, -->  니가 한말인데 확실해? 어떤걸 근거로 그렇게 자신감 있게 100%라고 하는거야? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:46:47+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:46:19)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 하..  org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section.  너 똑바로 안할래?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:45:42+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:45:06)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2385; columnNumber: 12; The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:44:32+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:44:11)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 2358; columnNumber: 20; The entity name must immediately follow the '&' in the entity reference.  진짜 똑바로 안할래? 내가 이런 오류들은 기억했다가. blogger-thema에서 활용하라고 했잖아. blogger은 구글 특화여서 참고문헌왜에도 winget이나 룰따로 관리하라고 했던거같은데 그런거 업데이트 안할래?!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:42:59+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:41:32)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 넌 이게 지금 페이지네이션이 정상작동되는걸로 보여?   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:41:06+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:41:15)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야.. 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:40:16+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:39:29)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야! 테마 바꾼거 맞아? 내가 수동으로 바꾸게 너는 변경분만 가져와 . 전혀 안바뀌는데 바뀐것처럼 얘기만하네  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:39:19+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:38:29)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 말을 못알아 들어? blogger의 기본 페이지네이션 값으로 변경하라고. 왜 맣을 못알아들어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:37:17+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:36:33)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 1, 2, 3 페이지 버튼 어떤 걸 눌러도 글이 안바뀐다고!!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:35:23+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:34:22)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이상한 짓하지말고...  지금 페이지네이션이 왜 고장난지 몰라? 페이지를 옮겨도 글이 안바껴  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:32:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:34:05)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 이전에 json 형태로 지식기반 쌓으라고 내가 해둔거 있지않아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니.. 그 그래프가 wiki에 있어야지 내가 볼 content에 들어가냐고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:31:49+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그러면 know라는 폴더의 내용은 필요없지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 삭제해. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 내용에 대해서 세션 정리하고 종료해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:56+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 종합 기록 (2026-08-16 11:34:00 - 완료)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 요청 사항**:
+  - Blogger 배포 포스팅 수량 및 현황 파악 (총 38개 게시글 확정)
+  - Plan-and-Build 워크플로우를 통한 38개 게시글 로컬 `content/posts/` 완전 동기화 축적
+  - 로컬 중복 파일 정리 및 단일화 (`article-20260816110100.md` 등 구버전 파일 청소)
+  - `wiki/knowledge-graph.json` 지식 그래프 DB 구축 (38개 노드, 101개 태그, 255개 연관 엣지)
+  - 불필요한 `wiki/knowledge/` 중복 폴더 정리 삭제
+- **주요 변경 및 성과**:
+  - `src/tools/sync_published_posts.py` 작성 및 38개 게시글 `content/posts/*.md` 백업 축적
+  - `src/tools/build_knowledge_graph.py` 작성 및 `wiki/knowledge-graph.json` 지식 DB 생성
+  - `wiki/rules/blog_article_pipeline_schema.md` 지식 그래프 위치 업데이트
+  - `wiki/knowledge/` 중복 디렉터리 제거 완료
+
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 이전에 json 형태로 지식기반 쌓으라고 내가 해둔거 있지않아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니.. 그 그래프가 wiki에 있어야지 내가 볼 content에 들어가냐고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:31:49+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그러면 know라는 폴더의 내용은 필요없지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 삭제해. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:40+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:33:30)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 이전에 json 형태로 지식기반 쌓으라고 내가 해둔거 있지않아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니.. 그 그래프가 wiki에 있어야지 내가 볼 content에 들어가냐고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:31:49+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그러면 know라는 폴더의 내용은 필요없지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:33:27+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:32:03)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 이전에 json 형태로 지식기반 쌓으라고 내가 해둔거 있지않아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니.. 그 그래프가 wiki에 있어야지 내가 볼 content에 들어가냐고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:31:49+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:31:08)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 이전에 json 형태로 지식기반 쌓으라고 내가 해둔거 있지않아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:47+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:31:08)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로그 글에 대한 페이지 네이션 고장났어, blogger가 제공하는 일반 저인 페이지 네이션으로교체하도록 수정 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 야 백업본도 규칙에 맞춰서 temp쪽으로 넣던지 해야지!!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:30:22+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:28:18)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:27:24)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  해당 글에 대한 중복성이나, 글 검증을 위한 작업을 한번 해야한다. 1) wiki 기반 지식 축적 2) cotent 배포된 파일 없는 경우 축적 3) 중복된 페이지 있으면 교체 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:27:08+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+  - 파일 생성: `implementation_plan.md`
+
+
+### 세션 기록 (2026-08-16 02:24:18)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 헛소리하네..  우리 총 40개의 글을 배포했어 못찾겠으면 beji-tech.blogspot.com 참고해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:23:23+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 실행 명령어: `python -c "import json; data = json.load(open(r'C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md', encoding='utf-8')); entries = data.get('feed', {}).get('entry', []); print(f'Total posts: {len(entries)}'); [print(f'{i+1}. {e[\"title\"][\"$t\"]}') for i, e in enumerate(entries)]"`
+  - 실행 명령어: `where python; py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-Command python | Select-Object -ExpandProperty Source`
+  - 실행 명령어: `node -e "const fs = require('fs'); const content = fs.readFileSync(process.argv[1], 'utf8'); const jsonStart = content.indexOf('{'); const jsonStr = content.substring(jsonStart); const data = JSON.parse(jsonStr); console.log('Total posts count:', data.feed.entry.length); data.feed.entry.forEach((e, i) => { const altLink = e.link.find(l => l.rel === 'alternate'); console.log(\`\${i+1}. [\${e.title.\$t}](\${altLink ? altLink.href : ''})\`); });" "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\.system_generated\steps\32\content.md"`
+  - 파일 생성: `parse_feed.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_feed.js"`
+  - 파일 생성: `parse_sitemap.js`
+  - 실행 명령어: `node "C:\Users\rlagu\.gemini\antigravity\brain\4e7a7540-8428-4f69-b848-7837546946d0\scratch\parse_sitemap.js"`
+
+
+### 세션 기록 (2026-08-16 02:22:34)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 우리 최종적으로 정리하기 전에 실제 해당 프로젝트가 배포한글  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:22:19+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - (명령어 실행 없음)
+
+
+### 세션 기록 (2026-08-16 02:22:04)
+- **Conversation ID**: `4e7a7540-8428-4f69-b848-7837546946d0`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 지금 까지 배포된 글이 몇개야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:55+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+- **주요 수행 작업**:
+  - (명령어 실행 없음)
+
+
+### 세션 기록 (2026-08-16 02:21:16)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 정리하고 마무리해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:21:05+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:20:55)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1번 사항은 소스와 env 이슈니깐 해결하면 되는거고. 2번 사항은 관리자인 내가 컨펌한 내용을 임의로 니가 판단해서 수정하는건 용납할 수 없어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:20:37+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:19:07)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 왜 내용을 다 생략해버린거지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 실제 배포가 안된 이유에 대해서 설명하고, 왜 내가 초기에 컨펌해주는 내용을 삭제하고 새로 만들었는지 설명해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:18:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:17:05)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 배포 안됬는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:12:15+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:11:50)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 마지막으로 최근 두개 아직 포스팅 안했는데 blogger로 해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:42+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:11:25)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 잘못 전달하게 post로 할떄는 naver로 전달할건지, blogger로 할건지, 수동으로 할건지 나한테 다시 물어봐줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:11:05+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:11:02)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> Agent.md -> AGENTS.md가 맞아  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:34+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:10:24)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 post로 옮길때는 blogger에 포스팅하라는 이야기이다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:10:06+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:08:26)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 승인 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:07:59+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:07:20)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> mermaid 구조봐는 diagram을 간소화된 image로 만들어서 배포하는 형식으로 전달했던거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:06:05+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:03:51)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 심화 포스팅도 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:03:33+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:03:15)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초로 작성한 글은 배포해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:02:56+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:01:09)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 작성 시작해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:27+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 02:00:18)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초는 B-1 심화는 A-2 선정하고, 지금 중복되는 지식없는지 검토해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T11:00:01+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:58:12)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 각각 주제 5개 선정해보라고.  내가 이전에 이런 주제 저장하는 목록하나 wiki에 선정하고 나중에 내가 물어보면 골라서 답변하라고 했던거같은데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:58+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:57:09)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초 내용으로 배포할 글 1개, Advanced로 배포할 글 하나 주제 선정할 목록  만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:57:03+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:56:10)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 까지 내용 정리하고 session 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:56:00+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:55:27)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 소스내부로 옮겨야한느거면 옮기고.  두번째로 파이썬으로 구성된 소스 기능별로 패키지나눠 응집도 최우선, 결합도 최하위 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:54:11+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:53:30)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> scripts로 나온 소스는 뭐야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:53:18+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:51:52)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마 관련된것도 넣어서 경로 교체해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:51:08+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:50:58)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 경로를 바꿔줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:50:27+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:49:57)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 사실 template라고 별도 경로 나온거 나도 확인하지만 agent가 필히 참고해야하니깐 wiki에 들어가서 참고하도록 해야하지 않을까?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:49:37+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:48:59)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> temp에서 final로 나온건 content/posts로 최종 검토된 파일 올리도록한다.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:48:38+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:48:02)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 미사용되는건 삭제해!  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:43+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:47:26)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 포스팅간 백링크에 대한 정보는  wiki로 agent가 알아서 고민하고, image의 경우에는 배포되서 url 링크로 연결하고 있으니 고려해서 유지하도록해야하지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:47:10+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:45:57)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content는 지금 사용이 되는가?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:39+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:45:51)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  config는 소스내에서 사용되는거면 소스 안으로 넣어야지 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:45:23+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:45:05)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전역으로 올렸으면 삭제하도록. 그리고 config는? 어디에 사용되 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:55+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:44:30)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents의 스킬은 글로벌로 올려서 사용하게끔해. 이건 프로젝트에서만 쓸건 아니지않나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:44:21+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:43:39)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> .agents는 ?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:43:34+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:43:09)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> agnets, .agents, config 경로의 파일도 참고해서 사용되는지 검토하고 아래 내가 지정한 내용하고 겹치면 통합하도록 !  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:42:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:41:16)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> session-handoff 위치는? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:41:11+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:40:37)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 session-handoff 하면 어떤게 정리된느거야?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:40:31+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:38:07)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content 와 temp의 역할이 겹치지 않나?  wiki는 프로젝트에 대한 내용이 맞아?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:37:50+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:36:32)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 파일구조가 너무 다 동떨어져있어 응집도 높이고, 결합도는 낮추는 작업 진행해 그리고 확인중에 미사용 파일은 삭제해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:36:10+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:35:06)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 프로젝트에 불필요한 자료 모두 삭제, 이동, 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:34:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:34:11)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:33:55)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build  현재 프로젝트 내가 신규로 지정한 내용 적용해서 구성되어있는지 검토 및 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:33:42+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:32:40)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 전면 수정 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:32:24+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:30:11)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger_rules는 구글 blogger의 테마, 글 배포 등을 위한 내용을 검토하는 사항이고. 지금 작성된 rules는 전반적인 blog 글을 작성하는데 파이프라인 룰이다.  1) blogger에 배포를 위한 공식문서를 참고한 - RawSource : 참고 url 이전에 준게 있음 - wiki : 해당 rawSource를 참고하여, 작성한 rule 및 테스트 과정을 통해 개편된 내용. - thema : 특정 블로그의 전체 테마를 수정하기위한 템플릿 - 스키마 : 위사항을 지칭하는 내용을 링크/인덱싱하여 작성한것 (추후, naver, tistroy 등 외부 배포될 영역으로 확장)  2) blog 글을 작성하는데 필요한 문서 - rawsource : - wiki : ai agent 가 참고할 내용. 글의 지식연관 RAG, - content : content를 작성하는 구분된 템플릿, 실제 배포된 글 - rule : 블로그 작성에 내가 필히 지시하고, 제약한 것 그리고 파이프라인에 내한 룰 - 스키마 : 위사항을 정리하고 링크/인덱싱 한 것  3) Agent.md에 작성   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:29:47+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:20:57)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 배포 전에 항상 관리자가 검토 -> 리뷰해서 승인(배포하라고 별도 명령)하고 배포되도록해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:20:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:19:40)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생각해봐 지금 배포되는글은 temp/runs 하위에 타임스탬프별로 되고 있는 파일의 final.md 아니야? 내가 분명히 배포전에 final.md 결과 파일 같은걸 저장하라고 했는데 몇개 빼고는 하나도 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:19:32+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:18:29)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> content에 어떤 내용이 적재된다고?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:18:18+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:15:05)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 다시 룰 정리 다시 깔끔하게하고, 흩어져있는 파일 한곳으로 모아서 관리하도록 패치해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:14:52+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:12:57)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 일회성처리 금지입니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:52+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:12:38)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 내가 그렇게 글 작성해서 만들라고 한적이 없는데 왜 블로글 작성 파이프라인을 안탔지?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:12:32+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:11:34)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  GoF와 DB관련된 글은  어디에 작성되어있어, </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:11:27+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:08:01)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> `created → researched → drafted → fact_checked → approved → published` 이걸 따라서 blog 작성하도록 했는데 포함이 되어있는가? 그리고 HTTP_프로토콜_발전사.md, Kubernetes_oPerator_패턴.md는 불필요한 글인거같은데 마지막으로 어제, 오늘 배포된 blog 글은 어디에 있어? 원래 temp 경로에 생성해서 보관하도록한거같은데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:07:36+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 01:04:25)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 최초 블로글 작성에 대한 룰이 다 깨진거같아. md 파일 중복되는 부분 전면 수정 및 제거 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T10:03:58+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 00:59:04)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 작성한 글만 검토해서 재작성해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:58:46+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 00:56:59)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 보완된 내용 작성 룰 md 작성 2) 위에 보완된 내용으로, 각 카테고리에 알맞은 템플릿 룰 md 작성 3) 보완된 룰에 매칭이 되는지 전체글 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:56:27+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+  - 파일 생성: `rule_integrated_blogging.md`
+  - 파일 생성: `full_articles_compliance_review.md`
+
+
+### 세션 기록 (2026-08-16 00:55:27)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 복합적으로 우리 블로그 글에 보완할점은? </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:55:15+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+  - 파일 생성: `comprehensive_improvement_plan.md`
+
+
+### 세션 기록 (2026-08-16 00:50:19)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 이렇게 정리한 내용에서, 대표적인 it 블로글 글과의 차이점이 뭔지 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:50:08+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+  - 파일 생성: `comparison_with_major_it_blogs.md`
+
+
+### 세션 기록 (2026-08-16 00:45:46)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 두 가지 카테고리에대한 rule.md 각각 정리해서 전달해줘 좀 더 심화시켜야해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:45:18+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+  - 파일 생성: `rule_advanced_technical_article.md`
+  - 파일 생성: `rule_basics_concept_article.md`
+
+
+### 세션 기록 (2026-08-16 00:21:02)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기초(basic)관련 템플릿도 있을텐데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:47+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+  - 파일 생성: `basic_post_template_analysis.md`
+
+
+### 세션 기록 (2026-08-16 00:20:25)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 적용중인 템플릿 분석해서 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:20:13+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+  - 파일 생성: `current_template_analysis.md`
+
+
+### 세션 기록 (2026-08-16 00:18:57)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 지금 까지 작성된 글 어떻게 되는지 확인해서 전문적인 글로 작성되는지 검토 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:18:44+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+  - 파일 생성: `blog_review_report.md`
+
+
+### 세션 기록 (2026-08-16 00:17:48)
+- **Conversation ID**: `726639dc-3889-431f-9fc4-969ce63493b2`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> blog 글을 쓰는 템플릿과 내부 내용의 규칙에 대해서 작성해보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:17:35+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+- **주요 수행 작업**:
+  - 파일 생성: `blog_post_template_and_rules.md`
+
+
+### 세션 기록 (2026-08-16 00:15:40)
+- **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 1) 페이지 변경되면 변경된 페이지에 맞게 위에 하이라이트 변경되게 테마 수정 2) withd 사이즈 좀더 키워 2번쨰 이미지 참고해서 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:08:34+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> python main.py theme --upload </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:10:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) active 활성화가 안되는데 재확인 해봐 2) 그리고 글 내용도 커진거 대응해서 좀더 withd 늘려  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:15:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger 블로그글에 댓글 위젯이 없는데 확인해서 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:31:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 댓글 과 본문 사이에 br 구분선 넣어서 구분되게 만들어 2) 본문의 패딩값이 너무 큰거같아 이미지참고해서 줄이도록 3) 본문 글의 목차 표기가 중복되는점과 접었다 폈다 할수있도록 변경 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:38:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 확인해보면 태그 깨짐 및 불필요한 내용 제거가 안되있음 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:49:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 목차 라는 제목이 중복이다 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:02:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 글의 좌우 패딩 지금 값의 2배로  2) 목차에 굳이 접고펼친다는 글 삭제 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:04:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 글에도 적용해서 반영 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:08:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 메인 페이지 1) 최근 글은 4개까지만 표기되도록 합니다.  2) 카테고리는 글의 4개까지 표기되는 거에 맞춰서 표현하고 넘치면 ...으로 줄임 모든 블로그글 읽어오기 및 개별 카테고리 목록은 1) 모든 블로그 글은 /label 2) 나머지는 /label/${category} 검색  글 정렬은 모두 등록날짜 desc  -> ㄱ-ㅎ,A-B asec 정렬합니다. 또한 글에 검색 또는 모든 글 조회는 4개당 1페이지로 표기하도록 변경합니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:20:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /blogger-rules  페이지네이션이 생성안된거 확인하고, 카테고리 height가 글 표기 길이가 안맞는것도확인해서 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:34:45+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /blogger-rules is a [Slash Command]: <SKILL>The user requested you read and use the "blogger-rules" skill. The path to the skill file is: d:\coding-project\2026-project\ai-blogging\.agents\skills\blogger-rules\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 검색에서는 모든 글 검색으로 나오게끔 해줘 카테고리 height 적용안됬어 그거 확인해서 수정하고 ... 클릭시 전체 카테고리가 나오게끔 팝업으로 만들어줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:40:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 변경된거 반영이 안됬어 playwrite로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:47:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 작동을 안하는데 제대로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:50:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 수정했는데 아직 반영이 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:25:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 안바꼈어 테마 바꾸는건 내가 수동으로 할테니깐 테마 적용되는지마 playwrite로 확인만해 너 blogger 테마/위젯 규칙 확인을 제대로 하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:37:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elif" must be terminated by the matching end-tag "</b:elif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:48:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 59         </div> 2160       </div> 2161     </div> 2162   </body> 2163 </html> 2164  템플릿: 템플릿 수정처리 중...  org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elseif" must be terminated by the matching end-tag "</b:elseif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 카테고리 크기에 맞처서 갯수 수정하고, 정렬순서 있어? 없으면 제일 많이 태깅된거 -> 알파벳순 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:52:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 8개로 충분해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:53:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 비어있어. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한줄일때도 고려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한도 다시 돌아오면, 1. 지금 글에 참고문헌과의 링크 표기가 이상하다.  [CLAIM-001] [SOURCE-001] 이렇게 표기된게 있는데 -> [1], [2]의 형태로 수정해서 아래 참고문헌과 이어지게 해라. 2. 오늘 2가지 블로그글 작성 : 원하는 방향은 AI 관련된 내용  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:59:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T18:32:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TOPIC 리스스트 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:36:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TODO LIST </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:37:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 MQ 미들웨어 activemq, 카프카 관련해서 10개정도 리스트업해줘 내가 선택해볼게 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 6번, 1번 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build 글작서시 개념설명도 혹은 flowdiagram 을 중간에 이미지 삽입을 해주고 싶어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:56:31+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시안 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:01:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마로 넣는거 말고 png, jpg 같은 이미지 처리해서 넣어주는건  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:02:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build generate_image 활용해서 앞으로의 글 작성시 필요한 이미지 1~2개 씩 삽입해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:04:35+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지는 api로 전달 못해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:11:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 1번 방안으로 작업 진행해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:18:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생성된 이미지 올리고 있어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T20:27:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘의 주제 선정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:52:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 테마 img에 withd 지정안해서 초과되는 부분 있으니깐 적당한 withd지정해서 안넘치게 해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:54:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위에 주제는 별로인거같네.  1) Kafka 파티셔닝의 문제점 : 동시성과 연속성 보장이 되는가? - 동시성과 연속성을 보장하기위한 방식 - 메세지의 그룹핑 - 메세지의 순서보장 태깅 - 단일 파티션(파티셔닝안하기)  2) mq미들웨어 대표 activemq, apache kafka, rabbimq, redis(메모리 rdbms) 장단점 - 장단점 - 각 미들웨어는 어느레벨 솔루션에 어울리는가?    </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:57:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 페이지네이션이 고장난거같아 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:25:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니야 밑에 최근, 홈 이전이 아니라 모든 블로그 글이 전체글 검색했을때 나오게끔 해야지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 캡슐 버튼이 아니라, 페이지네이션으로만 표기되게끔하라는거야 이거 최근, 이전 글 이렇게 구분해서 해야하는 blogger 정책이 있는게 아니면 검색시 나오는 목록들 페이지네이션 기본적으로 하도록ㅎ만드렁 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:35:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 최대 페이지네이션은 5개씩 한페이지는  4개 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:39:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 테마 페이지네이션이 겹쳐 1) home에서는 최근 4개만 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 2) 전체 글보기 및 카테고리 검색시에 페이지네이션 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위젯 중에 최근 본 거 10개씩만 보여주게끔 변경  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:05:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용하나도 안된 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:37:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> e2e로 확인해볼래 안된늗데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:39:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> https://beji-tech.blogspot.com/search 1페이지 https://beji-tech.blogspot.com home  이게 뭔가 쿼리가 엮여서 표기가 잘못되는거같아. home은 최근 4개만 조회되서 표기되게끔 검색시에는 페이지네이션 표기 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T23:05:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 모든글보기, 전체글보기 -> 내가 만든 페이지네이션이 적용되는 url로 링크 변경해 2) 카테고리 검색시에도 내가 만든 url이 적용되게끔 버튼에 내용 추가하기 3) home에서는 모든글보기, 전체글보기가 중복되니깐 버튼은 하나로 만들어. 4) search 경로 하위에서 는 전체글보기 버튼 보이게 유지해  위내가지 이외에도 점검해야하는 사항있는지 검토/계획/실행   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:08:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 게시할 글 5개 정도 선정해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:16:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1,4 글 작성하고 SpringFramework에 대한 기초 지식 관련 2가지 토픽 선정 해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:18:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 둘다 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:21:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다음 작업은 기본/중급/고급/트렌드  이런식으로 구분해서 글을 업로드 기본 카테고리를 나눠서 상단 탑메뉴로 보여주고싶은데 /plan-and-build  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:27:33+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 조금더 나은 상단 네비게이션 카테고리 만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:31:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 초금/중급/고급/트렌드는 너무 이상하고.  기본 이론 내용 / 인프라와 합쳐진 내용 / 실제 현업과 문제 해결 / 최근 트렌드 이런 내용ㅇ 기반으로 들어가보려고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:32:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다시 정리해봐 지금까지 작성한 글 기준으로 4가지 로  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:40:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> AI 도 하나 더 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:45:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 깨지는거 수정해주고, AI는 단일AI가 아니라 LLM, RAG 같은 연관 용어가 있으면 다 찾게끔. 혹시 카테고리(label)간의 연결고리로 찾는 기능이 구글 blogger에서 제공해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:50:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 제대로 적용이 안되는거같은데 e2e로 확인해서 수정해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:56:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용이 안되는데.. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:02:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 직접 화긴해봐 변경된게 없어 ..  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:06:25+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.5 Flash (Medium) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 반영했어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:10:02+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 글자가 정렬이 깨지는거 해결하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:11:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이렇게 하지말고 영문으로  기초 응용 트렌드  이렇게만 나누고,  처음부터 쓴 글에 대한 카테고리 저 3가지내에 다 포함되게 link 세팅해서 테마에 반영하고 앞으로도 필요한 카테고리는 자동으로 넣도록 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:16:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  기초 분야 쪽에  MVC패턴  -> 완전 과거에는 자판기 -> 정적 홈페이지 -> 동적 홈페이지 같은 형태로 예시 들어서 설명 GoF 14패턴 -> 각 14가지 패턴 예시안 포함 정리해서 각 패턴 글 작성 해서 올려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:21:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지랑 기초 예시코드가 포함이 안되었어  그리고 GoF 14가지 디자인 패턴은 개별 글로 작성해서 올리고 링크 연결하라고 했는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:26:25+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> MVC, GoF에 대한 내용이 너무 빈약해 추가적인 설명 및 참고자료, 해당 예시들이 어떻게 작용되는지에 대한 내용도 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:31:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  git commit and push 진행하고, session-handoff 작업도 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:37:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF패턴에 대해서 지금 초보자가 읽은 개념인데 설명하는 내용이 너무 없어, 전문적으로 비 개잘자들도 이해할 수 있는 내용으로 부연설명을 추가해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:39:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 뜬구름 잡는 내용은 이해를 더 어렵게 한다. 그러니 실제 서비스에서 사용되는 예시안으로 작동 법을 설명하는게 더 나을거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 옵저버 패턴에 글 배치 위치는 그림에 화살표한것처럼 변경하고, 글의 내용은 아래 내용과 유사하게 내용을 경험에 근거해서 풍부하게 작성하라는 내용이야.   https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:48:12+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 GoF 패턴 글에도 적용해서 수정진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF 각 예시 코드에 대한 설명이나 코드 작성이 너무 빈약해 실제 실행해볼수있게 예시코드 작성해서 설명할수있고 모두 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:55:15+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 작업 다 완료됬어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:15:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 남은 작업 이어서 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:22:24+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Claude Opus 4.6 (Thinking) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 프록시랑 컴포넌트 템플릿이 깨져있어 확인해서 수정해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:24:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 마무리하고 기록하고 commit, push 하고 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:26:26+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션종료하고 session-handoff </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T05:10:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 SQL, NOSQL에 대해서 기초(상위카테고리)에 글 5개 정도로 정리해서 넣어주려고. 1) SQL vs NOSQL 2) SQL : Mysql, MariaDB, Oracle, MSSQL, Postgra 3) NOSQL : Documents, Key-Value, Graphp  상세하게 어떻게 글 작성할건지 계획만 세워봐 아주 상세한 글이 되야해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:10:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 앞에 SQL과 NOSQL에 대한 내용도 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:16:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:17:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시를 든 이유에 대한 서치 -> 규모 고려하는 부분 넣어보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:18:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로글 쓸때, 지나치게 짧은 글은 작성하지않습니다. 1) 기본적으로 주제에 알맞은 서치 2) 예시에 대한 사유는 개인적인 생각과 개인이 서치해서 찾아보고 예시안을 든걸로 말합니다. 3) 예시에는 브랜드명을 풀네임으로 표기하지않고 중간에 한글자씩 가립니다.  4) 내용은 기본 주제에 알맞게 목차 나누고 설명 작성합니다 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:40:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 기초로 카테고리로 등록된 글 중복 검사 진행하고 내용 더 전문가적으로 하나의 블로그 글처럼 작성되게 수정하는 플랜 설계 지금 내용이 중복되는게 많고, 실제스럽지 않아. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:04:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 배포한 글 전부 검토했나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 교체 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른글에도 브랜드명 검사해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:18:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기존 글처럼 깊이가 없는데 어떻게 생각해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:09:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 개념 글 정리도 중요한데. 너무 간략하게 하면 초심자나 나중에 리마인드할때 중요한 내용 부터 부가적인 내용까지 다 없어.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 주제 선정은 매우좋지만. 내부 템플릿에 대한 세세한 정의가 필요할거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시 글 하나 작성해봐 배포하지말고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:11:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> (개인 경험/서치 기반 + 마스킹) 이런 표기는 제외 내부적으로만 알고있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:12:58+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 반영까지 다했어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:15:34+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `implementation_plan.md`
+  - 파일 생성: `task.md`
+  - 파일 수정: `blogger_site_theme.xml`
+  - 실행 명령어: `python main.py theme`
+  - 파일 생성: `walkthrough.md`
+  - 실행 명령어: `python main.py theme --upload`
+  - 실행 명령어: `python --version`
+  - 실행 명령어: `py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-ChildItem -Path "C:\Users\rlagu\AppData\Local\Programs\Python" -Filter "python.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName`
+
+
+### 세션 기록 (2026-08-16 00:13:57)
+- **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 1) 페이지 변경되면 변경된 페이지에 맞게 위에 하이라이트 변경되게 테마 수정 2) withd 사이즈 좀더 키워 2번쨰 이미지 참고해서 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:08:34+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> python main.py theme --upload </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:10:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) active 활성화가 안되는데 재확인 해봐 2) 그리고 글 내용도 커진거 대응해서 좀더 withd 늘려  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:15:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger 블로그글에 댓글 위젯이 없는데 확인해서 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:31:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 댓글 과 본문 사이에 br 구분선 넣어서 구분되게 만들어 2) 본문의 패딩값이 너무 큰거같아 이미지참고해서 줄이도록 3) 본문 글의 목차 표기가 중복되는점과 접었다 폈다 할수있도록 변경 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:38:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 확인해보면 태그 깨짐 및 불필요한 내용 제거가 안되있음 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:49:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 목차 라는 제목이 중복이다 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:02:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 글의 좌우 패딩 지금 값의 2배로  2) 목차에 굳이 접고펼친다는 글 삭제 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:04:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 글에도 적용해서 반영 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:08:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 메인 페이지 1) 최근 글은 4개까지만 표기되도록 합니다.  2) 카테고리는 글의 4개까지 표기되는 거에 맞춰서 표현하고 넘치면 ...으로 줄임 모든 블로그글 읽어오기 및 개별 카테고리 목록은 1) 모든 블로그 글은 /label 2) 나머지는 /label/${category} 검색  글 정렬은 모두 등록날짜 desc  -> ㄱ-ㅎ,A-B asec 정렬합니다. 또한 글에 검색 또는 모든 글 조회는 4개당 1페이지로 표기하도록 변경합니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:20:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /blogger-rules  페이지네이션이 생성안된거 확인하고, 카테고리 height가 글 표기 길이가 안맞는것도확인해서 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:34:45+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /blogger-rules is a [Slash Command]: <SKILL>The user requested you read and use the "blogger-rules" skill. The path to the skill file is: d:\coding-project\2026-project\ai-blogging\.agents\skills\blogger-rules\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 검색에서는 모든 글 검색으로 나오게끔 해줘 카테고리 height 적용안됬어 그거 확인해서 수정하고 ... 클릭시 전체 카테고리가 나오게끔 팝업으로 만들어줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:40:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 변경된거 반영이 안됬어 playwrite로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:47:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 작동을 안하는데 제대로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:50:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 수정했는데 아직 반영이 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:25:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 안바꼈어 테마 바꾸는건 내가 수동으로 할테니깐 테마 적용되는지마 playwrite로 확인만해 너 blogger 테마/위젯 규칙 확인을 제대로 하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:37:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elif" must be terminated by the matching end-tag "</b:elif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:48:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 59         </div> 2160       </div> 2161     </div> 2162   </body> 2163 </html> 2164  템플릿: 템플릿 수정처리 중...  org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elseif" must be terminated by the matching end-tag "</b:elseif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 카테고리 크기에 맞처서 갯수 수정하고, 정렬순서 있어? 없으면 제일 많이 태깅된거 -> 알파벳순 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:52:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 8개로 충분해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:53:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 비어있어. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한줄일때도 고려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한도 다시 돌아오면, 1. 지금 글에 참고문헌과의 링크 표기가 이상하다.  [CLAIM-001] [SOURCE-001] 이렇게 표기된게 있는데 -> [1], [2]의 형태로 수정해서 아래 참고문헌과 이어지게 해라. 2. 오늘 2가지 블로그글 작성 : 원하는 방향은 AI 관련된 내용  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:59:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T18:32:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TOPIC 리스스트 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:36:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TODO LIST </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:37:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 MQ 미들웨어 activemq, 카프카 관련해서 10개정도 리스트업해줘 내가 선택해볼게 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 6번, 1번 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build 글작서시 개념설명도 혹은 flowdiagram 을 중간에 이미지 삽입을 해주고 싶어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:56:31+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시안 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:01:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마로 넣는거 말고 png, jpg 같은 이미지 처리해서 넣어주는건  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:02:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build generate_image 활용해서 앞으로의 글 작성시 필요한 이미지 1~2개 씩 삽입해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:04:35+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지는 api로 전달 못해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:11:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 1번 방안으로 작업 진행해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:18:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생성된 이미지 올리고 있어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T20:27:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘의 주제 선정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:52:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 테마 img에 withd 지정안해서 초과되는 부분 있으니깐 적당한 withd지정해서 안넘치게 해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:54:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위에 주제는 별로인거같네.  1) Kafka 파티셔닝의 문제점 : 동시성과 연속성 보장이 되는가? - 동시성과 연속성을 보장하기위한 방식 - 메세지의 그룹핑 - 메세지의 순서보장 태깅 - 단일 파티션(파티셔닝안하기)  2) mq미들웨어 대표 activemq, apache kafka, rabbimq, redis(메모리 rdbms) 장단점 - 장단점 - 각 미들웨어는 어느레벨 솔루션에 어울리는가?    </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:57:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 페이지네이션이 고장난거같아 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:25:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니야 밑에 최근, 홈 이전이 아니라 모든 블로그 글이 전체글 검색했을때 나오게끔 해야지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 캡슐 버튼이 아니라, 페이지네이션으로만 표기되게끔하라는거야 이거 최근, 이전 글 이렇게 구분해서 해야하는 blogger 정책이 있는게 아니면 검색시 나오는 목록들 페이지네이션 기본적으로 하도록ㅎ만드렁 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:35:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 최대 페이지네이션은 5개씩 한페이지는  4개 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:39:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 테마 페이지네이션이 겹쳐 1) home에서는 최근 4개만 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 2) 전체 글보기 및 카테고리 검색시에 페이지네이션 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위젯 중에 최근 본 거 10개씩만 보여주게끔 변경  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:05:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용하나도 안된 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:37:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> e2e로 확인해볼래 안된늗데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:39:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> https://beji-tech.blogspot.com/search 1페이지 https://beji-tech.blogspot.com home  이게 뭔가 쿼리가 엮여서 표기가 잘못되는거같아. home은 최근 4개만 조회되서 표기되게끔 검색시에는 페이지네이션 표기 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T23:05:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 모든글보기, 전체글보기 -> 내가 만든 페이지네이션이 적용되는 url로 링크 변경해 2) 카테고리 검색시에도 내가 만든 url이 적용되게끔 버튼에 내용 추가하기 3) home에서는 모든글보기, 전체글보기가 중복되니깐 버튼은 하나로 만들어. 4) search 경로 하위에서 는 전체글보기 버튼 보이게 유지해  위내가지 이외에도 점검해야하는 사항있는지 검토/계획/실행   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:08:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 게시할 글 5개 정도 선정해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:16:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1,4 글 작성하고 SpringFramework에 대한 기초 지식 관련 2가지 토픽 선정 해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:18:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 둘다 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:21:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다음 작업은 기본/중급/고급/트렌드  이런식으로 구분해서 글을 업로드 기본 카테고리를 나눠서 상단 탑메뉴로 보여주고싶은데 /plan-and-build  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:27:33+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 조금더 나은 상단 네비게이션 카테고리 만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:31:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 초금/중급/고급/트렌드는 너무 이상하고.  기본 이론 내용 / 인프라와 합쳐진 내용 / 실제 현업과 문제 해결 / 최근 트렌드 이런 내용ㅇ 기반으로 들어가보려고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:32:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다시 정리해봐 지금까지 작성한 글 기준으로 4가지 로  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:40:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> AI 도 하나 더 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:45:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 깨지는거 수정해주고, AI는 단일AI가 아니라 LLM, RAG 같은 연관 용어가 있으면 다 찾게끔. 혹시 카테고리(label)간의 연결고리로 찾는 기능이 구글 blogger에서 제공해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:50:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 제대로 적용이 안되는거같은데 e2e로 확인해서 수정해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:56:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용이 안되는데.. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:02:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 직접 화긴해봐 변경된게 없어 ..  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:06:25+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.5 Flash (Medium) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 반영했어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:10:02+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 글자가 정렬이 깨지는거 해결하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:11:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이렇게 하지말고 영문으로  기초 응용 트렌드  이렇게만 나누고,  처음부터 쓴 글에 대한 카테고리 저 3가지내에 다 포함되게 link 세팅해서 테마에 반영하고 앞으로도 필요한 카테고리는 자동으로 넣도록 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:16:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  기초 분야 쪽에  MVC패턴  -> 완전 과거에는 자판기 -> 정적 홈페이지 -> 동적 홈페이지 같은 형태로 예시 들어서 설명 GoF 14패턴 -> 각 14가지 패턴 예시안 포함 정리해서 각 패턴 글 작성 해서 올려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:21:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지랑 기초 예시코드가 포함이 안되었어  그리고 GoF 14가지 디자인 패턴은 개별 글로 작성해서 올리고 링크 연결하라고 했는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:26:25+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> MVC, GoF에 대한 내용이 너무 빈약해 추가적인 설명 및 참고자료, 해당 예시들이 어떻게 작용되는지에 대한 내용도 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:31:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  git commit and push 진행하고, session-handoff 작업도 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:37:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF패턴에 대해서 지금 초보자가 읽은 개념인데 설명하는 내용이 너무 없어, 전문적으로 비 개잘자들도 이해할 수 있는 내용으로 부연설명을 추가해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:39:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 뜬구름 잡는 내용은 이해를 더 어렵게 한다. 그러니 실제 서비스에서 사용되는 예시안으로 작동 법을 설명하는게 더 나을거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 옵저버 패턴에 글 배치 위치는 그림에 화살표한것처럼 변경하고, 글의 내용은 아래 내용과 유사하게 내용을 경험에 근거해서 풍부하게 작성하라는 내용이야.   https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:48:12+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 GoF 패턴 글에도 적용해서 수정진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF 각 예시 코드에 대한 설명이나 코드 작성이 너무 빈약해 실제 실행해볼수있게 예시코드 작성해서 설명할수있고 모두 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:55:15+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 작업 다 완료됬어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:15:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 남은 작업 이어서 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:22:24+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Claude Opus 4.6 (Thinking) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 프록시랑 컴포넌트 템플릿이 깨져있어 확인해서 수정해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:24:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 마무리하고 기록하고 commit, push 하고 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:26:26+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션종료하고 session-handoff </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T05:10:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 SQL, NOSQL에 대해서 기초(상위카테고리)에 글 5개 정도로 정리해서 넣어주려고. 1) SQL vs NOSQL 2) SQL : Mysql, MariaDB, Oracle, MSSQL, Postgra 3) NOSQL : Documents, Key-Value, Graphp  상세하게 어떻게 글 작성할건지 계획만 세워봐 아주 상세한 글이 되야해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:10:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 앞에 SQL과 NOSQL에 대한 내용도 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:16:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:17:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시를 든 이유에 대한 서치 -> 규모 고려하는 부분 넣어보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:18:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로글 쓸때, 지나치게 짧은 글은 작성하지않습니다. 1) 기본적으로 주제에 알맞은 서치 2) 예시에 대한 사유는 개인적인 생각과 개인이 서치해서 찾아보고 예시안을 든걸로 말합니다. 3) 예시에는 브랜드명을 풀네임으로 표기하지않고 중간에 한글자씩 가립니다.  4) 내용은 기본 주제에 알맞게 목차 나누고 설명 작성합니다 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:40:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 기초로 카테고리로 등록된 글 중복 검사 진행하고 내용 더 전문가적으로 하나의 블로그 글처럼 작성되게 수정하는 플랜 설계 지금 내용이 중복되는게 많고, 실제스럽지 않아. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:04:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 배포한 글 전부 검토했나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 교체 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른글에도 브랜드명 검사해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:18:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기존 글처럼 깊이가 없는데 어떻게 생각해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:09:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 개념 글 정리도 중요한데. 너무 간략하게 하면 초심자나 나중에 리마인드할때 중요한 내용 부터 부가적인 내용까지 다 없어.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 주제 선정은 매우좋지만. 내부 템플릿에 대한 세세한 정의가 필요할거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시 글 하나 작성해봐 배포하지말고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:11:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> (개인 경험/서치 기반 + 마스킹) 이런 표기는 제외 내부적으로만 알고있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:12:58+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `implementation_plan.md`
+  - 파일 생성: `task.md`
+  - 파일 수정: `blogger_site_theme.xml`
+  - 실행 명령어: `python main.py theme`
+  - 파일 생성: `walkthrough.md`
+  - 실행 명령어: `python main.py theme --upload`
+  - 실행 명령어: `python --version`
+  - 실행 명령어: `py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-ChildItem -Path "C:\Users\rlagu\AppData\Local\Programs\Python" -Filter "python.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName`
+
+
+### 세션 기록 (2026-08-16 00:13:52)
+- **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 1) 페이지 변경되면 변경된 페이지에 맞게 위에 하이라이트 변경되게 테마 수정 2) withd 사이즈 좀더 키워 2번쨰 이미지 참고해서 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:08:34+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> python main.py theme --upload </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:10:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) active 활성화가 안되는데 재확인 해봐 2) 그리고 글 내용도 커진거 대응해서 좀더 withd 늘려  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:15:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger 블로그글에 댓글 위젯이 없는데 확인해서 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:31:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 댓글 과 본문 사이에 br 구분선 넣어서 구분되게 만들어 2) 본문의 패딩값이 너무 큰거같아 이미지참고해서 줄이도록 3) 본문 글의 목차 표기가 중복되는점과 접었다 폈다 할수있도록 변경 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:38:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 확인해보면 태그 깨짐 및 불필요한 내용 제거가 안되있음 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:49:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 목차 라는 제목이 중복이다 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:02:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 글의 좌우 패딩 지금 값의 2배로  2) 목차에 굳이 접고펼친다는 글 삭제 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:04:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 글에도 적용해서 반영 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:08:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 메인 페이지 1) 최근 글은 4개까지만 표기되도록 합니다.  2) 카테고리는 글의 4개까지 표기되는 거에 맞춰서 표현하고 넘치면 ...으로 줄임 모든 블로그글 읽어오기 및 개별 카테고리 목록은 1) 모든 블로그 글은 /label 2) 나머지는 /label/${category} 검색  글 정렬은 모두 등록날짜 desc  -> ㄱ-ㅎ,A-B asec 정렬합니다. 또한 글에 검색 또는 모든 글 조회는 4개당 1페이지로 표기하도록 변경합니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:20:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /blogger-rules  페이지네이션이 생성안된거 확인하고, 카테고리 height가 글 표기 길이가 안맞는것도확인해서 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:34:45+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /blogger-rules is a [Slash Command]: <SKILL>The user requested you read and use the "blogger-rules" skill. The path to the skill file is: d:\coding-project\2026-project\ai-blogging\.agents\skills\blogger-rules\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 검색에서는 모든 글 검색으로 나오게끔 해줘 카테고리 height 적용안됬어 그거 확인해서 수정하고 ... 클릭시 전체 카테고리가 나오게끔 팝업으로 만들어줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:40:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 변경된거 반영이 안됬어 playwrite로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:47:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 작동을 안하는데 제대로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:50:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 수정했는데 아직 반영이 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:25:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 안바꼈어 테마 바꾸는건 내가 수동으로 할테니깐 테마 적용되는지마 playwrite로 확인만해 너 blogger 테마/위젯 규칙 확인을 제대로 하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:37:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elif" must be terminated by the matching end-tag "</b:elif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:48:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 59         </div> 2160       </div> 2161     </div> 2162   </body> 2163 </html> 2164  템플릿: 템플릿 수정처리 중...  org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elseif" must be terminated by the matching end-tag "</b:elseif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 카테고리 크기에 맞처서 갯수 수정하고, 정렬순서 있어? 없으면 제일 많이 태깅된거 -> 알파벳순 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:52:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 8개로 충분해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:53:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 비어있어. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한줄일때도 고려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한도 다시 돌아오면, 1. 지금 글에 참고문헌과의 링크 표기가 이상하다.  [CLAIM-001] [SOURCE-001] 이렇게 표기된게 있는데 -> [1], [2]의 형태로 수정해서 아래 참고문헌과 이어지게 해라. 2. 오늘 2가지 블로그글 작성 : 원하는 방향은 AI 관련된 내용  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:59:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T18:32:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TOPIC 리스스트 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:36:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TODO LIST </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:37:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 MQ 미들웨어 activemq, 카프카 관련해서 10개정도 리스트업해줘 내가 선택해볼게 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 6번, 1번 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build 글작서시 개념설명도 혹은 flowdiagram 을 중간에 이미지 삽입을 해주고 싶어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:56:31+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시안 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:01:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마로 넣는거 말고 png, jpg 같은 이미지 처리해서 넣어주는건  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:02:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build generate_image 활용해서 앞으로의 글 작성시 필요한 이미지 1~2개 씩 삽입해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:04:35+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지는 api로 전달 못해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:11:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 1번 방안으로 작업 진행해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:18:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생성된 이미지 올리고 있어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T20:27:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘의 주제 선정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:52:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 테마 img에 withd 지정안해서 초과되는 부분 있으니깐 적당한 withd지정해서 안넘치게 해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:54:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위에 주제는 별로인거같네.  1) Kafka 파티셔닝의 문제점 : 동시성과 연속성 보장이 되는가? - 동시성과 연속성을 보장하기위한 방식 - 메세지의 그룹핑 - 메세지의 순서보장 태깅 - 단일 파티션(파티셔닝안하기)  2) mq미들웨어 대표 activemq, apache kafka, rabbimq, redis(메모리 rdbms) 장단점 - 장단점 - 각 미들웨어는 어느레벨 솔루션에 어울리는가?    </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:57:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 페이지네이션이 고장난거같아 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:25:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니야 밑에 최근, 홈 이전이 아니라 모든 블로그 글이 전체글 검색했을때 나오게끔 해야지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 캡슐 버튼이 아니라, 페이지네이션으로만 표기되게끔하라는거야 이거 최근, 이전 글 이렇게 구분해서 해야하는 blogger 정책이 있는게 아니면 검색시 나오는 목록들 페이지네이션 기본적으로 하도록ㅎ만드렁 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:35:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 최대 페이지네이션은 5개씩 한페이지는  4개 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:39:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 테마 페이지네이션이 겹쳐 1) home에서는 최근 4개만 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 2) 전체 글보기 및 카테고리 검색시에 페이지네이션 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위젯 중에 최근 본 거 10개씩만 보여주게끔 변경  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:05:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용하나도 안된 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:37:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> e2e로 확인해볼래 안된늗데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:39:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> https://beji-tech.blogspot.com/search 1페이지 https://beji-tech.blogspot.com home  이게 뭔가 쿼리가 엮여서 표기가 잘못되는거같아. home은 최근 4개만 조회되서 표기되게끔 검색시에는 페이지네이션 표기 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T23:05:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 모든글보기, 전체글보기 -> 내가 만든 페이지네이션이 적용되는 url로 링크 변경해 2) 카테고리 검색시에도 내가 만든 url이 적용되게끔 버튼에 내용 추가하기 3) home에서는 모든글보기, 전체글보기가 중복되니깐 버튼은 하나로 만들어. 4) search 경로 하위에서 는 전체글보기 버튼 보이게 유지해  위내가지 이외에도 점검해야하는 사항있는지 검토/계획/실행   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:08:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 게시할 글 5개 정도 선정해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:16:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1,4 글 작성하고 SpringFramework에 대한 기초 지식 관련 2가지 토픽 선정 해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:18:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 둘다 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:21:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다음 작업은 기본/중급/고급/트렌드  이런식으로 구분해서 글을 업로드 기본 카테고리를 나눠서 상단 탑메뉴로 보여주고싶은데 /plan-and-build  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:27:33+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 조금더 나은 상단 네비게이션 카테고리 만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:31:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 초금/중급/고급/트렌드는 너무 이상하고.  기본 이론 내용 / 인프라와 합쳐진 내용 / 실제 현업과 문제 해결 / 최근 트렌드 이런 내용ㅇ 기반으로 들어가보려고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:32:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다시 정리해봐 지금까지 작성한 글 기준으로 4가지 로  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:40:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> AI 도 하나 더 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:45:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 깨지는거 수정해주고, AI는 단일AI가 아니라 LLM, RAG 같은 연관 용어가 있으면 다 찾게끔. 혹시 카테고리(label)간의 연결고리로 찾는 기능이 구글 blogger에서 제공해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:50:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 제대로 적용이 안되는거같은데 e2e로 확인해서 수정해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:56:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용이 안되는데.. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:02:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 직접 화긴해봐 변경된게 없어 ..  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:06:25+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.5 Flash (Medium) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 반영했어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:10:02+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 글자가 정렬이 깨지는거 해결하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:11:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이렇게 하지말고 영문으로  기초 응용 트렌드  이렇게만 나누고,  처음부터 쓴 글에 대한 카테고리 저 3가지내에 다 포함되게 link 세팅해서 테마에 반영하고 앞으로도 필요한 카테고리는 자동으로 넣도록 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:16:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  기초 분야 쪽에  MVC패턴  -> 완전 과거에는 자판기 -> 정적 홈페이지 -> 동적 홈페이지 같은 형태로 예시 들어서 설명 GoF 14패턴 -> 각 14가지 패턴 예시안 포함 정리해서 각 패턴 글 작성 해서 올려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:21:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지랑 기초 예시코드가 포함이 안되었어  그리고 GoF 14가지 디자인 패턴은 개별 글로 작성해서 올리고 링크 연결하라고 했는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:26:25+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> MVC, GoF에 대한 내용이 너무 빈약해 추가적인 설명 및 참고자료, 해당 예시들이 어떻게 작용되는지에 대한 내용도 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:31:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  git commit and push 진행하고, session-handoff 작업도 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:37:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF패턴에 대해서 지금 초보자가 읽은 개념인데 설명하는 내용이 너무 없어, 전문적으로 비 개잘자들도 이해할 수 있는 내용으로 부연설명을 추가해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:39:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 뜬구름 잡는 내용은 이해를 더 어렵게 한다. 그러니 실제 서비스에서 사용되는 예시안으로 작동 법을 설명하는게 더 나을거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 옵저버 패턴에 글 배치 위치는 그림에 화살표한것처럼 변경하고, 글의 내용은 아래 내용과 유사하게 내용을 경험에 근거해서 풍부하게 작성하라는 내용이야.   https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:48:12+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 GoF 패턴 글에도 적용해서 수정진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF 각 예시 코드에 대한 설명이나 코드 작성이 너무 빈약해 실제 실행해볼수있게 예시코드 작성해서 설명할수있고 모두 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:55:15+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 작업 다 완료됬어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:15:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 남은 작업 이어서 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:22:24+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Claude Opus 4.6 (Thinking) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 프록시랑 컴포넌트 템플릿이 깨져있어 확인해서 수정해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:24:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 마무리하고 기록하고 commit, push 하고 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:26:26+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션종료하고 session-handoff </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T05:10:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 SQL, NOSQL에 대해서 기초(상위카테고리)에 글 5개 정도로 정리해서 넣어주려고. 1) SQL vs NOSQL 2) SQL : Mysql, MariaDB, Oracle, MSSQL, Postgra 3) NOSQL : Documents, Key-Value, Graphp  상세하게 어떻게 글 작성할건지 계획만 세워봐 아주 상세한 글이 되야해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:10:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 앞에 SQL과 NOSQL에 대한 내용도 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:16:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:17:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시를 든 이유에 대한 서치 -> 규모 고려하는 부분 넣어보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:18:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로글 쓸때, 지나치게 짧은 글은 작성하지않습니다. 1) 기본적으로 주제에 알맞은 서치 2) 예시에 대한 사유는 개인적인 생각과 개인이 서치해서 찾아보고 예시안을 든걸로 말합니다. 3) 예시에는 브랜드명을 풀네임으로 표기하지않고 중간에 한글자씩 가립니다.  4) 내용은 기본 주제에 알맞게 목차 나누고 설명 작성합니다 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:40:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 기초로 카테고리로 등록된 글 중복 검사 진행하고 내용 더 전문가적으로 하나의 블로그 글처럼 작성되게 수정하는 플랜 설계 지금 내용이 중복되는게 많고, 실제스럽지 않아. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:04:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 배포한 글 전부 검토했나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 교체 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른글에도 브랜드명 검사해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:18:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기존 글처럼 깊이가 없는데 어떻게 생각해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:09:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 개념 글 정리도 중요한데. 너무 간략하게 하면 초심자나 나중에 리마인드할때 중요한 내용 부터 부가적인 내용까지 다 없어.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 주제 선정은 매우좋지만. 내부 템플릿에 대한 세세한 정의가 필요할거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시 글 하나 작성해봐 배포하지말고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:11:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> (개인 경험/서치 기반 + 마스킹) 이런 표기는 제외 내부적으로만 알고있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:12:58+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `implementation_plan.md`
+  - 파일 생성: `task.md`
+  - 파일 수정: `blogger_site_theme.xml`
+  - 실행 명령어: `python main.py theme`
+  - 파일 생성: `walkthrough.md`
+  - 실행 명령어: `python main.py theme --upload`
+  - 실행 명령어: `python --version`
+  - 실행 명령어: `py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-ChildItem -Path "C:\Users\rlagu\AppData\Local\Programs\Python" -Filter "python.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName`
+
+
+### 세션 기록 (2026-08-16 00:12:17)
+- **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 1) 페이지 변경되면 변경된 페이지에 맞게 위에 하이라이트 변경되게 테마 수정 2) withd 사이즈 좀더 키워 2번쨰 이미지 참고해서 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:08:34+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> python main.py theme --upload </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:10:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) active 활성화가 안되는데 재확인 해봐 2) 그리고 글 내용도 커진거 대응해서 좀더 withd 늘려  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:15:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger 블로그글에 댓글 위젯이 없는데 확인해서 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:31:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 댓글 과 본문 사이에 br 구분선 넣어서 구분되게 만들어 2) 본문의 패딩값이 너무 큰거같아 이미지참고해서 줄이도록 3) 본문 글의 목차 표기가 중복되는점과 접었다 폈다 할수있도록 변경 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:38:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 확인해보면 태그 깨짐 및 불필요한 내용 제거가 안되있음 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:49:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 목차 라는 제목이 중복이다 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:02:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 글의 좌우 패딩 지금 값의 2배로  2) 목차에 굳이 접고펼친다는 글 삭제 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:04:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 글에도 적용해서 반영 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:08:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 메인 페이지 1) 최근 글은 4개까지만 표기되도록 합니다.  2) 카테고리는 글의 4개까지 표기되는 거에 맞춰서 표현하고 넘치면 ...으로 줄임 모든 블로그글 읽어오기 및 개별 카테고리 목록은 1) 모든 블로그 글은 /label 2) 나머지는 /label/${category} 검색  글 정렬은 모두 등록날짜 desc  -> ㄱ-ㅎ,A-B asec 정렬합니다. 또한 글에 검색 또는 모든 글 조회는 4개당 1페이지로 표기하도록 변경합니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:20:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /blogger-rules  페이지네이션이 생성안된거 확인하고, 카테고리 height가 글 표기 길이가 안맞는것도확인해서 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:34:45+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /blogger-rules is a [Slash Command]: <SKILL>The user requested you read and use the "blogger-rules" skill. The path to the skill file is: d:\coding-project\2026-project\ai-blogging\.agents\skills\blogger-rules\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 검색에서는 모든 글 검색으로 나오게끔 해줘 카테고리 height 적용안됬어 그거 확인해서 수정하고 ... 클릭시 전체 카테고리가 나오게끔 팝업으로 만들어줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:40:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 변경된거 반영이 안됬어 playwrite로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:47:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 작동을 안하는데 제대로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:50:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 수정했는데 아직 반영이 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:25:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 안바꼈어 테마 바꾸는건 내가 수동으로 할테니깐 테마 적용되는지마 playwrite로 확인만해 너 blogger 테마/위젯 규칙 확인을 제대로 하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:37:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elif" must be terminated by the matching end-tag "</b:elif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:48:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 59         </div> 2160       </div> 2161     </div> 2162   </body> 2163 </html> 2164  템플릿: 템플릿 수정처리 중...  org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elseif" must be terminated by the matching end-tag "</b:elseif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 카테고리 크기에 맞처서 갯수 수정하고, 정렬순서 있어? 없으면 제일 많이 태깅된거 -> 알파벳순 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:52:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 8개로 충분해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:53:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 비어있어. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한줄일때도 고려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한도 다시 돌아오면, 1. 지금 글에 참고문헌과의 링크 표기가 이상하다.  [CLAIM-001] [SOURCE-001] 이렇게 표기된게 있는데 -> [1], [2]의 형태로 수정해서 아래 참고문헌과 이어지게 해라. 2. 오늘 2가지 블로그글 작성 : 원하는 방향은 AI 관련된 내용  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:59:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T18:32:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TOPIC 리스스트 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:36:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TODO LIST </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:37:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 MQ 미들웨어 activemq, 카프카 관련해서 10개정도 리스트업해줘 내가 선택해볼게 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 6번, 1번 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build 글작서시 개념설명도 혹은 flowdiagram 을 중간에 이미지 삽입을 해주고 싶어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:56:31+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시안 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:01:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마로 넣는거 말고 png, jpg 같은 이미지 처리해서 넣어주는건  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:02:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build generate_image 활용해서 앞으로의 글 작성시 필요한 이미지 1~2개 씩 삽입해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:04:35+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지는 api로 전달 못해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:11:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 1번 방안으로 작업 진행해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:18:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생성된 이미지 올리고 있어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T20:27:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘의 주제 선정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:52:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 테마 img에 withd 지정안해서 초과되는 부분 있으니깐 적당한 withd지정해서 안넘치게 해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:54:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위에 주제는 별로인거같네.  1) Kafka 파티셔닝의 문제점 : 동시성과 연속성 보장이 되는가? - 동시성과 연속성을 보장하기위한 방식 - 메세지의 그룹핑 - 메세지의 순서보장 태깅 - 단일 파티션(파티셔닝안하기)  2) mq미들웨어 대표 activemq, apache kafka, rabbimq, redis(메모리 rdbms) 장단점 - 장단점 - 각 미들웨어는 어느레벨 솔루션에 어울리는가?    </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:57:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 페이지네이션이 고장난거같아 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:25:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니야 밑에 최근, 홈 이전이 아니라 모든 블로그 글이 전체글 검색했을때 나오게끔 해야지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 캡슐 버튼이 아니라, 페이지네이션으로만 표기되게끔하라는거야 이거 최근, 이전 글 이렇게 구분해서 해야하는 blogger 정책이 있는게 아니면 검색시 나오는 목록들 페이지네이션 기본적으로 하도록ㅎ만드렁 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:35:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 최대 페이지네이션은 5개씩 한페이지는  4개 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:39:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 테마 페이지네이션이 겹쳐 1) home에서는 최근 4개만 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 2) 전체 글보기 및 카테고리 검색시에 페이지네이션 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위젯 중에 최근 본 거 10개씩만 보여주게끔 변경  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:05:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용하나도 안된 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:37:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> e2e로 확인해볼래 안된늗데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:39:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> https://beji-tech.blogspot.com/search 1페이지 https://beji-tech.blogspot.com home  이게 뭔가 쿼리가 엮여서 표기가 잘못되는거같아. home은 최근 4개만 조회되서 표기되게끔 검색시에는 페이지네이션 표기 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T23:05:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 모든글보기, 전체글보기 -> 내가 만든 페이지네이션이 적용되는 url로 링크 변경해 2) 카테고리 검색시에도 내가 만든 url이 적용되게끔 버튼에 내용 추가하기 3) home에서는 모든글보기, 전체글보기가 중복되니깐 버튼은 하나로 만들어. 4) search 경로 하위에서 는 전체글보기 버튼 보이게 유지해  위내가지 이외에도 점검해야하는 사항있는지 검토/계획/실행   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:08:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 게시할 글 5개 정도 선정해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:16:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1,4 글 작성하고 SpringFramework에 대한 기초 지식 관련 2가지 토픽 선정 해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:18:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 둘다 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:21:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다음 작업은 기본/중급/고급/트렌드  이런식으로 구분해서 글을 업로드 기본 카테고리를 나눠서 상단 탑메뉴로 보여주고싶은데 /plan-and-build  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:27:33+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 조금더 나은 상단 네비게이션 카테고리 만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:31:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 초금/중급/고급/트렌드는 너무 이상하고.  기본 이론 내용 / 인프라와 합쳐진 내용 / 실제 현업과 문제 해결 / 최근 트렌드 이런 내용ㅇ 기반으로 들어가보려고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:32:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다시 정리해봐 지금까지 작성한 글 기준으로 4가지 로  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:40:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> AI 도 하나 더 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:45:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 깨지는거 수정해주고, AI는 단일AI가 아니라 LLM, RAG 같은 연관 용어가 있으면 다 찾게끔. 혹시 카테고리(label)간의 연결고리로 찾는 기능이 구글 blogger에서 제공해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:50:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 제대로 적용이 안되는거같은데 e2e로 확인해서 수정해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:56:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용이 안되는데.. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:02:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 직접 화긴해봐 변경된게 없어 ..  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:06:25+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.5 Flash (Medium) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 반영했어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:10:02+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 글자가 정렬이 깨지는거 해결하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:11:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이렇게 하지말고 영문으로  기초 응용 트렌드  이렇게만 나누고,  처음부터 쓴 글에 대한 카테고리 저 3가지내에 다 포함되게 link 세팅해서 테마에 반영하고 앞으로도 필요한 카테고리는 자동으로 넣도록 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:16:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  기초 분야 쪽에  MVC패턴  -> 완전 과거에는 자판기 -> 정적 홈페이지 -> 동적 홈페이지 같은 형태로 예시 들어서 설명 GoF 14패턴 -> 각 14가지 패턴 예시안 포함 정리해서 각 패턴 글 작성 해서 올려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:21:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지랑 기초 예시코드가 포함이 안되었어  그리고 GoF 14가지 디자인 패턴은 개별 글로 작성해서 올리고 링크 연결하라고 했는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:26:25+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> MVC, GoF에 대한 내용이 너무 빈약해 추가적인 설명 및 참고자료, 해당 예시들이 어떻게 작용되는지에 대한 내용도 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:31:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  git commit and push 진행하고, session-handoff 작업도 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:37:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF패턴에 대해서 지금 초보자가 읽은 개념인데 설명하는 내용이 너무 없어, 전문적으로 비 개잘자들도 이해할 수 있는 내용으로 부연설명을 추가해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:39:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 뜬구름 잡는 내용은 이해를 더 어렵게 한다. 그러니 실제 서비스에서 사용되는 예시안으로 작동 법을 설명하는게 더 나을거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 옵저버 패턴에 글 배치 위치는 그림에 화살표한것처럼 변경하고, 글의 내용은 아래 내용과 유사하게 내용을 경험에 근거해서 풍부하게 작성하라는 내용이야.   https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:48:12+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 GoF 패턴 글에도 적용해서 수정진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF 각 예시 코드에 대한 설명이나 코드 작성이 너무 빈약해 실제 실행해볼수있게 예시코드 작성해서 설명할수있고 모두 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:55:15+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 작업 다 완료됬어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:15:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 남은 작업 이어서 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:22:24+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Claude Opus 4.6 (Thinking) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 프록시랑 컴포넌트 템플릿이 깨져있어 확인해서 수정해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:24:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 마무리하고 기록하고 commit, push 하고 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:26:26+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션종료하고 session-handoff </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T05:10:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 SQL, NOSQL에 대해서 기초(상위카테고리)에 글 5개 정도로 정리해서 넣어주려고. 1) SQL vs NOSQL 2) SQL : Mysql, MariaDB, Oracle, MSSQL, Postgra 3) NOSQL : Documents, Key-Value, Graphp  상세하게 어떻게 글 작성할건지 계획만 세워봐 아주 상세한 글이 되야해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:10:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 앞에 SQL과 NOSQL에 대한 내용도 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:16:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:17:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시를 든 이유에 대한 서치 -> 규모 고려하는 부분 넣어보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:18:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로글 쓸때, 지나치게 짧은 글은 작성하지않습니다. 1) 기본적으로 주제에 알맞은 서치 2) 예시에 대한 사유는 개인적인 생각과 개인이 서치해서 찾아보고 예시안을 든걸로 말합니다. 3) 예시에는 브랜드명을 풀네임으로 표기하지않고 중간에 한글자씩 가립니다.  4) 내용은 기본 주제에 알맞게 목차 나누고 설명 작성합니다 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:40:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 기초로 카테고리로 등록된 글 중복 검사 진행하고 내용 더 전문가적으로 하나의 블로그 글처럼 작성되게 수정하는 플랜 설계 지금 내용이 중복되는게 많고, 실제스럽지 않아. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:04:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 배포한 글 전부 검토했나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 교체 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른글에도 브랜드명 검사해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:18:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기존 글처럼 깊이가 없는데 어떻게 생각해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:09:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 개념 글 정리도 중요한데. 너무 간략하게 하면 초심자나 나중에 리마인드할때 중요한 내용 부터 부가적인 내용까지 다 없어.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 주제 선정은 매우좋지만. 내부 템플릿에 대한 세세한 정의가 필요할거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시 글 하나 작성해봐 배포하지말고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:11:30+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `implementation_plan.md`
+  - 파일 생성: `task.md`
+  - 파일 수정: `blogger_site_theme.xml`
+  - 실행 명령어: `python main.py theme`
+  - 파일 생성: `walkthrough.md`
+  - 실행 명령어: `python main.py theme --upload`
+  - 실행 명령어: `python --version`
+  - 실행 명령어: `py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-ChildItem -Path "C:\Users\rlagu\AppData\Local\Programs\Python" -Filter "python.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName`
+
+
+### 세션 기록 (2026-08-16 00:12:05)
+- **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
+- **사용자 핵심 요청**:
+  - <USER_REQUEST> 1) 페이지 변경되면 변경된 페이지에 맞게 위에 하이라이트 변경되게 테마 수정 2) withd 사이즈 좀더 키워 2번쨰 이미지 참고해서 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:08:34+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> python main.py theme --upload </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:10:40+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) active 활성화가 안되는데 재확인 해봐 2) 그리고 글 내용도 커진거 대응해서 좀더 withd 늘려  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T09:15:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> blogger 블로그글에 댓글 위젯이 없는데 확인해서 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:31:51+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 댓글 과 본문 사이에 br 구분선 넣어서 구분되게 만들어 2) 본문의 패딩값이 너무 큰거같아 이미지참고해서 줄이도록 3) 본문 글의 목차 표기가 중복되는점과 접었다 폈다 할수있도록 변경 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:38:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 확인해보면 태그 깨짐 및 불필요한 내용 제거가 안되있음 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T13:49:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 목차 라는 제목이 중복이다 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:02:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 글의 좌우 패딩 지금 값의 2배로  2) 목차에 굳이 접고펼친다는 글 삭제 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:04:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 글에도 적용해서 반영 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:08:38+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 메인 페이지 1) 최근 글은 4개까지만 표기되도록 합니다.  2) 카테고리는 글의 4개까지 표기되는 거에 맞춰서 표현하고 넘치면 ...으로 줄임 모든 블로그글 읽어오기 및 개별 카테고리 목록은 1) 모든 블로그 글은 /label 2) 나머지는 /label/${category} 검색  글 정렬은 모두 등록날짜 desc  -> ㄱ-ㅎ,A-B asec 정렬합니다. 또한 글에 검색 또는 모든 글 조회는 4개당 1페이지로 표기하도록 변경합니다. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:20:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /blogger-rules  페이지네이션이 생성안된거 확인하고, 카테고리 height가 글 표기 길이가 안맞는것도확인해서 수정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:34:45+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /blogger-rules is a [Slash Command]: <SKILL>The user requested you read and use the "blogger-rules" skill. The path to the skill file is: d:\coding-project\2026-project\ai-blogging\.agents\skills\blogger-rules\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 해당 검색에서는 모든 글 검색으로 나오게끔 해줘 카테고리 height 적용안됬어 그거 확인해서 수정하고 ... 클릭시 전체 카테고리가 나오게끔 팝업으로 만들어줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:40:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 변경된거 반영이 안됬어 playwrite로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:47:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 여전히 작동을 안하는데 제대로 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T14:50:23+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 수정했는데 아직 반영이 안되있어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:25:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 안바꼈어 테마 바꾸는건 내가 수동으로 할테니깐 테마 적용되는지마 playwrite로 확인만해 너 blogger 테마/위젯 규칙 확인을 제대로 하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:37:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elif" must be terminated by the matching end-tag "</b:elif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:48:52+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 59         </div> 2160       </div> 2161     </div> 2162   </body> 2163 </html> 2164  템플릿: 템플릿 수정처리 중...  org.xml.sax.SAXParseException; lineNumber: 1222; columnNumber: 23; The element type "b:elseif" must be terminated by the matching end-tag "</b:elseif>". </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 카테고리 크기에 맞처서 갯수 수정하고, 정렬순서 있어? 없으면 제일 많이 태깅된거 -> 알파벳순 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:52:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 8개로 충분해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:53:30+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 비어있어. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:36+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한줄일때도 고려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:54:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 한도 다시 돌아오면, 1. 지금 글에 참고문헌과의 링크 표기가 이상하다.  [CLAIM-001] [SOURCE-001] 이렇게 표기된게 있는데 -> [1], [2]의 형태로 수정해서 아래 참고문헌과 이어지게 해라. 2. 오늘 2가지 블로그글 작성 : 원하는 방향은 AI 관련된 내용  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T15:59:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이어서 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-12T18:32:53+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TOPIC 리스스트 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:36:46+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> TODO LIST </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:37:19+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 MQ 미들웨어 activemq, 카프카 관련해서 10개정도 리스트업해줘 내가 선택해볼게 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 6번, 1번 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:39:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build 글작서시 개념설명도 혹은 flowdiagram 을 중간에 이미지 삽입을 해주고 싶어 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T14:56:31+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시안 보여줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:01:37+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 테마로 넣는거 말고 png, jpg 같은 이미지 처리해서 넣어주는건  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:02:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> /plan-and-build generate_image 활용해서 앞으로의 글 작성시 필요한 이미지 1~2개 씩 삽입해줘  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:04:35+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지는 api로 전달 못해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:11:50+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 좋아 1번 방안으로 작업 진행해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T15:18:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 생성된 이미지 올리고 있어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-13T20:27:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘의 주제 선정 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:52:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그리고 글 테마 img에 withd 지정안해서 초과되는 부분 있으니깐 적당한 withd지정해서 안넘치게 해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:54:32+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위에 주제는 별로인거같네.  1) Kafka 파티셔닝의 문제점 : 동시성과 연속성 보장이 되는가? - 동시성과 연속성을 보장하기위한 방식 - 메세지의 그룹핑 - 메세지의 순서보장 태깅 - 단일 파티션(파티셔닝안하기)  2) mq미들웨어 대표 activemq, apache kafka, rabbimq, redis(메모리 rdbms) 장단점 - 장단점 - 각 미들웨어는 어느레벨 솔루션에 어울리는가?    </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T12:57:44+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 페이지네이션이 고장난거같아 확인해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:25:17+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니야 밑에 최근, 홈 이전이 아니라 모든 블로그 글이 전체글 검색했을때 나오게끔 해야지  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:33:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 캡슐 버튼이 아니라, 페이지네이션으로만 표기되게끔하라는거야 이거 최근, 이전 글 이렇게 구분해서 해야하는 blogger 정책이 있는게 아니면 검색시 나오는 목록들 페이지네이션 기본적으로 하도록ㅎ만드렁 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:35:42+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 최대 페이지네이션은 5개씩 한페이지는  4개 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T13:39:33+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 지금 테마 페이지네이션이 겹쳐 1) home에서는 최근 4개만 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:15+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 2) 전체 글보기 및 카테고리 검색시에 페이지네이션 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:03:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 위젯 중에 최근 본 거 10개씩만 보여주게끔 변경  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:05:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용하나도 안된 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:37:01+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> e2e로 확인해볼래 안된늗데 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T21:39:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> https://beji-tech.blogspot.com/search 1페이지 https://beji-tech.blogspot.com home  이게 뭔가 쿼리가 엮여서 표기가 잘못되는거같아. home은 최근 4개만 조회되서 표기되게끔 검색시에는 페이지네이션 표기 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-14T23:05:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1) 모든글보기, 전체글보기 -> 내가 만든 페이지네이션이 적용되는 url로 링크 변경해 2) 카테고리 검색시에도 내가 만든 url이 적용되게끔 버튼에 내용 추가하기 3) home에서는 모든글보기, 전체글보기가 중복되니깐 버튼은 하나로 만들어. 4) search 경로 하위에서 는 전체글보기 버튼 보이게 유지해  위내가지 이외에도 점검해야하는 사항있는지 검토/계획/실행   </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:08:39+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 게시할 글 5개 정도 선정해봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:16:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 1,4 글 작성하고 SpringFramework에 대한 기초 지식 관련 2가지 토픽 선정 해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:18:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 둘다 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:21:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다음 작업은 기본/중급/고급/트렌드  이런식으로 구분해서 글을 업로드 기본 카테고리를 나눠서 상단 탑메뉴로 보여주고싶은데 /plan-and-build  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:27:33+09:00.  The user has mentioned some items in the form @[ITEM]. Here is extra information about the items that were mentioned by the user, in the order that they appear:  /plan-and-build is a [Slash Command]: <SKILL>The user requested you read and use the "plan-and-build" skill. The path to the skill file is: C:\Users\rlagu\.gemini\config\skills\plan-and-build\SKILL.md</SKILL> </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 조금더 나은 상단 네비게이션 카테고리 만들어봐  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:31:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 초금/중급/고급/트렌드는 너무 이상하고.  기본 이론 내용 / 인프라와 합쳐진 내용 / 실제 현업과 문제 해결 / 최근 트렌드 이런 내용ㅇ 기반으로 들어가보려고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:32:43+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다시 정리해봐 지금까지 작성한 글 기준으로 4가지 로  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:40:27+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> AI 도 하나 더 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:45:59+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 깨지는거 수정해주고, AI는 단일AI가 아니라 LLM, RAG 같은 연관 용어가 있으면 다 찾게끔. 혹시 카테고리(label)간의 연결고리로 찾는 기능이 구글 blogger에서 제공해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:50:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 제대로 적용이 안되는거같은데 e2e로 확인해서 수정해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T02:56:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 적용이 안되는데.. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:02:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 직접 화긴해봐 변경된게 없어 ..  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:06:25+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.5 Flash (Medium) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 반영했어  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:10:02+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 글자가 정렬이 깨지는거 해결하라고 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:11:45+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이렇게 하지말고 영문으로  기초 응용 트렌드  이렇게만 나누고,  처음부터 쓴 글에 대한 카테고리 저 3가지내에 다 포함되게 link 세팅해서 테마에 반영하고 앞으로도 필요한 카테고리는 자동으로 넣도록 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:16:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  기초 분야 쪽에  MVC패턴  -> 완전 과거에는 자판기 -> 정적 홈페이지 -> 동적 홈페이지 같은 형태로 예시 들어서 설명 GoF 14패턴 -> 각 14가지 패턴 예시안 포함 정리해서 각 패턴 글 작성 해서 올려 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:21:11+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 이미지랑 기초 예시코드가 포함이 안되었어  그리고 GoF 14가지 디자인 패턴은 개별 글로 작성해서 올리고 링크 연결하라고 했는데  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:26:25+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> MVC, GoF에 대한 내용이 너무 빈약해 추가적인 설명 및 참고자료, 해당 예시들이 어떻게 작용되는지에 대한 내용도 추가해줘 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:31:55+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST>  git commit and push 진행하고, session-handoff 작업도 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:37:22+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF패턴에 대해서 지금 초보자가 읽은 개념인데 설명하는 내용이 너무 없어, 전문적으로 비 개잘자들도 이해할 수 있는 내용으로 부연설명을 추가해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:39:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 너무 뜬구름 잡는 내용은 이해를 더 어렵게 한다. 그러니 실제 서비스에서 사용되는 예시안으로 작동 법을 설명하는게 더 나을거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:40:16+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 옵저버 패턴에 글 배치 위치는 그림에 화살표한것처럼 변경하고, 글의 내용은 아래 내용과 유사하게 내용을 경험에 근거해서 풍부하게 작성하라는 내용이야.   https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%98%B5%EC%A0%80%EB%B2%84Observer-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:48:12+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른 GoF 패턴 글에도 적용해서 수정진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:50:00+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> GoF 각 예시 코드에 대한 설명이나 코드 작성이 너무 빈약해 실제 실행해볼수있게 예시코드 작성해서 설명할수있고 모두 수정해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T03:55:15+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Gemini 3.6 Flash (Medium) to Claude Opus 4.6 (Thinking). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 작업 다 완료됬어?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:15:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 남은 작업 이어서 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:22:24+09:00. </ADDITIONAL_METADATA> <USER_SETTINGS_CHANGE> The user changed setting `Model Selection` from Claude Opus 4.6 (Thinking) to Gemini 3.6 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string. </USER_SETTINGS_CHANGE>
+  - <USER_REQUEST> 프록시랑 컴포넌트 템플릿이 깨져있어 확인해서 수정해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:24:08+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션 마무리하고 기록하고 commit, push 하고 종료 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T04:26:26+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 세션종료하고 session-handoff </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-15T05:10:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘은 SQL, NOSQL에 대해서 기초(상위카테고리)에 글 5개 정도로 정리해서 넣어주려고. 1) SQL vs NOSQL 2) SQL : Mysql, MariaDB, Oracle, MSSQL, Postgra 3) NOSQL : Documents, Key-Value, Graphp  상세하게 어떻게 글 작성할건지 계획만 세워봐 아주 상세한 글이 되야해  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:10:13+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 앞에 SQL과 NOSQL에 대한 내용도 추가 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:16:07+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 진행 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:17:29+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 예시를 든 이유에 대한 서치 -> 규모 고려하는 부분 넣어보자 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:18:04+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 블로글 쓸때, 지나치게 짧은 글은 작성하지않습니다. 1) 기본적으로 주제에 알맞은 서치 2) 예시에 대한 사유는 개인적인 생각과 개인이 서치해서 찾아보고 예시안을 든걸로 말합니다. 3) 예시에는 브랜드명을 풀네임으로 표기하지않고 중간에 한글자씩 가립니다.  4) 내용은 기본 주제에 알맞게 목차 나누고 설명 작성합니다 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T07:40:34+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 기초로 카테고리로 등록된 글 중복 검사 진행하고 내용 더 전문가적으로 하나의 블로그 글처럼 작성되게 수정하는 플랜 설계 지금 내용이 중복되는게 많고, 실제스럽지 않아. </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:04:47+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 오늘 배포한 글 전부 검토했나?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:06+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 그럼 교체 진행해 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:07:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 다른글에도 브랜드명 검사해봐 </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T08:18:21+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 기존 글처럼 깊이가 없는데 어떻게 생각해?  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:09:18+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 아니 개념 글 정리도 중요한데. 너무 간략하게 하면 초심자나 나중에 리마인드할때 중요한 내용 부터 부가적인 내용까지 다 없어.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:03+09:00. </ADDITIONAL_METADATA>
+  - <USER_REQUEST> 주제 선정은 매우좋지만. 내부 템플릿에 대한 세세한 정의가 필요할거같아.  </USER_REQUEST> <ADDITIONAL_METADATA> The current local time is: 2026-08-16T09:10:45+09:00. </ADDITIONAL_METADATA>
+- **주요 수행 작업**:
+  - 파일 생성: `implementation_plan.md`
+  - 파일 생성: `task.md`
+  - 파일 수정: `blogger_site_theme.xml`
+  - 실행 명령어: `python main.py theme`
+  - 파일 생성: `walkthrough.md`
+  - 실행 명령어: `python main.py theme --upload`
+  - 실행 명령어: `python --version`
+  - 실행 명령어: `py --version`
+  - 실행 명령어: `where.exe python`
+  - 실행 명령어: `Get-ChildItem -Path "C:\Users\rlagu\AppData\Local\Programs\Python" -Filter "python.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName`
+
+
 ### 세션 기록 (2026-08-16 00:11:01)
 - **Conversation ID**: `1a4a8ad7-cf23-454a-aae3-b20ed49af02f`
 - **사용자 핵심 요청**:

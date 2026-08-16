@@ -7,12 +7,13 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
-from src.new_run import create_run
-from src.validate import validate_run
-from src.approve import approve_run
+from src.pipeline.new_run import create_run
+from src.pipeline.validate import validate_run
+from src.pipeline.approve import approve_run
 from src.publishers import publish_to_multi
-from src.sync_mdx import sync_mdx
-from src.knowledge_store import get_todos, load_knowledge_graph
+from src.pipeline.sync_mdx import sync_mdx
+from src.pipeline.knowledge_store import get_todos, load_knowledge_graph
+from src.theme.theme import manage_theme
 
 def read_flag(args: List[str], name: str) -> Optional[str]:
     for i, arg in enumerate(args):
@@ -128,7 +129,6 @@ def main():
             return
 
         elif command == "theme":
-            from src.theme import manage_theme
             upload = has_flag(args, "upload")
             manage_theme(upload=upload)
             return

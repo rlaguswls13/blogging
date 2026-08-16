@@ -1,0 +1,18 @@
+{
+  "requiredSections": [
+    "요약",
+    "본문",
+    "사실 검증 결과",
+    "작성자의 견해",
+    "한계와 반론",
+    "참고문헌",
+    "종합적 의견",
+    "꼬리질문"
+  ],
+  "minimumReferences": 2,
+  "unresolvedHighRiskClaims": 0,
+  "contradictedClaims": 0,
+  "requireOpinionDisclaimer": true,
+  "requireHumanApproval": true,
+  "allowBrokenLinks": false
+}

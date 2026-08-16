@@ -1,0 +1,396 @@
+# Blogger Layouts V3 종합 기술 레퍼런스
+
+Blogger의 위젯(Widget/Gadget), 테마(Theme), 레이아웃(Layout), 데이터 표현식, XML 구문, CSS 변수 시스템을 포괄하는 상세 명세서입니다.
+
+---
+
+## 1. 아키텍처 개요
+
+### Blogger XML 테마 엔진 vs API v3
+- **XML 테마 엔진 (Layouts V3)**: Blogger 서버가 브라우저에 HTML을 렌더링할 때 사용하는 서버사이드 XML 템플릿 마크업 언어. `<b:section>`, `<b:widget>`, `<b:defaultmarkups>` 등의 태그와 `data:view`, `data:post` 등의 표현식으로 동적 레이아웃을 구성합니다.
+- **Blogger API v3**: HTTP JSON 기반 RESTful API(`https://www.googleapis.com/blogger/v3/`). 외부 앱에서 블로그, 게시글, 페이지, 댓글 데이터를 CRUD하기 위해 사용합니다.
+
+### Layouts V3 핵심 특징
+- `<html b:layoutsVersion='3'>` 선언으로 활성화
+- `<b:defaultmarkups>` 시스템으로 가젯 마크업 전역 오버라이드
+- `b:defaultwidgetversion='2'` 이상의 최신 가젯 버전 지원
+- `b:responsive='true'`로 반응형 모바일 대응
+- `b:css='false'`로 기본 CSS 주입 비활성화 (커스텀 CSS 전용)
+
+### 최상위 XML 태그 계층
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true'
+      xmlns:b='http://www.google.com/2005/gml/b'
+      xmlns:data='http://www.google.com/2005/gml/data'
+      xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+    <b:skin><![CDATA[ /* CSS */ ]]></b:skin>
+    <b:defaultmarkups> ... </b:defaultmarkups>
+  </head>
+  <body>
+    <b:section id='...'>
+      <b:widget id='...' type='...'> ... </b:widget>
+    </b:section>
+  </body>
+</html>
+```
+
+---
+
+## 2. XML 태그 레퍼런스
+
+### 2.1 `<b:section>` — 레이아웃 영역
+가젯(Widget)들을 배치하는 레이아웃 구획 컨테이너입니다.
+
+| 속성 | 필수 | 값 | 설명 |
+|------|------|-----|------|
+| `id` | ✅ | 문자열 | 섹션 고유 식별자 |
+| `class` | | 문자열 | CSS 클래스명 |
+| `showaddelement` | | `'true'`/`'false'` | 대시보드 레이아웃에서 "가젯 추가" 버튼 표시 여부 |
+| `maxwidgets` | | 숫자 | 섹션 내 최대 가젯 수 제한 |
+| `growth` | | `'vertical'`/`'horizontal'` | 가젯 정렬 방향 (기본: vertical) |
+
+**제약 규칙:**
+- `<b:section>` 내부에는 `<b:widget>`만 직계 자식으로 허용 (HTML 태그, 텍스트 직접 삽입 불가)
+- `<b:section>` 간 중첩(Nesting) 불가
+- 템플릿 전체에서 모든 `id`는 유일해야 함
+
+### 2.2 `<b:widget>` — 가젯 인스턴스
+
+| 속성 | 필수 | 값 | 설명 |
+|------|------|-----|------|
+| `id` | ✅ | 문자열 | 가젯 고유 ID (예: `Blog1`, `Label1`) |
+| `type` | ✅ | 타입명 | 가젯 종류 (예: `Blog`, `Label`, `HTML`) |
+| `locked` | | `'true'`/`'false'` | 대시보드에서 이동/삭제 잠금 여부 |
+| `title` | | 문자열 | 가젯 표시 제목 |
+| `visible` | | `'true'`/`'false'` | 화면 노출 여부 |
+| `mobile` | | `'yes'`/`'no'`/`'only'`/`'default'` | 모바일 노출 제어 |
+| `version` | | `'1'`/`'2'` | 가젯 버전 |
+
+```xml
+<b:widget id='Label1' type='Label' locked='false' title='카테고리'>
+  <b:widget-settings>
+    <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+    <b:widget-setting name='display'>LIST</b:widget-setting>
+    <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+  </b:widget-settings>
+</b:widget>
+```
+
+### 2.3 `<b:includable>` — 재사용 템플릿 블록
+- `id='main'`: 가젯의 필수 진입점 (렌더링 시작 지점)
+- `var` 속성으로 전달받은 데이터 변수명 지정
+- `<b:include name='includable-id'/>`: 다른 includable 호출
+
+### 2.4 `<b:defaultmarkups>` — 전역 위젯 템플릿 오버라이드
+Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중앙 관리합니다.
+
+```xml
+<b:defaultmarkups>
+  <!-- 공통 모듈: 모든 가젯에서 재사용 -->
+  <b:defaultmarkup type='Common'>
+    <b:includable id='widget-title'>
+      <b:if cond='data:title != ""'>
+        <h3 class='widget-title'><data:title/></h3>
+      </b:if>
+    </b:includable>
+  </b:defaultmarkup>
+
+  <!-- 가젯 타입별 오버라이드 -->
+  <b:defaultmarkup type='Label'>
+    <b:includable id='main'>
+      <div class='widget-box'>
+        <b:include name='widget-title'/>
+        <b:loop values='data:labels' var='label'>
+          <a expr:href='data:label.url'><data:label.name/></a>
+        </b:loop>
+      </div>
+    </b:includable>
+  </b:defaultmarkup>
+</b:defaultmarkups>
+```
+
+- `type='Common'`: 전역 재사용 모듈 (모든 가젯에서 `<b:include>` 가능)
+- `type='Label'` 등: 해당 타입 가젯이 추가되면 자동으로 이 마크업 적용
+- `super.` 구문: 기본 출력 재호출 시 `<b:include name='super.main'/>` 사용
+
+### 2.5 `<b:skin>` — CSS 스타일시트 영역
+
+```xml
+<b:skin><![CDATA[
+  /* 테마 디자이너 변수 (선택) */
+  /*
+  <Variable name="body.bg" description="배경 색상" type="color" default="#ffffff" value="#ffffff"/>
+  <Variable name="primary.color" description="주요 색상" type="color" default="#2563eb" value="#2563eb"/>
+  */
+
+  :root {
+    --bg-color: $(body.bg);           /* <Variable> 참조 구문 */
+    --primary-color: #2563eb;         /* 또는 직접 값 지정 */
+  }
+]]></b:skin>
+```
+
+- CDATA 블록으로 CSS를 감싸야 XML 파싱 오류 방지
+- `$(variable_name)`: 테마 디자이너 UI에서 설정한 값 참조
+- `<Variable>` 지원 타입: `color`, `font`, `length`, `string`, `url`, `background`
+
+---
+
+## 3. 제어 태그 레퍼런스
+
+### 조건문
+```xml
+<b:if cond='data:view.isHomepage'>
+  <!-- 홈페이지 전용 -->
+<b:elseif cond='data:view.isPost'/>
+  <!-- 포스트 상세 -->
+<b:else/>
+  <!-- 기타 -->
+</b:if>
+```
+지원 연산자: `==`, `!=`, `>`, `<`, `>=`, `<=`, `and`, `or`, `!`, `in`
+
+### 반복문
+```xml
+<b:loop values='data:post.labels' var='label' index='i'>
+  <a expr:href='data:label.url'><data:label.name/></a>
+</b:loop>
+```
+- `values`: 순회할 리스트 데이터
+- `var`: 각 항목 변수명
+- `index` (선택): 0부터 시작하는 인덱스 변수명
+
+### 다중 분기
+```xml
+<b:switch var='data:blog.pageType'>
+  <b:case value='item'/>    <!-- 글 상세 -->
+  <b:case value='static_page'/>  <!-- 고정 페이지 -->
+  <b:case value='archive'/>     <!-- 아카이브 -->
+  <b:default/>                  <!-- 기본 -->
+</b:switch>
+```
+
+### 보조 제어 태그
+| 태그 | 용도 | 예시 |
+|------|------|------|
+| `<b:with>` | 지역 변수 별칭 | `<b:with value='data:post.featuredImage' var='img'>` |
+| `<b:tag>` | 동적 HTML 태그명 | `<b:tag name='data:view.isPost ? "h1" : "h2"'>` |
+| `<b:eval>` | 표현식 평가 출력 | `<b:eval expr='data:blog.totalPosts + 1'/>` |
+| `<b:class>` | 조건부 클래스 주입 | `<b:class cond='data:view.isPost' name='single-view'/>` |
+| `<b:attr>` | 조건부 속성 주입 | `<b:attr cond='...' name='href' value='...'/>` |
+| `expr:` 접두사 | 동적 속성 바인딩 | `expr:href='data:post.url'` |
+
+---
+
+## 4. 데이터 표현식 레퍼런스
+
+### 4.1 뷰 상태 (`data:view.*`)
+| 변수 | 타입 | 설명 |
+|------|------|------|
+| `data:view.isHomepage` | boolean | 메인 홈페이지 여부 |
+| `data:view.isPost` | boolean | 게시글 상세 페이지 여부 |
+| `data:view.isPage` | boolean | 고정 페이지 여부 |
+| `data:view.isSingleItem` | boolean | 단일 아이템(글 또는 페이지) 뷰 여부 |
+| `data:view.isMultipleItems` | boolean | 목록 뷰(홈/검색/아카이브) 여부 |
+| `data:view.isSearch` | boolean | 검색 뷰 여부 |
+| `data:view.isArchive` | boolean | 아카이브 뷰 여부 |
+| `data:view.isError` | boolean | 404 에러 페이지 여부 |
+| `data:view.search.label` | string | 현재 라벨 검색 뷰의 라벨명 |
+| `data:view.search.query` | string | 검색어 |
+| `data:view.url` | string | 현재 뷰 URL |
+| `data:view.title` | string | 현재 페이지 타이틀 |
+
+### 4.2 블로그 전역 (`data:blog.*`)
+| 변수 | 설명 |
+|------|------|
+| `data:blog.homepageUrl` | 블로그 홈 URL |
+| `data:blog.title` | 블로그 제목 |
+| `data:blog.totalPosts` | 전체 발행 포스트 수 |
+| `data:blog.pageType` | 페이지 유형 (`index`, `item`, `static_page`, `archive`, `error`) |
+| `data:blog.locale.language` | 언어 코드 (`ko`, `en` 등) |
+| `data:blog.languageDirection` | 텍스트 방향 (`ltr`/`rtl`) |
+
+### 4.3 게시글 객체 (`data:post.*`)
+| 변수 | 설명 |
+|------|------|
+| `data:post.title` | 게시글 제목 |
+| `data:post.body` | 본문 전체 HTML |
+| `data:post.url` | 영구 링크 (Permalink) |
+| `data:post.date` | 작성/발행 일자 |
+| `data:post.snippet` | 본문 요약 텍스트 |
+| `data:post.author` | 작성자 객체 |
+| `data:post.author.name` | 작성자 이름 |
+| `data:post.labels` | 라벨 목록 배열 |
+| `data:post.featuredImage` | 대표 이미지 URL |
+| `data:post.numComments` | 댓글 수 |
+| `data:post.allowComments` | 댓글 허용 여부 |
+
+### 4.4 라벨 객체 (`data:label.*`)
+| 변수 | 설명 |
+|------|------|
+| `data:label.name` | 라벨명 |
+| `data:label.url` | 라벨 검색 URL |
+| `data:label.count` | 해당 라벨 포스트 수 |
+
+### 4.5 가젯 공통 변수
+| 변수 | 사용 가젯 | 설명 |
+|------|-----------|------|
+| `data:title` | 모든 가젯 | 가젯 제목 |
+| `data:content` | Text, HTML, Translate | 가젯 본문 콘텐츠 |
+| `data:labels` | Label | 전체 라벨 리스트 |
+| `data:posts` | Blog, PopularPosts | 게시글 리스트 |
+| `data:links` | PageList, LinkList | 링크 리스트 |
+| `data:team` / `data:aboutme` | Profile | 프로필 소개글 |
+
+---
+
+## 5. 위젯(가젯) 타입 전체 목록
+
+| 타입 | 설명 | 주요 데이터 변수 |
+|------|------|------------------|
+| `Blog` | **필수**. 게시글 목록/본문 출력 | `data:posts`, `data:post.*` |
+| `Header` | 블로그 제목/설명 헤더 | `data:title`, `data:description` |
+| `Label` | 카테고리/라벨 목록 | `data:labels`, `data:label.name/url/count` |
+| `PopularPosts` | 인기 게시글 목록 | `data:posts`, `data:post.title/href/snippet` |
+| `BlogArchive` | 연도/월별 아카이브 트리 | `data:data`, `data:style` |
+| `PageList` | 고정 페이지 메뉴 링크 | `data:links`, `data:link.href/title` |
+| `Text` | 텍스트 상자 | `data:title`, `data:content` |
+| `HTML` | 커스텀 HTML/JS 코드 | `data:title`, `data:content` |
+| `Profile` | 작성자 프로필 | `data:aboutme`, `data:team`, `data:displayname` |
+| `BlogSearch` | 블로그 검색창 | `data:title`, `data:targetUrl` |
+| `Translate` | 구글 번역 가젯 | `data:title`, `data:content` |
+| `AdSense` | 구글 애드센스 광고 | `data:adCode`, `data:client` |
+| `FeaturedPost` | 대표 게시물 강조 | `data:post.title/snippet/featuredImage` |
+| `LinkList` | 외부/내부 링크 목록 | `data:links`, `data:link.name/target` |
+| `TextList` | 텍스트 항목 목록 | `data:items` |
+| `ContactForm` | 문의하기 폼 | `data:contactFormMessageUrl` |
+| `Image` | 단일 이미지 | `data:sourceUrl`, `data:caption` |
+| `Feed` | 외부 RSS/Atom 피드 | `data:feedUrl`, `data:entries` |
+| `Attribution` | 저작권/출처 표시 | `data:attribution` |
+| `Stats` | 방문자 카운터 | `data:totalCount` |
+| `Subscribe` | RSS/이메일 구독 | `data:feedPath` |
+| `Navbar` | 구글 상단 내비 (V3 비활성화) | N/A |
+
+---
+
+## 6. 레이아웃 설계 규칙
+
+### 필수 제약 조건
+1. **직계 자식 규칙**: `<b:section>` 안에는 오직 `<b:widget>`만 직계 자식으로 배치 가능. HTML 태그나 텍스트 직접 삽입 불가.
+2. **중첩 금지**: `<b:section>` 내부에 다른 `<b:section>` 배치 불가.
+3. **고유 ID**: 템플릿 전체에서 모든 `b:section id`와 `b:widget id`는 유일해야 함.
+
+### 대시보드 GUI 연동
+- `showaddelement='true'`: 레이아웃 메뉴에 "가젯 추가" 버튼 표시
+- `locked='false'`: 드래그 앤 드롭 이동/삭제 허용
+- `locked='true'`: 고정 (예: Blog1 메인 가젯)
+
+### 모바일 속성
+| 값 | 동작 |
+|----|------|
+| `mobile='yes'` | 데스크톱+모바일 모두 표시 |
+| `mobile='no'` | 모바일에서 숨김 |
+| `mobile='only'` | 모바일에서만 표시 |
+| `mobile='default'` | 기본 테마 정책 따름 |
+
+> **V3 권장**: `b:responsive='true'` 선언 시 `mobile` 속성 대신 CSS 미디어 쿼리로 반응형 처리.
+
+---
+
+## 7. CSS & 반응형 디자인 가이드
+
+### CSS Custom Properties 활용 패턴
+```css
+:root {
+  --primary-color: #2563eb;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f1f5f9;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+  }
+}
+```
+
+### 반응형 베스트 프랙티스
+1. `<meta name='viewport' content='width=device-width, initial-scale=1'/>` 필수
+2. CSS Grid & Flexbox로 레이아웃 구성
+3. `<b:defaultmarkups>`로 가젯 UI 일관성 보장
+4. 미디어 쿼리 `@media(max-width: 768px)`로 모바일 대응
+5. 모든 인터랙티브 요소 최소 터치 영역 44px 이상
+
+---
+
+## 8. 현재 테마 구조 매핑
+
+### 섹션 구성
+| Section ID | showaddelement | 용도 |
+|------------|----------------|------|
+| `main-section` | `false` | 메인 콘텐츠 (Blog1 가젯) |
+| `sidebar` | `true` | 사이드바 가젯 영역 (목록 뷰에서만 표시) |
+| `footer-section` | `true` | 푸터 가젯 영역 |
+
+### 위젯 목록
+| Widget ID | Type | Locked | Title |
+|-----------|------|--------|-------|
+| `Blog1` | `Blog` | `true` | Blog Posts |
+| `Text1` | `Text` | `false` | 소개 (About) |
+| `Label1` | `Label` | `false` | 카테고리 |
+
+### defaultmarkup 타입 (10종)
+`Common`, `Label`, `PopularPosts`, `Text`, `HTML`, `Profile`, `Header`, `Translate`, `BlogArchive`, `BlogSearch`
+
+### CSS 변수 (11종, 라이트/다크 모드)
+`--primary-color`, `--primary-light`, `--primary-dark`, `--bg-color`, `--card-bg`, `--text-main`, `--text-muted`, `--border-color`, `--terminal-bg`, `--accent-color`, `--font-family`
+
+### JavaScript 기능 (4종)
+1. **카테고리 탭 활성화**: URL pathname 기반 `.active` 클래스 동적 부여
+2. **햄버거 메뉴 토글**: 768px 이하 모바일 네비게이션 드롭다운
+3. **읽기 진행 바**: 포스트 상세 페이지 전용 스크롤 진행률 표시
+4. **Scroll-to-Top FAB**: 400px 이상 스크롤 시 우하단 원형 버튼 노출
+
+---
+
+## 10. Blogger XML 트러블슈팅 & SAXParseException 예방 규칙 ⚠️
+
+### 10.1 `SAXParseException: The entity name must immediately follow the '&'` 및 `"]]>"` 중복 예외
+- **발생 원인**:
+  1. 구글 Blogger 테마 XML 엔진은 엄격한 SAX XML 파서를 구동합니다. JavaScript 코드나 HTML 속성 내부에서 `&` 문자를 단순 raw `&`로 사용하거나 Logical AND (`&&`)를 작성하는 경우 파서가 XML Entity 참조 시작으로 오인하여 예외를 발생시킵니다.
+  2. `<script type='text/javascript'>` 블록이 다중 중복 삽입되거나 `//<![CDATA[` 짝이 맞지 않은 상태에서 `//]]>` 구문이 노출되면 파서가 `The character sequence "]]>" must not appear in content unless used to mark the end of a CDATA section` 예외를 뿜습니다.
+- **필수 준수 규칙**:
+  1. `<script type='text/javascript'>` 블록 내부라도 raw `&` 문자를 직접 사용할 수 없으며, 반드시 `//<![CDATA[`와 `//]]>` CDATA 블록으로 완벽히 감싸야 합니다.
+  2. CDATA 블록 외부 또는 HTML 표현식(`expr:*`) 내부의 `&` 문자는 100% `&amp;`로 치환해야 합니다 (예: `if (a &amp;&amp; b)`).
+  3. XML 내부에서 `<![CDATA[` 가 선언되지 않은 영역에 `]]>` 문자가 단독 노출되지 않도록 스크립트 블록 짝을 1:1로 정확히 검증하고, 스크립트 중간에 `</script>` 태그가 조기 폐쇄되어 `//]]>` 가 일반 HTML 문맥에 단독 노출되는 결함을 100% 방지합니다.
+
+### 10.2 Blogger 1, 2, 3 동적 카드 교체 페이징 엔진 (Dynamic Card Pager Engine)
+- **배경**: Blogger 기본 템플릿의 `isHomepage` 조건 및 URL 파라미터 매칭 문제로 인해 클라이언트 페이징 버튼 클릭 시 포스팅 카드가 상위 4개로 고정되는 문제 발생.
+- **해결 패턴**:
+  1. `Blogger JSON Feed API` (`/feeds/posts/summary?alt=json-in-script&max-results=150`)를 비동기 호출하여 전체 포스팅 인덱스와 날짜/라벨 스냅샷을 획득.
+  2. 숫자 버튼 클릭 시 전체 38개 포스팅 중 5~8번, 9~12번 포스팅 카드를 실시간 100% 교체 렌더링.
+
+---
+
+## 11. 공식 참고문헌
+
+### 구글 Blogger 도움말 센터
+- [블로그 테마 맞춤설정](https://support.google.com/blogger/answer/176245?hl=ko)
+- [가젯 추가/수정/삭제](https://support.google.com/blogger/answer/1227173?hl=ko)
+- [블로그 페이지 추가](https://support.google.com/blogger/answer/46871?hl=ko)
+- [블로그 레이아웃 구성](https://support.google.com/blogger/answer/46888?hl=ko)
+- [블로그 모바일 테마](https://support.google.com/blogger/answer/46995?hl=ko)
+
+### 개발자 문서
+- [Blogger Layouts Version 3 공식 발표](https://bloggercode.blogspot.com/2012/06/blogger-layouts-version-3.html)
+- [Blogger API v3](https://developers.google.com/blogger/docs/3.0/using)

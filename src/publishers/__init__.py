@@ -1,17 +1,17 @@
 import datetime
 import os
 import re
+import shutil
 import frontmatter
 from typing import List, Dict, Any
-from src.paths import run_directory
-from src.files import read_state, write_json
-from src.validate import validate_run
-from src.converter import convert_markdown_to_html
+from src.core.paths import run_directory, posts_root
+from src.core.files import read_state, write_json
+from src.core.types import TailQuestion, Reference, TocItem, KnowledgeNode, PublishedPlatformDetail, Backlink
+from src.pipeline.validate import validate_run
+from src.pipeline.converter import convert_markdown_to_html
 from src.publishers.base import BlogPublisher, ArticlePayload, PublishResult
 from src.publishers.notion import NotionPublisher
 from src.publishers.blogger import BloggerPublisher
-from src.knowledge_store import add_knowledge_node, calculate_backlinks
-from src.types import TailQuestion, Reference, TocItem, KnowledgeNode, PublishedPlatformDetail, Backlink
 
 def get_publisher(platform: str) -> BlogPublisher:
     if platform == "blogger":
@@ -225,24 +225,11 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
         "publishedAt": state.updatedAt
     })
 
-    backlinks = calculate_backlinks(state.articleId, state.topic)
+    # 관리자 승인 및 게시 완료된 final.md 포스팅 원본을 content/posts/ 정식 자산 저장소로 이관
+    posts_root.mkdir(parents=True, exist_ok=True)
+    slug_val = getattr(state, "slug", None) or state.articleId
+    post_filename = f"{slug_val}.md"
+    shutil.copy(dir_path / "final.md", posts_root / post_filename)
+    print(f"[자산 이관 완료] final.md -> content/posts/{post_filename}")
 
-    backlink_objs = []
-    for b in backlinks:
-        backlink_objs.append(Backlink(
-            fromArticleId=b["fromArticleId"],
-            toArticleId=b["toArticleId"],
-            anchor=b["anchor"]
-        ))
-
-    add_knowledge_node(KnowledgeNode(
-        articleId=state.articleId,
-        topic=state.topic,
-        createdAt=state.updatedAt,
-        tocItems=toc_items,
-        references=references,
-        tailQuestions=tail_questions,
-        backlinks=backlink_objs
-    ))
-
-    print("모든 플랫폼 게시 완료 및 지식 그래프에 등록되었습니다.")
+    print("모든 플랫폼 게시 완료 및 content/posts/에 최종 저장되었습니다.")
