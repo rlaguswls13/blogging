@@ -35,6 +35,13 @@ graph LR
 6. **`content/posts/` 자동 이관 필수**:
    - 배포 성공 시 파이프라인이 `final.md`에서 내부 검증 메모(`## 사실 검증 결과` 표 등)를 자동 Sanitization 제거 후 배포함과 동시에, **`temp/runs/${run_id}/final.md` 원본을 최종 승인 포스팅으로서 `content/posts/${slug}.md`로 자동 이관 보관**합니다.
 
+7. **상단 탭 분류 라벨 필수 부여 (Nav Classification Label Rule)**:
+   - 블로그 테마 상단 탭(Home/Basics/Advanced/Trends)은 글의 `tags`에 실제로 붙은 라벨만 보고 분류합니다(키워드 추론 없음). 모든 신규 글의 `tags`에는 아래 세 라벨 중 **정확히 하나**를 반드시 포함해야 합니다:
+     - **기초(Basics)**: 개념/정의 위주의 입문 글 → `기초` 또는 `Basics` 라벨
+     - **심화(Advanced)**: 아키텍처 심층 분석, 튜닝, 실무 트레이드오프 글 → `Advanced` 라벨
+     - **트렌드(Trends)**: 최신 기술/emerging 주제 글 → `Trends` 라벨
+   - 분류가 애매한 글은 심화(Advanced)를 기본값으로 사용합니다. 이미 배포된 기존 38개 글은 `src/tools/apply_nav_labels.py`로 일괄 백필했습니다.
+
 ---
 
 ## 2. 자산 디렉터리 역할 구별
