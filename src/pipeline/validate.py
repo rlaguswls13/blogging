@@ -15,6 +15,9 @@ TRUSTED_REFERENCE_DOMAINS = {
     "kubernetes.io", "kafka.apache.org", "redis.io", "www.cncf.io", "cncf.io",
     "www.linuxfoundation.org", "linuxfoundation.org", "developer.mozilla.org",
     "learn.microsoft.com", "cloud.google.com", "docs.aws.amazon.com", "aws.amazon.com",
+    "man7.org", "kernel.org", "www.kernel.org", "openjdk.org", "docs.python.org",
+    "modelcontextprotocol.io", "blog.modelcontextprotocol.io",
+    "www.rfc-editor.org", "rfc-editor.org", "www.ietf.org", "ietf.org",
 }
 
 def section_exists(body: str, heading: str) -> bool:
@@ -60,12 +63,18 @@ def reference_urls(items: List[str]) -> List[Tuple[str, Optional[str]]]:
         results.append((item.strip(), url_match.group(0) if url_match else None))
     return results
 
+_LINK_CHECK_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; ai-blogging-linkcheck/1.0)"}
+
 def check_link_liveness(url: str, timeout: int = 5) -> Tuple[bool, str]:
-    """URL이 살아있는지 확인한다. HEAD가 거부되면 GET으로 재시도한다."""
+    """URL이 살아있는지 확인한다. HEAD가 거부되면 GET으로 재시도한다.
+
+    User-Agent를 지정하지 않으면 Wikipedia 등 일부 사이트가 자동화 요청으로 보고
+    403을 돌려줘 실제로는 살아있는 링크가 깨진 것으로 오탐되므로 브라우저 UA를 붙인다.
+    """
     try:
-        resp = requests.head(url, timeout=timeout, allow_redirects=True)
+        resp = requests.head(url, timeout=timeout, allow_redirects=True, headers=_LINK_CHECK_HEADERS)
         if resp.status_code >= 400:
-            resp = requests.get(url, timeout=timeout, stream=True)
+            resp = requests.get(url, timeout=timeout, stream=True, headers=_LINK_CHECK_HEADERS)
         return resp.status_code < 400, f"HTTP {resp.status_code}"
     except requests.RequestException as e:
         return False, str(e)

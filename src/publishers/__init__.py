@@ -1,7 +1,6 @@
 import datetime
 import os
 import re
-import shutil
 import subprocess
 import frontmatter
 from typing import List, Dict, Any
@@ -254,11 +253,33 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
         "publishedAt": state.updatedAt
     })
 
-    # 관리자 승인 및 게시 완료된 final.md 포스팅 원본을 content/posts/ 정식 자산 저장소로 이관
+    # 관리자 승인 및 게시 완료된 final.md 포스팅 원본을 content/posts/ 정식 자산 저장소로 이관.
+    # slug는 state.json이 아니라 final.md 자체 frontmatter를 신뢰 소스로 삼는다 —
+    # state.slug는 어디서도 채워지지 않아 항상 None이라, 이전에는 매번 articleId로
+    # 떨어져 content/posts/의 다른 글들과 파일명 규칙이 어긋났다(2026-08-17 발견).
     posts_root.mkdir(parents=True, exist_ok=True)
-    slug_val = getattr(state, "slug", None) or state.articleId
+    slug_val = metadata.get("slug") or state.articleId
     post_filename = f"{slug_val}.md"
-    shutil.copy(dir_path / "final.md", posts_root / post_filename)
+
+    blogger_result = next((r for r in results if r.platform == "blogger"), results[0] if results else None)
+    archived_metadata = dict(metadata)
+    archived_metadata["status"] = "published"
+    if blogger_result:
+        # id도 내부 articleId가 아니라 실제 Blogger post ID로 덮어써야 한다 — 다른 도구
+        # (src/tools/patch_published_posts.py, update_post_content.py 등)가 이 id 필드를
+        # Blogger API 호출의 postId로 그대로 사용하기 때문에, articleId가 남아있으면
+        # 이후 그 글에 대한 모든 API 기반 유지보수 작업이 깨진다(2026-08-17 발견).
+        archived_metadata["id"] = blogger_result.postId
+        archived_metadata["url"] = blogger_result.url
+        archived_metadata["publishedAt"] = blogger_result.publishedAt
+
+    # content/posts/에는 sanitize된 published_content가 아니라 원본 final.md 본문(content)을
+    # 그대로 보관한다 — wiki/Blog_Writing_Rules.md 6번 수칙("원본을 최종 승인 포스팅으로서
+    # 이관 보관")과 일치시키기 위함. 내부 검증 메모(## 사실 검증 결과 등) 제거는 라이브 HTML
+    # 변환(convert_markdown_to_html) 단계에서만 이루어지고, 로컬 아카이브는 원본 그대로 유지된다.
+    archived_post = frontmatter.Post(content, **archived_metadata)
+    with open(posts_root / post_filename, "w", encoding="utf-8") as f:
+        frontmatter.dump(archived_post, f)
     print(f"[자산 이관 완료] final.md -> content/posts/{post_filename}")
 
     print("모든 플랫폼 게시 완료 및 content/posts/에 최종 저장되었습니다.")
