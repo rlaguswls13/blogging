@@ -375,6 +375,8 @@
         color: var(--text-main);
         margin: 0 0 1.25rem 0;
         letter-spacing: -0.02em;
+        word-break: keep-all !important;
+        overflow-wrap: break-word !important;
       }
       
       .tech-hero p {

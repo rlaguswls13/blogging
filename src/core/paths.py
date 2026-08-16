@@ -10,8 +10,8 @@ runs_root = project_root / "temp" / "runs"
 posts_root = project_root / "content" / "posts"
 gate_path = project_root / "src" / "core" / "publish_gate.json"
 article_template_path = project_root / "wiki" / "templates" / "article.md"
-theme_xml_path = project_root / "wiki" / "theme" / "blogger_site_theme.xml"
-theme_css_path = project_root / "wiki" / "theme" / "blogger_post_style.css"
+theme_xml_path = project_root / "content" / "theme" / "blogger_site_theme.xml"
+theme_css_path = project_root / "content" / "theme" / "blogger_post_style.css"
 
 def run_directory(run_id: str) -> Path:
     if not re.match(r"^[a-zA-Z0-9_-]+$", run_id):

@@ -430,6 +430,12 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
   4. Visual 겹침 해결: `.main_content_container`에 `padding-top: 80px !important;`, `.sidebar`에 `margin-top: 90px !important;`를 적용하여 상단 Floating Nav bar 아래로 사이드바 가젯 카드가 완전히 이격되도록 렌더링.
   5. `initCategoryTagsLimit()` 인라인 포함: 사이드바 `Label1` 가젯의 수십 개 라벨을 상위 8개 모던 태그 칩 + `...` 더보기 모달 팝업 버튼으로 깔끔히 변환 렌더링.
 
+### 10.6 Layout UI로 추가된 비스타일(Unstyled) 가젯 노출 결함 — `FeaturedPost`/`PopularPosts` (2026-08-16 발견)
+- **발생 원인**: Blogger 대시보드 **레이아웃(Layout)** 탭에서 가젯을 드래그앤드롭으로 추가하면, 로컬 저장소의 `content/theme/blogger_site_theme.xml`(소스 오브 트루스)에는 반영되지 않은 채 라이브 사이트에만 위젯이 생성됩니다. 이렇게 추가된 위젯 타입이 `<b:defaultmarkups>` 10종(`Common`, `Label`, `PopularPosts`, `Text`, `HTML`, `Profile`, `Header`, `Translate`, `BlogArchive`, `BlogSearch`) 목록에 없거나(`FeaturedPost`), 있어도 실제로는 Blogger 기본 마크업(`.post`, `.post-title`, `.post-content` raw 클래스)이 적용되면 커스텀 카드 디자인과 전혀 무관하게 100% 비스타일 상태로 렌더링됩니다.
+- **실제 사례**: `FeaturedPost1` 위젯이 홈페이지 카드 그리드+페이지네이션 바로 아래에 최신 글의 `data:post.body` **전체 본문**을 스니펫이 아닌 원문 그대로, 아무 CSS 없이 노출(중복 콘텐츠 SEO 감점 + 시각적 붕괴). `PopularPosts1` 위젯은 포스트 상세 페이지 하단에 썸네일/카드 없는 밋밋한 텍스트 링크 목록으로 노출.
+- **조치 방향**: 로컬 XML에 없는 위젯이 라이브에만 존재하는 경우 XML 편집으로는 제거되지 않으므로, **Blogger 대시보드 → 레이아웃 → 해당 가젯 편집 → 삭제** 로 직접 제거하는 것이 코드 수정 없이 회귀 위험이 가장 낮음.
+- **예방 규칙**: 레이아웃 탭에서 새 가젯을 추가하기 전, 반드시 (1) 해당 타입이 `<b:defaultmarkups>`에 정의되어 있는지, (2) 정의되어 있다면 실제로 `tech-*`/`post-card` 계열 클래스로 스타일링되는지 먼저 확인. 스타일이 없다면 추가하지 않거나, 추가 전 defaultmarkup을 먼저 작성해야 함.
+
 ---
 
 ## 11. 공식 참고문헌
