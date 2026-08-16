@@ -251,7 +251,7 @@
   }
 
   window.renderPage = function(page) {
-    var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid');
+    var container = document.querySelector('#main-posts-grid, .posts-grid, .blog-posts, .tech-featured-grid, .widget.Blog .widget-content, .widget.Blog');
     if (!container) return;
 
     window.currentPage = page;
