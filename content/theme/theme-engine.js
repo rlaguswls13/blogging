@@ -66,7 +66,7 @@
       modalContainer.appendChild(tagEl);
     });
 
-    modal.classList.add('active');
+    modal.className = 'modal-overlay active';
     modal.setAttribute('style', 'display: flex !important; visibility: visible !important; opacity: 1 !important; z-index: 999999 !important;');
     document.body.style.overflow = 'hidden';
   };
@@ -74,7 +74,7 @@
   window.closeCategoriesModal = function() {
     var modal = document.getElementById('categories-modal');
     if (modal) {
-      modal.classList.remove('active');
+      modal.className = 'modal-overlay';
       modal.setAttribute('style', 'display: none !important; visibility: hidden !important; opacity: 0 !important;');
       document.body.style.overflow = '';
     }
