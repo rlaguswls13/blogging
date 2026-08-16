@@ -79,13 +79,12 @@
       }
       
       /* Container Top Spacing to prevent Sticky Nav Overlap */
-      .main_content_container, .container {
-        padding-top: 80px !important;
-        margin-top: 0 !important;
+      .main_content_container, .page {
+        padding-top: 1rem !important;
       }
 
       .sidebar {
-        margin-top: 0 !important;
+        margin-top: 90px !important;
       }
 
       /* Post Card Title Word-Break & Formatting */
