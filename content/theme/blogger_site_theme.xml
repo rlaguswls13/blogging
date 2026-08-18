@@ -9,9 +9,9 @@
       .post-card-title { display: -webkit-box !important; -webkit-line-clamp: 2 !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
     </style>
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
+    <meta name="naver-site-verification" content="fa4c1b1e44d01ef2fe0d96d319dc1fd88b095774" />
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
-
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
 
@@ -2020,83 +2020,7 @@
     <footer class='site-footer'>
       <div class='footer-widgets-grid'>
         <b:section id='footer-widgets-section' showaddelement='true'>
-          <!-- 1. 최근 읽은내역 (BlogArchive1) -->
-          <b:widget id='BlogArchive1' locked='false' title='최근 읽은내역' type='BlogArchive' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-              <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-              <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-              <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
-              <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-              <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-              <b:widget-setting name='chronological'>false</b:widget-setting>
-              <b:widget-setting name='showPosts'>true</b:widget-setting>
-              <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
-            </b:widget-settings>
-            <b:includable id='main' var='this'>
-              <div class='widget-box'>
-                <b:if cond='data:title != ""'>
-                  <h3 class='widget-title'><data:title/></h3>
-                </b:if>
-                <b:include name='content'/>
-              </div>
-            </b:includable>
-            <b:includable id='content'>
-              <div class='widget-content'>
-                <div id='ArchiveList'>
-                  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-                    <b:include cond='data:this.style == &quot;HIERARCHY&quot;' name='hierarchy'/>
-                    <b:include cond='data:this.style in {&quot;FLAT&quot;, &quot;MENU&quot;}' name='flat'/>
-                  </div>
-                </div>
-              </div>
-            </b:includable>
-            <b:includable id='flat'>
-              <ul class='flat'>
-                <b:loop values='data:data' var='i'>
-                  <li class='archivedate'>
-                    <a expr:href='data:i.url'>
-                      <data:i.name/><span class='post-count'><data:i.post-count/></span>
-                    </a>
-                  </li>
-                </b:loop>
-              </ul>
-            </b:includable>
-            <b:includable id='hierarchy'>
-              <b:include data='data' name='interval'/>
-            </b:includable>
-            <b:includable id='interval' var='intervals'>
-              <ul class='hierarchy'>
-                <b:loop values='data:intervals' var='interval'>
-                  <li class='archivedate'>
-                    <div class='hierarchy-title'>
-                      <a class='post-count-link' expr:href='data:interval.url'>
-                        <data:interval.name/>
-                        <span class='post-count'><data:interval.post-count/></span>
-                      </a>
-                    </div>
-                    <div class='hierarchy-content'>
-                      <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-                      <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-                    </div>
-                  </li>
-                </b:loop>
-              </ul>
-            </b:includable>
-            <b:includable id='posts' var='posts'>
-              <ul class='posts hierarchy'>
-                <b:loop index='i' values='data:posts' var='post'>
-                  <b:if cond='data:i &lt; 10'>
-                    <li>
-                      <a expr:href='data:post.url'><data:post.title/></a>
-                    </li>
-                  </b:if>
-                </b:loop>
-              </ul>
-            </b:includable>
-          </b:widget>
-
-          <!-- 2. 번역 (Translate1) -->
+          <!-- 1. 번역 (Translate1) -->
           <b:widget id='Translate1' locked='false' title='Translate' type='Translate' visible='true'>
             <b:widget-settings>
               <b:widget-setting name='displayMode'>VERTICAL</b:widget-setting>
