@@ -58,7 +58,7 @@ Streamable HTTP 요청에는 이제 `Mcp-Method`와 `Mcp-Name` 헤더가 필수�
 
 ### 7. MCP와 A2A(Agent2Agent)는 어떻게 다른가
 
-MCP와 함께 자주 언급되는 A2A(Agent2Agent)는 사실 MCP의 일부가 아니라 **Google이 개발해 2026년 Linux Foundation에 기증한 별도의 프로토콜**입니다. 역할 구분은 비교적 명확합니다: MCP는 "에이전트가 도구·데이터에 연결하는 방법"(수직적 통합)을 표준화하고, A2A는 "서로 다른 자율 에이전트끼리 작업을 위임하고 통신하는 방법"(수평적 협업)을 표준화합니다. A2A는 에이전트가 자신의 능력을 설명하는 JSON-LD 형식의 Agent Card를 통해 서로를 발견하고, 이를 근거로 작업을 위임합니다. 대규모 멀티 에이전트 시스템은 결국 두 프로토콜을 함께 사용하는 경우가 많습니다 — MCP로 각 에이전트가 도구·데이터에 신뢰성 있게 접근하고, A2A로 에이전트 간 작업 분배와 오케스트레이션을 처리하는 조합입니다.
+MCP와 함께 자주 언급되는 A2A(Agent2Agent)는 사실 MCP의 일부가 아니라 **Google이 개발해 2025년 6월 Linux Foundation에 기증한 별도의 프로토콜**입니다. 역할 구분은 비교적 명확합니다: MCP는 "에이전트가 도구·데이터에 연결하는 방법"(수직적 통합)을 표준화하고, A2A는 "서로 다른 자율 에이전트끼리 작업을 위임하고 통신하는 방법"(수평적 협업)을 표준화합니다. A2A는 에이전트가 자신의 능력을 설명하는 JSON-LD 형식의 Agent Card를 통해 서로를 발견하고, 이를 근거로 작업을 위임합니다. 대규모 멀티 에이전트 시스템은 결국 두 프로토콜을 함께 사용하는 경우가 많습니다 — MCP로 각 에이전트가 도구·데이터에 신뢰성 있게 접근하고, A2A로 에이전트 간 작업 분배와 오케스트레이션을 처리하는 조합입니다.
 
 아래 다이어그램은 세션이 사라진 2026-07-28 스펙에서, 도구 실행 중간에 추가 입력이 필요할 때 Multi Round-Trip Requests(MRTR)가 어떻게 무상태 방식으로 대화를 이어가는지를 보여줍니다.
 
@@ -97,7 +97,7 @@ sequenceDiagram
 | CLAIM-002: 2026-07-28 스펙은 initialize/initialized 핸드셰이크와 세션 식별자를 제거하고 완전한 무상태(stateless) 코어로 전환했다 | verified | Model Context Protocol 공식 블로그 "The 2026-07-28 Specification" |
 | CLAIM-003: Multi Round-Trip Requests는 resultType: "input_required"와 inputResponses를 통해 무상태 환경에서 다단계 상호작용을 지원한다 | verified | Model Context Protocol 공식 블로그 "The 2026-07-28 Specification" |
 | CLAIM-004: 이번 스펙은 Dynamic Client Registration을 지원 중단하고 Client ID Metadata Documents(CIMD)로 대체했다 | verified | Model Context Protocol 공식 블로그 "The 2026-07-28 Specification" |
-| CLAIM-005: A2A는 Google이 개발해 Linux Foundation에 기증한, MCP와는 별개의 에이전트 간 통신 프로토콜이다 | verified | 업계 리포트(Zylos Research, onereach.ai) 교차 확인 — Google 개발, 2026년 Linux Foundation 기증 |
+| CLAIM-005: A2A는 Google이 개발해 Linux Foundation에 기증한, MCP와는 별개의 에이전트 간 통신 프로토콜이다 | verified | Google Developers Blog, "Google Cloud donates A2A to Linux Foundation"(2025-06-23) |
 
 ## 작성자의 견해
 
