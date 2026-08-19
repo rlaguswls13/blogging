@@ -36,9 +36,7 @@ graph TD
 ---
 
 ### 1.3 theme (사이트 테마 템플릿 실배포 자산)
-- **Blogger 종합 테마 XML**: [`content/theme/blogger_site_theme.xml`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/blogger_site_theme.xml)
-- **세분화 CSS 모듈**: [`content/theme/css/core-layout.css`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/css/core-layout.css), [`content/theme/css/components.css`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/css/components.css)
-- **세분화 JS 모듈**: [`content/theme/js/category-modal.js`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/js/category-modal.js), [`content/theme/js/card-pager.js`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/js/card-pager.js)
+- **Blogger 종합 테마 XML**: [`content/theme/blogger_site_theme.xml`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/blogger_site_theme.xml) (CSS/JS 100% 인라인 포함 — 별도 모듈 파일 없음)
 - **글 본문 CSS 스타일시트**: [`content/theme/blogger_post_style.css`](file:///d:/coding-project/2026-project/ai-blogging/content/theme/blogger_post_style.css)
 - **테마 백업 저장소 규격**: [`temp/backups/theme/`](file:///d:/coding-project/2026-project/ai-blogging/temp/backups/theme/)
 

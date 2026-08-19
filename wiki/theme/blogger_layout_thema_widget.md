@@ -453,7 +453,7 @@ Layouts V3의 핵심 모듈화 기능. 가젯 유형별 기본 마크업을 중�
 - **발생 원인**: v25에서 JS 엔진은 완전히 인라인화됐지만(10.4), CSS는 `<link href='.../theme-style.css?v=...'/>`로 jsDelivr CDN에서 계속 로드하고 있었다. 이 사실을 모른 채 "이미 다 인라인화됐다"고 가정하고, 중복으로 남아있던 `<link>` 두 개(`?v=7.0.0`, `?v=13.0.0`, 둘 다 동일한 캐시된 내용)를 완전 삭제했더니 **페이지네이션 버튼(`.page-btn`)과 카테고리 모달(`.modal-box`/`.modal-header`/`.modal-close-btn`/`.devlog-tags-popup`)의 CSS가 통째로 사라졌다.** 인라인 `<b:skin>`에는 이 셀렉터들이 애초에 한 번도 옮겨진 적이 없었기 때문이다.
 - **교훈**: 외부 `<link>`/`<script>`를 "중복이니 안전하게 지운다"고 판단하기 전에, 반드시 그 파일 실제 내용을 fetch해서 인라인 스킨에 없는 셀렉터가 있는지 diff 확인할 것. jsDelivr `@main` 브랜치 참조는 CORS로 열람 가능하니 브라우저 `fetch()`로 직접 받아 비교하면 된다.
 - **해결**: 누락된 셀렉터(`.page-btn` 전체 상태, `.modal-box`, `.modal-header`, `.modal-close-btn`, `.modal-body`, `.devlog-tags-popup`, `.tech-tag-more-btn`)를 외부 파일에서 인라인 `<b:skin>`으로 이식. 외부 파일에 있던 `.modal-overlay`(오버레이 배경/포지셔닝)는 이식 불필요 — `showCategoriesModal()`/`closeCategoriesModal()` JS가 이미 `style.cssText`로 인라인 직접 지정하고 있었음.
-- **현재 상태**: `content/theme/theme-style.css`, `theme-engine.js`, `content/theme/css/*`, `content/theme/js/*`는 이제 어디서도 참조되지 않는 죽은 파일(저장소에만 존재). 삭제해도 무방하나 미삭제 상태로 남아있음.
+- **현재 상태**: `content/theme/theme-style.css`, `theme-engine.js`, `content/theme/css/*`, `content/theme/js/*`는 어디서도 참조되지 않는 죽은 파일이었음 — 2026-08-18 삭제 완료.
 
 ### 10.10 `InvalidVariableException` — CSS 주석 속 raw HTML 태그가 `<SkinVariables>` 파싱을 깨뜨림 (2026-08-16)
 - **증상**: `com.google.blogger.b2.layouts.framework.skin.InvalidVariableException: ... not well-formed`. 에러 메시지에 표시된 "Input"이 정상적인 `<Variable>`/`<Group>` 선언 뒤에 `<button class="page-btn"> <a class="page-current">` 같은 엉뚱한 내용이 붙어있었다.
