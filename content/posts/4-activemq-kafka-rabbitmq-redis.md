@@ -1,12 +1,19 @@
 ---
-id: "575713044664474580"
-title: "4대 메시징 미들웨어 비교분석: ActiveMQ, Kafka, RabbitMQ, Redis의 아키텍처적 장단점과 솔루션 선택 가이드"
-slug: "4-activemq-kafka-rabbitmq-redis"
-status: "published"
-url: "https://beji-tech.blogspot.com/2026/08/4-activemq-kafka-rabbitmq-redis.html"
-publishedAt: "2026-08-13T21:02:48.705-07:00"
-updatedAt: "2026-08-13T21:02:48.705-07:00"
-tags: ["ActiveMQ","Kafka","Message Queue","RabbitMQ","Redis","Software Engineering","System Architecture"]
+id: '575713044664474580'
+publishedAt: '2026-08-13T21:02:48.705-07:00'
+slug: 4-activemq-kafka-rabbitmq-redis
+status: published
+tags:
+- ActiveMQ
+- Kafka
+- Message Queue
+- RabbitMQ
+- Redis
+- Software Engineering
+- System Architecture
+title: '4대 메시징 미들웨어 비교분석: ActiveMQ, Kafka, RabbitMQ, Redis의 아키텍처적 장단점과 솔루션 선택 가이드'
+updatedAt: '2026-08-13T21:02:48.705-07:00'
+url: https://beji-tech.blogspot.com/2026/08/4-activemq-kafka-rabbitmq-redis.html
 ---
 
 # 4대 메시징 미들웨어 비교분석: ActiveMQ, Kafka, RabbitMQ, Redis의 아키텍처적 장단점과 솔루션 선택 가이드
@@ -176,12 +183,12 @@ RabbitMQ는 고급 메시지 큐 프로토콜(AMQP)을 기반으로 견고하게
 
 - RabbitMQ Tutorials & Architecture Guides, "Understanding Exchange Types and AMQP Routing logic", [https://www.rabbitmq.com/tutorials/amqp-concepts.html](https://www.rabbitmq.com/tutorials/amqp-concepts.html)
 
-- LinkedIn Engineering Blog, "Kafka: A high-throughput distributed messaging system at LinkedIn scale", [https://engineering.linkedin.com/blog/2015/09/under-the-hood-of-linkedins-commits-log](https://engineering.linkedin.com/blog/2015/09/under-the-hood-of-linkedins-commits-log)
+- LinkedIn Engineering, "Running Kafka At Scale", [https://engineering.linkedin.com/kafka/running-kafka-scale](https://engineering.linkedin.com/kafka/running-kafka-scale)
 
 - Apache Kafka Core Spec, "Kafka Commit Log Storage and Offset Persistence Specification", [https://kafka.apache.org/documentation/#design_commitlog](https://kafka.apache.org/documentation/#design_commitlog)
 
-- Apache ActiveMQ Artemis Guide, "JMS Specifications, Transactional Messaging, and Protocol Support", [https://activemq.apache.org/components/artemis/documentation/](https://activemq.apache.org/components/artemis/documentation/)
+- Apache ActiveMQ Artemis Guide, "JMS Specifications, Transactional Messaging, and Protocol Support", [https://artemis.apache.org/components/artemis/documentation/](https://artemis.apache.org/components/artemis/documentation/)
 
-- Confluent Developer Guide, "Comparing Message Brokers: ActiveMQ vs. RabbitMQ vs. Apache Kafka", [https://developer.confluent.io/patterns/event-flow/broker-comparison](https://developer.confluent.io/patterns/event-flow/broker-comparison)
+- RisingWave, "RabbitMQ vs. ActiveMQ vs. Kafka: A Comprehensive Comparison", [https://risingwave.com/blog/rabbitmq-vs-activemq-vs-kafka-a-comprehensive-comparison/](https://risingwave.com/blog/rabbitmq-vs-activemq-vs-kafka-a-comprehensive-comparison/)
 
-- Google Cloud Architecture Guide, "Using Redis as a light-weight high-speed message queue in cloud run applications", [https://cloud.google.com/architecture/redis-message-broker-patterns](https://cloud.google.com/architecture/redis-message-broker-patterns)
+- Redis Official Documentation, "Redis Pub/sub", [https://redis.io/docs/latest/develop/pubsub/](https://redis.io/docs/latest/develop/pubsub/)

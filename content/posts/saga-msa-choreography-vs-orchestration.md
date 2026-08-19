@@ -1,12 +1,19 @@
 ---
-id: "3954787395289334886"
-title: "Saga 패턴을 활용한 MSA 분산 트랜잭션 제어: Choreography vs Orchestration 아키텍처와 보상 트랜잭션 설계 전략"
-slug: "saga-msa-choreography-vs-orchestration"
-status: "published"
-url: "https://beji-tech.blogspot.com/2026/08/saga-msa-choreography-vs-orchestration.html"
-publishedAt: "2026-08-14T10:20:51.161-07:00"
-updatedAt: "2026-08-14T10:20:51.161-07:00"
-tags: ["Choreography","Distributed Transactions","Microservices","Orchestration","Saga Pattern","System Architecture"]
+id: '3954787395289334886'
+publishedAt: '2026-08-14T10:20:51.161-07:00'
+slug: saga-msa-choreography-vs-orchestration
+status: published
+tags:
+- Choreography
+- Distributed Transactions
+- Microservices
+- Orchestration
+- Saga Pattern
+- System Architecture
+title: 'Saga 패턴을 활용한 MSA 분산 트랜잭션 제어: Choreography vs Orchestration 아키텍처와 보상 트랜잭션 설계
+  전략'
+updatedAt: '2026-08-14T10:20:51.161-07:00'
+url: https://beji-tech.blogspot.com/2026/08/saga-msa-choreography-vs-orchestration.html
 ---
 
 # Saga 패턴을 활용한 MSA 분산 트랜잭션 제어: Choreography vs Orchestration 아키텍처와 보상 트랜잭션 설계 전략
@@ -110,12 +117,12 @@ Saga 패턴은 롤백을 구현할 때 ACID 트랜잭션처럼 물리적 DB 롤�
 
 - Chris Richardson, "Microservices Patterns: With examples in Java", Manning Publications, Chapter 3 & 4.
 
-- Confluent Developer Guide, "Distributed Transactions vs Eventual Consistency in Stream Processing", [https://developer.confluent.io/patterns/event-flow/eventual-consistency/](https://developer.confluent.io/patterns/event-flow/eventual-consistency/)
+- Chris Richardson, Microservices.io Pattern Catalog, "Pattern: Event-driven architecture", [https://microservices.io/patterns/data/event-driven-architecture.html](https://microservices.io/patterns/data/event-driven-architecture.html)
 
 - Microservices.io Pattern Catalog, "Saga Pattern (Choreography and Orchestration)", [https://microservices.io/patterns/data/saga.html](https://microservices.io/patterns/data/saga.html)
 
 - Martin Kleppmann, "Designing Data-Intensive Applications", O'Reilly Media, Chapter 9.
 
-- Confluent Architecture Library, "Saga orchestration and compensation patterns inside Kafka message streams", [https://developer.confluent.io/courses/architecture/saga-implementation/](https://developer.confluent.io/courses/architecture/saga-implementation/)
+- IBM Cloud Architecture, "Event-driven Solution - Saga Orchestration", [https://ibm-cloud-architecture.github.io/eda-saga-orchestration/](https://ibm-cloud-architecture.github.io/eda-saga-orchestration/)
 
-- Google Cloud Architecture, "Database-per-service patterns and transaction consistency strategies", [https://cloud.google.com/solutions/microservices-transaction-strategies](https://cloud.google.com/solutions/microservices-transaction-strategies)
+- Chris Richardson, Microservices.io Pattern Catalog, "Pattern: Database per service", [https://microservices.io/patterns/data/database-per-service.html](https://microservices.io/patterns/data/database-per-service.html)

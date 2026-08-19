@@ -1,12 +1,19 @@
 ---
-id: "1114431861261923340"
-title: "LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph"
-slug: "llm-agent-autogen-vs-langgraph"
-status: "published"
-url: "https://beji-tech.blogspot.com/2026/08/llm-agent-autogen-vs-langgraph.html"
-publishedAt: "2026-08-12T02:36:19.165-07:00"
-updatedAt: "2026-08-13T21:02:42.018-07:00"
-tags: ["AI Framework","AutoGen","LangChain","LangGraph","LLM Agent","Multi-Agent Orchestration","Software Architecture"]
+id: '1114431861261923340'
+publishedAt: '2026-08-12T02:36:19.165-07:00'
+slug: llm-agent-autogen-vs-langgraph
+status: published
+tags:
+- AI Framework
+- AutoGen
+- LangChain
+- LangGraph
+- LLM Agent
+- Multi-Agent Orchestration
+- Software Architecture
+title: 'LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph'
+updatedAt: '2026-08-13T21:02:42.018-07:00'
+url: https://beji-tech.blogspot.com/2026/08/llm-agent-autogen-vs-langgraph.html
 ---
 
 # LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph
@@ -137,12 +144,12 @@ LangGraph는 에이전트의 자율성을 그래프 구조로 한정시킴으로
 
 - LangChain Blog, "LangGraph: Multi-Agent Workflows with Cyclic Graph Control", [https://blog.langchain.dev/langgraph/](https://blog.langchain.dev/langgraph/)
 
-- Microsoft Research, "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation Framework", [https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-generation-llm-applications/](https://www.microsoft.com/en-us/research/publication/autogen-enabling-next-generation-llm-applications/)
+- Wu et al. (Microsoft Research), "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation", [https://arxiv.org/abs/2308.08155](https://arxiv.org/abs/2308.08155)
 
-- LangChain Reference Guide, "LangGraph State Specification and Memory Store Mechanisms", [https://python.langchain.com/docs/langgraph](https://python.langchain.com/docs/langgraph)
+- LangChain Reference Guide, "LangGraph State Specification and Memory Store Mechanisms", [https://docs.langchain.com/oss/python/langgraph/overview](https://docs.langchain.com/oss/python/langgraph/overview)
 
 - MS AutoGen Documentation, "ConversableAgent Classes and Code Execution Sandbox Overview", [https://microsoft.github.io/autogen/](https://microsoft.github.io/autogen/)
 
-- arXiv Library, "A Survey of Multi-Agent Systems and Collaborative LLM Frameworks", [https://arxiv.org/abs/2401.12345](https://arxiv.org/abs/2401.12345)
+- Han et al., "A Survey on LLM-based Multi-Agent System: Recent Advances and New Frontiers in Application", [https://arxiv.org/abs/2412.17481](https://arxiv.org/abs/2412.17481)
 
-- Google Cloud Whitepaper, "Architecting Reliable Multi-Agent Cognitive Systems for Enterprise Scale", [https://cloud.google.com/blog/products/ai-machine-learning/reliable-multi-agent-systems-enterprise](https://cloud.google.com/blog/products/ai-machine-learning/reliable-multi-agent-systems-enterprise)
+- Fiddler AI, "Managing Responsible Multi-Agent LLM Systems for Enterprise Applications", [https://www.fiddler.ai/articles/multi-agent-llm-systems-for-enterprises](https://www.fiddler.ai/articles/multi-agent-llm-systems-for-enterprises)

@@ -1,12 +1,19 @@
 ---
-id: "5415411891794983817"
-title: "Redis 분산 락(Distributed Lock)의 한계와 극복: Redlock 알고리즘과 시계 드리프트(Clock Drift) 정합성 딜레마"
-slug: "redis-distributed-lock-redlock-clock"
-status: "published"
-url: "https://beji-tech.blogspot.com/2026/08/redis-distributed-lock-redlock-clock.html"
-publishedAt: "2026-08-14T10:20:47.695-07:00"
-updatedAt: "2026-08-14T10:20:47.695-07:00"
-tags: ["Concurrency Control","Distributed Lock","Redis","Redisson","Redlock","System Architecture"]
+id: '5415411891794983817'
+publishedAt: '2026-08-14T10:20:47.695-07:00'
+slug: redis-distributed-lock-redlock-clock
+status: published
+tags:
+- Concurrency Control
+- Distributed Lock
+- Redis
+- Redisson
+- Redlock
+- System Architecture
+title: 'Redis 분산 락(Distributed Lock)의 한계와 극복: Redlock 알고리즘과 시계 드리프트(Clock Drift) 정합성
+  딜레마'
+updatedAt: '2026-08-14T10:20:47.695-07:00'
+url: https://beji-tech.blogspot.com/2026/08/redis-distributed-lock-redlock-clock.html
 ---
 
 # Redis 분산 락(Distributed Lock)의 한계와 극복: Redlock 알고리즘과 시계 드리프트(Clock Drift) 정합성 딜레마
@@ -63,13 +70,13 @@ Redisson은 Redis가 제공하는 Pub/Sub 메시징 채널을 구독하여 락 �
 
 ### 3. Redlock 알고리즘의 동작 방식과 시계 드리프트(Clock Drift) 한계
 
-Redis 인스턴스가 단 1대뿐인 Single Instance 구조는 단일 장애점(SPOF)을 지닙니다. 이를 보완하기 위해 Redis 원작자 살바토레 산필리포(Antirez)는 다중 독립 마스터 노드(최소 5대) 합의 프로토콜인 **'Redlock 알고리즘'**을 주창했습니다 [1], [5], [6].
+Redis 인스턴스가 단 1대뿐인 Single Instance 구조는 단일 장애점(SPOF)을 지닙니다. 이를 보완하기 위해 Redis 원작자 살바토레 산필리포(Antirez)는 다중 독립 마스터 노드 간 과반수(Majority, N/2+1) 합의 프로토콜인 **'Redlock 알고리즘'**을 주창했습니다 [1], [5], [6]. 알고리즘 자체의 수학적 최소 요구치는 과반수를 만족하는 홀수 노드 3대이며, antirez가 예시로 제시한 구성이 노드 5대(과반수 3대)일 뿐 5가 알고리즘의 하한은 아닙니다.
 
 #### Redlock 작동 방식:
 
-- 클라이언트는 모든 독립 마스터 노드들(5대)에 아주 짧은 타임아웃 범위 내에서 락 획득을 순차 시도합니다.
+- 클라이언트는 모든 독립 마스터 노드들에 아주 짧은 타임아웃 범위 내에서 락 획득을 순차 시도합니다.
 
-- 클라이언트가 과반수 노드(5대 중 3대 이상)로부터 락을 점유하는 데 성공하고, 락 획득에 걸린 소요 시간이 최종 임대 시간보다 작다면 락이 완벽히 취득된 것으로 확정 판정합니다.
+- 클라이언트가 과반수 노드(예: 5대 구성이라면 3대 이상)로부터 락을 점유하는 데 성공하고, 락 획득에 걸린 소요 시간이 최종 임대 시간보다 작다면 락이 완벽히 취득된 것으로 확정 판정합니다.
 
 #### 분산 분기적 치명적 한계 (Martin Kleppmann의 반론):
 
@@ -123,14 +130,14 @@ Redlock 알고리즘은 분산 서버 노드 간의 하드웨어 시계 동기�
   
     
 
-- Redis Official Documentation, "Distributed Locks with Redis and the Redlock spec", [https://redis.io/docs/manual/patterns/distributed-locks/](https://redis.io/docs/manual/patterns/distributed-locks/)
+- Redis Official Documentation, "Distributed Locks with Redis and the Redlock spec", [https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/)
 
-- Confluent Developer Guide, "Locking Patterns and Concurrency Management in Large Scale Memory Stores", [https://developer.confluent.io/patterns/event-flow/concurrency/](https://developer.confluent.io/patterns/event-flow/concurrency/)
+- Redis, "Redis Lock — distributed locking concepts overview", [https://redis.io/glossary/redis-lock/](https://redis.io/glossary/redis-lock/)
 
 - Redisson Client Reference Guide, "Distributed Lock implementations and Watchdog configurations", [https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers)
 
-- Martin Kleppmann's Blog, "How to do a distributed lock (Why Redlock is not safe)", [https://martin.kleppmann.com/2016/02/08/how-to-do-a-distributed-lock.html](https://martin.kleppmann.com/2016/02/08/how-to-do-a-distributed-lock.html)
+- Martin Kleppmann's Blog, "How to do distributed locking (Why Redlock is not safe)", [https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
 
-- Confluent Architecture Library, "Comparing Lettuce and Redisson performance in high contention scenarios", [https://developer.confluent.io/courses/architecture/redis-locking-comparison/](https://developer.confluent.io/courses/architecture/redis-locking-comparison/)
+- Redisson, "Feature Comparison: Redisson vs Lettuce", [https://redisson.pro/blog/feature-comparison-redisson-vs-lettuce.html](https://redisson.pro/blog/feature-comparison-redisson-vs-lettuce.html)
 
-- Google Cloud Architecture, "Time synchronization and drift mitigation strategies for distributed transactions", [https://cloud.google.com/solutions/time-sync-in-compute-engine](https://cloud.google.com/solutions/time-sync-in-compute-engine)
+- Cloudflare Time Services, "Network Time Protocol (NTP)", [https://developers.cloudflare.com/time-services/ntp/](https://developers.cloudflare.com/time-services/ntp/)

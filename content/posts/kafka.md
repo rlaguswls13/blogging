@@ -1,12 +1,18 @@
 ---
-id: "2372871415529117000"
-title: "Kafka 파티셔닝의 한계와 극복: 동시성과 순서 연속성을 동시에 보장하는 아키텍처 설계 전략"
-slug: "kafka"
-status: "published"
-url: "https://beji-tech.blogspot.com/2026/08/kafka.html"
-publishedAt: "2026-08-13T21:02:45.426-07:00"
-updatedAt: "2026-08-13T21:02:45.426-07:00"
-tags: ["Concurrency","Kafka","Message Ordering","Partitioning","Software Engineering","System Architecture"]
+id: '2372871415529117000'
+publishedAt: '2026-08-13T21:02:45.426-07:00'
+slug: kafka
+status: published
+tags:
+- Concurrency
+- Kafka
+- Message Ordering
+- Partitioning
+- Software Engineering
+- System Architecture
+title: 'Kafka 파티셔닝의 한계와 극복: 동시성과 순서 연속성을 동시에 보장하는 아키텍처 설계 전략'
+updatedAt: '2026-08-13T21:02:45.426-07:00'
+url: https://beji-tech.blogspot.com/2026/08/kafka.html
 ---
 
 # Kafka 파티셔닝의 한계와 극복: 동시성과 순서 연속성을 동시에 보장하는 아키텍처 설계 전략
@@ -136,14 +142,14 @@ tags: ["Concurrency","Kafka","Message Ordering","Partitioning","Software Enginee
   
     
 
-- Confluent Developer Guide, "Kafka Design Patterns: Message Ordering and Partitioning Strategies", [https://developer.confluent.io/patterns/event-flow/ordering/](https://developer.confluent.io/patterns/event-flow/ordering/)
+- Confluent Developer, "Intro to Kafka Partitions (Apache Kafka 101)", [https://developer.confluent.io/courses/apache-kafka/partitions/](https://developer.confluent.io/courses/apache-kafka/partitions/)
 
-- LinkedIn Engineering Blog, "How LinkedIn Customizes Apache Kafka Partitioning for Global Scale", [https://engineering.linkedin.com/blog/2016/04/how-we-reconstructed-kafka-partitioning](https://engineering.linkedin.com/blog/2016/04/how-we-reconstructed-kafka-partitioning)
+- LinkedIn Engineering, "Running Kafka At Scale", [https://engineering.linkedin.com/kafka/running-kafka-scale](https://engineering.linkedin.com/kafka/running-kafka-scale)
 
 - Apache Kafka Documentation, "Idempotent Producer and Message Delivery Semantics Specifications", [https://kafka.apache.org/documentation/#producerconfigs](https://kafka.apache.org/documentation/#producerconfigs)
 
 - Microsoft Azure Architecture Center, "Messaging patterns for maintaining sequence order in distributed microservices", [https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy](https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy)
 
-- Confluent Developer Guide, "Exactly-Once Semantics (EOS) and Message Sequence Management in Kafka v3", [https://developer.confluent.io/courses/architecture/exactly-once-semantics/](https://developer.confluent.io/courses/architecture/exactly-once-semantics/)
+- Confluent, "Exactly-once Semantics Are Possible: Here's How Kafka Does It", [https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
 
-- Google Cloud Architecture, "Optimizing partition design for horizontal scale and low latency in distributed queues", [https://cloud.google.com/pubsub/docs/partitioning-best-practices](https://cloud.google.com/pubsub/docs/partitioning-best-practices)
+- Google Cloud Documentation, "Pub/Sub - Order messages", [https://docs.cloud.google.com/pubsub/docs/ordering](https://docs.cloud.google.com/pubsub/docs/ordering)
