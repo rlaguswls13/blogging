@@ -25,9 +25,11 @@
 | **A-1** | ✅ 발행완료 | ~~**Linux epoll 기반 비동기 EventLoop 동작 원리와 C10K 고성능 I/O 최적화**~~ [🔗](https://beji-tech.blogspot.com/2026/08/linux-epoll-eventloop-c10k-io.html) | `select`/`poll` $O(N)$ 한계 극복, $O(1)$ Red-Black Tree & Ready List 커널 메커니즘, Edge-Triggered 모드 핸들링 |
 | **A-2** | ✅ 발행완료 | ~~**MySQL InnoDB B+Tree 인덱스 내부 구조 및 커버링 인덱스(Covering Index) 성능 튜닝 레시피**~~ [🔗](https://beji-tech.blogspot.com/2026/08/mysql-innodb-btree-covering-index.html) | Clustered vs Secondary Index, Doublewrite Buffer, Random I/O 감소 및 Index Condition Pushdown(ICP) |
 | **A-3** | 🟡 미발행 (차별화 포인트 미정) | **Spring WebFlux / Project Reactor 스레드 모델과 Schedulers 비동기 트러블슈팅** | EventLoop 스레드 블로킹 차단법(`BlockHound`), `subscribeOn` vs `publishOn` 차이 및 Backpressure 마이크로 벤치마크 |
-| **A-4** | 🟡 미발행 (차별화 포인트 미정) | **분산 시스템의 CAP 정리와 PACELC 정리 적용 및 Kafka / Cassandra 리플리케이션 분석** | 일관성(Consistency) vs 가용성(Availability) vs 분할 허용성(Partition Tolerance), ISR(In-Sync Replicas) 메커니즘 |
-| **A-5** | 🟡 미발행 (차별화 포인트 미정) | **Go routine (Goroutine) GMP 스케줄러 내부 동작 원리와 동시성 락 프리(Lock-free) 채널 메커니즘** | Global/Local Run Queue, Work Stealing, M:N 스케줄링 모델 및 메모리 배리어 락 프리 RingBuffer 구조 |
+| **A-4** | ✅ 발행완료 | ~~**분산 시스템의 CAP 정리와 PACELC 정리 적용 및 Kafka / Cassandra 리플리케이션 분석**~~ [🔗](https://beji-tech.blogspot.com/2026/08/cap-pacelc-kafka-isr-cassandra.html) | 일관성(Consistency) vs 가용성(Availability) vs 분할 허용성(Partition Tolerance), ISR(In-Sync Replicas) 메커니즘 |
+| **A-5** | ✅ 발행완료 | ~~**Go routine (Goroutine) GMP 스케줄러 내부 동작 원리와 동시성 락 프리(Lock-free) 채널 메커니즘**~~ [🔗](https://beji-tech.blogspot.com/2026/08/goroutine-gmp.html) | Global/Local Run Queue, Work Stealing, M:N 스케줄링 모델, `runtime/chan.go` 원문으로 반증한 "채널은 완전 락 프리"라는 통념 |
 | **A-6** | ✅ 발행완료 | ~~**IMAP vs POP3 이메일 통신 프로토콜 비교 및 동작 절차**~~ [🔗](https://beji-tech.blogspot.com/2026/08/imap-vs-pop3.html) | IMAP(서버 동기화, 다중 기기 지원, 포트 143/993) vs POP3(다운로드 후 삭제, 단일 기기, 포트 110/995) 아키텍처 차이, TLS/SSL 암호화 적용, 실제 명령어 시퀀스(IMAP `LOGIN`/`SELECT`/`FETCH`, POP3 `USER`/`PASS`/`RETR`/`DELE`) 분석 |
+| **A-7** | ✅ 발행완료 | ~~**Vector Database ANN 인덱싱: HNSW 알고리즘과 RAG 파이프라인에서의 역할**~~ [🔗](https://beji-tech.blogspot.com/2026/08/vector-database-ann-hnsw-rag.html) | HNSW 계층적 그래프 구조(원 논문 arXiv:1603.09320), pgvector/Milvus의 `M`/`efConstruction`/`ef` 파라미터 튜닝 |
+| **A-8** | ✅ 발행완료 | ~~**gRPC와 Protocol Buffers: HTTP/2 기반 스트리밍과 직렬화 원리**~~ [🔗](https://beji-tech.blogspot.com/2026/08/grpc-protocol-buffers-http2.html) | Protobuf varint/태그 와이어 포맷, gRPC 4가지 RPC 타입의 HTTP/2 스트림·DATA 프레임 매핑 |
 
 ---
 
