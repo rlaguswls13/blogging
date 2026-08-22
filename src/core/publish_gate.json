@@ -1,6 +1,7 @@
 {
   "requiredSections": [
     "요약",
+    "차별화 포인트",
     "본문",
     "사실 검증 결과",
     "작성자의 견해",
@@ -11,6 +12,7 @@
   ],
   "minimumReferences": 2,
   "sectionMinWords": {
+    "차별화 포인트": 40,
     "본문": 800,
     "작성자의 견해": 100,
     "한계와 반론": 80,
@@ -18,5 +20,6 @@
   },
   "requireOpinionDisclaimer": true,
   "requireHumanApproval": true,
-  "allowBrokenLinks": false
+  "allowBrokenLinks": false,
+  "minimumInternalLinks": 2
 }

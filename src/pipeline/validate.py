@@ -55,6 +55,14 @@ def reference_section_items(body: str) -> List[str]:
 def reference_count(body: str) -> int:
     return len(reference_section_items(body))
 
+# 내부링크(같은 블로그 소속 다른 글) 판별용 도메인. wiki/Blog_Writing_Rules.md 15번 수칙 참고.
+INTERNAL_LINK_DOMAIN = "beji-tech.blogspot.com"
+
+def internal_link_count(text: str) -> int:
+    """마크다운 링크 중 자사 블로그 도메인(다른 발행 글)을 가리키는 개수를 센다."""
+    urls = re.findall(r"\[[^\]]*\]\((https?://[^)]+)\)", text)
+    return sum(1 for url in urls if INTERNAL_LINK_DOMAIN in url)
+
 def reference_urls(items: List[str]) -> List[Tuple[str, Optional[str]]]:
     """참고문헌 리스트 항목별로 (원문, URL 또는 None)을 반환한다."""
     results = []
@@ -150,10 +158,34 @@ def validate_run(
     if code_block_count(post.content) == 0 and image_count(post.content) == 0:
         warnings.append("코드 예시와 이미지가 모두 없습니다. 주제에 맞다면 추가를 고려하세요.")
 
+    # Check Internal Link Count (warning only)
+    # 2026-08-22: '## 백링크' 섹션이 예전엔 라이브 HTML에서 통째로 삭제돼 내부링크가 전혀 렌더링되지
+    # 않았다(converter.py 버그, 이번에 수정). 이제 실제로 라이브에 노출되므로 최소 개수를 점검한다.
+    # 신규 주제의 첫 글처럼 아직 연결할 기존 글이 없을 수도 있어 차단이 아닌 경고로 둔다.
+    internal_link_text = "\n".join(
+        section_text(post.content, s) for s in ("본문", "백링크", "종합적 의견")
+    )
+    internal_links = internal_link_count(internal_link_text)
+    if internal_links < gate.minimumInternalLinks:
+        warnings.append(
+            f"자사 블로그 내부링크가 {internal_links}개뿐입니다(권장 {gate.minimumInternalLinks}개 이상). "
+            "관련 발행 글을 '## 백링크' 또는 본문에 실제 라이브 URL로 링크하는 것을 고려하세요."
+        )
+
     # Check Opinion Disclaimer
+    # 2026-08-22: 예전엔 정확히 동일한 리터럴 문장("사실 전달이 아니라 작성자의 해석과 견해...")을
+    # 요구했는데, 그 결과 47개 발행 글 전체에 토씨 하나 안 틀린 문장이 반복돼 "대량생산 콘텐츠" 신호를
+    # 스스로 만들고 있었다(wiki/Blog_Writing_Rules.md 14/15번 수칙 참고). 이제는 "작성자의 견해"/
+    # "종합적 의견" 섹션에 의견-공지 취지의 인용구(`>`)가 존재하는지만 구조적으로 확인하고, 문구 자체는
+    # 매번 자기 말로 다르게 쓰도록 허용한다.
     if gate.requireOpinionDisclaimer:
-        if not re.search(r"^>.*사실 전달이 아니라 작성자의 해석과 견해", post.content, re.MULTILINE):
-            errors.append("작성자의 견해 안내문이 인용구(`>`) 형식으로 되어 있지 않습니다.")
+        disclaimer_pattern = re.compile(r"^>.*(의견|견해|해석|사견)", re.MULTILINE)
+        for section in ("작성자의 견해", "종합적 의견"):
+            section_body = section_text(post.content, section)
+            if not disclaimer_pattern.search(section_body):
+                errors.append(
+                    f"'{section}' 섹션에 의견/해석임을 밝히는 인용구(`>`) 안내문이 없습니다."
+                )
 
     # Check for encoding corruption (mojibake)
     if "�" in post.content:

@@ -116,3 +116,4 @@ class PublishGate(BaseModel):
     requireOpinionDisclaimer: bool
     requireHumanApproval: bool
     allowBrokenLinks: bool
+    minimumInternalLinks: int = Field(0, ge=0)

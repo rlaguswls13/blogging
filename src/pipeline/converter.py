@@ -96,12 +96,18 @@ def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
     markdown_content = re.sub(r'\((?:인용|근거):\s*(SOURCE-\d+(?:\s*,\s*SOURCE-\d+)*)\)', replace_citation, markdown_content)
     markdown_content = re.sub(r'SOURCE-(\d+)', lambda m: f"[{int(m.group(1))}]", markdown_content)
 
-    # 0b. Extract References section and remove Fact Check, References, and Backlinks sections before parsing
+    # 0b. Extract References and Backlinks sections, remove internal-only sections before parsing
     references_match = re.search(r"## 참고문헌\s*(.*?)(?=##|\Z)", markdown_content, flags=re.MULTILINE | re.DOTALL)
     references_content = references_match.group(1).strip() if references_match else ""
 
-    # Remove these sections from the main body content so they don't render normally
+    # 백링크는 삭제하지 않고 별도 렌더링한다(아래 "관련 글" 블록) — 과거엔 그냥 삭제되어 내부링크가
+    # 라이브 페이지에 한 번도 실제로 렌더링된 적이 없었다(SEO 내부링크 신호 손실 버그, 2026-08-22 수정).
+    backlinks_match = re.search(r"## 백링크\s*(.*?)(?=##|\Z)", markdown_content, flags=re.MULTILINE | re.DOTALL)
+    backlinks_content = backlinks_match.group(1).strip() if backlinks_match else ""
+
+    # Remove these internal-only sections from the main body content so they don't render normally
     markdown_content = re.sub(r"## 사실 검증 결과\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
+    markdown_content = re.sub(r"## 차별화 포인트\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
     markdown_content = re.sub(r"## 참고문헌\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
     markdown_content = re.sub(r"## 백링크\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
 
@@ -198,6 +204,17 @@ def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
     {references_html}
   </div>
 </details>
+"""
+
+    # Convert backlinks markdown to HTML and render as a visible "관련 글" block
+    # (접힌 콘텐츠가 아니라 본문 흐름에 노출시켜 실제 내부링크 신호로 작동하게 한다)
+    backlinks_html = markdown_parser(backlinks_content) if backlinks_content else ""
+    if backlinks_html:
+        collapsible_html += f"""
+<div class="related-posts-section">
+  <h3>🔗 관련 글</h3>
+  {backlinks_html}
+</div>
 """
 
     # Load custom IT tech blog CSS style
