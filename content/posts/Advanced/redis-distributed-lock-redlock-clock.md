@@ -19,21 +19,9 @@ url: https://beji-tech.blogspot.com/2026/08/redis-distributed-lock-redlock-clock
 
 # Redis 분산 락(Distributed Lock)의 한계와 극복: Redlock 알고리즘과 시계 드리프트(Clock Drift) 정합성 딜레마
 
-## Redis 분산 락(Distributed Lock)의 한계와 극복
-
 ## 요약
 
 동일한 공유 자원에 대해 여러 분산 노드가 동시에 접근하는 분산 아키텍처(MSA 등)에서, 데이터 레이스 컨디션(Race Condition)을 통제하기 위한 **'분산 락(Distributed Lock)'** 구현은 필수적입니다. 이 중 고속 메모리 아키텍처를 지닌 Redis는 분산 락 구현의 사실상 표준(de facto standard)으로 활발히 기용되고 있습니다. 본 아티클에서는 대표적 Redis 클라이언트 라이브러리인 Lettuce와 Redisson의 락 획득 메커니즘 차이를 심층 규명하고, 다중 노드 합의 프로토콜인 Redlock 알고리즘의 동작 방식과 시계 드리프트(Clock Drift) 등 분산 네트워크 환경 하의 내재된 한계를 도출합니다. 아울러 이를 극복하기 위한 펜싱 토큰(Fencing Token) 보완 패턴을 제시합니다.
-
-목차
-
-- [1. 서론: 분산 환경에서의 동시성 제어와 Redis의 기용 이유](#1-서론-분산-환경에서의-동시성-제어와-redis의-기용-이유)
-
-- [2. Lettuce vs Redisson: 스핀 락(Spin Lock)과 Pub/Sub 스핀 방지 차이](#2-lettuce-vs-redisson-스핀-락spin-lock과-pubsub-스핀-방지-차이)
-
-- [3. Redlock 알고리즘의 동작 방식과 시계 드리프트(Clock Drift) 한계](#3-redlock-알고리즘의-동작-방식과-시계-드리프트clock-drift-한계)
-
-- [4. 분산 락의 한계 극복: 펜싱 토큰(Fencing Token) 패턴](#4-분산-락의-한계-극복-펜싱-토큰fencing-token-패턴)
 
 ## 본문
 

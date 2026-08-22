@@ -240,5 +240,4 @@ TCP 핸드셰이크와 TIME_WAIT은 "외워야 하는 순서도"로 소비되기
 ## 백링크
 
 - [TCP 기반 애플리케이션 계층 통신 원리 — 이메일(IMAP/POP3) 프로토콜이 TCP 위에서 동작하는 방식](https://beji-tech.blogspot.com/2026/08/tcp-imappop3-tcp.html)
-- [Linux epoll 기반 비동기 EventLoop 동작 원리와 C10K 고성능 I/O 최적화](https://beji-tech.blogspot.com/2026/08/linux-epoll-eventloop-c10k-io.html)
-- [대규모 시스템을 위한 로드 밸런싱(Load Balancing) 알고리즘과 L4 vs L7 스위치의 차이](https://beji-tech.blogspot.com/2026/08/load-balancing-l4-vs-l7.html)
+- [TLS/SSL Handshake 원리와 HTTPS 인증서 검증 과정 — TLS 1.3이 어떻게 1-RTT로 줄였는가](https://beji-tech.blogspot.com/2026/08/tlsssl-handshake-https-tls-13-1-rtt.html)

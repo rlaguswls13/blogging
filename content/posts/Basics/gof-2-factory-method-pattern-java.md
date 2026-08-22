@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 2. 팩토리 메서드 패턴 (Factory Method Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-14T11:27:14.811-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-2-factory-method-pattern-java.html

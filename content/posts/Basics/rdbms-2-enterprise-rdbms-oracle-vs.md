@@ -10,6 +10,7 @@ tags:
 - Oracle
 - SQL
 - 기초
+- RDBMS_Series
 title: '[RDBMS 깊이 읽기 #2] Enterprise RDBMS 거인: Oracle vs Microsoft SQL Server (MSSQL)
   비교'
 updatedAt: '2026-08-15T17:13:39.799-07:00'

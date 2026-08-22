@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 1. 싱글톤 패턴 (Singleton Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-14T11:27:13.150-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-1-singleton-pattern-java.html

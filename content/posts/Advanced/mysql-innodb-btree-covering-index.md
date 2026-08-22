@@ -17,8 +17,6 @@ url: https://beji-tech.blogspot.com/2026/08/mysql-innodb-btree-covering-index.ht
 
 # MySQL InnoDB B+Tree 인덱스 내부 구조 및 커버링 인덱스(Covering Index) 성능 튜닝 레시피
 
-## MySQL InnoDB B+Tree 인덱스 내부 구조 및 커버링 인덱스(Covering Index) 성능 튜닝 레시피
-
 > 
 
 **TL;DR**: **InnoDB B+Tree 인덱스**는 리프 노드(Leaf Node)에만 실제 데이터 레코드 위치 또는 Primary Key(PK) 값을 보관하며, 노드 간 양방향 연결 리스트(Doubly Linked List)로 연결되어 범위 검색(Range Scan)에 최적화된 자료구조입니다. **커버링 인덱스(Covering Index)**는 `SELECT`, `WHERE`, `ORDER BY`, `GROUP BY`절에 사용된 모든 컬럼을 인덱스 자체에 포함시켜, 데이터 페이지(Clustered Index/PK LookUp)에 접근하는 Random Disk I/O를 100% 제거함으로써 쿼리 성능을 수십 배 이상 향상시키는 강력한 튜닝 기법입니다.
@@ -30,18 +28,6 @@ url: https://beji-tech.blogspot.com/2026/08/mysql-innodb-btree-covering-index.ht
 대용량 트랜잭션(OLTP) 데이터베이스 환경에서 RDBMS의 성능 병목은 대부분 **Random Disk I/O**에서 발생합니다. 본 문서에서는 MySQL InnoDB의 B+Tree 아키텍처를 세부적으로 분석하고, Clustered Index와 Secondary Index의 룩업 메커니즘 차이를 파악하며, 디스크 접근을 원천 차단하여 조회 성능을 극대화하는 **커버링 인덱스(Covering Index)** 튜닝 패턴 및 지연 조인(Deferred Join) 레시피를 완벽하게 제시합니다.
 
 ---
-
-목차
-
-- [1. 개요 및 왜 필요한가? (Background & Motivation)](#1-개요-및-왜-필요한가-background-motivation)
-
-- [2. InnoDB B+Tree 인덱스 내부 아키텍처 (Internal Architecture)](#2-innodb-btree-인덱스-내부-아키텍처-internal-architecture)
-
-- [3. 커버링 인덱스(Covering Index) 메커니즘과 성능 혁신](#3-커버링-인덱스covering-index-메커니즘과-성능-혁신)
-
-- [4. 실무 튜닝 검증 코드 (Complete Runnable Code)](#4-실무-튜닝-검증-코드-complete-runnable-code)
-
-- [5. 실무 커버링 인덱스 적용 레시피 (Tuning Recipe)](#5-실무-커버링-인덱스-적용-레시피-tuning-recipe)
 
 ## 본문
 

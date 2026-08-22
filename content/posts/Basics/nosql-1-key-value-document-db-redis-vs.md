@@ -10,6 +10,7 @@ tags:
 - NoSQL
 - Redis
 - 기초
+- NoSQL_Series
 title: '[NoSQL 깊이 읽기 #1] Key-Value & Document DB: Redis vs MongoDB 아키텍처 및 실무 가이드'
 updatedAt: '2026-08-15T17:13:43.956-07:00'
 url: https://beji-tech.blogspot.com/2026/08/nosql-1-key-value-document-db-redis-vs.html

@@ -35,6 +35,12 @@ from src.core.paths import all_post_paths, run_directory
 
 TARGET_SECTIONS = ["차별화 포인트", "작성자의 견해", "종합적 의견"]
 
+# '작성자의 견해'는 개인 의견 섹션이라 숫자/URL 같은 '구체성' 지표를 강요하는 게 맞지 않다
+# (2026-08-23 사용자 피드백 — 55개 전수 감사에서 이 섹션의 구체성=0 플래그가 30건 넘게 나왔는데
+# 전부 정상적인 서술형 의견이었다). 복붙/반복 같은 실제 품질 문제(타 글과의 유사도, 어휘 다양성)는
+# 의견 섹션이어도 여전히 유효한 신호이므로 그대로 검사한다 — 완화 대상은 구체성 지표 하나뿐이다.
+RELAXED_SPECIFICITY_SECTIONS = {"작성자의 견해"}
+
 FILLER_PHRASES = [
     "다양한 관점에서", "종합적으로 고려하면", "결론적으로", "요약하자면", "말할 것도 없이",
     "누구나 알다시피", "여러 가지 측면에서", "다각도로", "전반적으로 볼 때", "일반적으로 말해서",
@@ -139,17 +145,19 @@ def build_corpus_index():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--run", required=True)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--run", help="run_id (temp/runs/<run_id>/final.md) — draft 단계용")
+    group.add_argument("--file", help="이미 발행된 content/posts/<Category>/<slug>.md 등 임의 경로 — 소급 감사용(2026-08-23 신설)")
     parser.add_argument("--similarity-threshold", type=float, default=0.35)
     args = parser.parse_args()
 
-    final_path = run_directory(args.run) / "final.md"
+    final_path = Path(args.file) if args.file else (run_directory(args.run) / "final.md")
     if not final_path.exists():
         print(f"오류: {final_path} 없음", file=sys.stderr)
         sys.exit(1)
 
     post = frontmatter.load(final_path)
-    slug = post.metadata.get("slug") or args.run
+    slug = post.metadata.get("slug") or args.run or final_path.stem
     body_text = post.content
 
     print("의견/차별화 통찰력 점검 (5개 하위 지표, 단일 점수 아님)\n")
@@ -164,8 +172,10 @@ def main():
         print(f"## {section_name}")
 
         specificity = check_specificity(text)
-        print(f"  1. 구체성: 숫자/URL/버전/도메인 등 구체 지표 {specificity}개"
-              f"{'  ⚠️ 너무 적음(추상적 서술 위주일 수 있음)' if specificity == 0 else ''}")
+        relaxed = section_name in RELAXED_SPECIFICITY_SECTIONS
+        flag = "" if relaxed else ("  ⚠️ 너무 적음(추상적 서술 위주일 수 있음)" if specificity == 0 else "")
+        note = "  (개인 의견 섹션 — 완화 적용, 참고용)" if relaxed and specificity == 0 else ""
+        print(f"  1. 구체성: 숫자/URL/버전/도메인 등 구체 지표 {specificity}개{flag}{note}")
 
         filler_ratio, filler_hits = check_filler_ratio(text)
         flag = "  ⚠️ 상투구 비율 높음" if filler_ratio > 0.2 else ""

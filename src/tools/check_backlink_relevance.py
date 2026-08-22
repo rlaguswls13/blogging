@@ -68,11 +68,13 @@ def extract_section(body, heading):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--run", required=True, help="run_id (temp/runs/<run_id>/final.md)")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--run", help="run_id (temp/runs/<run_id>/final.md) — draft 단계용")
+    group.add_argument("--file", help="이미 발행된 content/posts/<Category>/<slug>.md 등 임의 경로 — 소급 감사용(2026-08-23 신설)")
     parser.add_argument("--threshold", type=int, default=DEFAULT_THRESHOLD)
     args = parser.parse_args()
 
-    final_path = run_directory(args.run) / "final.md"
+    final_path = Path(args.file) if args.file else (run_directory(args.run) / "final.md")
     if not final_path.exists():
         print(f"오류: {final_path} 없음", file=sys.stderr)
         sys.exit(1)

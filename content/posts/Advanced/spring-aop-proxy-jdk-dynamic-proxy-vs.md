@@ -18,21 +18,9 @@ url: https://beji-tech.blogspot.com/2026/08/spring-aop-proxy-jdk-dynamic-proxy-v
 
 # Spring AOP(관점 지향 프로그래밍)와 프록시(Proxy) 아키텍처: JDK Dynamic Proxy vs CGLIB 기술 분석
 
-## Spring AOP(관점 지향 프로그래밍)와 프록시(Proxy) 아키텍처
-
 ## 요약
 
 엔터프라이즈 자바 개발에서 트랜잭션 처리(`@Transactional`), 보안 인가, 성능 로깅 등 핵심 로직 도처에 스며드는 공통 부가 기능을 비즈니스 비즈니스 코드로부터 분리해 내는 패러다임이 **'AOP(Aspect-Oriented Programming)'**입니다. Spring AOP는 컴파일러나 클래스로더를 직접 변조하는 대신, 데코레이터 패턴 형식으로 타겟을 제어하는 **'런타임 프록시(Proxy)'** 방식으로 구현되었습니다. 본 아티클에서는 AOP의 핵심 개념을 도식화하고, 자바 네이티브 동적 리플렉션을 응용하는 JDK Dynamic Proxy와 바이트코드를 조작하는 CGLIB Proxy 기술의 아키텍처적 구동 차이를 정밀 분석합니다. 아울러 스프링 부트에서 CGLIB를 기본 프록시 도구로 채택한 사유와 프록시 내부 호출(Self-Invocation)의 기술적 한계 및 해법을 도출합니다.
-
-목차
-
-- [1. 서론: OOP의 한계를 극복하는 AOP와 프록시 패턴의 관계](#1-서론-oop의-한계를-극복하는-aop와-프록시-패턴의-관계)
-
-- [2. JDK Dynamic Proxy vs CGLIB: 프록시 생성 기법 비교](#2-jdk-dynamic-proxy-vs-cglib-프록시-생성-기법-비교)
-
-- [3. 스프링 부트(Spring Boot)에서 CGLIB를 전면 기본값으로 채택한 사유](#3-스프링-부트spring-boot에서-cglib를-전면-기본값으로-채택한-사유)
-
-- [4. 프록시 아키텍처의 한계와 실무 극복: 내부 호출(Self-Invocation) 문제](#4-프록시-아키텍처의-한계와-실무-극복-내부-호출self-invocation-문제)
 
 ## 본문
 

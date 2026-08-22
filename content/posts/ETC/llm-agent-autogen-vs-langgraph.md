@@ -19,23 +19,9 @@ url: https://beji-tech.blogspot.com/2026/08/llm-agent-autogen-vs-langgraph.html
 
 # LLM Agent 오케스트레이션 프레임워크 비교 분석: AutoGen vs LangGraph
 
-## LLM Agent 오케스트레이션 프레임워크 비교 분석
-
 ## 요약
 
 자율적 AI 에이전트(Autonomous Agent) 기술이 발전함에 따라 다중 에이전트 시스템(Multi-Agent System)을 조율하고 관리하는 오케스트레이션 프레임워크의 중요성이 대두되고 있습니다. 본 아티클에서는 대표적인 에이전트 개발 도구인 Microsoft의 AutoGen과 LangChain 생태계의 LangGraph를 아키텍처 관점에서 비교 분석합니다. AutoGen의 이벤트 기반 대화 패턴(Event-driven Conversation)과 LangGraph의 상태 기계(State Machine) 기반 방향성 유향 그래프(DAG) 구조의 동작 원리를 상술하고, 두 프레임워크가 상태 제어, 루프 처리, 인간 개입(Human-in-the-loop) 측면에서 지니는 장단점을 실무적 관점에서 심도 있게 대조합니다.
-
-목차
-
-- [1. 서론: 싱글 에이전트의 한계와 다중 에이전트 오케스트레이션의 대두](#1-서론-싱글-에이전트의-한계와-다중-에이전트-오케스트레이션의-대두)
-
-- [2. AutoGen 아키텍처: 대화 기반 이벤트 중심 에이전트 조율](#2-autogen-아키텍처-대화-기반-이벤트-중심-에이전트-조율)
-
-- [3. LangGraph 아키텍처: 상태 기계(State Machine) 기반 그래프 에이전트 조율](#3-langgraph-아키텍처-상태-기계state-machine-기반-그래프-에이전트-조율)
-
-- [4. AutoGen vs LangGraph 핵심 비교 분석 및 비교표](#4-autogen-vs-langgraph-핵심-비교-분석-및-비교표)
-
-- [5. 실무 아키텍처 전략: 어떤 프레임워크를 선택해야 하는가?](#5-실무-아키텍처-전략-어떤-프레임워크를-선택해야-하는가)
 
 ## 본문
 

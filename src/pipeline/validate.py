@@ -10,6 +10,11 @@ from src.core.types import ArticleFrontmatter, PublishGate
 # Tier 1/2 참고문헌 신뢰도 도메인 allowlist (wiki/Blog_Writing_Rules.md 10번 수칙 참고).
 # 2026-08-22: 이 목록과 하나도 겹치지 않으면 예전엔 경고만 띄우고 통과시켰으나, 경고가 무시되고
 # 넘어가는 사례가 반복돼(사용자 요청) 오류로 승격했다 — 발행을 막는다.
+# 근거(출처) 열의 모호한 표현 패턴 (2026-08-23 신설, vague_evidence 체크) — 모듈 레벨로 둬서
+# src/tools/audit_published_posts.py 같은 다른 스크립트에서도 재사용할 수 있게 한다.
+VAGUE_EVIDENCE_PATTERN = re.compile(r"업계\s*리포트|일반적으로\s*알려진|널리\s*알려진\s*사실|다수의\s*출처|여러\s*자료|^교차\s*확인$")
+SPECIFIC_MARKER_PATTERN = re.compile(r"https?://|RFC\s*\d+|공식\s*(문서|블로그|가이드)|[A-Za-z][\w.-]+\.(io|com|org|net|dev)")
+
 TRUSTED_REFERENCE_DOMAINS = {
     "arxiv.org", "dl.acm.org", "ieeexplore.ieee.org", "datatracker.ietf.org",
     "www.w3.org", "w3.org", "docs.oracle.com", "spring.io", "docs.spring.io",
@@ -44,6 +49,15 @@ def word_count(text: str) -> int:
     cjk = len(re.findall(r"[가-힣]", text))
     latin_words = len(re.findall(r"[A-Za-z0-9]+", text))
     return cjk + latin_words
+
+def parse_fact_check_claims(body: str) -> List[Tuple[str, str, str]]:
+    """'## 사실 검증 결과' 표에서 (claim, verdict, evidence) 튜플 목록을 뽑는다.
+    검증/audit 스크립트에서 재사용할 수 있도록 2026-08-23 별도 함수로 분리."""
+    fact_check_section = section_text(body, "사실 검증 결과")
+    return re.findall(
+        r"^\|(?!\s*Claim\s*\|)(?!\s*-+\s*\|)(.+?)\|\s*(verified|unverified|contradicted)\s*\|(.*?)\|\s*$",
+        fact_check_section, re.IGNORECASE | re.MULTILINE
+    )
 
 def code_block_count(body: str) -> int:
     return len(re.findall(r"```", body)) // 2
@@ -202,11 +216,7 @@ def validate_run(
     # 실제 저작 포맷은 "| Claim | 판정 | 근거 |" 표에 verified/unverified/contradicted가
     # 표 셀 값으로 들어간다("Risk: high"/"Verdict: unverified" 같은 접두 표기는 실제로
     # 쓰인 적이 없어 예전 정규식이 항상 무매칭이었다 — 2026-08-17 확인).
-    fact_check_section = section_text(post.content, "사실 검증 결과")
-    claim_rows = re.findall(
-        r"^\|(?!\s*Claim\s*\|)(?!\s*-+\s*\|)(.+?)\|\s*(verified|unverified|contradicted)\s*\|(.*?)\|\s*$",
-        fact_check_section, re.IGNORECASE | re.MULTILINE
-    )
+    claim_rows = parse_fact_check_claims(post.content)
     verdicts = [v.lower() for _claim, v, _evidence in claim_rows]
     if "unverified" in verdicts:
         errors.append("미검증(unverified) 판정의 주장이 남아 있습니다.")
@@ -225,12 +235,10 @@ def validate_run(
     # 자체는 코드로 판단 못 하지만, 그 사고들에서 실제로 등장한 모호한 근거 표현 패턴은 걸러낼 수 있다.
     # "구체적 출처 표지"(URL, RFC 번호, "공식 문서" 등)가 전혀 없이 모호한 표현만 있는 경우만 걸린다 —
     # "RFC 8446 §2.3, 교차 확인"처럼 구체적 출처와 함께 쓰인 "교차 확인"은 통과시킨다(오탐 최소화).
-    vague_pattern = re.compile(r"업계\s*리포트|일반적으로\s*알려진|널리\s*알려진\s*사실|다수의\s*출처|여러\s*자료|^교차\s*확인$")
-    specific_marker_pattern = re.compile(r"https?://|RFC\s*\d+|공식\s*(문서|블로그|가이드)|[A-Za-z][\w.-]+\.(io|com|org|net|dev)")
     vague_evidence = [
         (claim.strip(), evidence.strip())
         for claim, verdict, evidence in claim_rows
-        if evidence.strip() and vague_pattern.search(evidence) and not specific_marker_pattern.search(evidence)
+        if evidence.strip() and VAGUE_EVIDENCE_PATTERN.search(evidence) and not SPECIFIC_MARKER_PATTERN.search(evidence)
     ]
     if vague_evidence:
         errors.append(

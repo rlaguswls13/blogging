@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 10. 전략 패턴 (Strategy Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-15T16:18:54.106-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-10-strategy-pattern-java.html

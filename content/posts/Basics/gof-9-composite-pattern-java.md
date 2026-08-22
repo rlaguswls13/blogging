@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 9. 컴포지트 패턴 (Composite Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-15T16:18:58.084-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-9-composite-pattern-java.html

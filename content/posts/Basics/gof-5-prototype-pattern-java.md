@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 5. 프로토타입 패턴 (Prototype Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-14T12:02:34.274-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-5-prototype-pattern-java.html

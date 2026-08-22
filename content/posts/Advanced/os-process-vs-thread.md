@@ -17,8 +17,6 @@ url: https://beji-tech.blogspot.com/2026/08/os-process-vs-thread.html
 
 # OS 프로세스(Process) vs 쓰레드(Thread)의 메모리 구조 차이와 컨텍스트 스위칭 원리
 
-## OS 프로세스(Process) vs 쓰레드(Thread)의 메모리 구조 차이와 컨텍스트 스위칭 원리
-
 > 
 
 **TL;DR**: **프로세스(Process)**는 운영체제로부터 독립된 메모리 공간(Code, Data, Heap, Stack)을 할당받는 작업의 단위이고, **쓰레드(Thread)**는 프로세스 내부에서 `Stack` 영역만 독점하고 `Code`, `Data`, `Heap` 영역을 공유하는 실행의 흐름입니다. 프로세스 간 컨텍스트 스위칭은 TLB 캐시 플러시와 가상 메모리 매핑 전환으로 인해 높은 오버헤드가 발생하는 반면, 쓰레드 간 스위칭은 메모리 공간을 공유하므로 레지스터 세트 변경만으로 빠르게 이루어집니다.
@@ -30,16 +28,6 @@ url: https://beji-tech.blogspot.com/2026/08/os-process-vs-thread.html
 현대 멀티태스킹 운영체제 환경에서 프로세스와 쓰레드의 메모리 자원 분리 및 공유 아키텍처를 이해하는 것은 고성능 동시성 서버 설계의 시작점입니다. 본 문서에서는 두 실행 단위의 메모리 영역 구조, 컨텍스트 스위칭 메커니즘, 동시성 동기화 이슈, 그리고 실무 적용 레시피를 상세히 살펴봅니다.
 
 ---
-
-목차
-
-- [1. 개요 및 왜 필요한가? (Background & Motivation)](#1-개요-및-왜-필요한가-background-motivation)
-
-- [2. 메모리 구조 아키텍처 비교 (Memory Architecture)](#2-메모리-구조-아키텍처-비교-memory-architecture)
-
-- [3. 컨텍스트 스위칭(Context Switching) 내부 동작 원리](#3-컨텍스트-스위칭context-switching-내부-동작-원리)
-
-- [4. 실무 멀티 쓰레드 구현 예제 (Complete Runnable Code)](#4-실무-멀티-쓰레드-구현-예제-complete-runnable-code)
 
 ## 본문
 

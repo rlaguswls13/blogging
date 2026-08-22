@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 6. 어댑터 패턴 (Adapter Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-14T12:02:38.603-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-6-adapter-pattern-java.html

@@ -17,25 +17,9 @@ url: https://beji-tech.blogspot.com/2026/08/sync-vs-async-blocking-vs-non-blocki
 
 # 동기(Sync) vs 비동기(Async) & 블로킹(Blocking) vs 논블로킹(Non-blocking)의 명확한 정의
 
-## 동기(Sync) vs 비동기(Async) & 블로킹(Blocking) vs 논블로킹(Non-blocking)의 명확한 정의
-
 ## 요약
 
 개발 현장에서 빈번히 오용되는 동기/비동기(Synchronous/Asynchronous)와 블로킹/논블로킹(Blocking/Non-blocking)의 차이를 관점(Dimension) 분리를 통해 명확하게 정리합니다. 블로킹/논블로킹은 **"호출된 함수가 제어권을 즉시 반환하는가(대기 여부)"**에 관한 시스템 콜 관점이며, 동기/비동기는 **"작업의 완료 통지 주체와 결과 순서를 누가 처리하는가(동기화 여부)"**에 관한 흐름 제어 관점입니다. 이 두 축을 결합한 2x2 매트릭스(Sync-Blocking, Sync-Nonblocking, Async-Blocking, Async-Nonblocking)의 작동 방식과 실제 Linux `epoll`, Java NIO 등 아키텍처 사례를 다룹니다.
-
-목차
-
-- [1. 서론: 실행 흐름과 제어권의 혼란](#1-서론-실행-흐름과-제어권의-혼란)
-
-- [2. 제어권과 작업 완료 통지: 동기(Synchronous) vs 비동기(Asynchronous)](#2-제어권과-작업-완료-통지-동기synchronous-vs-비동기asynchronous)
-
-- [3. 제어권의 주도권과 대기 상태: 블로킹(Blocking) vs 논블로킹(Non-blocking)](#3-제어권의-주도권과-대기-상태-블로킹blocking-vs-논블로킹non-blocking)
-
-- [4. 4가지 조합 매트릭스 분석](#4-4가지-조합-매트릭스-분석)
-
-- [5. 실무 아키텍처 및 OS 레벨 적용 예시](#5-실무-아키텍처-및-os-레벨-적용-예시)
-
-- [6. 결론: 올바른 I/O 모델 선택과 아키텍처 가이드](#6-결론-올바른-io-모델-선택과-아키텍처-가이드)
 
 ## 본문
 

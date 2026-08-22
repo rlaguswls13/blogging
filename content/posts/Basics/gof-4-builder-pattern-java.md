@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 4. 빌더 패턴 (Builder Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-14T11:27:17.829-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-4-builder-pattern-java.html

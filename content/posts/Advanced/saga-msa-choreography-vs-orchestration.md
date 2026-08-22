@@ -19,19 +19,9 @@ url: https://beji-tech.blogspot.com/2026/08/saga-msa-choreography-vs-orchestrati
 
 # Saga 패턴을 활용한 MSA 분산 트랜잭션 제어: Choreography vs Orchestration 아키텍처와 보상 트랜잭션 설계 전략
 
-## Saga 패턴을 활용한 MSA 분산 트랜잭션 제어
-
 ## 요약
 
 단일 모놀리식 아키텍처에서 마이크로서비스 아키텍처(MSA)로 전환될 때 발생하는 가장 강력한 장애물은 **'분산 트랜잭션(Distributed Transaction)의 정합성 유지'**입니다. 데이터베이스가 물리적으로 격리(Database-per-Service)된 분산 네트워크 구조 하에서는 과거의 2단계 커밋(2PC) 프로토콜이 성능 병목과 복잡한 락킹으로 인해 기피됩니다. 본 아티클에서는 이를 해결하는 사실상의 표준(de facto standard) 아키텍처 패턴인 **'Saga 패턴'**을 상세 비교 분석합니다. 이벤트 기반의 안무가(Choreography) 방식과 중앙 제어형 지휘자(Orchestration) 방식의 특징과 장단점을 비교하고, 비즈니스 에러 발생 시 데이터 정합성을 복구해 내는 보상 트랜잭션(Compensating Transaction) 및 멱등성 보장 설계를 위한 아키텍처 수립 전략을 제시합니다.
-
-목차
-
-- [1. 서론: 분산 데이터베이스 환경의 트랜잭션 딜레마와 2PC의 한계](#1-서론-분산-데이터베이스-환경의-트랜잭션-딜레마와-2pc의-한계)
-
-- [2. Saga 패턴의 구조와 2대 설계 토폴로지 비교](#2-saga-패턴의-구조와-2대-설계-토폴로지-비교)
-
-- [3. 보상 트랜잭션(Compensating Transaction) 설계와 멱등성 보장 기법](#3-보상-트랜잭션compensating-transaction-설계와-멱등성-보장-기법)
 
 ## 본문
 

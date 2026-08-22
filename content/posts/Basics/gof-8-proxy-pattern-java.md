@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 8. 프록시 패턴 (Proxy Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-15T16:19:02.691-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-8-proxy-pattern-java.html

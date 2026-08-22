@@ -10,6 +10,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: GoF 핵심 14가지 디자인 패턴 분석 및 개별 포스트 인덱스 가이드
 updatedAt: '2026-08-14T11:33:44.869-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-14.html

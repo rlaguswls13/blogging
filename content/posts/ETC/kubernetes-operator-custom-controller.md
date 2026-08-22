@@ -17,23 +17,9 @@ url: https://beji-tech.blogspot.com/2026/08/kubernetes-operator-custom-controlle
 
 # Kubernetes Operator 패턴의 이해와 활용: Custom Controller를 통한 자동화 설계
 
-## Kubernetes Operator 패턴의 이해와 활용
-
 ## 요약
 
 Kubernetes Operator 패턴은 시스템 운영자의 업무 지식(Operational Knowledge)을 코드화하여 클러스터 상의 애플리케이션 상태를 자동으로 관리하는 디자인 패턴입니다. 이는 사용자 정의 리소스 정의(CRD)와 이를 지속적으로 관찰 및 강제하는 사용자 정의 컨트롤러(Custom Controller)의 조합으로 구현됩니다. 본 글에서는 Operator 패턴의 정의, 핵심 메커니즘인 조정 루프(Reconciliation Loop)의 동작 원리, 대표적인 프레임워크인 Kubebuilder와 Operator SDK의 차이점, 그리고 설계 상 필수적으로 고려해야 할 멱등성(Idempotency) 등 모범 사례(Best Practices)를 상세히 설명합니다.
-
-목차
-
-- [1. 서론: 왜 Kubernetes Operator 패턴인가?](#1-서론-왜-kubernetes-operator-패턴인가)
-
-- [2. Kubernetes 확장 모델과 Custom Resource Definition (CRD)](#2-kubernetes-확장-모델과-custom-resource-definition-crd)
-
-- [3. Operator 패턴의 핵심 개념과 작동 원리 (Reconciliation Loop)](#3-operator-패턴의-핵심-개념과-작동-원리-reconciliation-loop)
-
-- [4. Operator 개발을 위한 주요 도구 및 프레임워크 (Kubebuilder vs Operator SDK)](#4-operator-개발을-위한-주요-도구-및-프레임워크-kubebuilder-vs-operator-sdk)
-
-- [5. Operator 패턴 도입 시 주의점 및 모범 사례 (Best Practices)](#5-operator-패턴-도입-시-주의점-및-모범-사례-best-practices)
 
 ## 본문
 

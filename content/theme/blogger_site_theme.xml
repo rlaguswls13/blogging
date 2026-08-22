@@ -20,15 +20,6 @@
     <meta content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1' name='viewport'/>
     <meta name="naver-site-verification" content="fa4c1b1e44d01ef2fe0d96d319dc1fd88b095774" />
     <title><data:view.title.escaped/></title>
-    <!-- SEO meta description: 2026-08-22~23 조사 결론 — data:post.*는 <head>(Blog 위젯 루프 바깥)에서
-         값이 비어 snippet(data:post.body, ...)가 항상 빈 문자열을 반환했다(라이브에서 직접 확인,
-         <meta content=''/>). Blogger 공식 커뮤니티 답변(2025-05, support.google.com/blogger/thread/343506660)도
-         "API로 글별 검색 설명을 채울 방법이 없고 편집기에서 수동 입력만 가능"이라고 명시적으로 확인했다.
-         data:blog.metaDescription은 글 페이지에서는 그 글의 수동 입력값을, 그 외 페이지에서는 블로그
-         설명을 반환하는 Blogger 내장 변수이며, all-head-content가 이미 이 값으로 <meta name="description">를
-         자동 생성한다 — 그래서 여기서 별도로 다시 만들지 않는다(중복 빈 태그만 생겼던 이전 시도를 제거함).
-         즉 글마다 다른 검색 설명을 얻으려면 Blogger 글 편집기의 "검색 설명" 칸을 글마다 직접 채우는
-         수밖에 없다(브라우저 자동화로 대신 입력하는 방안은 별도 논의 중, wiki/Incident_Log.md 참고). -->
     <b:include data='blog' name='all-head-content'/>
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
@@ -36,7 +27,6 @@
     <b:skin><![CDATA[
 /*
 <!-- Constants -->
-
 <Variable name="keycolor" description="Main Color" type="color" default="#3b82f6" hideEditor="true" value="#3b82f6"/>
 <Variable name="startSide" description="Start side in blog language" type="automatic" default="left" hideEditor="true"/>
 <Variable name="endSide" description="End side in blog language" type="automatic" default="right" hideEditor="true"/>

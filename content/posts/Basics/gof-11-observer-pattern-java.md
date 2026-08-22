@@ -9,6 +9,7 @@ tags:
 - GoF
 - Java
 - 기초
+- GoF_Series
 title: '[GoF 디자인 패턴] 11. 옵저버 패턴 (Observer Pattern) 개념과 Java 실전 예시'
 updatedAt: '2026-08-15T16:18:49.383-07:00'
 url: https://beji-tech.blogspot.com/2026/08/gof-11-observer-pattern-java.html
@@ -147,7 +148,7 @@ public class ObserverPatternMain {
 | Claim | 판정 | 근거 |
 |---|---|---|
 | CLAIM-001: 옵저버 패턴은 주체(Subject)의 상태 변화를 다수의 관찰자(Observer)에게 자동으로 통지하는 발행-구독 구조다 | verified | Design Patterns (Gamma et al., 1994) Observer 챕터 |
-| CLAIM-002: 옵저버를 명시적으로 해제하지 않으면 Subject가 참조를 계속 붙잡아 GC가 회수하지 못하는 메모리 누수(Lapsed Listener Problem)가 발생할 수 있다 | verified | 일반적으로 알려진 Java 옵저버 패턴 구현의 메모리 관리 이슈(WeakReference 활용이 표준적인 대응책으로 문서화됨) |
+| CLAIM-002: 옵저버를 명시적으로 해제하지 않으면 Subject가 참조를 계속 붙잡아 GC가 회수하지 못하는 메모리 누수(Lapsed Listener Problem)가 발생할 수 있다 | verified | "Lapsed listener problem", Wikipedia, [https://en.wikipedia.org/wiki/Lapsed_listener_problem](https://en.wikipedia.org/wiki/Lapsed_listener_problem) (확인일: 2026-08-23) — Subject가 Observer에 대한 strong reference를 계속 쥐고 있어 명시적 해제 없이는 GC 대상이 되지 못하며, WeakReference로 참조를 약하게 유지하는 것이 표준적인 회피책이라고 명시 |
 | CLAIM-003: Spring Framework는 ApplicationEventPublisher와 @EventListener를 통해 옵저버 패턴 기반 이벤트 발행 메커니즘을 제공한다 | verified | Spring Framework 공식 문서 - Application Events 챕터 |
 | CLAIM-004: Project Reactor의 Mono/Flux는 subscribe() 호출을 통해 비동기로 데이터를 수신하는 리액티브 스트림 구조를 따른다 | verified | Project Reactor 공식 문서 - Reactor Core |
 
@@ -166,6 +167,7 @@ public class ObserverPatternMain {
 1. [Observer pattern - Wikipedia](https://en.wikipedia.org/wiki/Observer_pattern) (확인일: 2026-08-17)
 2. [Spring Framework Documentation - Application Events](https://docs.spring.io/spring-framework/reference/core/beans/context-introduction.html) (확인일: 2026-08-17)
 3. [Design Patterns: Elements of Reusable Object-Oriented Software - Wikipedia](https://en.wikipedia.org/wiki/Design_Patterns) (확인일: 2026-08-17)
+4. [Lapsed listener problem - Wikipedia](https://en.wikipedia.org/wiki/Lapsed_listener_problem) (확인일: 2026-08-23)
 
 ## 종합적 의견
 

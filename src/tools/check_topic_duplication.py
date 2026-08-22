@@ -32,6 +32,14 @@ from src.core.paths import all_post_paths
 
 DEFAULT_THRESHOLD = 0.35
 
+# 시리즈(예: GoF 14부작, NoSQL/RDBMS #1·#2)는 같은 시리즈 태그를 공유하는 글끼리 제목/태그
+# 유사도가 구조적으로 높게 나온다(2026-08-23, audit_published_posts.py 소급 감사에서 확인 —
+# GoF 글끼리 0.81~0.87, NoSQL #1/#2 0.44 등, 전부 오탐이었음). Basics/Advanced/ETC 같은
+# 카테고리·레벨 태그는 거의 모든 글이 공유하므로 시리즈 신호가 아니다 — 그걸 뺀 나머지 태그를
+# 공유하면 시리즈로 보고 임계값을 크게 완화한다.
+GENERIC_TAGS = {"basics", "advanced", "etc", "기초"}
+SERIES_THRESHOLD = 0.9
+
 STOPWORDS = {
     "the", "and", "for", "vs", "with", "of", "in", "on", "to", "a", "an", "is", "are",
     "이", "그", "저", "것", "수", "등", "및", "를", "을", "은", "는", "이란", "란", "위한",
@@ -65,9 +73,25 @@ def load_candidates():
         candidates.append({
             "title": title,
             "url": meta.get("url", ""),
+            "tags": tags,
             "tokens": tokenize(title) | {t.lower() for t in tags},
         })
     return candidates
+
+
+def shares_series_tag(tags_a, tags_b):
+    """두 태그 집합이 같은 시리즈에 속하는지 판단한다. `{이름}_Series` 명시 태그(2026-08-23,
+    wiki/Blog_Writing_Rules.md 17/18번 수칙, src/tools/manage_series_tags.py)가 있으면 그것을
+    최우선 신호로 쓴다 — 정확히 같은 시리즈 태그를 공유해야만 True. 없으면(예: 아직 시리즈
+    태그를 못 붙인 구버전 글) GENERIC_TAGS를 제외한 비일반 태그 겹침으로 폴백한다."""
+    a_series = {t.lower() for t in tags_a if t.lower().endswith("_series")}
+    b_series = {t.lower() for t in tags_b if t.lower().endswith("_series")}
+    if a_series and b_series:
+        return bool(a_series & b_series)
+
+    a = {t.lower() for t in tags_a} - GENERIC_TAGS
+    b = {t.lower() for t in tags_b} - GENERIC_TAGS
+    return bool(a & b)
 
 
 def dice_score(tokens_a, tokens_b):
@@ -121,18 +145,23 @@ def main():
             print(f"         {c['url']}")
 
     max_score = top[0][0] if top else 0.0
-    if max_score >= args.threshold:
-        print(f"\n⚠️ 임계값({args.threshold}) 이상 — 겹치는 주제로 판단됩니다.")
+    effective_threshold = args.threshold
+    if top and shares_series_tag(tags, top[0][1].get("tags", [])):
+        effective_threshold = max(args.threshold, SERIES_THRESHOLD)
+        print(f"\n(참고: 최상위 후보와 시리즈 태그를 공유해 임계값을 {effective_threshold:.2f}로 완화 적용)")
+
+    if max_score >= effective_threshold:
+        print(f"\n⚠️ 임계값({effective_threshold:.2f}) 이상 — 겹치는 주제로 판단됩니다.")
         print(f"겹치는 키워드: {sorted(topic_tokens & top[0][1]['tokens'])}")
         print("\n임계값 아래로 재검증된 대안 주제:")
-        alts = generate_alternatives(args.topic, tags, candidates, args.threshold)
+        alts = generate_alternatives(args.topic, tags, candidates, effective_threshold)
         if not alts:
             print("  (자동 생성한 대안도 전부 임계값을 못 넘김 — 직접 다른 각도를 찾아야 합니다.)")
         else:
             for variant, score in alts:
                 print(f"  [{score:.2f}] {variant}")
     else:
-        print(f"\n✅ 임계값({args.threshold}) 미만 — 채택 가능한 주제입니다.")
+        print(f"\n✅ 임계값({effective_threshold:.2f}) 미만 — 채택 가능한 주제입니다.")
 
 
 if __name__ == "__main__":

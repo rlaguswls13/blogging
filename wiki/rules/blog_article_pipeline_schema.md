@@ -109,15 +109,19 @@ steps:
     name: 주제 선정
     trigger: 사용자 지시("주제 추천해줘"/특정 주제 지정) 또는 에이전트가 백로그에서 선택
     actor: human_or_agent
-    enforced_by: "convention: wiki/Blog_Writing_Rules.md#14, wiki/Post_Topic_Backlog.md"
+    enforced_by: "convention: wiki/Blog_Writing_Rules.md#14, #17, #18, wiki/Post_Topic_Backlog.md"
     inputs: [wiki/Post_Topic_Backlog.md]
     action: >
       미발행(🟡) 백로그 항목을 고르거나, "트렌드" 요청이면 매번 WebSearch로 최근 1~2개월 이슈를 새로
       조사한다. 2026-08-22부터 "이 글이 상위 검색결과 대비 무엇을 더하는지"(차별화 각도) 없이는
       신규 채택을 지양한다(규칙 14, 배경: `wiki/Incident_Log.md#google-value-2026-08-22`).
-    outputs: {topic: string, differentiation_angle: string}
+      기존 시리즈(GoF/NoSQL/RDBMS 등)의 다음 편이거나 새 시리즈의 1편이면, frontmatter tags에
+      `{시리즈명}_Series` 태그를 반드시 포함한다(규칙 17) — 이 태그가 있어야 아래 중복 검사의
+      임계값 완화(규칙 18, SERIES_THRESHOLD)가 정확히 적용된다.
+    outputs: {topic: string, differentiation_angle: string, series_tag: "string | null"}
     authoring_aids:  # 2026-08-23 신설
-      - {cmd: "src/tools/check_topic_duplication.py --topic \"...\" [--tags \"...\"]", purpose: "기존 발행 글과의 유사도 채점 + 임계값 이상이면 차별화 각도를 결합한 대안 주제를 자동 생성해 재검증"}
+      - {cmd: "src/tools/check_topic_duplication.py --topic \"...\" [--tags \"...,{시리즈명}_Series\"]", purpose: "기존 발행 글과의 유사도 채점 + 임계값 이상이면 차별화 각도를 결합한 대안 주제를 자동 생성해 재검증. --tags에 _Series 태그를 넣으면 같은 시리즈 내 정상적 유사도를 오탐으로 잡지 않음(규칙 18)"}
+      - {cmd: "src/tools/manage_series_tags.py --scan", purpose: "전체 발행 글을 다시 스캔해 시리즈 소속인데 _Series 태그가 빠진 글이 없는지 점검(소급 감사용)"}
     checks: []  # 여전히 강제 게이트는 아님(주제 선정은 사람/에이전트 판단) — 위 도구는 권고용 aid
     next: new_run
 

@@ -10,6 +10,7 @@ tags:
 - Neo4j
 - NoSQL
 - 기초
+- NoSQL_Series
 title: '[NoSQL 깊이 읽기 #2] Column-Family & Graph DB: Cassandra vs Neo4j 핵심 원리와 활용법'
 updatedAt: '2026-08-15T17:13:48.615-07:00'
 url: https://beji-tech.blogspot.com/2026/08/nosql-2-column-family-graph-db.html

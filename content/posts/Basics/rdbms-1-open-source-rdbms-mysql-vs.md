@@ -10,6 +10,7 @@ tags:
 - PostgreSQL
 - SQL
 - 기초
+- RDBMS_Series
 title: '[RDBMS 깊이 읽기 #1] Open Source RDBMS 대표주자: MySQL vs MariaDB vs PostgreSQL 기술
   비교'
 updatedAt: '2026-08-15T17:13:35.116-07:00'
