@@ -219,7 +219,26 @@ def validate_run(
         errors.append(
             f"근거(출처) 없이 판정된 claim이 {len(unsupported)}건 있습니다: {unsupported[0][:60]}"
         )
-        
+
+    # Check for vague/low-confidence evidence phrasing (2026-08-23 신설, element_matrix.사실검증.check
+    # 보완 — wiki/Incident_Log.md#factcheck-2026-08-19-1/-2 실제 사고 재발 방지). rubber-stamp 여부
+    # 자체는 코드로 판단 못 하지만, 그 사고들에서 실제로 등장한 모호한 근거 표현 패턴은 걸러낼 수 있다.
+    # "구체적 출처 표지"(URL, RFC 번호, "공식 문서" 등)가 전혀 없이 모호한 표현만 있는 경우만 걸린다 —
+    # "RFC 8446 §2.3, 교차 확인"처럼 구체적 출처와 함께 쓰인 "교차 확인"은 통과시킨다(오탐 최소화).
+    vague_pattern = re.compile(r"업계\s*리포트|일반적으로\s*알려진|널리\s*알려진\s*사실|다수의\s*출처|여러\s*자료|^교차\s*확인$")
+    specific_marker_pattern = re.compile(r"https?://|RFC\s*\d+|공식\s*(문서|블로그|가이드)|[A-Za-z][\w.-]+\.(io|com|org|net|dev)")
+    vague_evidence = [
+        (claim.strip(), evidence.strip())
+        for claim, verdict, evidence in claim_rows
+        if evidence.strip() and vague_pattern.search(evidence) and not specific_marker_pattern.search(evidence)
+    ]
+    if vague_evidence:
+        errors.append(
+            f"근거가 모호한 표현(업계 리포트/교차 확인 등, 구체적 출처 표지 없음)으로만 채워진 claim이 "
+            f"{len(vague_evidence)}건 있습니다: \"{vague_evidence[0][1][:60]}\" "
+            f"(wiki/Incident_Log.md#factcheck-2026-08-19-1 유사 사례 — 실제 원문/URL로 구체화할 것)"
+        )
+
     # Check Human Approval
     if require_human_approval and gate.requireHumanApproval and not state.humanApproved:
         errors.append("state.json의 humanApproved가 true가 아닙니다.")

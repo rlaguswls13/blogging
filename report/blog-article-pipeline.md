@@ -38,17 +38,21 @@ graph TD
 
 | 요소 | check(의미/품질) | lint(구조/기계적) |
 |---|---|---|
-| 토픽 | ⚠️ 미자동화 — 중복 토픽 육안 대조만 | ✅ required_sections, section_min_words |
-| 이미지 | ⚠️ 미자동화 — 적절성 판단 없음 | ✅ code_or_image_presence (존재만) |
-| 코드 | ⚠️ 미자동화 — 품질/동작 검증 없음 | ✅ code_or_image_presence (존재만) |
+| 토픽 | ✅ *(2026-08-23)* `check_topic_duplication.py` — 유사도 채점 + 임계값 이상이면 대안 주제 자동 생성·재검증 | ✅ required_sections, section_min_words |
+| 이미지 | ⚠️ 자동화 보류(의도적 결정, 2026-08-23) — 비전 API 없음, 에이전트 Read 툴 직접 확인으로 대체(규칙 16) | ✅ code_or_image_presence (존재만) |
+| 코드 | ✅ *(2026-08-23)* `check_code_blocks.py` — python/bash/json 구문 검사 + 설명-코드 식별자 교차 확인 | ✅ code_or_image_presence (존재만) |
 | 공식문서 참고 | ✅ reference_credibility_tier | ✅ reference_link_liveness |
-| 백링크 | ⚠️ 미자동화 — 관련성 판단 없음, 개수만 | ✅ internal_link_count |
-| 의견/차별화 | ⚠️ 미자동화 — 통찰 여부 판단 없음 | ✅ opinion_disclaimer, section_min_words |
-| 사실검증 | ⚠️ 미자동화 — rubber-stamp 여부 판단 없음 | ✅ fact_check_verdicts, unsupported_claims |
+| 백링크 | ✅ *(2026-08-23)* `check_backlink_relevance.py` — 태그 기준 관련성 점수화 | ✅ internal_link_count |
+| 의견/차별화 | ✅ *(2026-08-23, 근사치)* `check_opinion_insight.py` — 구체성/상투구/타글유사도/주장-근거정합/어휘다양성 5개 하위 지표 | ✅ opinion_disclaimer, section_min_words |
+| 사실검증 | 🟡 부분 자동화 *(2026-08-23)* — 모호한 근거 표현(vague_evidence)은 실시간 차단, "실제 원문 대조 여부"는 여전히 판단 불가 | ✅ fact_check_verdicts, unsupported_claims, vague_evidence |
 | 구조(frontmatter) | — (형식 요소, check 대상 아님) | ✅ frontmatter, min_references, encoding |
 | SEO 메타 description *(2026-08-23 신설)* | ✅ `seo_check.py` (독립 모듈, validate_run() 미포함) — 요약 스니펫이 자연스러운지만 점검 | ❌ 불가능 — Blogger API·테마 둘 다 프로그래밍적 설정 경로 없음(아래 결단 대기 참고) |
 
-⚠️ 5개 요소가 여전히 사람/에이전트 판단에 의존 — `human_verify` 단계가 실질적 방어선.
+⚠️ **주의**: 위 6개 신규 check 도구(토픽/코드/백링크/의견/사실검증 일부)는 전부 `validate_run()`
+8개 게이트와 물리적으로 분리된 **독립 aid 스크립트**다(vague_evidence 하나만 예외로 validate.py에
+직접 편입돼 발행을 막는 실제 게이트) — 나머지는 draft 단계에서 참고용으로 실행하는 것이지 통과
+못 해도 발행 자체를 막지 않는다. "완전 자동화"가 아니라 "근사 신호 제공"이며, 특히 의견/차별화·
+사실검증은 여전히 human_verify가 최종 방어선이다. 이미지만 자동화를 의도적으로 안 함(위 표 참고).
 
 ## Diagram — content/posts/ 카테고리 구조 *(2026-08-23 신설, Obsidian 볼트 겸용)*
 
@@ -115,8 +119,12 @@ related_but_separate:
 ## 결단 대기 항목 (Open Decisions)
 - **check/lint 코드 물리적 분리 여부**: 지금은 스키마/문서에서만 두 개념으로 나눴고 실제 코드
   (`validate.py`)는 여전히 하나. `check_run()`/`lint_run()`으로 실제 분리할지 결단 필요.
-- **위 표의 ⚠️ 5개 요소 자동화 여부**: 토픽 중복 검사, 이미지 적절성, 코드 품질, 백링크 관련성,
-  의견 통찰력 — 자동화하려면 각각 별도 도구/모델 호출이 필요(비용·정확도 트레이드오프 있음).
+- **~~위 표의 ⚠️ 5개 요소 자동화 여부~~ → 2026-08-23 해결**: 토픽 중복/코드 품질/백링크 관련성/의견
+  통찰력 4개는 근사 신호 도구로 자동화(아래 변경 이력), 이미지 적절성은 자동화 안 하기로 의도적 결정
+  (에이전트 Read 툴 직접 확인으로 대체). 아래 결단 대기 항목으로 남는 건 "이 근사 신호들을 검증 게이트
+  로 격상시킬지(현재는 vague_evidence 하나만 실제 게이트, 나머지는 통과 안 해도 발행 막지 않음)" — 오탐률
+  검증 없이 바로 error 게이트로 승격하면 과거 warn→error 승격 때처럼 정상 케이스를 막을 위험이 있어
+  당분간 aid 상태 유지 권장.
 - **SEO 메타 description 자동화 여부** *(신규, 2026-08-23)*: Blogger API v3 Posts 리소스에 글별
   검색 설명 필드가 없다는 것을 공식 문서 + Blogger 공식 커뮤니티 답변(2025-05, "customMetadata는
   Blogger가 쓰지 않아 문서에서 제거했다")으로 확정 확인. 테마에서 `data:post.body`를 `<head>`에서
@@ -130,6 +138,17 @@ related_but_separate:
   실제 차별화 각도를 새로 찾아야 하는 콘텐츠 작업이라 범위가 큼.
 
 ## 변경 이력
+- 2026-08-23: **element_matrix의 6개 미자동화 check 요소 중 5개 해결**: 사용자가 1→6번 순서로 지정한
+  작업. (1) `check_topic_duplication.py` — 경고만이 아니라 임계값 이상이면 차별화 각도를 결합한 대안
+  주제를 자동 생성해 재검증(사용자 요청). (2) `check_backlink_relevance.py` — 태그 기준 관련성 점수화.
+  (3) `check_code_blocks.py` — python/bash/json 구문 검사 + 코드펜스 직전 문단의 백틱 식별자가 실제
+  코드에 있는지 "설명-코드 일치" 교차 확인(사용자 요청으로 추가). (4) `validate.py`에 `vague_evidence`
+  게이트 신설 — 근거 열이 "업계 리포트"/"교차 확인" 등 구체적 출처 표지 없는 모호한 표현이면 발행
+  차단(wiki/Incident_Log.md의 실제 사고 패턴 재발 방지, 유일하게 진짜 게이트로 편입됨). (5)
+  `check_opinion_insight.py` — 단일 점수 대신 구체성/상투구 비율/타 글과의 bigram 유사도/주장-근거
+  정합성/어휘 다양성 5개 하위 지표로 세분화(사용자 요청). (6) 이미지 적절성은 의도적으로 자동화 안
+  하기로 결정, `wiki/Blog_Writing_Rules.md` 16번 수칙으로 에이전트 Read 툴 직접 확인을 명문화. 전부
+  기존 발행 글로 회귀 테스트(오탐 조정 포함) + 합성 테스트로 실제 과거 사고 패턴 재현 확인 완료.
 - 2026-08-23: **content/posts/ 카테고리화 + Obsidian 볼트화**: 55개 글을 `Basics/Advanced/ETC`
   하위폴더로 이동(`tags` 기준, 미분류 17개는 키워드 휴리스틱으로 백필). 경로 로직을 쓰는 전체 코드
   (`paths.py`, `publishers/__init__.py`, `update_post_content.py`, `suggest_internal_links.py`,
