@@ -29,9 +29,8 @@ factCheckScore: 0
 
 <!--
 게시 게이트(src/core/publish_gate.json::sectionMinWords) 기준 최소 800단어.
-코드/구현 메커니즘을 다루는 주제라면 언어 태그를 붙인 코드펜스(예: ```java ... ```)를
-최소 1개 이상 포함할 것 — 백틱 인라인 용어만으로는 부족하다. 다이어그램/스크린샷
-이미지도 가능하면 함께 넣는다(둘 다 없으면 발행 게이트에서 경고가 뜬다).
+코드펜스(예: ```java ... ```) 또는 이미지 중 최소 1개는 반드시 포함할 것 — 둘 다 없으면
+발행 게이트에서 오류로 차단된다(2026-08-22부터 경고 아님).
 -->
 
 ## 사실 검증 결과
@@ -63,6 +62,8 @@ factCheckScore: 0
 Tier1(IF≥10 논문/IEEE·ACM·Nature급 저널/IETF RFC/W3C 표준) > Tier2(공식 벤더·재단
 문서: Oracle/Spring/Kubernetes/CNCF/Linux Foundation 등) > Tier3(방문수 높은 기술
 블로그, 최후 수단). 각 항목에 확인일을 표기한다 (예: (확인일: 2026-08-17)).
+전부 비공식 출처면 발행이 차단된다(2026-08-22부터 오류) — 후보 URL을
+`python src/tools/check_reference_domains.py <url1> <url2> ...`로 미리 확인할 것.
 -->
 
 1. 
@@ -87,8 +88,11 @@ Tier1(IF≥10 논문/IEEE·ACM·Nature급 저널/IETF RFC/W3C 표준) > Tier2(�
 그러므로:
 - 이미 발행된 다른 글의 실제 라이브 URL(https://beji-tech.blogspot.com/...)만 넣을 것.
 - `../../wiki/...` 같은 저장소 내부 상대경로는 넣지 말 것 — 공개 사이트에서는 존재하지 않는 링크다.
-- 게시 게이트가 본문/백링크/종합적 의견을 합쳐 최소 2개의 내부링크를 권장(경고, 차단 아님) —
-  주제와 실제로 관련 있는 이미 발행된 글을 연결할 것(wiki/Blog_Writing_Rules.md 15번 수칙).
+- 게시 게이트가 본문/백링크/종합적 의견을 합쳐 최소 2개의 내부링크를 요구한다(2026-08-22부터
+  오류로 차단, 경고 아님) — 주제와 실제로 관련 있는 이미 발행된 글을 연결할 것
+  (wiki/Blog_Writing_Rules.md 15번 수칙).
+- 후보를 직접 찾지 말고 `python src/tools/suggest_internal_links.py --tags "<이 글의 태그>"
+  [--topic "<주제>"]`로 추천받아 바로 붙여넣을 것(content/posts/ frontmatter 기반 자동 추천).
 -->
 
 ## 관련 세션

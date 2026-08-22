@@ -70,6 +70,13 @@ graph TD
 - **발행된 글의 본문을 나중에 다시 수정**하려면 `src/tools/update_post_content.py --slug <slug> --body-file <path> [--title "..."]`을 쓸 것 — 이전에는 이런 CLI 경로가 아예 없었다. `content/posts/<slug>.md`를 고치고 `convert_markdown_to_html()`로 재렌더링해 라이브 게시물에 `posts.update()`로 반영한다. 본문의 H1과 frontmatter `title`이 다르면 경고가 뜨니 `--title`로 함께 맞출 것.
 - 각 실행의 원본 주제 확인이 필요하면 `temp/runs/<runId>/request.md`, 게시 후 결과 확인은 `publish-result.json`을 참고합니다.
 - **콘텐츠 유지보수 도구**: `src/tools/apply_nav_labels.py`, `dedupe_basics_label.py`, `rename_trends_to_etc.py`, `patch_published_posts.py` — 전부 `--dry-run`을 지원하는 재사용 가능한 Blogger API 콘텐츠 수정 도구. 이미 발행된 글을 일괄 수정해야 하면 새 스크립트를 만들지 말고 이 패턴을 따를 것.
+- **작성(draft) 단계 보조 도구 2종** (2026-08-22 도입, `validate`의 관련 체크가 warning에서 error로
+  승격되며 신설 — 배경 `wiki/Incident_Log.md#doc-cleanup-2026-08-22`): `final.md`를 다 쓰고
+  `validate`에서야 실패를 발견해 되돌아가는 왕복을 줄이기 위해 draft 단계에서 미리 실행할 것.
+  - `python src/tools/suggest_internal_links.py --tags "<태그>" [--topic "<주제>"]` — `content/posts/`
+    frontmatter 기반으로 관련 있는 기존 발행 글을 점수순 추천, `## 백링크`에 바로 붙여넣기.
+  - `python src/tools/check_reference_domains.py <url1> [url2] ...` — 후보 참고문헌 URL을
+    `TRUSTED_REFERENCE_DOMAINS`와 즉석 대조.
 - **세션 핸드오프 로그 정리 도구**: `src/tools/archive_session_log.py --dry-run` / (인자 없이) — `.agent/session-handoff.md`의 `## Session log`가 매 세션 전체 로딩되므로, 항목이 4개 이상 쌓이면 실행을 고려할 것(기본 최신 3개만 남기고 나머지는 `wiki/sessions/changelog.md`로 원문 그대로 이동, `--keep N`으로 조정 가능). 2026-08-22 도입 — 배경은 `wiki/Incident_Log.md#doc-cleanup-2026-08-22` 참고.
 - **세션 backlink 줄 범위 인덱스/적용/검사 도구 3종** (2026-08-22 도입, 배경은 `wiki/Incident_Log.md#doc-cleanup-2026-08-22` 참고): wiki 문서의 `## 관련 세션`은 `wiki/sessions/raw/*.md` 파일 전체가 아니라 `경로/2026-08-16.md:1234-1567` 같은 구체적 줄 범위를 가리킨다 — `Read(offset=, limit=)`로 그 범위만 읽으면 되므로 최대 2.7MB인 원본 파일을 통째로 열 필요가 없다.
   - `python src/tools/build_session_backlink_index.py` — raw 아카이브를 블록 단위로 파싱해 `wiki/sessions/raw-index.json`(태그별 줄 범위 인덱스) 생성. raw 아카이브가 바뀔 때만 재실행.

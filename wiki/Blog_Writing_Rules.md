@@ -57,16 +57,17 @@ graph LR
       - **Tier 1**: Impact Factor 10 이상 학술지 논문, IEEE/ACM/Springer/Nature급 저널, IETF RFC, W3C 표준 문서.
       - **Tier 2**: 공식 벤더/재단 문서 — Oracle, Spring(spring.io), Kubernetes(kubernetes.io), CNCF, Linux Foundation, MDN, 클라우드 공식 문서(AWS/GCP/Azure) 등.
       - **Tier 3 (최후 수단)**: 방문수 높은 기술 블로그(Baeldung, InfoQ, 각 벤더 official blog 등). Tier 1/2로 충분히 뒷받침이 안 될 때만 보조적으로 사용합니다.
-    - `src/pipeline/validate.py`가 참고문헌 URL이 알려진 Tier1/2 도메인(`TRUSTED_REFERENCE_DOMAINS`)과 하나도 안 겹치면 경고를 띄웁니다(발행 차단은 아님).
+    - `src/pipeline/validate.py`가 참고문헌 URL이 알려진 Tier1/2 도메인(`TRUSTED_REFERENCE_DOMAINS`)과 하나도 안 겹치면 **발행을 차단합니다**(2026-08-22부터 경고에서 오류로 승격 — 경고만으로는 무시되고 넘어가는 사례가 반복됨).
     - 존재하지 않거나 오타가 섞인 도메인(예: 과거 `docs.spring.org` 사례 — 실제는 `docs.spring.io`)을 인용하지 않도록, 링크를 넣기 전 실제로 열어서 확인합니다.
 
 11. **섹션별 최소 분량 (Section Length Gate)**:
     - `src/core/publish_gate.json`의 `sectionMinWords`에 정의된 섹션(`본문` 800단어, `작성자의 견해` 100단어, `한계와 반론` 80단어, `종합적 의견` 100단어)은 미달 시 **발행이 차단**됩니다. 2026-08-14에 발행된 GoF 생성 패턴 4개 글(싱글톤/팩토리 메서드/추상 팩토리/빌더)이 200단어 안팎으로 지나치게 얇게 통과된 사례가 재발하지 않도록 만든 게이트입니다.
-    - 코드/구현 메커니즘을 다루는 글은 최소 1개 이상의 언어 태그 코드펜스(```java 등)를, 가능하면 다이어그램/스크린샷 이미지도 포함할 것을 권장합니다(둘 다 0개면 경고).
+    - 모든 글은 코드펜스(```java 등) 또는 이미지 중 최소 1개를 포함해야 합니다(2026-08-22부터 경고에서 오류로 승격 — 둘 다 0개면 **발행이 차단**됩니다).
 
 12. **사실 검증은 실제 원문 대조로 수행 (No Rubber-Stamp Verification)**:
     - `## 사실 검증 결과`의 각 `CLAIM`을 `verified`로 판정할 때는 반드시 9·10번 수칙에서 실제로 확인한 공식 문서/논문 원문과 대조한 결과여야 합니다. 자기 사전지식만으로 판정하지 않습니다.
     - 모든 claim이 예외 없이 `verified`이고 `factCheckScore: 1.0`인 패턴이 반복되면 형식적 검증(rubber-stamp)일 위험이 있습니다 — `python src/tools/report_fact_check_stats.py`로 주기적으로 분포를 점검합니다.
+    - `근거` 열이 비어 있는 채로 판정된 claim이 하나라도 있으면 **발행이 차단**됩니다(2026-08-22부터 경고에서 오류로 승격).
     - **왜**: 두 차례 표본 재검증에서 근거가 "업계 리포트"·"교차 확인" 같은 모호한 출처인 verified 판정, 실존하지만 무관한 논문 인용, 존재하지 않는 URL, 사실 과장이 실제로 발견됐다 — 근거 열이 모호하면 그 자체가 위험 신호. 전체 사례: [Incident_Log.md#factcheck-2026-08-19-1](Incident_Log.md#factcheck-2026-08-19-1), [#factcheck-2026-08-19-2](Incident_Log.md#factcheck-2026-08-19-2).
 
 13. **분량은 하한선일 뿐, 내용의 질이 우선입니다 (Quality Over Word Count)**:
@@ -82,7 +83,7 @@ graph LR
 
 15. **내부링크는 실제로 렌더링되어야 함 (Internal Links Must Render Live)** — 2026-08-22 추가:
     - **왜**: `## 백링크` 섹션이 라이브 HTML 변환 시 삭제만 되고 렌더링되지 않아, 내부링크가 실제로는 라이브 페이지에 한 번도 노출된 적이 없었던 버그가 있었다(2026-08-22 수정 완료). 전체 사례: [Incident_Log.md#backlink-bug-2026-08-22](Incident_Log.md#backlink-bug-2026-08-22).
-    - **규칙**: `## 백링크`에는 이미 발행된 다른 글의 **실제 라이브 URL**(`https://beji-tech.blogspot.com/...`)만 넣는다 — `../../wiki/...` 같은 저장소 내부 상대경로는 공개 사이트에서 깨진 링크가 되므로 넣지 않는다. 게시 게이트가 본문/백링크/종합적 의견을 합쳐 자사 블로그 내부링크 최소 2개를 권장(`minimumInternalLinks`, 경고이며 차단 아님) — 주제와 실제로 관련 있는 이미 발행된 글을 찾아 연결할 것.
+    - **규칙**: `## 백링크`에는 이미 발행된 다른 글의 **실제 라이브 URL**(`https://beji-tech.blogspot.com/...`)만 넣는다 — `../../wiki/...` 같은 저장소 내부 상대경로는 공개 사이트에서 깨진 링크가 되므로 넣지 않는다. 게시 게이트가 본문/백링크/종합적 의견을 합쳐 자사 블로그 내부링크 최소 `minimumInternalLinks`(기본 2)개를 요구하며, 미달 시 **발행이 차단**된다(2026-08-22부터 경고에서 오류로 승격) — 주제와 실제로 관련 있는 이미 발행된 글을 찾아 연결할 것.
 
 ---
 

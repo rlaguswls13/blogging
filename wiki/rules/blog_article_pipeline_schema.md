@@ -1,62 +1,400 @@
 # [Blog 글 작성 & 파이프라인 스키마] (Blog Article Pipeline Schema)
 
-본 스키마 문서는 당사 블로그 시스템에서 **기술 포스팅을 수집, 작성, 검증, 관리 및 파이프라인 구동**하기 위해 지켜야 할 5대 자산과 규칙을 정리하고 인덱싱한 **글 작성 파이프라인 표준 스키마 문서**입니다.
-
 > 이 문서는 [`AGENTS.md`](../../AGENTS.md) §1·§3이 참조하는 Blog 글 작성 영역 SSOT입니다.
 
----
+이 문서 본문은 **실행 순서를 그대로 코드에서 역산한 시퀀스(액션) 스키마**입니다(2026-08-22 개편 —
+이전엔 산문형 "5대 구성 요소" 설명이었으나, 사용자 요청으로 "사용자 지시든 스크립트든 md 규칙이든
+전부 하나의 파일에 액션 시퀀스로" 재작성). 각 스텝은 `enforced_by`로 코드 강제(`code:`)와 문서/관례
+강제(`convention:`, 자동 검증 없음 — 사람이 지켜야 함)를 구분합니다. 수정 지시를 내릴 땐 `id`로
+콕 집어 말하면 됩니다(예: "`validate` 스텝의 `min_words.본문`을 900으로 바꿔줘").
 
-## 1. 글 작성 5대 구성 요소 인덱싱 (Core 5 Elements)
+이 YAML은 아래 소스 코드/설정 파일에서 직접 도출했고, 필드명·값은 그 파일들과 항상 일치해야 합니다
+(스키마가 코드와 어긋나면 이 문서가 아니라 스키마 쪽을 코드에 맞게 고칠 것):
+`main.py`, `src/pipeline/new_run.py`, `src/pipeline/validate.py`, `src/pipeline/approve.py`,
+`src/pipeline/converter.py`, `src/publishers/__init__.py`, `src/publishers/blogger.py`,
+`src/core/types.py`, `src/core/publish_gate.json`, `wiki/templates/article.md`.
 
-```mermaid
-graph TD
-    A[Blog Article Pipeline Schema] --> B[1. rawsource 원천 레퍼런스]
-    A --> C[2. wiki RAG 지식 베이스]
-    A --> D[3. content 템플릿 & 글 자산]
-    A --> E[4. rule 제약 규칙 & 파이프라인 룰]
-    A --> F[5. schema 통합 인덱스]
+```yaml
+pipeline: blog-article-lifecycle
+version: 2026-08-22
+entrypoint: "python main.py <command> [options]"
+
+state_machine:  # src/core/types.py::WorkflowStatus
+  states: [created, researched, drafted, fact_checked, approved, published]
+  note: >
+    researched/drafted/fact_checked는 별도 파일로 강제되지 않는 내부 절차 상태다(문서상 라벨일 뿐,
+    코드가 검사하지 않음) — 실제 코드가 다루는 상태 전이는 created → approved → published뿐이다.
+
+phases:  # 2026-08-22 추가 — 사용자가 정의한 상위 모델: 작성-검사-휴먼검증-lint-배포.
+  # steps.*와의 매핑 + 현재 코드가 실제로 이 모델과 어긋나는 지점을 정직하게 표시한다.
+  write:
+    maps_to_steps: [topic_selection, new_run, draft]
+    note: "element_matrix의 각 요소를 작성"
+  check:
+    maps_to_steps: [draft, validate]
+    note: >
+      의미/품질 검증(요소가 '적절한지'). element_matrix에서 automated=false인 항목은 아직 자동화가
+      없어 작성자(에이전트) 자신의 판단에 의존한다 — wiki/Blog_Writing_Rules.md 13번 수칙이 이미
+      "자동 게이트로 완전히 검출 어려움"이라고 명시한 부분과 같은 얘기다. automated=true인 항목만
+      validate 스텝이 실제로 체크한다.
+  human_verify:
+    maps_to_steps: [human_review, approve]
+    note: "🛑 필수 관문, 자동화 대상 아님"
+  lint:
+    maps_to_steps: [publish.gate_revalidation]
+    note: >
+      구조/기계적 검증(요소가 '존재/형식이 맞는지'). 현재 코드는 check와 lint를 같은 validate_run()
+      하나로 처리한다(코드상 분리 안 돼 있음) — publish 스텝이 발행 직전 이걸 다시 호출해 최종
+      안전망 역할을 한다. 사용자가 요청한 "작성-검사-lint 사이 1:1:1"을 코드 레벨에서 물리적으로
+      분리하려면 validate.py를 check_run()/lint_run() 두 함수로 쪼개야 하는데, 이번 라운드는
+      스키마/보고서 재구성까지만 범위(사용자 확인, 2026-08-22).
+  deploy:
+    maps_to_steps: [platform_choice, publish, convert_html, publish_blogger, archive_and_transfer]
+
+element_matrix:  # 2026-08-22 추가 — 작성 요소별 write→check→lint 1:1:1 매핑(사용자 요청)
+  - element: 토픽(topic)
+    written_in: topic_selection
+    check: {rule: "동일/유사 토픽이 이미 발행된 글과 겹치지 않는지", automated: false, note: "사람/에이전트 판단 — wiki/Post_Topic_Backlog.md 발행완료 표로 육안 대조가 현재 방법. 자동화하려면 content/posts/ 제목·태그 유사도 비교 도구 신설 필요(미착수)"}
+    lint: {rule: "차별화 포인트 섹션 존재 + 최소 40단어", check_id: [required_sections, section_min_words], automated: true}
+  - element: 이미지(image)
+    written_in: draft (본문)
+    check: {rule: "이미지가 내용과 실제로 맞고 화질/저작권 문제 없는지", automated: false, note: "사람 판단 — 자동화 없음"}
+    lint: {rule: "코드 또는 이미지 최소 1개 존재", check_id: code_or_image_presence, automated: true, note: "존재 여부만 봄, '알맞은지'는 안 봄"}
+  - element: 코드(code)
+    written_in: draft (본문)
+    check: {rule: "코드가 실제로 동작하고 설명과 일치하는지", automated: false, note: "사람 판단 — 자동화 없음(실행 검증기 미도입)"}
+    lint: {rule: "코드 또는 이미지 최소 1개 존재", check_id: code_or_image_presence, automated: true, note: "'잘 작성됐는지'는 안 봄, 존재만"}
+  - element: 공식문서 참고(reference)
+    written_in: draft (참고문헌)
+    check: {rule: "Tier1/2 신뢰 도메인 최소 1개 포함", check_id: reference_credibility_tier, automated: true, aid: "src/tools/check_reference_domains.py"}
+    lint: {rule: "URL이 실제로 접속되는지(HEAD/GET)", check_id: reference_link_liveness, automated: true, note: "--skip-link-check로 생략 가능"}
+  - element: 백링크(backlink)
+    written_in: draft (백링크)
+    check: {rule: "연결한 글이 주제와 실제로 관련 있는지", automated: false, note: "사람/에이전트 판단 — 개수만 셀 뿐 관련성은 안 봄"}
+    lint: {rule: "자사 블로그 내부링크 개수 >= minimumInternalLinks(2)", check_id: internal_link_count, automated: true, aid: "src/tools/suggest_internal_links.py"}
+  - element: 의견/차별화(opinion, differentiation)
+    written_in: "draft (작성자의 견해, 차별화 포인트, 종합적 의견)"
+    check: {rule: "실제로 통찰 있는 내용인지, 할루시네이션/패딩 없는지", automated: false, note: "wiki/Blog_Writing_Rules.md 13번 수칙 — 자동 게이트로 검출 어려움, human_verify가 실질 방어선"}
+    lint: {rule: "인용구(>) + 의견 키워드 존재, 최소 분량", check_id: [opinion_disclaimer, section_min_words], automated: true, note: "형식/분량만 봄, 통찰 여부는 안 봄"}
+  - element: 사실검증(fact-check)
+    written_in: draft (사실 검증 결과)
+    check: {rule: "실제 원문 대조로 판정했는지(rubber-stamp 아닌지)", automated: false, note: "wiki/Blog_Writing_Rules.md 12번 수칙 — python src/tools/report_fact_check_stats.py로 사후 표본 감사만 가능, 실시간 자동화 없음"}
+    lint: {rule: "unverified/contradicted 없음 + 모든 판정에 근거 열 존재", check_id: [fact_check_verdicts, unsupported_claims], automated: true}
+  - element: 구조(frontmatter, 섹션)
+    written_in: draft 전체
+    check: {rule: "(구조는 판단 요소가 아니라 형식 요소 — check 단계 없음)", automated: null}
+    lint: {rule: "frontmatter 스키마 + 9개 필수 섹션 + 인코딩 손상 없음", check_id: [frontmatter, required_sections, min_references, encoding_corruption], automated: true}
+
+steps:
+  - id: topic_selection
+    order: 1
+    name: 주제 선정
+    trigger: 사용자 지시("주제 추천해줘"/특정 주제 지정) 또는 에이전트가 백로그에서 선택
+    actor: human_or_agent
+    enforced_by: "convention: wiki/Blog_Writing_Rules.md#14, wiki/Post_Topic_Backlog.md"
+    inputs: [wiki/Post_Topic_Backlog.md]
+    action: >
+      미발행(🟡) 백로그 항목을 고르거나, "트렌드" 요청이면 매번 WebSearch로 최근 1~2개월 이슈를 새로
+      조사한다. 2026-08-22부터 "이 글이 상위 검색결과 대비 무엇을 더하는지"(차별화 각도) 없이는
+      신규 채택을 지양한다(규칙 14, 배경: `wiki/Incident_Log.md#google-value-2026-08-22`).
+    outputs: {topic: string, differentiation_angle: string}
+    checks: []  # 자동 검증 없음 — 사람/에이전트 판단
+    next: new_run
+
+  - id: new_run
+    order: 2
+    name: 실행 디렉토리 생성
+    trigger: "python main.py new --topic \"<topic>\""
+    actor: agent
+    enforced_by: "code: src/pipeline/new_run.py::create_run()"
+    inputs: {topic: string}
+    action: >
+      run_id = UTC 타임스탬프(YYYYMMDDHHMMSS, src/pipeline/new_run.py::make_run_id). temp/runs/<run_id>/
+      생성 → state.json(RunState: status=created, humanApproved=false) 기록 → request.md(주제+생성시각)
+      기록 → wiki/templates/article.md를 렌더링({{articleId}}/{{title}}/{{slug}}/{{createdAt}} 치환)해
+      article-template.md로 저장.
+    outputs:
+      - "temp/runs/<run_id>/state.json"
+      - "temp/runs/<run_id>/request.md"
+      - "temp/runs/<run_id>/article-template.md"
+    checks: []
+    next: draft
+
+  - id: draft
+    order: 3
+    name: final.md 직접 작성
+    trigger: 시스템이 만들지 않음 — 글쓰기 에이전트가 article-template.md를 뼈대로 직접 작성
+    actor: agent
+    enforced_by: "convention: wiki/Blog_Writing_Rules.md 전체, wiki/templates/article.md 인라인 주석"
+    inputs: ["temp/runs/<run_id>/article-template.md"]
+    action: >
+      리서치·초안·팩트체크는 전부 이 단계의 내부 절차일 뿐 별도 파일로 강제되지 않는다
+      (wiki/Agent_Guidelines.md §1). 9개 `##` 섹션을 채운다: 요약, 차별화 포인트, 본문,
+      사실 검증 결과, 작성자의 견해, 한계와 반론, 참고문헌, 종합적 의견, 꼬리질문
+      (+ 관례상 백링크). 최신 공식 문서 우선 확인(규칙 9), 참고문헌 신뢰도 등급(규칙 10),
+      사실 검증은 원문 대조로(규칙 12, rubber-stamp 금지), 분량은 하한선일 뿐 질이 우선(규칙 13).
+    outputs: ["temp/runs/<run_id>/final.md"]
+    authoring_aids:  # 2026-08-22 신설 — validate 단계에서야 실패를 발견하는 왕복을 줄이기 위한 작성 보조 도구
+      - {cmd: "src/tools/suggest_internal_links.py --tags <tags> [--topic \"...\"]", satisfies_check: internal_link_count, purpose: "content/posts/*.md frontmatter에서 태그/키워드 겹치는 기존 글을 점수순으로 추천, ## 백링크에 바로 붙여넣기 가능한 마크다운 링크로 출력"}
+      - {cmd: "src/tools/check_reference_domains.py <url1> [url2] ...", satisfies_check: reference_credibility_tier, purpose: "후보 참고문헌 URL을 validate.py의 TRUSTED_REFERENCE_DOMAINS와 즉석 대조(같은 목록 재사용, 복제 아님)"}
+    checks:
+      - id: required_sections
+        rule: "9개 섹션 헤딩 모두 존재"
+        enforced_by: "convention (validate 스텝에서 사후 검증)"
+    next: validate
+
+  - id: validate
+    order: 4
+    name: 게시 게이트 검증
+    trigger: "python main.py validate --run <run_id> [--preflight] [--skip-link-check]"
+    actor: agent
+    enforced_by: "code: src/pipeline/validate.py::validate_run(), config: src/core/publish_gate.json"
+    inputs: ["temp/runs/<run_id>/final.md", src/core/publish_gate.json]
+    action: >
+      --preflight면 사람 승인 체크를 건너뛴다(초안 사전 점검용). --skip-link-check면 참고문헌 URL
+      생존 확인(네트워크 호출)을 생략한다. 아래 checks를 순서대로 실행하고 오류 1건이라도 있으면
+      exit 1(경고는 통과, 출력만 됨).
+    checks:
+      - id: frontmatter
+        rule: "ArticleFrontmatter 스키마 검증 (id/title/slug/status/tags/factCheckScore)"
+        severity: error
+        code_ref: "src/core/types.py::ArticleFrontmatter, slug는 ^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      - id: required_sections
+        rule: "publish_gate.json.requiredSections 9개 전부 '## ' 헤딩으로 존재"
+        severity: error
+        value: [요약, 차별화 포인트, 본문, 사실 검증 결과, 작성자의 견해, 한계와 반론, 참고문헌, 종합적 의견, 꼬리질문]
+      - id: min_references
+        rule: "## 참고문헌 리스트 항목 개수 >= minimumReferences"
+        severity: error
+        value: 2
+      - id: reference_link_liveness
+        rule: "참고문헌 각 항목의 http(s) URL이 실제 접속 가능(HEAD, 실패 시 GET, UA 지정)"
+        severity: "error (allowBrokenLinks=false면 error, true면 warning) — --skip-link-check로 생략 가능"
+        value: {allowBrokenLinks: false}
+      - id: reference_credibility_tier
+        rule: "참고문헌 URL 중 TRUSTED_REFERENCE_DOMAINS와 하나도 안 겹치면 오류"
+        severity: error
+        note: "2026-08-22 승격 — warning으로 두면 무시되고 넘어가는 사례가 반복돼 사용자 요청으로 error화. draft 단계에서 src/tools/check_reference_domains.py로 미리 확인 가능(steps.draft.authoring_aids)"
+        code_ref: "src/pipeline/validate.py::TRUSTED_REFERENCE_DOMAINS (arxiv.org, docs.oracle.com, spring.io, kubernetes.io, kafka.apache.org, redis.io, cncf.io, linuxfoundation.org, developer.mozilla.org, learn.microsoft.com, cloud.google.com, docs.aws.amazon.com, man7.org, kernel.org, openjdk.org, docs.python.org, modelcontextprotocol.io, rfc-editor.org, ietf.org, grpc.io, protobuf.dev, projectreactor.io, docs.confluent.io, cassandra.apache.org, go.dev, github.com, dev.mysql.com, postgresql.org 등 — 2026-08-22 error 승격과 함께 누락분 보강 완료. 새 주제가 이 목록에 없는 공식 도메인을 인용해야 하면 이 목록에 먼저 추가할 것)"
+      - id: section_min_words
+        rule: "섹션별 최소 단어수(한글 글자수 + 영숫자 단어수 합산) 미달 시 오류"
+        severity: error
+        value: {차별화 포인트: 40, 본문: 800, 작성자의 견해: 100, 한계와 반론: 80, 종합적 의견: 100}
+      - id: code_or_image_presence
+        rule: "코드펜스와 이미지가 둘 다 0개면 오류"
+        severity: error
+        note: "2026-08-22 승격 (warning -> error)"
+      - id: opinion_disclaimer
+        rule: "'작성자의 견해'·'종합적 의견' 각각에 '>' 인용구 + (의견|견해|해석|사견) 키워드 존재"
+        severity: error
+        note: "2026-08-22 완화 — 예전엔 리터럴 문장 1개를 정확히 요구해 47개 글이 동일 문구를 반복하던 문제 수정"
+      - id: encoding_corruption
+        rule: "본문에 U+FFFD(�) 포함 시 오류"
+        severity: error
+      - id: fact_check_verdicts
+        rule: "'사실 검증 결과' 표에 unverified 또는 contradicted 판정이 하나라도 있으면 오류"
+        severity: error
+      - id: unsupported_claims
+        rule: "판정은 있는데 근거 열이 빈 claim이 있으면 오류 (할루시네이션 신호)"
+        severity: error
+        note: "2026-08-22 승격 (warning -> error)"
+      - id: internal_link_count
+        rule: "본문+백링크+종합적 의견 합산, beji-tech.blogspot.com 링크 개수 < minimumInternalLinks면 오류"
+        severity: error
+        value: {minimumInternalLinks: 2}
+        note: "2026-08-22 신설 및 승격(warning -> error) — 배경: wiki/Incident_Log.md#backlink-bug-2026-08-22. draft 단계에서 src/tools/suggest_internal_links.py로 후보 추천 가능(steps.draft.authoring_aids)"
+      - id: human_approval
+        rule: "--preflight 없이 실행 시 state.json.humanApproved == true 여야 함"
+        severity: error
+    outputs: {ok: bool, errors: list, warnings: list}
+    on_fail: "final.md 수정 후 재실행 — 컨펌된 본문은 절대 임의 축약/재작성 금지, 게이트 로직 쪽을 고치는 게 원칙"
+    next: human_review
+
+  - id: human_review
+    order: 5
+    name: "🛑 관리자 검토 및 명시적 승인"
+    trigger: "에이전트가 final.md 또는 리뷰 artifact를 사용자에게 제시"
+    actor: human
+    enforced_by: "convention: wiki/rules/blogger_rules.md §1, AGENTS.md §2 (자동화 불가 지점)"
+    inputs: ["temp/runs/<run_id>/final.md (validate 통과 상태)"]
+    action: >
+      관리자가 본문(코드/다이어그램/수치 포함)을 검토한다. 승인 전 컨펌 본문은 AI가 임의로 축약·수정·
+      삭제·재작성 절대 금지 — 검증 오류는 본문이 아니라 src/ 소스나 게이트 스키마를 고쳐서 해결.
+      **배치 단위 사전 승인("발행해")은 개별 초안 검토를 대체하지 않는다** — fork/서브에이전트에게
+      "이미 승인됐다"는 근거로 approve+publish까지 위임 금지, `validate --preflight`까지만 시키고
+      부모가 직접 검토·승인·발행할 것.
+    outputs: {approved: bool}
+    checks: []
+    next: approve
+
+  - id: approve
+    order: 6
+    name: 승인 기록
+    trigger: "python main.py approve --run <run_id>"
+    actor: agent
+    enforced_by: "code: src/pipeline/approve.py::approve_run()"
+    inputs: ["temp/runs/<run_id>/state.json"]
+    action: >
+      status가 이미 published면 ValueError로 거부. 아니면 state.status = approved,
+      state.humanApproved = true 로 갱신.
+    outputs: ["temp/runs/<run_id>/state.json (humanApproved=true)"]
+    checks:
+      - id: not_already_published
+        rule: "state.status != published"
+        severity: error
+    next: platform_choice
+
+  - id: platform_choice
+    order: 7
+    name: 배포 플랫폼 재질의
+    trigger: "'승인/배포/post로 옮겨라' 지시를 받아도 반드시 재질의"
+    actor: human
+    enforced_by: "convention: wiki/rules/blogger_rules.md §1 (Human Approval Unalterable & Platform Choice)"
+    inputs: []
+    action: "Blogger(실서버 자동 퍼블리싱) / Naver / Manual(수동 이관만) 중 관리자에게 다시 확인 후 진행"
+    outputs: {platform: "blogger|notion (기본 blogger)"}
+    checks: []
+    next: publish
+
+  - id: publish
+    order: 8
+    name: 멀티 플랫폼 게시
+    trigger: "python main.py publish --run <run_id> [--platform blogger,notion] [--dry-run]"
+    actor: agent
+    enforced_by: "code: src/publishers/__init__.py::publish_to_multi()"
+    inputs: ["temp/runs/<run_id>/final.md", "temp/runs/<run_id>/state.json"]
+    action: |
+      1. validate_run() 재실행(게이트 우회 불가) — 실패 시 즉시 중단, 경고는 출력만.
+      2. dry-run 아니면 ensure_images_pushed(): content/images/ 미반영 변경을 git add·commit·push
+         (실패 시 예외로 발행 자체 차단, src/publishers/__init__.py::ensure_images_pushed).
+      3. final.md 로드 → published_content = 본문에서 '## 꼬리질문' 제거 + raw URL 자동 링크화
+         (코드블록 제외, linkify_markdown).
+      4. convert_markdown_to_html() 호출 → src/pipeline/converter.py (다음 스텝에 상세).
+      5. 플랫폼별(blogger 우선 정렬) BlogPublisher.publish() 호출 — 아래 publish_blogger 참고.
+      6. dry-run이면 여기서 종료(상태 미변경). 아니면 tail_questions/references/toc 파싱,
+         state.status=published, state.publishedPlatforms 갱신, publish-result.json 기록.
+      7. content/posts/<slug>.md로 최종 이관(archive_and_transfer 스텝 참고).
+    outputs:
+      - "라이브 게시물(Blogger 등)"
+      - "temp/runs/<run_id>/state.json (status=published)"
+      - "temp/runs/<run_id>/publish-result.json"
+    checks:
+      - id: gate_revalidation
+        rule: "publish도 validate_run()을 내부에서 다시 호출 — CLI에서 validate를 생략해도 우회 불가"
+        severity: error
+    next: convert_html
+
+  - id: convert_html
+    order: 8.1
+    name: 마크다운 → 라이브 HTML 변환 (publish 내부 서브스텝)
+    trigger: "publish_to_multi() 내부 호출"
+    actor: system
+    enforced_by: "code: src/pipeline/converter.py::convert_markdown_to_html()"
+    inputs: [published_content: markdown]
+    action: |
+      - CLAIM-xxx/SOURCE-xxx 인용 태그를 [1][2] 형식 각괄호로 정리.
+      - 로컬 이미지 경로(file:///...)를 content/images/로 복사 후 GitHub Raw CDN URL로 치환
+        (push 안 돼 있으면 라이브에서 깨짐 — publish 스텝의 ensure_images_pushed가 이를 보장).
+      - '## 참고문헌' 추출(구조화 렌더링용) + '## 백링크' 추출(2026-08-22부터 렌더링 대상,
+        예전엔 그냥 삭제만 됨 — wiki/Incident_Log.md#backlink-bug-2026-08-22).
+      - '## 사실 검증 결과', '## 차별화 포인트', '## 참고문헌', '## 백링크'를 본문에서 제거(내부 전용).
+      - H1 제목을 <h2 class="post-body-title">로 치환, 나머지 ##/### 헤딩으로 TOC 생성(메타 섹션명 제외).
+      - mistune 커스텀 렌더러: 헤딩 앵커, ```mermaid → <div class="mermaid">, 코드블록은 pygments
+        monokai 하이라이팅.
+      - 결과 조립: 본문 HTML + (있으면) 접이식 '📚 참고문헌' 블록 + (있으면) 노출형 '🔗 관련 글' 블록
+        + 테마 CSS/pygments CSS를 인라인한 <div class="tech-blog-post"> 컨테이너.
+    outputs: {html: string, references_html: string, toc: list}
+    checks: []
+    next: publish_blogger
+
+  - id: publish_blogger
+    order: 8.2
+    name: Blogger API 게시 (publish 내부 서브스텝)
+    trigger: "publish_to_multi() 내부 → BloggerPublisher.publish()"
+    actor: system
+    enforced_by: "code: src/publishers/blogger.py::BloggerPublisher"
+    inputs: {title: string, html: string, tags: list, existingPostId: "string|null"}
+    action: |
+      1. .env의 BLOGGER_CLIENT_ID/SECRET/BLOG_ID/REFRESH_TOKEN 로드.
+      2. refresh_token으로 우선 시도: posts().update()(existingPostId 있으면) 또는 posts().insert().
+      3. 실패 시 대화형 브라우저 OAuth 폴백(localhost:8080/oauth2callback 로컬 서버, 브라우저 자동
+         오픈, 토큰 교환 후 .env의 BLOGGER_REFRESH_TOKEN 자동 갱신).
+      4. dry-run이면 실제 API 호출 없이 제목/태그/HTML 글자수만 로그.
+    outputs: {postId: string, url: string, publishedAt: string}
+    checks:
+      - id: response_completeness
+        rule: "postId/url 둘 다 없으면 예외 발생"
+        severity: error
+    next: archive_and_transfer
+
+  - id: archive_and_transfer
+    order: 9
+    name: content/posts/ 정식 자산 이관
+    trigger: "publish_to_multi() 마지막 단계 (dry-run이 아닐 때만)"
+    actor: system
+    enforced_by: "code: src/publishers/__init__.py::publish_to_multi() 하단"
+    inputs: ["temp/runs/<run_id>/final.md (원본, sanitize 전)", publish_results]
+    action: >
+      slug는 final.md frontmatter를 신뢰 소스로 사용(state.slug는 항상 비어있음). frontmatter의
+      status=published, id=Blogger postId(내부 articleId 아님 — 이후 유지보수 도구들이 이 id를
+      API postId로 그대로 씀), url, publishedAt을 실제 게시 결과로 덮어써서 content/posts/<slug>.md에
+      **원본 그대로**(sanitize된 published_content가 아니라 final.md의 content) 저장.
+    outputs: ["content/posts/<slug>.md"]
+    checks: []
+    next: null  # 파이프라인 끝
+
+post_publish_maintenance:  # 위 순차 파이프라인과 별도 — 발행 후 필요할 때만 개별 실행
+  note: "새 일회성 스크립트를 만들지 말고 아래 --dry-run 지원 도구를 재사용/확장할 것 (convention)"
+  tools:
+    - {cmd: "src/tools/update_post_content.py --slug <slug> --body-file <path> [--title]", purpose: "발행 글 본문 부분 수정 후 라이브 반영"}
+    - {cmd: "src/tools/apply_nav_labels.py", purpose: "상단 탭(Basics/Advanced/ETC) 라벨 백필"}
+    - {cmd: "src/tools/patch_published_posts.py", purpose: "라이브 게시물 일괄 패치"}
+    - {cmd: "src/tools/report_fact_check_stats.py", purpose: "factCheckScore/verdict 분포 점검 (읽기 전용)"}
+    - {cmd: "src/tools/archive_session_log.py --dry-run|--keep N", purpose: "session-handoff.md Session log 정리"}
+    - {cmd: "src/tools/build_session_backlink_index.py / apply_session_backlinks.py / lint_session_backlinks.py", purpose: "세션 backlink 줄 범위 인덱스/적용/검사"}
+
+related_but_separate_pipelines:  # 이 문서의 주 스코프(글 작성) 밖 — main.py의 다른 서브커맨드
+  - {cmd: "python main.py sync", purpose: "Notion 페이지 → MDX 동기화", code_ref: "src/pipeline/sync_mdx.py"}
+  - {cmd: "python main.py todo [--status]", purpose: "final.md '## 꼬리질문'에서 파싱된 TODO 조회", code_ref: "src/pipeline/knowledge_store.py"}
+  - {cmd: "python main.py backlinks --run <run_id>", purpose: "지식 그래프 기반 백링크/참고문헌 조회", code_ref: "wiki/knowledge-graph.json"}
+  - {cmd: "python main.py theme [--upload]", purpose: "Blogger 테마 관리 — 라이브 반영은 여전히 수동(Blogger HTML 편집기 직접 붙여넣기)", code_ref: "src/theme/theme.py"}
+
+guardrails:  # 특정 스텝에 묶이지 않는 전역 제약 — 전부 convention(자동 검증 없음, 사람이 지킬 것)
+  - id: no_one_off_scripts
+    rule: "scratch/ 등에 일회성 API 푸시 스크립트 작성 전면 금지 — 오직 python main.py 정식 파이프라인만"
+    source: "wiki/Blog_Writing_Rules.md #1, AGENTS.md §3"
+  - id: confirmed_body_immutable
+    rule: "관리자가 승인한 final.md 본문은 AI가 임의로 축약·수정·삭제·재작성 금지 — 오류는 src/나 게이트를 고쳐서 해결"
+    source: "wiki/rules/blogger_rules.md §1"
+  - id: batch_approval_not_transitive
+    rule: "'발행해' 같은 배치 단위 사전 승인은 개별 초안에 대한 사전 검토를 대체하지 않는다 — fork에게 approve+publish까지 위임 금지"
+    source: "session-handoff 2026-08-19 재발 사례, ~/.claude/.../memory/feedback_subagent_scope_discipline.md"
+  - id: differentiation_required
+    rule: "새 글은 '## 차별화 포인트'로 상위 검색결과 대비 부가가치를 먼저 명시 — 포화 101 주제는 이 각도 없이 지양"
+    source: "wiki/Blog_Writing_Rules.md #14"
+  - id: internal_links_must_be_real
+    rule: "'## 백링크'에는 실제 라이브 URL만(https://beji-tech.blogspot.com/...) — 저장소 내부 상대경로 금지"
+    source: "wiki/Blog_Writing_Rules.md #15"
+  - id: utf8_only
+    rule: "final.md는 항상 UTF-8로 쓰고 멀티바이트 문자를 자르는 부분 편집 금지"
+    source: "wiki/Blog_Writing_Rules.md #8"
+  - id: quality_over_word_count
+    rule: "섹션 최소 분량은 하한선일 뿐 — 할루시네이션/불필요한 난해함/과도한 단순화(패딩) 금지, 자동 게이트가 못 잡는 부분"
+    source: "wiki/Blog_Writing_Rules.md #13"
+
+file_map:  # run 디렉토리 및 관련 파일 빠른 참조
+  run_dir: "temp/runs/<runId>/"
+  run_dir_files: [state.json, request.md, article-template.md, final.md, publish-result.json]
+  gate_config: src/core/publish_gate.json
+  gate_logic: src/pipeline/validate.py
+  converter: src/pipeline/converter.py
+  publishers: [src/publishers/blogger.py, src/publishers/notion.py]
+  article_template: wiki/templates/article.md
+  writing_rules: wiki/Blog_Writing_Rules.md
+  incident_log: wiki/Incident_Log.md
+  topic_backlog: wiki/Post_Topic_Backlog.md
+  final_archive: "content/posts/<slug>.md"
 ```
-
----
-
-### 1.1 RawSource (원천 기술 레퍼런스)
-- **공식 기술 규격**: POSIX 표준, RFC 문서 (RFC 9114 HTTP/3, RFC 9000 QUIC 등), Linux Kernel Documentation
-- **공식 개발자 가이드**: Kubernetes Docs, Spring Framework Official Specs, Node.js API Reference
-- **학술 및 전문 문서**: W. Richard Stevens의 *UNIX Network Programming*, Cloudflare/Toss/Line Tech Blog Reference
-
----
-
-### 1.2 Wiki (AI Agent 참고 RAG 지식 베이스)
-- **위키 디렉터리 경로**: [`wiki/`](file:///d:/coding-project/2026-project/ai-blogging/wiki/)
-- **주요 지식 노드**:
-  - [`wiki/README.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/README.md): RAG 연동 지식 베이스 인덱스
-  - [`wiki/Agent_Guidelines.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/Agent_Guidelines.md): 에이전트 지식 활용 지침
-  - [`wiki/Google_Blogger_API_사용법.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/Google_Blogger_API_%EC%82%AC%EC%9A%A9%EB%B2%95.md): API 서비스 계정 및 퍼블리싱 지식
-
----
-
-### 1.3 Content (글 작성 구분 템플릿 & 배포 자산)
-- **글 작성 구분 템플릿**: [`wiki/templates/article.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/templates/article.md) (Frontmatter 및 표준 헤더 골격)
-- **정식 글 저장소**: `content/posts/` (최종 승인 및 배포 완료된 마크다운 아티클 노드)
-- **지식 그래프 DB**: `wiki/knowledge-graph.json` (포스팅 간 관련성, 백링크, 연관 관계 지식 네트워크)
-- **이미지 자산**: `content/images/` (포스팅 본문 시각 자산)
-
----
-
-### 1.4 Rule (사용자 지시 및 파이프라인 제약 수칙)
-- **통합 규칙 문서**: [`wiki/rules/blogger_rules.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blogger_rules.md)
-- **사용자 필수 지시 4대 핵심 수칙**:
-  1. **일회성 스크립트 작성 전면 금지**: `scratch/*.js` 등 임의의 일회성 API 전송 스크립트를 절대 금지하며, 오직 `python main.py` 정식 오케스트레이터를 통한다.
-  2. **6단계 정식 라이프사이클 100% 이행**:
-     `created → researched → drafted → fact_checked → 🛑[관리자 리뷰 대기] → approved → published`
-  3. **`temp/runs/${run_id}/final.md` 100% 필수 보관**: 배포 전 로컬 검증 원본 `final.md`를 타임스탬프 실행 폴더에 의무적으로 보관한다.
-  4. **관리자 명시적 승인 필수 (Human Approval Gate)**: `fact_checked` 완료 후 절대 자동 배포하지 않으며, 관리자(사용자)가 `final.md` 검토 후 **"승인/배포 지시"**를 내렸을 때만 실서버로 배포한다. (배포 시 `## 사실 검증 결과` 표 자동 Sanitization)
-
----
-
-### 1.5 Schema (위 사항의 통합 링크 & 인덱싱)
-- **전체 글 작성 파이프라인 인덱스**: 본 문서 ([`wiki/rules/blog_article_pipeline_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blog_article_pipeline_schema.md))
-- **에이전트 행동 수칙 인덱스**: 프로젝트 최상위 [`AGENTS.md`](file:///d:/coding-project/2026-project/ai-blogging/AGENTS.md)
 
 ## 관련 세션
 - `../sessions/raw/2026-08-16.md:31178-31214` (pipeline, 2026-08-16)
