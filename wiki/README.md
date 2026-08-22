@@ -27,14 +27,9 @@ AI Agent는 글을 작성하거나 주제를 추천할 때 아래 RAG 지식 노
 
 ---
 
-## 🛡️ 파이프라인 5대 핵심 수칙
+## 🛡️ 파이프라인 핵심 수칙
 
-1. **일회성 스크립트 작성 전면 금지** (`python main.py` 정식 오케스트레이터 100% 필수)
-2. **6단계 포스팅 라이프사이클 100% 이행**:
-   `created → researched → drafted → fact_checked → 🛑[관리자 명시적 승인] → approved → published`
-3. **`temp/runs/${run_id}/final.md` 100% 필수 보관 및 로컬 검증 원본 관리**
-4. **관리자 명시적 승인 필수 (Human Approval Gate)**: `fact_checked` 완료 후 절대 자동 배포하지 않으며 관리자의 승인 지시 시 배포 진행
-5. **최종 승인 글 자동 이관**: 배포 성공 시 `final.md` 내부 검증 메모 자동 Sanitization 제거 후 `content/posts/${slug}.md`로 자동 이관 보관
+전문은 프로젝트 최상위 [`AGENTS.md`](../AGENTS.md)가 SSOT입니다(중복 유지 방지를 위해 2026-08-22부터 이 문서에는 요약을 두지 않음).
 
 
 ## 세션 기록

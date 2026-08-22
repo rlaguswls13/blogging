@@ -58,15 +58,7 @@ graph TD
 - **전체 글 작성 파이프라인 인덱스**: 본 문서 ([`wiki/rules/blog_article_pipeline_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blog_article_pipeline_schema.md))
 - **에이전트 행동 수칙 인덱스**: 프로젝트 최상위 [`AGENTS.md`](file:///d:/coding-project/2026-project/ai-blogging/AGENTS.md)
 
-<!-- AUTO:related-sessions:start -->
-
 ## 관련 세션
-이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
-
-- [2026-08-16](../sessions/raw/2026-08-16.md)
-- [2026-08-15](../sessions/raw/2026-08-15.md)
-- [2026-08-14](../sessions/raw/2026-08-14.md)
-- [2026-08-13](../sessions/raw/2026-08-13.md)
-- [2026-08-12](../sessions/raw/2026-08-12.md)
-
-<!-- AUTO:related-sessions:end -->
+- `../sessions/raw/2026-08-16.md:31178-31214` (pipeline, 2026-08-16)
+- `../sessions/raw/2026-08-16.md:34838-34954` (pipeline, 2026-08-16)
+- 전체 인덱스: [Session_Index.md](../Session_Index.md)

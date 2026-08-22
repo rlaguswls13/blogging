@@ -74,11 +74,7 @@ Complete Runnable Code Example
 3. **Mermaid 다이어그램 필수**: 흐름 시각화 작성
 4. **URL 하이퍼링크 필수**: raw URL 대신 `[문서명](URL)` 변환
 
-<!-- AUTO:related-sessions:start -->
-
 ## 관련 세션
-이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
-
-- [2026-08-16](sessions/raw/2026-08-16.md)
-
-<!-- AUTO:related-sessions:end -->
+- `sessions/raw/2026-08-16.md:33937-33953` (content-quality, 2026-08-16)
+- `sessions/raw/2026-08-16.md:33918-33936` (content-quality, 2026-08-16)
+- 전체 인덱스: [Session_Index.md](Session_Index.md)

@@ -52,13 +52,7 @@ graph LR
 - **지식 베이스(wiki/) 상시 기록 의무**:
   - 구글 특화 위젯/가젯 개편 지식, 트러블슈팅 경험, XML 예외 규칙은 발생 즉시 **[`wiki/theme/blogger_layout_thema_widget.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/theme/blogger_layout_thema_widget.md)** 및 **[`wiki/rules/blogger_platform_schema.md`](file:///d:/coding-project/2026-project/ai-blogging/wiki/rules/blogger_platform_schema.md)** 지식 문서에 100% 지속 누적 기록 업데이트합니다.
 
-<!-- AUTO:related-sessions:start -->
-
 ## 관련 세션
-이 문서와 관련된 세션 아카이브(자동 생성 — 태그 매칭 기반):
-
-- [2026-08-16](../sessions/raw/2026-08-16.md)
-- [2026-08-12](../sessions/raw/2026-08-12.md)
-- [2026-08-11](../sessions/raw/2026-08-11.md)
-
-<!-- AUTO:related-sessions:end -->
+- `../sessions/raw/2026-08-16.md:33543-33577` (blogger-api, 2026-08-16)
+- `../sessions/raw/2026-08-16.md:33507-33542` (blogger-api, 2026-08-16)
+- 전체 인덱스: [Session_Index.md](../Session_Index.md)

@@ -70,6 +70,11 @@ graph TD
 - **발행된 글의 본문을 나중에 다시 수정**하려면 `src/tools/update_post_content.py --slug <slug> --body-file <path> [--title "..."]`을 쓸 것 — 이전에는 이런 CLI 경로가 아예 없었다. `content/posts/<slug>.md`를 고치고 `convert_markdown_to_html()`로 재렌더링해 라이브 게시물에 `posts.update()`로 반영한다. 본문의 H1과 frontmatter `title`이 다르면 경고가 뜨니 `--title`로 함께 맞출 것.
 - 각 실행의 원본 주제 확인이 필요하면 `temp/runs/<runId>/request.md`, 게시 후 결과 확인은 `publish-result.json`을 참고합니다.
 - **콘텐츠 유지보수 도구**: `src/tools/apply_nav_labels.py`, `dedupe_basics_label.py`, `rename_trends_to_etc.py`, `patch_published_posts.py` — 전부 `--dry-run`을 지원하는 재사용 가능한 Blogger API 콘텐츠 수정 도구. 이미 발행된 글을 일괄 수정해야 하면 새 스크립트를 만들지 말고 이 패턴을 따를 것.
+- **세션 핸드오프 로그 정리 도구**: `src/tools/archive_session_log.py --dry-run` / (인자 없이) — `.agent/session-handoff.md`의 `## Session log`가 매 세션 전체 로딩되므로, 항목이 4개 이상 쌓이면 실행을 고려할 것(기본 최신 3개만 남기고 나머지는 `wiki/sessions/changelog.md`로 원문 그대로 이동, `--keep N`으로 조정 가능). 2026-08-22 도입 — 배경은 `wiki/Incident_Log.md#doc-cleanup-2026-08-22` 참고.
+- **세션 backlink 줄 범위 인덱스/적용/검사 도구 3종** (2026-08-22 도입, 배경은 `wiki/Incident_Log.md#doc-cleanup-2026-08-22` 참고): wiki 문서의 `## 관련 세션`은 `wiki/sessions/raw/*.md` 파일 전체가 아니라 `경로/2026-08-16.md:1234-1567` 같은 구체적 줄 범위를 가리킨다 — `Read(offset=, limit=)`로 그 범위만 읽으면 되므로 최대 2.7MB인 원본 파일을 통째로 열 필요가 없다.
+  - `python src/tools/build_session_backlink_index.py` — raw 아카이브를 블록 단위로 파싱해 `wiki/sessions/raw-index.json`(태그별 줄 범위 인덱스) 생성. raw 아카이브가 바뀔 때만 재실행.
+  - `python src/tools/apply_session_backlinks.py --dry-run` / (인자 없이) — 위 인덱스를 이용해 태그가 일치하는 wiki 문서 8개의 `## 관련 세션` 섹션을 최신 줄 범위 backlink로 갱신.
+  - `python src/tools/lint_session_backlinks.py` — wiki 전체를 스캔해 backlink가 가리키는 파일/줄 범위가 아직 유효한지(파일 존재, 범위 내, 블록 헤더 일치) 검사(읽기 전용, 깨진 게 있으면 exit 1). **wiki 문서를 수정할 때마다, 또는 주기적으로 실행 권장** — 깨지면 위 두 도구를 다시 실행해 재생성할 것.
 - **이미지 GitHub CDN 자동 push**: `publish`(dry-run 아닐 때)는 게이트 통과 직후 `src/publishers/__init__.py::ensure_images_pushed()`를 호출해 `content/images/`의 미반영 변경을 자동 commit·push합니다. 실패하면(네트워크/인증 등) 예외로 발행이 차단됩니다 — 이미지를 미리 수동으로 push해둘 필요는 없지만, 실패 원인을 먼저 해결해야 재발행 가능합니다.
 - **사실 검증 통계 확인**: `python src/tools/report_fact_check_stats.py`(읽기 전용)로 `temp/runs/*/final.md`의 factCheckScore/verdict 분포를 주기적으로 점검합니다. 2026-08-17 기준 남아있는 17개 run 중 14개가 예외 없이 100% verified였습니다 — 형식적 검증 방지를 위해 `Blog_Writing_Rules.md` 12번 수칙(실제 원문 대조) 준수가 중요합니다.
 
