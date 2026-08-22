@@ -12,7 +12,7 @@
 | **B-2** | ✅ 발행완료 | ~~**HTTP/1.1 vs HTTP/2 vs HTTP/3 멀티플렉싱(Multiplexing)과 QUIC 프로토콜 메커니즘**~~ [🔗](https://beji-tech.blogspot.com/2026/08/http11-vs-http2-vs-http3.html) | HOLB(Head-of-Line Blocking) 문제, Binary Framing 레이어, UDP 기반 QUIC 패킷 손실 복구 원리 |
 | **B-3** | ✅ 발행완료 | ~~**JVM 메모리 영역(Heap, Stack, Metaspace) 구조와 Garbage Collection(GC) 기본 동작 원리**~~ [🔗](https://beji-tech.blogspot.com/2026/08/jvm-heap-stack-metaspace-garbage.html) | Young/Old Generation, Minor/Major GC, Stop-The-World 메커니즘 및 G1 GC 기본 동작 |
 | **B-4** | ✅ 발행완료 | ~~**Relational DB (RDBMS) vs NoSQL DB 데이터 모델링 및 ACID vs BASE 트랜잭션 비교**~~ [🔗](https://beji-tech.blogspot.com/2026/08/sql-vs-nosql-sqlnosql-acid-vs-base-cap.html) | 원자성/일관성/격리성/지속성(ACID) vs Eventual Consistency(BASE) 및 쿼리 액세스 패턴 차이 |
-| **B-5** | 🟡 미발행 (차별화 포인트 미정) | **TCP 3-Way / 4-Way Handshake 동작 흐름과 TIME_WAIT 소켓 상태 이해하기** | SYN/ACK 시퀀스 번호 교환, FIN/ACK 소켓 클로징, TIME_WAIT 소켓 재사용(`SO_REUSEADDR`) 옵션 분석 |
+| **B-5** | ✅ 발행완료 | ~~**TCP 3-Way / 4-Way Handshake 동작 흐름과 TIME_WAIT 소켓 상태 이해하기**~~ [🔗](https://beji-tech.blogspot.com/2026/08/tcp-3-way4-way-handshake-timewait.html) | SYN/ACK 시퀀스 번호 교환, FIN/ACK 소켓 클로징, TIME_WAIT 소켓 재사용(`SO_REUSEADDR`) 옵션 분석 |
 | **B-6** | ✅ 발행완료 | ~~**TCP 기반 애플리케이션 계층 통신 원리 — 이메일(IMAP/POP3) 프로토콜이 TCP 위에서 동작하는 방식**~~ [🔗](https://beji-tech.blogspot.com/2026/08/tcp-imappop3-tcp.html) | 연결지향형 스트림 소켓과 포트 바인딩, 텍스트 기반 요청-응답 프로토콜 구조(IMAP/POP3/SMTP 공통 패턴), 신뢰성 있는 순서 보장 전달이 이메일 프로토콜 설계에 미치는 영향 |
 
 ---
