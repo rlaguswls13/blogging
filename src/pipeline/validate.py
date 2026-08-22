@@ -8,7 +8,8 @@ from src.core.files import read_json, read_state
 from src.core.types import ArticleFrontmatter, PublishGate
 
 # Tier 1/2 참고문헌 신뢰도 도메인 allowlist (wiki/Blog_Writing_Rules.md 10번 수칙 참고).
-# 이 목록과 하나도 겹치지 않으면 "출처가 전부 블로그성"이라는 경고만 띄운다(발행 차단 아님).
+# 2026-08-22: 이 목록과 하나도 겹치지 않으면 예전엔 경고만 띄우고 통과시켰으나, 경고가 무시되고
+# 넘어가는 사례가 반복돼(사용자 요청) 오류로 승격했다 — 발행을 막는다.
 TRUSTED_REFERENCE_DOMAINS = {
     "arxiv.org", "dl.acm.org", "ieeexplore.ieee.org", "datatracker.ietf.org",
     "www.w3.org", "w3.org", "docs.oracle.com", "spring.io", "docs.spring.io",
@@ -18,6 +19,11 @@ TRUSTED_REFERENCE_DOMAINS = {
     "man7.org", "kernel.org", "www.kernel.org", "openjdk.org", "docs.python.org",
     "modelcontextprotocol.io", "blog.modelcontextprotocol.io",
     "www.rfc-editor.org", "rfc-editor.org", "www.ietf.org", "ietf.org",
+    # 2026-08-22: reference_credibility_tier가 warning->error로 승격되면서 이 목록에 없는
+    # 도메인만 쓰면 발행이 막히게 됐다. 누적 누락 지적 반영(session-handoff 2026-08-19 이후).
+    "grpc.io", "protobuf.dev", "projectreactor.io", "docs.confluent.io",
+    "cassandra.apache.org", "go.dev", "github.com", "dev.mysql.com", "www.postgresql.org",
+    "postgresql.org",
 }
 
 def section_exists(body: str, heading: str) -> bool:
@@ -134,15 +140,15 @@ def validate_run(
                 message = f"참고문헌 링크가 접속되지 않습니다 ({detail}): {url}"
                 (errors if not gate.allowBrokenLinks else warnings).append(message)
 
-    # Check Reference Credibility Tier (warning only)
+    # Check Reference Credibility Tier (2026-08-22: warning -> error 승격)
     live_urls = [url for _, url in ref_urls if url]
     if live_urls:
         has_trusted = any(
             urlparse(url).netloc in TRUSTED_REFERENCE_DOMAINS for url in live_urls
         )
         if not has_trusted:
-            warnings.append(
-                "참고문헌이 전부 비공식/블로그성 출처입니다. 공식 문서나 논문을 최소 1개 포함하는 것을 권장합니다."
+            errors.append(
+                "참고문헌이 전부 비공식/블로그성 출처입니다. 공식 문서나 논문을 최소 1개 포함해야 합니다."
             )
 
     # Check Section Minimum Word Counts
@@ -154,22 +160,23 @@ def validate_run(
                 f"'{section}' 섹션 분량이 부족합니다. 최소 {min_words}단어 필요, 현재 약 {actual}단어입니다."
             )
 
-    # Check Code/Image Presence (warning only)
+    # Check Code/Image Presence (2026-08-22: warning -> error 승격)
     if code_block_count(post.content) == 0 and image_count(post.content) == 0:
-        warnings.append("코드 예시와 이미지가 모두 없습니다. 주제에 맞다면 추가를 고려하세요.")
+        errors.append("코드 예시와 이미지가 모두 없습니다. 최소 1개는 포함해야 합니다.")
 
-    # Check Internal Link Count (warning only)
-    # 2026-08-22: '## 백링크' 섹션이 예전엔 라이브 HTML에서 통째로 삭제돼 내부링크가 전혀 렌더링되지
-    # 않았다(converter.py 버그, 이번에 수정). 이제 실제로 라이브에 노출되므로 최소 개수를 점검한다.
-    # 신규 주제의 첫 글처럼 아직 연결할 기존 글이 없을 수도 있어 차단이 아닌 경고로 둔다.
+    # Check Internal Link Count (2026-08-22: warning -> error 승격)
+    # '## 백링크' 섹션이 예전엔 라이브 HTML에서 통째로 삭제돼 내부링크가 전혀 렌더링되지 않았다
+    # (converter.py 버그, 이번에 수정). 이제 실제로 라이브에 노출되므로 최소 개수를 강제한다.
+    # 신규 주제의 첫 글처럼 아직 연결할 기존 글이 없다면, 다른 이미 발행된 관련 글을 찾아 연결할 것
+    # (완전히 새 카테고리라 정말 하나도 없다면 wiki/Post_Topic_Backlog.md에 먼저 관련 글을 채택할 것).
     internal_link_text = "\n".join(
         section_text(post.content, s) for s in ("본문", "백링크", "종합적 의견")
     )
     internal_links = internal_link_count(internal_link_text)
     if internal_links < gate.minimumInternalLinks:
-        warnings.append(
-            f"자사 블로그 내부링크가 {internal_links}개뿐입니다(권장 {gate.minimumInternalLinks}개 이상). "
-            "관련 발행 글을 '## 백링크' 또는 본문에 실제 라이브 URL로 링크하는 것을 고려하세요."
+        errors.append(
+            f"자사 블로그 내부링크가 {internal_links}개뿐입니다(최소 {gate.minimumInternalLinks}개 필요). "
+            "관련 발행 글을 '## 백링크' 또는 본문에 실제 라이브 URL로 링크해야 합니다."
         )
 
     # Check Opinion Disclaimer
@@ -206,10 +213,10 @@ def validate_run(
     if "contradicted" in verdicts:
         errors.append("반박된(contradicted) 판정의 주장이 남아 있습니다.")
 
-    # Check for claims with no evidence cited (weak anti-hallucination signal, warning only)
+    # Check for claims with no evidence cited (anti-hallucination signal, 2026-08-22: warning -> error 승격)
     unsupported = [claim.strip() for claim, verdict, evidence in claim_rows if not evidence.strip()]
     if unsupported:
-        warnings.append(
+        errors.append(
             f"근거(출처) 없이 판정된 claim이 {len(unsupported)}건 있습니다: {unsupported[0][:60]}"
         )
         
