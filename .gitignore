@@ -80,8 +80,12 @@ playwright-report/
 test-results/
 
 
-/agents/*
-.agent/*
+.agent
+.claude
+.omc
+report
+wiki
+temp
 
 # Python cache and temporary files
 __pycache__/
