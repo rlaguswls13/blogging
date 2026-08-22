@@ -14,6 +14,7 @@
 | **B-4** | ✅ 발행완료 | ~~**Relational DB (RDBMS) vs NoSQL DB 데이터 모델링 및 ACID vs BASE 트랜잭션 비교**~~ [🔗](https://beji-tech.blogspot.com/2026/08/sql-vs-nosql-sqlnosql-acid-vs-base-cap.html) | 원자성/일관성/격리성/지속성(ACID) vs Eventual Consistency(BASE) 및 쿼리 액세스 패턴 차이 |
 | **B-5** | ✅ 발행완료 | ~~**TCP 3-Way / 4-Way Handshake 동작 흐름과 TIME_WAIT 소켓 상태 이해하기**~~ [🔗](https://beji-tech.blogspot.com/2026/08/tcp-3-way4-way-handshake-timewait.html) | SYN/ACK 시퀀스 번호 교환, FIN/ACK 소켓 클로징, TIME_WAIT 소켓 재사용(`SO_REUSEADDR`) 옵션 분석 |
 | **B-6** | ✅ 발행완료 | ~~**TCP 기반 애플리케이션 계층 통신 원리 — 이메일(IMAP/POP3) 프로토콜이 TCP 위에서 동작하는 방식**~~ [🔗](https://beji-tech.blogspot.com/2026/08/tcp-imappop3-tcp.html) | 연결지향형 스트림 소켓과 포트 바인딩, 텍스트 기반 요청-응답 프로토콜 구조(IMAP/POP3/SMTP 공통 패턴), 신뢰성 있는 순서 보장 전달이 이메일 프로토콜 설계에 미치는 영향 |
+| **B-7** | ✅ 발행완료 | ~~**TLS/SSL Handshake 원리와 HTTPS 인증서 검증 과정 — TLS 1.3이 어떻게 1-RTT로 줄였는가**~~ [🔗](https://beji-tech.blogspot.com/2026/08/tlsssl-handshake-https-tls-13-1-rtt.html) | TLS 1.2(2-RTT) vs TLS 1.3(1-RTT) 핸드셰이크 메시지 흐름(openssl s_client 실제 캡처 비교), SAN vs CN 인증서 체인 검증(RFC 6125), 0-RTT 재전송 위험(RFC 8446 §2.3/§8), RFC 8996의 TLS 1.0/1.1 폐지 |
 
 ---
 
