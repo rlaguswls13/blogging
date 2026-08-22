@@ -41,7 +41,7 @@ from dotenv import load_dotenv
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-from src.core.paths import posts_root
+from src.core.paths import find_post_by_slug
 from src.pipeline.converter import convert_markdown_to_html
 
 load_dotenv()
@@ -73,9 +73,9 @@ def main():
     body_file = sys.argv[sys.argv.index("--body-file") + 1]
     dry_run = "--dry-run" in sys.argv
 
-    post_path = posts_root / f"{slug}.md"
-    if not post_path.exists():
-        print(f"Error: {post_path} 없음", file=sys.stderr)
+    post_path = find_post_by_slug(slug)
+    if post_path is None:
+        print(f"Error: content/posts/*/{slug}.md 없음", file=sys.stderr)
         sys.exit(1)
 
     existing = frontmatter.loads(post_path.read_text(encoding="utf-8"))

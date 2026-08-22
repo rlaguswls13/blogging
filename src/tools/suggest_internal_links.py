@@ -24,7 +24,7 @@ from pathlib import Path
 import frontmatter
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-POSTS_GLOB = str(REPO_ROOT / "content" / "posts" / "*.md")
+POSTS_GLOB = str(REPO_ROOT / "content" / "posts" / "*" / "*.md")  # Basics/Advanced/ETC 하위폴더
 
 
 def load_candidates():

@@ -9,6 +9,7 @@ load_dotenv()
 
 from src.pipeline.new_run import create_run
 from src.pipeline.validate import validate_run
+from src.pipeline.seo_check import check_meta_description
 from src.pipeline.approve import approve_run
 from src.publishers import publish_to_multi
 from src.pipeline.sync_mdx import sync_mdx
@@ -66,6 +67,17 @@ def main():
                     print(f"오류: {e}", file=sys.stderr)
                 sys.exit(1)
             print("게시 게이트 통과")
+
+            if has_flag(args, "seo"):
+                # 8개 발행 게이트(validate_run())와 완전히 분리된 독립 점검 — 통과 실패해도
+                # 발행 게이트 자체를 막지 않는다(현재는 정보/경고 수준).
+                seo_result = check_meta_description(run_id)
+                print(f"\n[SEO] 라이브 메타 description 예상 미리보기 ({len(seo_result.snippet_preview)}자):")
+                print(f"[SEO]   \"{seo_result.snippet_preview}\"")
+                for w in seo_result.warnings:
+                    print(f"[SEO] 경고: {w}")
+                if seo_result.ok:
+                    print("[SEO] 점검 통과 — 경고 없음")
             return
 
         elif command == "approve":

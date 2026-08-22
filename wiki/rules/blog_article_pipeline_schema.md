@@ -84,6 +84,24 @@ element_matrix:  # 2026-08-22 추가 — 작성 요소별 write→check→lint 1
     written_in: draft 전체
     check: {rule: "(구조는 판단 요소가 아니라 형식 요소 — check 단계 없음)", automated: null}
     lint: {rule: "frontmatter 스키마 + 9개 필수 섹션 + 인코딩 손상 없음", check_id: [frontmatter, required_sections, min_references, encoding_corruption], automated: true}
+  - element: "SEO 메타 description (2026-08-22 신설)"
+    written_in: "draft (## 요약 섹션 — 별도 필드 없음)"
+    check: {rule: "요약 도입부가 검색 스니펫으로 쓰기에 자연스러운지(문장이 어색하게 안 잘리는지, 상투구로 시작 안 하는지)", automated: true, note: "src/pipeline/seo_check.py — validate_run() 8개 게이트와 물리적으로 분리된 독립 모듈. 통과 실패해도 발행 자체는 막지 않음(정보/경고 수준)."}
+    lint: {rule: "(없음 — validate_run()의 필수 섹션 존재 여부와 무관하게 요약 섹션 콘텐츠 품질만 봄)", automated: null}
+    background: >
+      Blogger API v3 Posts 리소스는 글별 검색 설명 필드를 제공하지 않는다(2026-08-22 확인,
+      developers.google.com/blogger/docs/3.0/reference/posts + Blogger 공식 커뮤니티 답변
+      support.google.com/blogger/thread/343506660, 2025-05 — "customMetadata는 Blogger가
+      쓰지 않아 문서에서 제거했다, 편집기에서 수동 입력하는 수밖에 없다"). content/theme/
+      blogger_site_theme.xml에서 data:post.body를 <head>의 snippet()으로 잘라 자동 채우려는
+      시도도 2026-08-23에 실패로 확인됐다 — data:post.*는 Blog 위젯의 글 목록 루프 밖(=<head>)
+      에서는 항상 비어 있어 결과가 빈 문자열이 된다(라이브에서 <meta content=''/> 직접 확인).
+      결론: <meta name="description">를 글마다 채우는 프로그래밍적 방법은 API로도 테마로도
+      없다 — Blogger 글 편집기의 "검색 설명" 칸에 사람이 직접 입력하거나(수동), 그 입력창을
+      브라우저 자동화로 대신 채우는 것(미착수, 논의 중) 둘 중 하나뿐이다. seo_check.py는 대신
+      "구글이 크롤링 시 본문에서 자동으로 뽑아갈 가능성이 높은 '## 요약' 첫 문장이 검색 노출용
+      으로 자연스러운지"를 점검하는 용도로 재해석해서 유지한다.
+    cli: "python main.py validate --run <run_id> --seo  (또는 python src/pipeline/seo_check.py --run <run_id> 단독 실행)"
 
 steps:
   - id: topic_selection
@@ -137,6 +155,7 @@ steps:
     authoring_aids:  # 2026-08-22 신설 — validate 단계에서야 실패를 발견하는 왕복을 줄이기 위한 작성 보조 도구
       - {cmd: "src/tools/suggest_internal_links.py --tags <tags> [--topic \"...\"]", satisfies_check: internal_link_count, purpose: "content/posts/*.md frontmatter에서 태그/키워드 겹치는 기존 글을 점수순으로 추천, ## 백링크에 바로 붙여넣기 가능한 마크다운 링크로 출력"}
       - {cmd: "src/tools/check_reference_domains.py <url1> [url2] ...", satisfies_check: reference_credibility_tier, purpose: "후보 참고문헌 URL을 validate.py의 TRUSTED_REFERENCE_DOMAINS와 즉석 대조(같은 목록 재사용, 복제 아님)"}
+      - {cmd: "python src/pipeline/seo_check.py --run <run_id>", satisfies_check: "(신규, validate_run() 8개 게이트와 분리된 독립 점검)", purpose: "라이브 배포 시 <meta name=\"description\">으로 쓰일 '## 요약' 첫 160자 미리보기 + 문장이 어색하게 안 잘리는지 경고"}
     checks:
       - id: required_sections
         rule: "9개 섹션 헤딩 모두 존재"
@@ -273,7 +292,7 @@ steps:
       5. 플랫폼별(blogger 우선 정렬) BlogPublisher.publish() 호출 — 아래 publish_blogger 참고.
       6. dry-run이면 여기서 종료(상태 미변경). 아니면 tail_questions/references/toc 파싱,
          state.status=published, state.publishedPlatforms 갱신, publish-result.json 기록.
-      7. content/posts/<slug>.md로 최종 이관(archive_and_transfer 스텝 참고).
+      7. content/posts/<Category>/<slug>.md로 최종 이관(archive_and_transfer 스텝 참고, Category는 tags 기준 Basics/Advanced/ETC).
     outputs:
       - "라이브 게시물(Blogger 등)"
       - "temp/runs/<run_id>/state.json (status=published)"
@@ -329,7 +348,7 @@ steps:
 
   - id: archive_and_transfer
     order: 9
-    name: content/posts/ 정식 자산 이관
+    name: content/posts/<Category>/ 정식 자산 이관
     trigger: "publish_to_multi() 마지막 단계 (dry-run이 아닐 때만)"
     actor: system
     enforced_by: "code: src/publishers/__init__.py::publish_to_multi() 하단"
@@ -337,9 +356,10 @@ steps:
     action: >
       slug는 final.md frontmatter를 신뢰 소스로 사용(state.slug는 항상 비어있음). frontmatter의
       status=published, id=Blogger postId(내부 articleId 아님 — 이후 유지보수 도구들이 이 id를
-      API postId로 그대로 씀), url, publishedAt을 실제 게시 결과로 덮어써서 content/posts/<slug>.md에
+      API postId로 그대로 씀), url, publishedAt을 실제 게시 결과로 덮어써서 content/posts/<Category>/<slug>.md에
+      (Category는 src/core/paths.py::category_for_tags()가 tags 기준으로 결정, 2026-08-23 신설)
       **원본 그대로**(sanitize된 published_content가 아니라 final.md의 content) 저장.
-    outputs: ["content/posts/<slug>.md"]
+    outputs: ["content/posts/<Category>/<slug>.md"]
     checks: []
     next: null  # 파이프라인 끝
 
@@ -352,6 +372,7 @@ post_publish_maintenance:  # 위 순차 파이프라인과 별도 — 발행 후
     - {cmd: "src/tools/report_fact_check_stats.py", purpose: "factCheckScore/verdict 분포 점검 (읽기 전용)"}
     - {cmd: "src/tools/archive_session_log.py --dry-run|--keep N", purpose: "session-handoff.md Session log 정리"}
     - {cmd: "src/tools/build_session_backlink_index.py / apply_session_backlinks.py / lint_session_backlinks.py", purpose: "세션 backlink 줄 범위 인덱스/적용/검사"}
+    - {cmd: "src/tools/build_moc.py", purpose: "content/posts/<Category>/_MOC.md(Obsidian MOC) 재생성 — 각 글의 실제 ## 백링크 관계를 tags 기준 그룹으로 정리. 새 글 발행/백링크 수정 후 재실행 권장(2026-08-23 신설)"}
 
 related_but_separate_pipelines:  # 이 문서의 주 스코프(글 작성) 밖 — main.py의 다른 서브커맨드
   - {cmd: "python main.py sync", purpose: "Notion 페이지 → MDX 동기화", code_ref: "src/pipeline/sync_mdx.py"}
@@ -387,13 +408,15 @@ file_map:  # run 디렉토리 및 관련 파일 빠른 참조
   run_dir_files: [state.json, request.md, article-template.md, final.md, publish-result.json]
   gate_config: src/core/publish_gate.json
   gate_logic: src/pipeline/validate.py
+  seo_check: "src/pipeline/seo_check.py (2026-08-22 신설, validate.py와 분리된 독립 모듈)"
+  theme_meta_description: "content/theme/blogger_site_theme.xml <head> (data:post.body snippet() 기반, 수동 배포 필요)"
   converter: src/pipeline/converter.py
   publishers: [src/publishers/blogger.py, src/publishers/notion.py]
   article_template: wiki/templates/article.md
   writing_rules: wiki/Blog_Writing_Rules.md
   incident_log: wiki/Incident_Log.md
   topic_backlog: wiki/Post_Topic_Backlog.md
-  final_archive: "content/posts/<slug>.md"
+  final_archive: "content/posts/<Category>/<slug>.md  (Category: Basics|Advanced|ETC, src/core/paths.py::category_for_tags())"
 ```
 
 ## 관련 세션

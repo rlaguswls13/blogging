@@ -39,7 +39,12 @@ def build_knowledge_graph():
         print(f"오류: {POSTS_DIR} 디렉토리가 존재하지 않습니다.")
         return
 
-    files = [f for f in os.listdir(POSTS_DIR) if f.endswith('.md')]
+    # 2026-08-23: content/posts/Basics|Advanced|ETC/ 하위폴더 카테고리화 대응 — 재귀 탐색
+    files = []
+    for category in os.listdir(POSTS_DIR):
+        category_dir = os.path.join(POSTS_DIR, category)
+        if os.path.isdir(category_dir):
+            files.extend(os.path.join(category, f) for f in os.listdir(category_dir) if f.endswith('.md') and not f.startswith('_'))
     print(f"총 {len(files)}개 마크다운 게시글로부터 지식 그래프 구축 시작...")
 
     nodes = []

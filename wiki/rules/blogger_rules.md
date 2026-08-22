@@ -16,7 +16,7 @@
   - `fact_checked` 단계가 완료되고 관리자(사용자)가 **"승인/배포/post로 옮겨라"**는 지시를 내렸을 때, **에이전트는 절대로 단독 판단으로 배포하지 않고, 관리자에게 아래 3가지 배포 방식을 다시 물어본 후 진행합니다**:
     1. 🔴 **Blogger**: Blogger REST API를 통한 실서버 자동 퍼블리싱
     2. 🟢 **Naver**: Naver API / 네이버 블로그 포맷으로 전달 및 준비
-    3. 🔵 **Manual (수동)**: 실서버 API 푸시 없이 `content/posts/${slug}.md`로 이관만 하고 사용자가 수동으로 복사하여 배포하도록 준비
+    3. 🔵 **Manual (수동)**: 실서버 API 푸시 없이 `content/posts/<Category>/${slug}.md`로 이관만 하고 사용자가 수동으로 복사하여 배포하도록 준비
 
 ---
 
@@ -31,7 +31,7 @@ graph LR
     C --> D[4. fact_checked]
     D -->|🛑 관리자 승인 요청| E[5. approved: 컨펌 본문 100% 보존 확정]
     E -->|★ 플랫폼 선택 질의: Blogger/Naver/Manual| F[6. published]
-    F -->|지정한 방식으로 배포 완료| G[content/posts/slug.md 이관 저장]
+    F -->|지정한 방식으로 배포 완료| G[content/posts/Category/slug.md 이관 저장]
 ```
 
 1. **`created`**: 주제 할당, Frontmatter 메타데이터 등록
@@ -41,7 +41,7 @@ graph LR
 5. **`approved`**: 🛑 **[관리자 승인 게이트]** 관리자가 `final.md` 리뷰 후 승인 명령을 내린 경우 (컨펌 본문 절대 수정 금지)
 6. **`published`**: 
    - 관리자에게 **"Blogger로 전송할지, Naver로 전송할지, 수동 배포(Manual)로 이관할지" 질의 후 선택된 방식으로 진행**
-   - 배포 직후 `temp/runs/${run_id}/final.md` 원본을 `content/posts/${slug}.md` 정식 자산 저장소로 이관 보관
+   - 배포 직후 `temp/runs/${run_id}/final.md` 원본을 `content/posts/<Category>/${slug}.md` 정식 자산 저장소로 이관 보관(Category는 tags 기준 Basics/Advanced/ETC, 2026-08-23 카테고리화)
 
 ---
 

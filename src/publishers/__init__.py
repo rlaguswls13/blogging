@@ -4,7 +4,7 @@ import re
 import subprocess
 import frontmatter
 from typing import List, Dict, Any
-from src.core.paths import run_directory, posts_root, project_root
+from src.core.paths import run_directory, posts_root, project_root, post_path_for, find_post_by_slug
 from src.core.files import read_state, write_json
 from src.core.types import TailQuestion, Reference, TocItem, KnowledgeNode, PublishedPlatformDetail, Backlink
 from src.pipeline.validate import validate_run
@@ -257,9 +257,8 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
     # slug는 state.json이 아니라 final.md 자체 frontmatter를 신뢰 소스로 삼는다 —
     # state.slug는 어디서도 채워지지 않아 항상 None이라, 이전에는 매번 articleId로
     # 떨어져 content/posts/의 다른 글들과 파일명 규칙이 어긋났다(2026-08-17 발견).
-    posts_root.mkdir(parents=True, exist_ok=True)
     slug_val = metadata.get("slug") or state.articleId
-    post_filename = f"{slug_val}.md"
+    tags_val = metadata.get("tags") or []
 
     blogger_result = next((r for r in results if r.platform == "blogger"), results[0] if results else None)
     archived_metadata = dict(metadata)
@@ -278,8 +277,13 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
     # 이관 보관")과 일치시키기 위함. 내부 검증 메모(## 사실 검증 결과 등) 제거는 라이브 HTML
     # 변환(convert_markdown_to_html) 단계에서만 이루어지고, 로컬 아카이브는 원본 그대로 유지된다.
     archived_post = frontmatter.Post(content, **archived_metadata)
-    with open(posts_root / post_filename, "w", encoding="utf-8") as f:
+    # 이전에 다른 카테고리로 이미 이관된 적이 있으면(재발행/카테고리 변경) 그 자리를 갱신하고,
+    # 없으면 태그 기준으로 새 카테고리 폴더(Basics/Advanced/ETC)에 저장한다.
+    dest_path = find_post_by_slug(slug_val) or post_path_for(slug_val, tags_val)
+    dest_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(dest_path, "w", encoding="utf-8") as f:
         frontmatter.dump(archived_post, f)
-    print(f"[자산 이관 완료] final.md -> content/posts/{post_filename}")
+    rel_path = dest_path.relative_to(posts_root)
+    print(f"[자산 이관 완료] final.md -> content/posts/{rel_path}")
 
     print("모든 플랫폼 게시 완료 및 content/posts/에 최종 저장되었습니다.")

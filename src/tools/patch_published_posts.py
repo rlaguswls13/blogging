@@ -78,7 +78,7 @@ def unique_snippet(text, start, end):
 
 
 def find_mode(template_out=None):
-    files = sorted(POSTS_DIR.glob("*.md"))
+    files = sorted(p for p in POSTS_DIR.glob("*/*.md") if not p.name.startswith("_"))  # Basics/Advanced/ETC 하위폴더
     total = 0
     template = {}
     for path in files:
@@ -97,7 +97,7 @@ def find_mode(template_out=None):
             print(f"  [런 길이 {m.end() - m.start()}] ...{context}...")
             print(f"      snippet: {snippet!r}")
             entries.append({"before": snippet, "after": "TODO"})
-        template[path.name] = entries
+        template[str(path.relative_to(POSTS_DIR)).replace("\\", "/")] = entries
         total += len(runs)
 
     print(f"\n총 {total}곳 발견 ({len(files)}개 파일 중)")
