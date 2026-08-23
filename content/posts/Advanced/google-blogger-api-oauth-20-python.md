@@ -57,7 +57,8 @@ Blogger API는 사용자의 민감한 데이터에 접근하므로 OAuth 2.0 인
 
 Blogger API 연동의 핵심 라이브러리는 `google-api-python-client`입니다. 다음은 획득한 credentials 정보를 활용해 Blogger 서비스 객체를 만들고 글을 게시하는 예시 흐름입니다.
 
-`from googleapiclient.discovery import build
+```python
+from googleapiclient.discovery import build
 from google.oauth2.credentials import Credentials
 
 # 1. 획득한 토큰을 기반으로 Credentials 객체 생성
@@ -88,7 +89,7 @@ response = blogger.posts().insert(
 
 print(f"글 배포 완료! ID: {response.get('id')}")
 print(f"글 URL: {response.get('url')}")
-`
+```
 Blogger API의 주요 리소스인 `posts()`는 글 생성을 위한 `insert`, 기존 글 수정을 위한 `update` 및 `patch`, 삭제를 위한 `delete` 메서드를 모두 안정적으로 지원합니다 [1].
 
 ## 작성자의 견해
