@@ -37,10 +37,105 @@ class CustomHTMLRenderer(mistune.HTMLRenderer):
 
         return f'<pre><code class="hljs language-{language}">{highlighted}</code></pre>\n'
 
+def restyle_references(text: str) -> str:
+    """Reshape "## 참고문헌" list items for readability: hyperlink the quoted title itself
+    (instead of also printing the raw URL as separate visible text) and shrink the trailing
+    "(확인일: YYYY-MM-DD)" access-date note into a small subscript.
+
+    Processes line-by-line (each reference is one line) in two passes so it's safe across the
+    inconsistent formats already written by past sessions (bare URL, `[url](url)`, or — for 3
+    TLS-post entries — date-before-URL order): pass 1 always wraps the access-date (present
+    verbatim in every entry, so this alone is a safe universal improvement); pass 2 then looks
+    for a URL sitting right before/after that now-wrapped date note and, only when the line has
+    exactly one quoted span (so "the title" is unambiguous) and the shape matches cleanly, moves
+    the URL onto the title as the link target and drops the bare URL text. Lines with zero or
+    multiple quoted spans (e.g. a citation with a nested quoted sub-title) simply fall through
+    pass 2 unchanged — still date-restyled, just not title-linked, rather than risk linking the
+    wrong quoted span (2026-08-23, requested after several inconsistent generations here).
+
+    Must run on text that has already gone through linkify_markdown() (as it does inside
+    convert_markdown_to_html), which turns a bare URL into a `<url>` autolink — so the URL
+    alternation below matches that form too, not just `[url](url)` or a raw bare URL.
+    """
+    date_tag = r'<sub class="ref-date">\(확인일:\s*[\d\-]+\)</sub>'
+    # One URL, in any of the three shapes it may already be in by this point: markdown link
+    # `[url](url)`, autolink `<url>` (what linkify_markdown produces from a bare URL), or bare.
+    url_alt = (
+        r'(?:\[(?P<url_b>https?://[^\]]+)\]\(https?://[^\)]+\)'
+        r'|<(?P<url_c>https?://[^>\s]+)>'
+        r'|(?P<url_a>https?://[^\s\)\]>]+))'
+    )
+
+    def _url_from(m):
+        return m.group("url_a") or m.group("url_b") or m.group("url_c")
+
+    def _restyle_line(line):
+        # Count quotes before pass 1 injects its own (class="ref-date" would otherwise miscount).
+        has_single_quoted_title = line.count('"') == 2
+
+        # Pass 1: universally shrink the access-date note, regardless of URL position/format.
+        line = re.sub(
+            r"\(확인일:\s*([\d\-]+)\)",
+            r'<sub class="ref-date">(확인일: \1)</sub>',
+            line,
+        )
+
+        if not has_single_quoted_title:
+            return line  # ambiguous or no quoted title on this line — leave URL placement as-is
+
+        # Pass 2a: normal order — "Title"<short trailing text>URL <date-tag>
+        def _repl_normal(m):
+            title, between = m.group("title"), m.group("between").rstrip()
+            return f'"[{title}]({_url_from(m)})"{between} {m.group("date")}'
+
+        new_line = re.sub(
+            r'"(?P<title>[^"]+)"(?P<between>[^<>\n]{0,80}?)\s*' + url_alt
+            + r'\s*(?P<date><sub class="ref-date">\(확인일:\s*[\d\-]+\)</sub>)',
+            _repl_normal,
+            line,
+        )
+        if new_line != line:
+            return new_line
+
+        # Pass 2b: reversed order (a few TLS-post entries) — "Title" <date-tag> — URL
+        def _repl_reversed(m):
+            return f'"[{m.group("title")}]({_url_from(m)})" {m.group("date")}'
+
+        return re.sub(
+            r'"(?P<title>[^"]+)"\s*(?P<date>' + date_tag + r')\s*[—-]\s*' + url_alt,
+            _repl_reversed,
+            line,
+        )
+
+    return "\n".join(_restyle_line(line) for line in text.split("\n"))
+
+def linkify_markdown(content: str) -> str:
+    """Wrap bare http(s) URLs in `<...>` (markdown autolink syntax) so they render as clickable <a> tags.
+
+    Skips code blocks, and skips URLs already inside markdown link/image syntax — both the target
+    position `](URL)` and the link-text position `[URL]` (e.g. `[https://x](https://x)`, which several
+    already-published posts use for bare-URL references). Without the `[URL]` exclusion, that second
+    case gets double-wrapped into `[<https://x>](https://x)`, which mistune fails to parse as a link
+    and instead leaks literal `%5D(` / bracket text into the live HTML (found 2026-08-23 auditing
+    already-published posts for stale link rendering).
+    """
+    parts = content.split("```")
+    for i in range(len(parts)):
+        if i % 2 == 0:  # Non-code block
+            pattern = r'(?<!\]\()(?<!\[)(?<!href=")(?<!src=")(?<!<)https?://[^\s\)\>\]]+'
+            parts[i] = re.sub(pattern, lambda m: f"<{m.group(0)}>", parts[i])
+    return "```".join(parts)
+
 def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
     # 0a. Clean up CLAIM and SOURCE citation tags into scientific brackets format [1], [2]
     markdown_content = re.sub(r'\[CLAIM-\d+\]:\s*', '', markdown_content)
     markdown_content = re.sub(r'\[CLAIM-\d+\]', '', markdown_content)
+
+    # 0a-2. Auto-linkify bare URLs so they render as <a> tags — must run for every caller of this
+    # function (publish, republish/maintenance tools, previews), not just the main publish path, so
+    # this lives here instead of in src/publishers (2026-08-23: found several already-published posts
+    # where maintenance tools that called this function directly skipped linkification entirely).
+    markdown_content = linkify_markdown(markdown_content)
     
     # 0b. Detect local images, copy them to content/images, and convert paths to GitHub CDN URL
     from src.core.paths import project_root
@@ -98,7 +193,7 @@ def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
 
     # 0b. Extract References and Backlinks sections, remove internal-only sections before parsing
     references_match = re.search(r"## 참고문헌\s*(.*?)(?=##|\Z)", markdown_content, flags=re.MULTILINE | re.DOTALL)
-    references_content = references_match.group(1).strip() if references_match else ""
+    references_content = restyle_references(references_match.group(1).strip()) if references_match else ""
 
     # 백링크는 삭제하지 않고 별도 렌더링한다(아래 "관련 글" 블록) — 과거엔 그냥 삭제되어 내부링크가
     # 라이브 페이지에 한 번도 실제로 렌더링된 적이 없었다(SEO 내부링크 신호 손실 버그, 2026-08-22 수정).
@@ -110,6 +205,11 @@ def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
     markdown_content = re.sub(r"## 차별화 포인트\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
     markdown_content = re.sub(r"## 참고문헌\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
     markdown_content = re.sub(r"## 백링크\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
+    markdown_content = re.sub(r"## 관련 세션\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
+    # 꼬리질문(내부 검토용 후속 질문 체크리스트)도 내부 전용 섹션 — 과거엔 publish_to_multi()에서만
+    # 임시로 strip해서, 이 함수를 직접 호출하는 유지보수 도구(update_post_content.py 등)로 재게시하면
+    # 라이브 페이지에 그대로 노출되는 버그가 있었다(2026-08-23 발견).
+    markdown_content = re.sub(r"## 꼬리질문\s*(.*?)(?=##|\Z)", "", markdown_content, flags=re.MULTILINE | re.DOTALL)
 
     # 0b. Replace duplicate main title heading # [Title] with <h2 class="post-body-title">[Summary Title]</h2>
     main_title_match = re.search(r"^#\s+(.+)$", markdown_content, flags=re.MULTILINE)

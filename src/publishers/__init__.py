@@ -151,15 +151,6 @@ def parse_toc_items(markdown_content: str) -> List[TocItem]:
 
     return items
 
-def linkify_markdown(content: str) -> str:
-    parts = content.split("```")
-    for i in range(len(parts)):
-        if i % 2 == 0:  # Non-code block
-            # Match http/https URLs not preceded by ](, href=", src=", or <
-            pattern = r'(?<!\]\()(?<!href=")(?<!src=")(?<!<)https?://[^\s\)\>]+'
-            parts[i] = re.sub(pattern, lambda m: f"<{m.group(0)}>", parts[i])
-    return "```".join(parts)
-
 def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
     if "blogger" in platforms:
         platforms = ["blogger"] + [p for p in platforms if p != "blogger"]
@@ -184,14 +175,10 @@ def publish_to_multi(run_id: str, platforms: List[str], dry_run: bool) -> None:
     content = post.content
     metadata = post.metadata
 
-    # 1. Strip internal validation / todo checklist sections from published blog content
-    published_content = content
-    published_content = re.sub(r"## 꼬리질문\s*(.*?)(?=##|\Z)", "", published_content, flags=re.MULTILINE | re.DOTALL)
-
-    # 2. Automatically linkify raw URLs in markdown content (skipping code blocks)
-    published_content = linkify_markdown(published_content)
-
-    conversion = convert_markdown_to_html(published_content)
+    # 꼬리질문 strip과 bare URL linkify는 convert_markdown_to_html() 내부에서 일괄 처리한다 —
+    # 이 함수를 우회해서 직접 convert_markdown_to_html()를 호출하는 다른 도구들도 동일하게
+    # 적용받게 하기 위함(2026-08-23, src/pipeline/converter.py 참고).
+    conversion = convert_markdown_to_html(content)
 
     tags = metadata.get("tags", [])
     if not isinstance(tags, list):
