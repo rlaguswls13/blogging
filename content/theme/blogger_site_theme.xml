@@ -337,7 +337,7 @@
       /* Homepage Hero Section */
       .tech-hero {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 3rem;
         align-items: center;
         max-width: 1200px;
@@ -352,7 +352,7 @@
 
       @media(min-width: 992px) {
         .tech-hero {
-          grid-template-columns: 1.25fr 0.75fr;
+          grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
         }
       }
 
@@ -583,19 +583,19 @@
         margin: 2rem auto;
         padding: 0 2rem;
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2.5rem;
         box-sizing: border-box;
       }
 
       @media(min-width: 992px) {
         .container {
-          grid-template-columns: 2.8fr 1.2fr;
+          grid-template-columns: minmax(0, 2.8fr) minmax(0, 1.2fr);
         }
       }
 
       .container.is-single-column {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: minmax(0, 1fr) !important;
         max-width: 1200px;
       }
 
@@ -636,7 +636,7 @@
       /* Post Cards Grid */
       .tech-featured-grid {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
         min-height: 550px;
       }
@@ -757,7 +757,7 @@
 
       @media(min-width: 640px) {
         .tech-featured-grid {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
 
@@ -1249,12 +1249,12 @@
       }
       .footer-widgets-grid #footer-widgets-section {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2.5rem;
       }
       @media (min-width: 768px) {
         .footer-widgets-grid #footer-widgets-section {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
       }
       .footer-widgets-grid .widget-box {
