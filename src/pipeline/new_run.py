@@ -1,4 +1,5 @@
 from datetime import datetime
+import hashlib
 import os
 import re
 import unicodedata
@@ -10,14 +11,21 @@ def make_run_id(now: datetime) -> str:
     return re.sub(r"\D", "", now.isoformat()).split(".")[0][:14]
 
 def slugify(value: str) -> str:
-    # Handle Korean and other Unicode chars. Replace non-word (except Korean/English/numbers) chars.
-    # To mimic normalized lowercase slugging:
+    # ArticleFrontmatter.validate_slug only accepts ASCII [a-z0-9-], so Korean
+    # (and other non-ASCII) characters must be dropped, not just left as-is.
+    # NFKD does not decompose Hangul into ASCII, so drop non-ASCII explicitly
+    # after normalizing (keeps any embedded English/numbers from mixed topics).
     normalized = unicodedata.normalize("NFKD", value)
-    # Remove chars that are not unicode alphanumeric, spaces, or hyphens
-    cleaned = re.sub(r"[^\w\s-]", "", normalized, flags=re.UNICODE).strip().lower()
+    ascii_only = normalized.encode("ascii", "ignore").decode("ascii")
+    cleaned = re.sub(r"[^\w\s-]", "", ascii_only).strip().lower()
     slug = re.sub(r"[\s_]+", "-", cleaned)
-    slug = re.sub(r"-+", "-", slug)
-    return slug if slug else f"article-{int(datetime.utcnow().timestamp())}"
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    if slug:
+        return slug
+    # No ASCII survived (e.g. fully Korean topic) - fall back to a stable
+    # hash of the original topic so the slug is still deterministic per-topic.
+    digest = hashlib.md5(value.encode("utf-8")).hexdigest()[:8]
+    return f"article-{digest}"
 
 def create_run(topic: str) -> str:
     now = datetime.utcnow()

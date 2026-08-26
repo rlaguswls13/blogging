@@ -80,7 +80,9 @@ INTERNAL_LINK_DOMAIN = "beji-tech.blogspot.com"
 
 def internal_link_count(text: str) -> int:
     """마크다운 링크 중 자사 블로그 도메인(다른 발행 글)을 가리키는 개수를 센다."""
-    urls = re.findall(r"\[[^\]]*\]\((https?://[^)]+)\)", text)
+    # 링크 텍스트에 [^\]]* 대신 비탐욕 .*? 를 써야 GoF 시리즈처럼 링크 텍스트(글 제목) 자체에
+    # 대괄호가 포함된 경우([GoF 디자인 패턴] 1. ...)도 올바르게 매칭된다.
+    urls = re.findall(r"\[.*?\]\((https?://[^)]+)\)", text)
     return sum(1 for url in urls if INTERNAL_LINK_DOMAIN in url)
 
 def reference_urls(items: List[str]) -> List[Tuple[str, Optional[str]]]:

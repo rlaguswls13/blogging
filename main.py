@@ -3,6 +3,14 @@ import os
 from typing import List, Optional
 from dotenv import load_dotenv
 
+# Windows consoles default stdout/stderr to the system codepage (cp949 for
+# Korean locales), which cannot encode characters like em dash (—) used in
+# this CLI's output strings and crashes with UnicodeEncodeError. Force UTF-8
+# so `python main.py ...` works without manually setting PYTHONIOENCODING.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()

@@ -64,7 +64,8 @@ def build_moc():
     edges = defaultdict(set)  # slug -> set of linked slugs (## 백링크 파싱 결과)
     for slug, data in posts.items():
         backlink_section = extract_section(data["content"], "백링크")
-        urls = re.findall(r"\[[^\]]*\]\((https?://[^)]+)\)", backlink_section)
+        # 비탐욕 .*? — 링크 텍스트(글 제목)에 GoF 시리즈처럼 대괄호가 포함된 경우도 매칭.
+        urls = re.findall(r"\[.*?\]\((https?://[^)]+)\)", backlink_section)
         for u in urls:
             target_slug = url_to_slug.get(u.rstrip("/"))
             if target_slug and target_slug != slug:
