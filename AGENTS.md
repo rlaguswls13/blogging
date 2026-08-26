@@ -63,3 +63,11 @@ graph TD
   수정 지시를 내릴 때 이 파일의 항목(`id` 등)을 지목하는 기준점이 된다.
 - 예: 글 작성 파이프라인 전체 현황 → [`report/blog-article-pipeline.md`](report/blog-article-pipeline.md)
   (전문은 [`wiki/rules/blog_article_pipeline_schema.md`](wiki/rules/blog_article_pipeline_schema.md)).
+
+## 5. 세션 핸드오프 위치 — `wiki/Session_Handoff.md` (2026-08-26 이전됨)
+
+큐레이션된 최신 작업 상태(진행 상황, 남은 작업, 다음 에이전트를 위한 메모)의 SSOT는
+[`wiki/Session_Handoff.md`](wiki/Session_Handoff.md)다. `.agent/session-handoff.md`는 이 파일을
+가리키는 리다이렉트 스텁만 남아있다(다른 AI 툴의 고정 경로 관행 호환용) — 실제 읽기/쓰기는
+`wiki/Session_Handoff.md`에서 할 것. `wiki/Session_Index.md`(세션 원본 아카이브 인덱스)와는 별개
+문서다.
