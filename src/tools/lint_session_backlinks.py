@@ -14,12 +14,15 @@ wiki 문서에 박힌 `경로/sessions/raw/YYYY-MM-DD.md:START-END` 형식 backl
       깨진 backlink가 하나라도 있으면 exit code 1.
 """
 
+import os
 import re
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-WIKI_DIR = REPO_ROOT / "wiki"
+# 2026-08-26: .wiki/가 중앙 RAG 볼트로 이관되면서 이 경로도 함께 옮겨감 (src/core/paths.py의
+# central_knowledge_root()와 동일 로직 — PROJECT_RAG_PATH 환경변수 우선, 기본값은 고정 볼트 경로).
+WIKI_DIR = Path(os.environ.get("PROJECT_RAG_PATH", r"D:\obsidian-storage\project-rag")) / "ai-blogging"
 
 BACKLINK_PATTERN = re.compile(
     r"`((?:\.\./)*sessions/raw/(\d{4}-\d{2}-\d{2})\.md):(\d+)-(\d+)`"

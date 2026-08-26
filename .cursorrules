@@ -1,0 +1,6 @@
+# Cursor Rules — 이 프로젝트
+
+독자적인 규칙 없음. [`AGENTS.md`](AGENTS.md)의 지침을 100% 그대로 따를 것
+(`CENTRAL_RAG_PROJECT_SCHEMA.md` §2.1 규격). 지식 저장소 전체(세션 핸드오프, 프로젝트 고유 스키마
+포함)는 중앙 RAG 볼트 `D:\obsidian-storage\project-rag\ai-blogging\`(환경변수 `PROJECT_RAG_PATH`
+우선)에 있음 — 로컬 `.wiki/`는 안내 스텁만 남아있다.

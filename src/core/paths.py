@@ -10,7 +10,20 @@ project_root = Path(blogging_root).resolve() if blogging_root else Path.cwd()
 runs_root = project_root / "temp" / "runs"
 posts_root = project_root / "content" / "posts"
 gate_path = project_root / "src" / "core" / "publish_gate.json"
-article_template_path = project_root / "wiki" / "templates" / "article.md"
+
+
+def central_knowledge_root() -> Path:
+    """중앙 RAG 볼트(여러 프로젝트가 공유, 기본 D:\\obsidian-storage\\project-rag, 환경변수
+    PROJECT_RAG_PATH가 있으면 그쪽 우선) 안, 이 프로젝트 몫 지식 폴더. 2026-08-26에 로컬 `.wiki/`를
+    여기로 이관하면서 신설(AGENTS.md §6 참고) — `article_template_path` 등 파이프라인이 실제로
+    읽는 파일들이 이 경로 아래에 있으므로, 볼트가 마운트/존재하지 않으면 이 프로젝트의 `main.py new`
+    등 핵심 커맨드가 그대로 실패한다(의도된 설계 — 조용히 로컬로 폴백하지 않는다)."""
+    vault_root = Path(os.environ.get("PROJECT_RAG_PATH", r"D:\obsidian-storage\project-rag"))
+    return vault_root / "ai-blogging"
+
+
+wiki_root = central_knowledge_root()
+article_template_path = wiki_root / "templates" / "article.md"
 theme_xml_path = project_root / "content" / "theme" / "blogger_site_theme.xml"
 theme_css_path = project_root / "content" / "theme" / "blogger_post_style.css"
 
@@ -21,7 +34,7 @@ def run_directory(run_id: str) -> Path:
 
 
 # 2026-08-23: content/posts/를 Basics/Advanced/ETC 하위폴더로 카테고리화(Obsidian 볼트
-# 겸용) — wiki/Blog_Writing_Rules.md 7번 수칙의 세 라벨과 완전히 동일한 기준을 재사용한다.
+# 겸용) — .wiki/Blog_Writing_Rules.md 7번 수칙의 세 라벨과 완전히 동일한 기준을 재사용한다.
 # src/tools/apply_nav_labels.py(라이브 Blogger 라벨용)의 분류 로직과 반드시 일치시킬 것.
 POST_CATEGORIES = ["Basics", "Advanced", "ETC"]
 _ETC_KEYWORDS = {

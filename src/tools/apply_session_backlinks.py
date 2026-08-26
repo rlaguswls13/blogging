@@ -22,11 +22,14 @@ wiki/sessions/raw/*.md 원본은 건드리지 않는다. `wiki/Session_Index.md`
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-WIKI_DIR = REPO_ROOT / "wiki"
+# 2026-08-26: .wiki/가 중앙 RAG 볼트로 이관되면서 이 경로도 함께 옮겨감 (src/core/paths.py의
+# central_knowledge_root()와 동일 로직 — PROJECT_RAG_PATH 환경변수 우선, 기본값은 고정 볼트 경로).
+WIKI_DIR = Path(os.environ.get("PROJECT_RAG_PATH", r"D:\obsidian-storage\project-rag")) / "ai-blogging"
 INDEX_PATH = WIKI_DIR / "sessions" / "raw-index.json"
 
 sys.path.insert(0, str(REPO_ROOT))

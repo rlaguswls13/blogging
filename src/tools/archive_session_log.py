@@ -1,10 +1,10 @@
 """
-.agent/session-handoff.md의 `## Session log` 섹션을 정리하는 재사용 가능한 유지보수 도구.
+.wiki/Session_Handoff.md의 `## Session log` 섹션을 정리하는 재사용 가능한 유지보수 도구.
 
 배경: session-handoff 스킬(전역, ~/.claude/skills/session-handoff) 자체 규칙은 "Session log에는
 체크포인트마다 한 줄만 append"인데, 실제로는 세션마다 여러 문장짜리 문단을 통째로 추가해와
 2026-08-22 기준 파일이 26KB까지 불어났다(세션 시작마다 전체를 읽으므로 매번 그만큼의 토큰을 태움).
-이 도구는 최신 --keep개만 handoff 파일에 남기고 나머지를 wiki/sessions/changelog.md로 옮긴다
+이 도구는 최신 --keep개만 handoff 파일에 남기고 나머지를 .wiki/sessions/changelog.md로 옮긴다
 (요약하지 않고 원문 그대로 이동 — 감사 추적성 손실 없음). --dry-run을 지원하는 이 저장소의 기존
 유지보수 도구 관례(apply_nav_labels.py 등, wiki/Agent_Guidelines.md 참고)를 따른다.
 
@@ -13,24 +13,28 @@
       옮겨질 항목 수와 미리보기만 출력한다 (변경 없음).
 
   python src/tools/archive_session_log.py [--keep N]
-      실제로 .agent/session-handoff.md를 갱신하고 wiki/sessions/changelog.md에 append한다.
+      실제로 .wiki/Session_Handoff.md를 갱신하고 .wiki/sessions/changelog.md에 append한다.
       기본 --keep 3.
 """
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-HANDOFF_PATH = REPO_ROOT / ".agent" / "session-handoff.md"
-CHANGELOG_PATH = REPO_ROOT / "wiki" / "sessions" / "changelog.md"
+# 2026-08-26: .wiki/가 중앙 RAG 볼트로 이관되면서 이 경로도 함께 옮겨감 (src/core/paths.py의
+# central_knowledge_root()와 동일 로직 — PROJECT_RAG_PATH 환경변수 우선, 기본값은 고정 볼트 경로).
+_WIKI_DIR = Path(os.environ.get("PROJECT_RAG_PATH", r"D:\obsidian-storage\project-rag")) / "ai-blogging"
+HANDOFF_PATH = _WIKI_DIR / "Session_Handoff.md"
+CHANGELOG_PATH = _WIKI_DIR / "sessions" / "changelog.md"
 
 SECTION_HEADING = "## Session log"
 CHANGELOG_HEADER = (
     "# Session Log Changelog\n\n"
-    "`.agent/session-handoff.md`의 Session log 섹션에서 `src/tools/archive_session_log.py`로\n"
+    "`.wiki/Session_Handoff.md`의 Session log 섹션에서 `src/tools/archive_session_log.py`로\n"
     "옮겨진 과거 체크포인트 기록입니다(요약이 아니라 원문 그대로 이동). 최신 항목은\n"
-    "`.agent/session-handoff.md`를 참고하세요.\n\n"
+    "`.wiki/Session_Handoff.md`를 참고하세요.\n\n"
 )
 
 

@@ -9,7 +9,10 @@ import re
 from datetime import datetime
 
 POSTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "content", "posts"))
-KNOWLEDGE_GRAPH_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "wiki", "knowledge-graph.json"))
+# 2026-08-26: .wiki/가 중앙 RAG 볼트로 이관되면서 이 경로도 함께 옮겨감 (src/core/paths.py의
+# central_knowledge_root()와 동일 로직 — PROJECT_RAG_PATH 환경변수 우선, 기본값은 고정 볼트 경로).
+_WIKI_DIR = os.path.join(os.environ.get("PROJECT_RAG_PATH", r"D:\obsidian-storage\project-rag"), "ai-blogging")
+KNOWLEDGE_GRAPH_PATH = os.path.join(_WIKI_DIR, "knowledge-graph.json")
 
 def parse_frontmatter(content):
     match = re.search(r'^---\r?\n([\s\S]*?)\r?\n---', content)
