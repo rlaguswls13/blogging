@@ -109,6 +109,58 @@ def check_link_liveness(url: str, timeout: int = 5) -> Tuple[bool, str]:
     except requests.RequestException as e:
         return False, str(e)
 
+def quality_gate_errors(post) -> List[str]:
+    """토픽 중복 / 백링크 관련성 / 코드 구문 오류를 오류 메시지 리스트로 돌려준다."""
+    # src.tools가 src.pipeline.validate를 import하므로 순환을 피하려고 함수 안에서 import한다.
+    from src.tools.check_backlink_relevance import (
+        DEFAULT_THRESHOLD as BACKLINK_THRESHOLD, load_url_index, relevance_score,
+        tokenize as backlink_tokenize,
+    )
+    from src.tools.check_code_blocks import SYNTAX_CHECKERS, extract_code_blocks
+    from src.tools.check_topic_duplication import (
+        DEFAULT_THRESHOLD as TOPIC_THRESHOLD, SERIES_THRESHOLD, dice_score, load_candidates,
+        shares_series_tag, tokenize as topic_tokenize,
+    )
+
+    errors: List[str] = []
+    title = post.metadata.get("title", "")
+    tags = [t for t in post.metadata.get("tags", []) if isinstance(t, str)]
+
+    # 코드 구문 오류
+    for lang, code, _context in extract_code_blocks(post.content):
+        checker = SYNTAX_CHECKERS.get(lang)
+        err = checker(code) if checker else None
+        if err:
+            errors.append(f"코드 블록({lang}) 구문 오류: {err}")
+
+    # 백링크 관련성 (카탈로그에 없는 URL은 판단 불가라 건너뛴다)
+    backlinks = section_text(post.content, "백링크")
+    links = re.findall(r"\[.*?\]\((https?://[^)]+)\)", backlinks)
+    if links:
+        url_index = load_url_index()
+        title_tokens = backlink_tokenize(title)
+        weak = []
+        for url in links:
+            target = url_index.get(url.rstrip("/"))
+            if target and relevance_score(tags, title_tokens, target["tags"], target["title"]) < BACKLINK_THRESHOLD:
+                weak.append(target["title"])
+        if weak:
+            errors.append(f"관련성이 낮은 백링크 {len(weak)}건(태그·제목 키워드 겹침 없음): {weak[0][:50]}")
+
+    # 토픽 중복 (draft는 아직 발행 목록에 없으므로 자기 자신과는 비교되지 않는다. 시리즈 태그 공유 시 임계값 완화)
+    topic_tokens = topic_tokenize(title) | {t.lower() for t in tags}
+    best_score, best_title, best_tags = 0.0, None, []
+    for cand in load_candidates():
+        score = dice_score(topic_tokens, cand["tokens"])
+        if score > best_score:
+            best_score, best_title, best_tags = score, cand["title"], cand.get("tags", [])
+    threshold = SERIES_THRESHOLD if shares_series_tag(tags, best_tags) else TOPIC_THRESHOLD
+    if best_title and best_score >= threshold:
+        errors.append(f"기존 발행 글과 주제가 겹칩니다(유사도 {best_score:.2f} >= {threshold:.2f}): {best_title[:50]}")
+
+    return errors
+
+
 def validate_run(
     run_id: str,
     require_human_approval: bool = True,
@@ -248,6 +300,11 @@ def validate_run(
             f"{len(vague_evidence)}건 있습니다: \"{vague_evidence[0][1][:60]}\" "
             f"(wiki/Incident_Log.md#factcheck-2026-08-19-1 유사 사례 — 실제 원문/URL로 구체화할 것)"
         )
+
+    # 2026-10-09: check-quality aid 중 오탐이 낮은 3종을 게이트로 승격(발행 85편 소급 감사:
+    # 토픽 중복 2건 / 백링크 관련성 5건 / 코드 구문 오류 3건). 설명-코드 불일치와 의견 구체성
+    # 지표는 오탐이 많아(각각 24건/47건) 여전히 참고용으로만 둔다.
+    errors.extend(quality_gate_errors(post))
 
     # Check Human Approval
     if require_human_approval and gate.requireHumanApproval and not state.humanApproved:

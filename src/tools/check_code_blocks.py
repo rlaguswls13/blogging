@@ -98,6 +98,9 @@ def check_json_syntax(code):
     # 문서용 JSON 예시에 `//` 줄 주석을 다는 건 흔한 관행(JSONC 스타일) — 표준 JSON엔 없는
     # 문법이지만 그 자체가 "코드 결함"은 아니므로, 검사 전에 주석 줄만 제거한다(2026-08-23).
     stripped = re.sub(r"^\s*//.*$", "", code, flags=re.MULTILINE)
+    # Elasticsearch Dev Tools 콘솔 표기("PUT /index" 다음 줄부터 JSON 본문)도 흔한 문서 관행이라
+    # 맨 앞의 HTTP 메서드+경로 줄은 검사 대상에서 뺀다(2026-10-09, 게이트 승격 전 오탐 확인).
+    stripped = re.sub(r"\A\s*(?:GET|PUT|POST|DELETE|HEAD)\s+/[^\n]*\n", "", stripped)
     try:
         json.loads(stripped)
         return None

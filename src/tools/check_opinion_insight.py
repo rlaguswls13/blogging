@@ -50,7 +50,10 @@ SPECIFICITY_PATTERN = re.compile(
     r"\d+(\.\d+)?\s*(ms|초|분|배|%|MB|GB|KB|req/s|바이트|자|줄|개|버전)"
     r"|https?://|RFC\s*\d+|v\d+\.\d+|[A-Z][a-zA-Z]+\.[a-zA-Z]{2,}"
     r"|[A-Za-z]{2,}\d{2,}"  # 기술 식별자(예: X25519MLKEM768, TLS13, HTTP2)
-    r"|\b\d+(\.\d+)?\b"  # 단위 없는 순수 숫자도 약한 구체성 신호로 포함
+    # 단위 없는 순수 숫자도 약한 구체성 신호로 포함. \b는 한글을 단어 문자로 취급해 "2로"처럼 조사가
+    # 붙은 숫자를 놓치므로(2026-10-09) ASCII 영숫자 기준 look-around를 쓴다.
+    r"|(?<![A-Za-z0-9_])\d+(\.\d+)?(?![A-Za-z0-9_])"
+    r"|\b[A-Z][A-Za-z0-9]*<[A-Z][A-Za-z0-9<>,?]*>"  # 제네릭 타입 표기(예: Supplier<Stream<T>>)
 )
 
 CLAIM_TYPES = {
