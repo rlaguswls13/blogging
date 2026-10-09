@@ -24,7 +24,6 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -68,6 +67,14 @@ def index_file(path: Path):
     return total, blocks
 
 
+def path_for_display(path: Path) -> str:
+    resolved_path = path.resolve()
+    try:
+        return str(resolved_path.relative_to(REPO_ROOT.resolve()))
+    except ValueError:
+        return str(resolved_path)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--dry-run", action="store_true")
@@ -79,9 +86,11 @@ def main():
 
     files = {}
     tag_index = {}
+    source_dates: list[str] = []
     for path in sorted(SESSIONS_RAW_DIR.glob("*.md")):
         total, blocks = index_file(path)
         files[path.name] = {"totalLines": total, "blocks": blocks}
+        source_dates.extend(block["date"] for block in blocks)
         for b in blocks:
             for tag in b["tags"]:
                 tag_index.setdefault(tag, []).append({
@@ -96,20 +105,26 @@ def main():
     for tag in tag_index:
         tag_index[tag].sort(key=lambda e: (e["date"], e["file"]), reverse=True)
 
+    if not source_dates:
+        print("오류: 세션 블록을 하나도 찾지 못했습니다.", file=sys.stderr)
+        sys.exit(1)
+
     index = {
         "version": "1.0.0",
-        "generatedAt": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "generatedAt": f"{max(source_dates)}T00:00:00Z",
         "files": files,
         "tagIndex": tag_index,
     }
 
     if args.dry_run:
-        print(f"\n[DRY-RUN] {INDEX_PATH.relative_to(REPO_ROOT)}에 쓸 내용 미리보기만 출력했습니다 (변경 없음).")
+        print(f"\n[DRY-RUN] {path_for_display(INDEX_PATH)}에 쓸 내용 미리보기만 출력했습니다 (변경 없음).")
         return
 
-    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+    temporary_index_path = INDEX_PATH.with_suffix(f"{INDEX_PATH.suffix}.tmp")
+    with open(temporary_index_path, "w", encoding="utf-8") as f:
         json.dump(index, f, ensure_ascii=False, indent=2)
-    print(f"\n완료: {INDEX_PATH.relative_to(REPO_ROOT)} 생성/갱신.")
+    temporary_index_path.replace(INDEX_PATH)
+    print(f"\n완료: {path_for_display(INDEX_PATH)} 생성/갱신.")
 
 
 if __name__ == "__main__":
