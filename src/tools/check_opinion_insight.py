@@ -52,7 +52,9 @@ SPECIFICITY_PATTERN = re.compile(
     r"|[A-Za-z]{2,}\d{2,}"  # 기술 식별자(예: X25519MLKEM768, TLS13, HTTP2)
     # 단위 없는 순수 숫자도 약한 구체성 신호로 포함. \b는 한글을 단어 문자로 취급해 "2로"처럼 조사가
     # 붙은 숫자를 놓치므로(2026-10-09) ASCII 영숫자 기준 look-around를 쓴다.
-    r"|(?<![A-Za-z0-9_])\d+(\.\d+)?(?![A-Za-z0-9_])"
+    # 서수/개수/기간 접미("1차", "5원칙", "5가지", "3단계", "50년" 등)가 붙은 숫자는 글 내용이 아니라
+    # 문장 구조에서 우연히 나오는 숫자라 구체성 신호에서 제외한다(2026-10-10).
+    r"|(?<![A-Za-z0-9_])\d+(\.\d+)?(?![A-Za-z0-9_])(?!\s*(차|원칙|가지|단계|계층|번째|년|부|편|위))"
     r"|\b[A-Z][A-Za-z0-9]*<[A-Z][A-Za-z0-9<>,?]*>"  # 제네릭 타입 표기(예: Supplier<Stream<T>>)
 )
 
@@ -92,6 +94,8 @@ def jaccard(a, b):
 
 
 def check_specificity(text):
+    # 내부용 HTML 주석(예: "게시 게이트 최소 40단어")은 본문이 아니므로 평가에서 뺀다(2026-10-10).
+    text = re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
     hits = SPECIFICITY_PATTERN.findall(text)
     return len(hits)
 
