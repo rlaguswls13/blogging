@@ -237,6 +237,6 @@ Optional은 등장한 지 10년이 넘은 기능이지만, 여전히 "null 안�
 
 ## 백링크
 
-- [Java 컬렉션 프레임워크 입문 — List vs Set vs Map, 언제 무엇을 써야 하는가](https://beji-tech.blogspot.com/2026/08/java-collections-list-set-map-guide.html)
-- [JVM 메모리 영역(Heap, Stack, Metaspace) 구조와 Garbage Collection(GC) 기본 동작 원리](https://beji-tech.blogspot.com/2026/08/jvm-heap-stack-metaspace-gc-basics.html)
-- [SOLID 원칙이란 무엇인가 — Java 기준 객체지향 설계 5대 원칙과 실전 예시](https://beji-tech.blogspot.com/2026/08/solid-principles-java-guide.html)
+- [Java 컬렉션 프레임워크 입문 — List vs Set vs Map, 언제 무엇을 써야 하는가](https://beji-tech.blogspot.com/2026/08/java-list-vs-set-vs-map.html)
+- [JVM 메모리 영역(Heap, Stack, Metaspace) 구조와 Garbage Collection(GC) 기본 동작 원리](https://beji-tech.blogspot.com/2026/08/jvm-heap-stack-metaspace-garbage.html)
+- [SOLID 원칙이란 무엇인가 — Java 기준 객체지향 설계 5대 원칙과 실전 예시](https://beji-tech.blogspot.com/2026/08/solid-java-5.html)
