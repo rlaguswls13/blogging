@@ -1,5 +1,6 @@
 import sys
 import os
+from pathlib import Path
 from typing import List, Optional
 from dotenv import load_dotenv
 
@@ -19,6 +20,7 @@ from src.pipeline.new_run import create_run
 from src.pipeline.validate import validate_run
 from src.pipeline.seo_check import check_meta_description
 from src.pipeline.approve import approve_run
+from src.pipeline.patch_urls import patch_urls
 from src.publishers import publish_to_multi
 from src.pipeline.sync_mdx import sync_mdx
 from src.pipeline.knowledge_store import get_todos, load_knowledge_graph
@@ -44,7 +46,7 @@ def required_flag(args: List[str], name: str) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("사용법: python main.py <new|validate|approve|publish|sync|todo|backlinks|theme> [options]", file=sys.stderr)
+        print("사용법: python main.py <new|validate|approve|publish|patch-urls|sync|todo|backlinks|theme> [options]", file=sys.stderr)
         sys.exit(1)
 
     command = sys.argv[1]
@@ -102,6 +104,14 @@ def main():
 
             publish_to_multi(run_id, platforms, dry_run)
             print("dry-run 완료" if dry_run else "멀티 플랫폼 게시 완료")
+            return
+
+        elif command == "patch-urls":
+            patch_urls(
+                required_flag(args, "slug"),
+                Path(required_flag(args, "edits-file")),
+                has_flag(args, "dry-run"),
+            )
             return
 
         elif command == "sync":
