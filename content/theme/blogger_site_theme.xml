@@ -21,6 +21,17 @@
     <meta name="naver-site-verification" content="fa4c1b1e44d01ef2fe0d96d319dc1fd88b095774" />
     <title><data:view.title.escaped/></title>
     <b:include data='blog' name='all-head-content'/>
+    <!-- Editorial identity shared by every publishing surface. -->
+    <script type='application/ld+json'><![CDATA[
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://beji-tech.blogspot.com/#editorial-team",
+  "name": "AI Tech Editor",
+  "url": "https://beji-tech.blogspot.com/",
+  "description": "키워드를 기반으로 초안을 작성하고 출처·코드·내부 링크를 검증한 뒤 관리자 승인 후 게시하는 기술 콘텐츠 편집 시스템"
+}
+    ]]></script>
     <!-- Google Web Fonts -->
     <link href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap' rel='stylesheet'/>
 
@@ -950,6 +961,21 @@
         gap: 1rem;
       }
 
+      .editorial-disclosure {
+        margin-top: 2rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background: var(--primary-light);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+
+      .editorial-disclosure strong {
+        color: var(--text-main);
+      }
+
       /* Sidebar */
       .sidebar {
         display: flex;
@@ -1484,9 +1510,11 @@
               <b:loop values='data:posts' var='post'>
                 <b:if cond='data:view.isPost'>
                   <!-- Single Post Detail Page -->
-                  <article class='post-detail'>
+                  <article class='post-detail' itemscope='itemscope' itemtype='https://schema.org/BlogPosting'>
+                    <meta expr:content='data:post.url' itemprop='url mainEntityOfPage'/>
+                    <meta expr:content='data:post.timestampISO8601' itemprop='datePublished'/>
                     <header class='post-header'>
-                      <h1 class='post-title'><data:post.title/></h1>
+                      <h1 class='post-title' itemprop='headline'><data:post.title/></h1>
                       <div class='post-meta'>
                         <svg fill='none' height='14' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' style='display:inline-block;vertical-align:text-bottom;margin-right:4px' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'>
                           <rect height='18' rx='2' ry='2' width='18' x='3' y='4'/>
@@ -1495,15 +1523,21 @@
                           <line x1='3' x2='21' y1='10' y2='10'/>
                         </svg>
                         <span><data:post.date/></span>
-                        <b:if cond='data:post.author'>
-                          <span> by <data:post.author.name/></span>
-                        </b:if>
+                        <span itemprop='author' itemscope='itemscope' itemtype='https://schema.org/Organization'>
+                          <a href='/p/about.html' itemprop='url' rel='author'>
+                            <span itemprop='name'>AI Tech Editor</span>
+                          </a>
+                        </span>
                       </div>
                     </header>
-                    <div class='post-body'>
+                    <div class='post-body' itemprop='articleBody'>
                       <!-- This outputs our pre-styled post HTML from converter.py -->
                       <data:post.body/>
                     </div>
+                    <aside aria-label='편집 정책' class='editorial-disclosure'>
+                      <strong>AI Tech Editor</strong>는 키워드를 기반으로 초안을 작성하고 출처, 코드, 내부 링크를 검증합니다. 모든 글은 관리자 검토와 승인 후 게시됩니다.
+                      <a href='/p/about.html'>편집 과정 보기</a>
+                    </aside>
                     <!-- Clickable tags list at the bottom of the article -->
                     <b:if cond='data:post.labels'>
                       <div class='devlog-tags' style='margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;'>
@@ -1975,7 +2009,7 @@
           <b:section id='about-summary-section' showaddelement='true'>
             <b:widget id='HTML1' locked='false' title='About' type='HTML' visible='true'>
               <b:widget-settings>
-                <b:widget-setting name='content'><![CDATA[About 페이지에 블로그의 방향과 운영 원칙을 요약해서 작성해 주세요.]]></b:widget-setting>
+                <b:widget-setting name='content'><![CDATA[AI Tech Editor는 키워드를 기반으로 기술 글의 초안을 작성하고 출처, 코드, 내부 링크를 검증합니다. 모든 글은 관리자 검토와 승인 후 게시됩니다.]]></b:widget-setting>
               </b:widget-settings>
               <b:includable id='main'>
                 <div class='widget-box'>
