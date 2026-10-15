@@ -18,6 +18,8 @@ load_dotenv()
 
 from src.pipeline.new_run import create_run
 from src.pipeline.validate import validate_run
+from src.pipeline.check import check_run
+from src.pipeline.lint import lint_run
 from src.pipeline.seo_check import check_meta_description
 from src.pipeline.approve import approve_run
 from src.pipeline.patch_urls import patch_urls
@@ -46,7 +48,7 @@ def required_flag(args: List[str], name: str) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("사용법: python main.py <new|validate|approve|publish|patch-urls|sync|todo|backlinks|theme> [options]", file=sys.stderr)
+        print("사용법: python main.py <new|check|lint|validate|approve|publish|patch-urls|sync|todo|backlinks|theme> [options]", file=sys.stderr)
         sys.exit(1)
 
     command = sys.argv[1]
@@ -58,6 +60,31 @@ def main():
             run_id = create_run(topic)
             print(f"새 실행 생성: {run_id}")
             print(f"경로: temp/runs/{run_id}")
+            return
+
+        elif command == "check":
+            run_id = required_flag(args, "run")
+            ok, errors, warnings = check_run(run_id)
+            for warning in warnings:
+                print(f"[check] 경고: {warning}")
+            if not ok:
+                for error in errors:
+                    print(f"[check] 오류: {error}", file=sys.stderr)
+                sys.exit(1)
+            print("품질 검사 통과")
+            return
+
+        elif command == "lint":
+            run_id = required_flag(args, "run")
+            skip_link_check = has_flag(args, "skip-link-check")
+            ok, errors, warnings = lint_run(run_id, skip_link_check=skip_link_check)
+            for warning in warnings:
+                print(f"[lint] 경고: {warning}")
+            if not ok:
+                for error in errors:
+                    print(f"[lint] 오류: {error}", file=sys.stderr)
+                sys.exit(1)
+            print("형식 검사 통과")
             return
 
         elif command == "validate":
