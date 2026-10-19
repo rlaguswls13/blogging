@@ -32,7 +32,7 @@ Blogger API를 사용하기 위해 가장 먼저 진행해야 할 작업은 Goog
 
 - **Blogger API 활성화**: 'API 및 서비스 > 라이브러리' 메뉴에서 'Blogger API v3'를 검색하고 활성화합니다.
 
-- **OAuth 동의 화면 설정**: 외부 사용자를 위한 동의 화면을 설정하고 필요한 스코프(`<https://www.googleapis.com/auth/blogger`>)를 추가합니다. 테스트 사용자에 본인의 Gmail 계정을 추가해 두어야 테스트 중 로그인 제한이 걸리지 않습니다 [2].
+- **OAuth 동의 화면 설정**: 외부 사용자를 위한 동의 화면을 설정하고 필요한 스코프(`https://www.googleapis.com/auth/blogger`)를 추가합니다. 테스트 사용자에 본인의 Gmail 계정을 추가해 두어야 테스트 중 로그인 제한이 걸리지 않습니다 [2].
 
 - **사용자 인증 정보 생성**: '사용자 인증 정보 만들기 > OAuth 클라이언트 ID'를 클릭하고 애플리케이션 유형을 '데스크톱 앱' 또는 '웹 애플리케이션'으로 지정하여 생성합니다. 생성 후 다운로드한 클라이언트 보안 비밀번호(Client ID 및 Client Secret)는 로컬 환경에 보관합니다.
 
@@ -47,7 +47,7 @@ Blogger API는 사용자의 민감한 데이터에 접근하므로 OAuth 2.0 인
 
 - 기본 웹 브라우저를 자동으로 열어 Google OAuth 로그인 동의 페이지로 리디렉션합니다 [2].
 
-- 사용자가 브라우저에서 계정을 선택하고 권한을 부여하면, Google은 설정된 리디렉션 URI(`<http://localhost:8080/oauth2callback`>)로 인가 코드(Authorization Code)를 전송합니다.
+- 사용자가 브라우저에서 계정을 선택하고 권한을 부여하면, Google은 설정된 리디렉션 URI(`http://localhost:8080/oauth2callback`)로 인가 코드(Authorization Code)를 전송합니다.
 
 - 로컬 HTTP 서버가 이 코드를 감지하고 구글 토큰 서버와 통신하여 `Access Token` 및 `Refresh Token`을 획득합니다.
 

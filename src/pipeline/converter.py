@@ -123,7 +123,12 @@ def linkify_markdown(content: str) -> str:
     for i in range(len(parts)):
         if i % 2 == 0:  # Non-code block
             pattern = r'(?<!\]\()(?<!\[)(?<!href=")(?<!src=")(?<!<)https?://[^\s\)\>\]]+'
-            parts[i] = re.sub(pattern, lambda m: f"<{m.group(0)}>", parts[i])
+            # Inline code spans are literal text: wrapping a URL inside one produced `<url`> debris
+            # in already-published posts (2026-10-19), so only linkify between the spans.
+            pieces = re.split(r"(`[^`\n]+`)", parts[i])
+            for j in range(0, len(pieces), 2):
+                pieces[j] = re.sub(pattern, lambda m: f"<{m.group(0)}>", pieces[j])
+            parts[i] = "".join(pieces)
     return "```".join(parts)
 
 def convert_markdown_to_html(markdown_content: str) -> Dict[str, str]:
