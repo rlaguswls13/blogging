@@ -55,7 +55,7 @@ def audit_code_blocks(body):
             err = checker(code)
             if err:
                 issues.append(f"구문 오류({lang}): {err}")
-        _claimed, missing = check_logic_match(code, context)
+        _claimed, missing = check_logic_match(code, context, lang)
         if missing:
             issues.append(f"설명-코드 불일치({lang}): {missing}")
     return issues

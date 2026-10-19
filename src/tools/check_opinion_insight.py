@@ -131,6 +131,8 @@ def check_cross_post_similarity(text, section_name, own_slug, corpus_index):
 
 
 def check_claim_evidence_alignment(differentiation_text, body_text):
+    # 템플릿 안내용 HTML 주석의 예시 문구("직접 돌려본 벤치마크 수치" 등)를 주장으로 오인하지 않는다(2026-10-19).
+    differentiation_text = re.sub(r"<!--.*?-->", "", differentiation_text, flags=re.DOTALL)
     claimed_types = [k for k in CLAIM_TYPES if k in differentiation_text]
     results = []
     for claim_type in claimed_types:

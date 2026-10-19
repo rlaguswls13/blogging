@@ -38,7 +38,6 @@ import json
 import re
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
@@ -80,18 +79,15 @@ def check_python_syntax(code):
 
 
 def check_bash_syntax(code):
-    with tempfile.NamedTemporaryFile(mode="w", suffix=".sh", delete=False, encoding="utf-8") as f:
-        f.write(code)
-        path = f.name
+    # 임시 파일 경로를 넘기면 Windows의 Git Bash가 `C:\Users\...`의 백슬래시를 이스케이프로
+    # 먹어 "No such file" 오탐을 낸다(2026-10-19, 소급 감사 bash 4건) — stdin으로 넘겨 경로 의존을 없앤다.
     try:
-        result = subprocess.run(["bash", "-n", path], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(["bash", "-n"], input=code, capture_output=True, text=True, timeout=10)
         if result.returncode != 0:
             return result.stderr.strip()
         return None
     except FileNotFoundError:
         return None  # bash 자체가 없는 환경 — 건너뜀
-    finally:
-        Path(path).unlink(missing_ok=True)
 
 
 def check_json_syntax(code):
@@ -120,6 +116,14 @@ SYNTAX_CHECKERS = {
 
 BARE_WORD_RE = re.compile(r"^@?[A-Za-z][A-Za-z0-9]*$")
 FILE_EXTENSION_RE = re.compile(r"^\.[A-Za-z0-9]+$")
+# 2026-10-19 오탐 보정(소급 감사 23건 전수 대조): 설정 파일명(`application.yml`), 패키지/아티팩트명
+# (`google-api-python-client`), 글롭 표기(`spring.datasource.hikari.*`)는 코드에 문자 그대로 나올
+# 필요가 없는 배경 인용이다.
+FILE_NAME_RE = re.compile(r"^[\w.-]+\.(?:ya?ml|properties|xml|json|toml|gradle|conf|md|txt|sh|py|java)$")
+PACKAGE_NAME_RE = re.compile(r"^[a-z][a-z0-9]*(?:-[a-z0-9]+)+$")
+# 언어 미지정/text/log 등은 소스가 아니라 실행 결과·로그 출력 블록이라, 직전 문단이 말하는
+# 호출부(`a.speak()` 등)가 블록 안에 없는 게 정상이다.
+OUTPUT_BLOCK_LANGS = {"", "text", "txt", "plaintext", "log", "console", "output"}
 
 
 def extract_claimed_identifiers(context_text):
@@ -145,6 +149,8 @@ def extract_claimed_identifiers(context_text):
             continue
         if BARE_WORD_RE.match(token):
             continue
+        if "*" in token or FILE_NAME_RE.match(token) or PACKAGE_NAME_RE.match(token):
+            continue
         identifiers.append(token)
     return identifiers
 
@@ -153,7 +159,9 @@ def _normalize(text):
     return re.sub(r"\s+", "", text)
 
 
-def check_logic_match(code, context):
+def check_logic_match(code, context, lang=None):
+    if lang is not None and lang.lower() in OUTPUT_BLOCK_LANGS:
+        return [], []
     claimed = extract_claimed_identifiers(context)
     normalized_code = _normalize(code)
     missing = []
@@ -199,7 +207,7 @@ def main():
         else:
             print(f"    — 구문 검사기 없음(지원: {', '.join(sorted(set(SYNTAX_CHECKERS)))})")
 
-        claimed, missing = check_logic_match(code, context)
+        claimed, missing = check_logic_match(code, context, lang)
         if claimed:
             if missing:
                 print(f"    ⚠️ 설명-코드 불일치: 직전 문단이 언급한 {missing}가 코드에 안 보입니다")
