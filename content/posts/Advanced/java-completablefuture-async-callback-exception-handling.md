@@ -187,8 +187,8 @@ public class ThreadPoolDemo {
 
 ## 참고문헌
 
-1. Oracle, "CompletableFuture (Java SE 21 & JDK 21)", Java Platform, Standard Edition & Java Development Kit Version 21 API Specification. https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html (확인일: 2026-08-23)
-2. Oracle, "ForkJoinPool (Java SE 21 & JDK 21)", Java Platform, Standard Edition & Java Development Kit Version 21 API Specification. https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinPool.html (확인일: 2026-08-23)
+1. Oracle, "[CompletableFuture (Java SE 21 & JDK 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/CompletableFuture.html)", Java Platform, Standard Edition & Java Development Kit Version 21 API Specification. (확인일: 2026-08-23)
+2. Oracle, "[ForkJoinPool (Java SE 21 & JDK 21)](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ForkJoinPool.html)", Java Platform, Standard Edition & Java Development Kit Version 21 API Specification. (확인일: 2026-08-23)
 
 ## 종합적 의견
 

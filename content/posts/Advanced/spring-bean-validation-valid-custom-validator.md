@@ -197,7 +197,7 @@ class CascadingBugReproductionTest {
 ## 참고문헌
 
 1. Jakarta Bean Validation 3.0 Specification, Section 3.4 "Constraint validation implementation" — https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html (확인일: 2026-08-23)
-2. Hibernate Validator Reference Guide (Reference Implementation), Section 2.1.6 "Object graphs" 및 Chapter 6 "Creating a custom constraint" — https://docs.hibernate.org/stable/validator/reference/en-US/html_single/ (확인일: 2026-08-23)
+2. [Hibernate Validator Reference Guide (Reference Implementation)](https://docs.hibernate.org/stable/validator/reference/en-US/html_single/), Section 2.1.6 "Object graphs" 및 Chapter 6 "Creating a custom constraint" (확인일: 2026-08-23)
 3. Spring Framework Reference Documentation, "Spring Validation" (Bean Validation 연동, `LocalValidatorFactoryBean`) — https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html (확인일: 2026-08-23)
 
 ## 종합적 의견

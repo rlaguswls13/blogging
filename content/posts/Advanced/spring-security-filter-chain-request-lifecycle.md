@@ -192,9 +192,9 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
 ## 참고문헌
 
-1. Spring Security Reference — "Servlet Applications: Architecture" (DelegatingFilterProxy, FilterChainProxy, SecurityFilterChain, DEBUG/TRACE 필터 순서 로그, addFilterBefore/After/At), https://docs.spring.io/spring-security/reference/servlet/architecture.html (확인일: 2026-08-22)
+1. Spring Security Reference — "[Servlet Applications: Architecture](https://docs.spring.io/spring-security/reference/servlet/architecture.html)" (DelegatingFilterProxy, FilterChainProxy, SecurityFilterChain, DEBUG/TRACE 필터 순서 로그, addFilterBefore/After/At) (확인일: 2026-08-22)
 2. Spring Security Reference — "OAuth 2.0 Resource Server: JWT" (BearerTokenAuthenticationFilter, JwtAuthenticationProvider, JWT 검증 과정), https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html (확인일: 2026-08-22)
-3. Spring Security Reference — "Servlet Applications: Authentication Architecture" (AbstractAuthenticationProcessingFilter, UsernamePasswordAuthenticationFilter, AuthenticationManager, SecurityContextHolder), https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html (확인일: 2026-08-22)
+3. Spring Security Reference — "[Servlet Applications: Authentication Architecture](https://docs.spring.io/spring-security/reference/servlet/authentication/architecture.html)" (AbstractAuthenticationProcessingFilter, UsernamePasswordAuthenticationFilter, AuthenticationManager, SecurityContextHolder) (확인일: 2026-08-22)
 
 ## 종합적 의견
 

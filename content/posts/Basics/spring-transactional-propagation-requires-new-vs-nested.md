@@ -175,9 +175,9 @@ public void placeOrderPartialTolerant() {
 ## 참고문헌
 
 1. Spring Framework Reference Documentation, "Transaction Propagation" — https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/tx-propagation.html (확인일: 2026-08-23)
-2. Spring Framework Javadoc, `Propagation` (annotation enum) — https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Propagation.html (확인일: 2026-08-23)
-3. Spring Framework Javadoc, `JpaTransactionManager` — https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/orm/jpa/JpaTransactionManager.html (확인일: 2026-08-23)
-4. Spring Framework 소스코드, `AbstractPlatformTransactionManager.java` / `DataSourceTransactionManager.java` (spring-projects/spring-framework, main 브랜치) — https://github.com/spring-projects/spring-framework/blob/main/spring-tx/src/main/java/org/springframework/transaction/support/AbstractPlatformTransactionManager.java , https://github.com/spring-projects/spring-framework/blob/main/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/DataSourceTransactionManager.java (확인일: 2026-08-23)
+2. [Spring Framework Javadoc, `Propagation` (annotation enum)](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Propagation.html) (확인일: 2026-08-23)
+3. [Spring Framework Javadoc, `JpaTransactionManager`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/orm/jpa/JpaTransactionManager.html) (확인일: 2026-08-23)
+4. Spring Framework 소스코드, [`AbstractPlatformTransactionManager.java`](https://github.com/spring-projects/spring-framework/blob/main/spring-tx/src/main/java/org/springframework/transaction/support/AbstractPlatformTransactionManager.java) / [`DataSourceTransactionManager.java`](https://github.com/spring-projects/spring-framework/blob/main/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/DataSourceTransactionManager.java) (spring-projects/spring-framework, main 브랜치) (확인일: 2026-08-23)
 
 ## 종합적 의견
 

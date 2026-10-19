@@ -173,10 +173,10 @@ Record는 표준 빌더 문법을 제공하지 않는다. 필드가 많고 선�
 
 ## 참고문헌
 
-1. Oracle, "Records", Java SE 17 Language Updates, docs.oracle.com (확인일: 2026-08-23) — https://docs.oracle.com/en/java/javase/17/language/records.html
-2. OpenJDK, "JEP 395: Records", openjdk.org (확인일: 2026-08-23) — https://openjdk.org/jeps/395
-3. Red Hat / Hibernate Team, "Hibernate ORM 6.4 User Guide", Chapter 3 "Domain Model", docs.hibernate.org (확인일: 2026-08-23) — https://docs.hibernate.org/orm/6.4/userguide/html_single/Hibernate_User_Guide.html
-4. Project Lombok, "@Value", projectlombok.org (확인일: 2026-08-23) — https://projectlombok.org/features/Value
+1. Oracle, "[Records](https://docs.oracle.com/en/java/javase/17/language/records.html)", Java SE 17 Language Updates, docs.oracle.com (확인일: 2026-08-23)
+2. OpenJDK, "[JEP 395: Records](https://openjdk.org/jeps/395)", openjdk.org (확인일: 2026-08-23)
+3. Red Hat / Hibernate Team, "[Hibernate ORM 6.4 User Guide](https://docs.hibernate.org/orm/6.4/userguide/html_single/Hibernate_User_Guide.html)", Chapter 3 "Domain Model", docs.hibernate.org (확인일: 2026-08-23)
+4. Project Lombok, "[@Value](https://projectlombok.org/features/Value)", projectlombok.org (확인일: 2026-08-23)
 
 ## 종합적 의견
 

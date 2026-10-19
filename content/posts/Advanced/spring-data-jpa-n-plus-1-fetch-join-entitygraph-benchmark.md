@@ -248,12 +248,12 @@ spring:
 ## 참고문헌
 
 1. Spring Data JPA Reference Documentation, "Query Methods — Entity Graphs", https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html (확인일: 2026-08-23)
-2. Spring Data JPA API, `EntityGraph.EntityGraphType`, https://docs.spring.io/spring-data/data-jpa/docs/current/api/org/springframework/data/jpa/repository/EntityGraph.EntityGraphType.html (확인일: 2026-08-23)
+2. [Spring Data JPA API, `EntityGraph.EntityGraphType`](https://docs.spring.io/spring-data/data-jpa/docs/current/api/org/springframework/data/jpa/repository/EntityGraph.EntityGraphType.html) (확인일: 2026-08-23)
 3. Hibernate ORM 6.4 User Guide, "Fetching", https://docs.hibernate.org/orm/6.4/userguide/html_single/Hibernate_User_Guide.html (확인일: 2026-08-23)
-4. Hibernate ORM Javadoc, `AvailableSettings.FAIL_ON_PAGINATION_OVER_COLLECTION_FETCH`, https://docs.hibernate.org/orm/5.4/javadocs/org/hibernate/cfg/AvailableSettings.html (확인일: 2026-08-23)
+4. [Hibernate ORM Javadoc, `AvailableSettings.FAIL_ON_PAGINATION_OVER_COLLECTION_FETCH`](https://docs.hibernate.org/orm/5.4/javadocs/org/hibernate/cfg/AvailableSettings.html) (확인일: 2026-08-23)
 5. Vlad Mihalcea, "The best way to fix the Hibernate HHH000104 ... warning message", https://vladmihalcea.com/fix-hibernate-hhh000104-entity-fetch-pagination-warning-message/ (확인일: 2026-08-23)
 6. Thorben Janssen, "How to fix Hibernate's Warning HHH000104: firstResult/maxResults specified with collection fetch", https://thorben-janssen.com/hibernate-warning-firstresult-maxresults/ (확인일: 2026-08-23)
-7. Hibernate ORM 공식 소스 저장소, https://github.com/hibernate/hibernate-orm (확인일: 2026-08-23)
+7. [Hibernate ORM 공식 소스 저장소](https://github.com/hibernate/hibernate-orm) (확인일: 2026-08-23)
 
 ## 종합적 의견
 

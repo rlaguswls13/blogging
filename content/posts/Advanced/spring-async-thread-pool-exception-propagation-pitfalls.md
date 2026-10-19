@@ -197,9 +197,9 @@ executor.initialize();
 
 ## 참고문헌
 
-1. Spring Framework Reference Documentation — "Task Execution and Scheduling" (`@Async`, self-invocation, `AsyncUncaughtExceptionHandler`, `SimpleAsyncTaskExecutor` 관련 공식 설명), https://docs.spring.io/spring-framework/reference/integration/scheduling.html (확인일: 2026-08-23)
+1. Spring Framework Reference Documentation — "[Task Execution and Scheduling](https://docs.spring.io/spring-framework/reference/integration/scheduling.html)" (`@Async`, self-invocation, `AsyncUncaughtExceptionHandler`, `SimpleAsyncTaskExecutor` 관련 공식 설명) (확인일: 2026-08-23)
 2. Spring Framework Reference Documentation — "Using @Transactional" (`@Transactional` self-invocation 제약에 대한 공식 설명), https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html (확인일: 2026-08-23)
-3. Spring Framework Javadoc — `ThreadPoolTaskExecutor` (`queueCapacity` 기본값과 스레드 확장 조건에 대한 공식 API 문서), https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html (확인일: 2026-08-23)
+3. [Spring Framework Javadoc — `ThreadPoolTaskExecutor` (`queueCapacity` 기본값과 스레드 확장 조건에 대한 공식 API 문서)](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) (확인일: 2026-08-23)
 
 ## 종합적 의견
 

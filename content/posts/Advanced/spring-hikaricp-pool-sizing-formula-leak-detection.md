@@ -178,7 +178,7 @@ public Optional<Order> findById(long orderId) throws SQLException {
 ## 참고문헌
 
 1. Brett Wooldridge, "About Pool Sizing", HikariCP GitHub Wiki, https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing (확인일: 2026-08-22)
-2. HikariCP README (Configuration Knobs — leakDetectionThreshold, minimumIdle, maximumPoolSize), https://github.com/brettwooldridge/HikariCP (확인일: 2026-08-22)
+2. [HikariCP README (Configuration Knobs — leakDetectionThreshold, minimumIdle, maximumPoolSize)](https://github.com/brettwooldridge/HikariCP) (확인일: 2026-08-22)
 3. Spring Boot Reference Documentation, "Configure a DataSource", https://docs.spring.io/spring-boot/reference/data/sql.html (확인일: 2026-08-22)
 
 ## 종합적 의견
