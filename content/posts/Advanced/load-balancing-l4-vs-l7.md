@@ -152,21 +152,14 @@ NGINX 및 HAProxy는 오픈소스 소프트웨어 기반 로드 밸런서로서 
 
 대규모 시스템에서의 부하 분산 전략은 단일 기술의 선택이 아닌, 계층화된 최적화(Layered Optimization)의 문제로 접근해야 합니다. 최전방 인프라(Edge Layer)에서는 L4 로드 밸런싱의 막강한 패킷 수용 능력과 고정 IP, DSR 패턴을 활용해 트래픽 폭주에 대비하고, 내부 애플리케이션 계층(Application Layer)에서는 L7 로드 밸런싱의 세밀한 헤더 파싱, SSL Offloading, WAF 연동을 활용해 정교한 트래픽 제어 및 보안성을 확보하는 Multi-Tier 구조가 엔지니어링 측면에서 가장 성숙한 아키텍처 표준이라고 생각합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Cloudflare, "What is Load Balancing?", [https://www.cloudflare.com/learning/performance/what-is-load-balancing/](https://www.cloudflare.com/learning/performance/what-is-load-balancing/)
-
-- Amazon Web Services (AWS), "Elastic Load Balancing Architecture & ALB vs NLB", [https://docs.aws.amazon.com/whitepapers/latest/aws-fault-tolerant-applications/elastic-load-balancing.html](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-tolerant-applications/elastic-load-balancing.html)
-
-- F5 NGINX, "NGINX HTTP and Layer 4 Stream Load Balancing Guide", [https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
-
-- HAProxy Technologies, "Load Balancing Types and Algorithms", [https://www.haproxy.com/blog/load-balancing-types-and-algorithms](https://www.haproxy.com/blog/load-balancing-types-and-algorithms)
-
-- Cloudflare, "Layer 4 vs Layer 7 Load Balancing: Network Architecture and Flow Modes", [https://www.cloudflare.com/learning/ddos/what-is-layer-4/](https://www.cloudflare.com/learning/ddos/what-is-layer-4/)
-
-- Google Cloud, "Google Cloud Load Balancing Architecture & Overview", [https://cloud.google.com/load-balancing/docs/load-balancing-overview](https://cloud.google.com/load-balancing/docs/load-balancing-overview)
+1. Cloudflare, "[What is Load Balancing?](https://www.cloudflare.com/learning/performance/what-is-load-balancing/)"
+2. Amazon Web Services (AWS), "[Elastic Load Balancing Architecture & ALB vs NLB](https://docs.aws.amazon.com/whitepapers/latest/aws-fault-tolerant-applications/elastic-load-balancing.html)"
+3. F5 NGINX, "[NGINX HTTP and Layer 4 Stream Load Balancing Guide](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)"
+4. HAProxy Technologies, "[Load Balancing Types and Algorithms](https://www.haproxy.com/blog/load-balancing-types-and-algorithms)"
+5. Cloudflare, "[Layer 4 vs Layer 7 Load Balancing: Network Architecture and Flow Modes](https://www.cloudflare.com/learning/ddos/what-is-layer-4/)"
+6. Google Cloud, "[Google Cloud Load Balancing Architecture & Overview](https://cloud.google.com/load-balancing/docs/load-balancing-overview)"
 
 ## 백링크
 

@@ -103,19 +103,13 @@ Operator 패턴은 모든 서비스의 만병통치약이 아닙니다.
 
 Kubernetes Operator 패턴의 성장은 결국 '인프라의 애플리케이션화' 흐름을 가속화하고 있습니다. 과거 수동으로 작성되던 운영 플레이북(Runbook)이 소스 코드 형태로 컴파일되어 클러스터 내부에서 유기적으로 도는 시대가 되었습니다. 다만, 이러한 소프트웨어 정의 자동화가 성공하려면 클러스터의 모니터링 시스템(Prometheus, Grafana 등) 및 로깅 인프라와 Operator의 조정 이벤트 로그가 철저히 동기화되어 있어야 합니다. Operator가 스스로 조정한 내역이 운영자 모르게 블랙박스화될 경우 예기치 않은 시스템 연쇄 장애(Cascade Failure)로 이어질 수 있으므로 관찰 가능성(Observability) 설계를 동시에 진행해야 합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Kubernetes 공식 문서 - Custom Resources ([https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/))
-
-- Kubernetes 공식 문서 - Operator Pattern ([https://kubernetes.io/docs/concepts/extend-kubernetes/operator/](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/))
-
-- OneUptime Tech Blog - The Reconciliation Loop in Kubernetes Operators ([https://oneuptime.com/blog/kubernetes-operator-reconciliation-loop](https://oneuptime.com/blog/kubernetes-operator-reconciliation-loop))
-
-- Operator SDK 공식 문서 - Kubebuilder vs Operator SDK Comparison ([https://sdk.operatorframework.io/docs/building-operators/golang/comparison/](https://sdk.operatorframework.io/docs/building-operators/golang/comparison/))
-
-- Kubebuilder 공식 가이드북 - Design Patterns: Idempotency ([https://book.kubebuilder.io/beyond-commons/idempotency.html](https://book.kubebuilder.io/beyond-commons/idempotency.html))
+1. [Kubernetes 공식 문서 - Custom Resources](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+2. [Kubernetes 공식 문서 - Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)
+3. [OneUptime Tech Blog - The Reconciliation Loop in Kubernetes Operators](https://oneuptime.com/blog/kubernetes-operator-reconciliation-loop)
+4. [Operator SDK 공식 문서 - Kubebuilder vs Operator SDK Comparison](https://sdk.operatorframework.io/docs/building-operators/golang/comparison/)
+5. [Kubebuilder 공식 가이드북 - Design Patterns: Idempotency](https://book.kubebuilder.io/beyond-commons/idempotency.html)
 
 ## 백링크
 

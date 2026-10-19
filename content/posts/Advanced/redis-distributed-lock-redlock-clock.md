@@ -115,21 +115,14 @@ Redlock 알고리즘은 분산 서버 노드 간의 하드웨어 시계 동기�
 
 동시성과 정합성의 역사는 늘 트레이드오프의 연속이었습니다. Lettuce의 심플함은 시스템이 한가할 때 빠르게 돌지만 몰리면 터지고, Redisson은 조용하지만 Pub/Sub 상태 관리를 위해 브로커 채널을 항상 유지해야 합니다. 아키텍트는 락 라이브러리를 고를 때 현재 비즈니스의 데이터 충돌 강도(Contention Level)를 평가해야 합니다. 충돌이 거의 없는 일상적인 도메인은 Lettuce의 직관적인 구현으로 족하며, 매일 대규모 한정 수량 구매 이벤트가 몰리는 이커머스의 중심부는 Redisson과 펜싱 토큰을 적극 도입해야 합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Redis Official Documentation, "Distributed Locks with Redis and the Redlock spec", [https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/)
-
-- Redis, "Redis Lock — distributed locking concepts overview", [https://redis.io/glossary/redis-lock/](https://redis.io/glossary/redis-lock/)
-
-- Redisson Client Reference Guide, "Distributed Lock implementations and Watchdog configurations", [https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers)
-
-- Martin Kleppmann's Blog, "How to do distributed locking (Why Redlock is not safe)", [https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
-
-- Redisson, "Feature Comparison: Redisson vs Lettuce", [https://redisson.pro/blog/feature-comparison-redisson-vs-lettuce.html](https://redisson.pro/blog/feature-comparison-redisson-vs-lettuce.html)
-
-- Cloudflare Time Services, "Network Time Protocol (NTP)", [https://developers.cloudflare.com/time-services/ntp/](https://developers.cloudflare.com/time-services/ntp/)
+1. Redis Official Documentation, "[Distributed Locks with Redis and the Redlock spec](https://redis.io/docs/latest/develop/clients/patterns/distributed-locks/)"
+2. Redis, "[Redis Lock — distributed locking concepts overview](https://redis.io/glossary/redis-lock/)"
+3. Redisson Client Reference Guide, "[Distributed Lock implementations and Watchdog configurations](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-Synchronizers)"
+4. Martin Kleppmann's Blog, "[How to do distributed locking (Why Redlock is not safe)](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)"
+5. Redisson, "[Feature Comparison: Redisson vs Lettuce](https://redisson.pro/blog/feature-comparison-redisson-vs-lettuce.html)"
+6. Cloudflare Time Services, "[Network Time Protocol (NTP)](https://developers.cloudflare.com/time-services/ntp/)"
 
 ## 백링크
 

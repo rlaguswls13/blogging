@@ -117,21 +117,14 @@ GraphRAG는 극도로 향상된 글로벌 질의 성능을 선사하지만, 현�
 
 GraphRAG의 도입은 단순히 검색 성능 향상의 보조 수단으로 그치지 않고, 비정형 문서 덩어리로 방치되던 기업 내부 데이터를 온전한 정형 지식 그래프(Structured Knowledge Graph)로 정제해내는 데이터 변환 혁신에 가깝습니다. 실무적 관점에서는 수십만 건의 API를 무작정 LLM에 보내는 무식한 엔지니어링 대신, 중요 코어 주제를 담은 최상위 개체들을 추출하여 경량형 온프레미스 LLM으로 인덱싱을 가속화하고, 의미 검색만 Naive RAG로 병렬 지원하는 영리한 하이브리드 아키텍처(2-tier RAG)를 도입하는 것이 비즈니스 성공을 위한 최선의 절충선이라고 봅니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- LangChain Blog, "GraphRAG: Orchestrating LLMs and Graph Database to Solve RAG Limitations", [https://blog.langchain.dev/graphrag/](https://blog.langchain.dev/graphrag/)
-
-- Microsoft Research, "From Local to Global: A GraphRAG Approach to Query-Focused Summarization", [https://www.microsoft.com/en-us/research/project/graphrag/](https://www.microsoft.com/en-us/research/project/graphrag/)
-
-- Neo4j Developer Blog, "Implementing GraphRAG with Neo4j and LangChain", [https://neo4j.com/developer-blog/graphrag-neo4j-langchain/](https://neo4j.com/developer-blog/graphrag-neo4j-langchain/)
-
-- Microsoft GraphRAG Github Repo, "GraphRAG Indexing Pipeline and Engine Specifications", [https://github.com/microsoft/graphrag](https://github.com/microsoft/graphrag)
-
-- arXiv Library, "Retrieval-Augmented Generation over Knowledge Graphs: A Survey of GraphRAG Techniques", [https://arxiv.org/abs/2404.16130](https://arxiv.org/abs/2404.16130)
-
-- Google Cloud Tech Blog, "Unifying Vector Databases and Knowledge Graphs in Enterprise AI Systems", [https://cloud.google.com/blog/products/ai-machine-learning/unifying-vector-and-graph-rag](https://cloud.google.com/blog/products/ai-machine-learning/unifying-vector-and-graph-rag)
+1. LangChain Blog, "[GraphRAG: Orchestrating LLMs and Graph Database to Solve RAG Limitations](https://blog.langchain.dev/graphrag/)"
+2. Microsoft Research, "[From Local to Global: A GraphRAG Approach to Query-Focused Summarization](https://www.microsoft.com/en-us/research/project/graphrag/)"
+3. Neo4j Developer Blog, "[Implementing GraphRAG with Neo4j and LangChain](https://neo4j.com/developer-blog/graphrag-neo4j-langchain/)"
+4. Microsoft GraphRAG Github Repo, "[GraphRAG Indexing Pipeline and Engine Specifications](https://github.com/microsoft/graphrag)"
+5. arXiv Library, "[Retrieval-Augmented Generation over Knowledge Graphs: A Survey of GraphRAG Techniques](https://arxiv.org/abs/2404.16130)"
+6. Google Cloud Tech Blog, "[Unifying Vector Databases and Knowledge Graphs in Enterprise AI Systems](https://cloud.google.com/blog/products/ai-machine-learning/unifying-vector-and-graph-rag)"
 
 ## 백링크
 

@@ -101,19 +101,13 @@ Linux `epoll` 시스템 콜은 수만 개의 Socket 소켓 연결을 효율적�
 
 동기/비동기, 블로킹/논블로킹은 단순한 취향의 차이가 아니라 애플리케이션의 자원 효율성(Resource Utilization)을 결정짓는 핵심 설계 패러다임입니다. 현대 클라우드 네이티브 아키텍처에서는 무거운 OS 스레드 생성을 최소화하고, 단일 스레드 혹은 소수의 링 버퍼 기반 스레드로 대량의 I/O를 처리하는 방향으로 진화하고 있습니다. 따라서 이 두 가지 축의 의미를 명확히 판별하고 적재적소에 I/O 모델을 배치하는 능력이 엔지니어의 핵심 역량이 될 것입니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- W. Richard Stevens, *UNIX Network Programming, Volume 1 (3rd Edition)*, Addison-Wesley. ([<https://man7.org/linux/man-pages/man7/epoll.7.html](https://man7.org/linux/man-pages/man7/epoll.7.html)>)
-
-- M. Tim Jones, *Boost application performance using asynchronous I/O*, IBM Developer. ([<https://developer.ibm.com/articles/l-async/](https://developer.ibm.com/articles/l-async/)>)
-
-- Node.js Foundation, *Overview of Blocking vs Non-Blocking*, Node.js Official Guides. ([<https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/)>)
-
-- Linux Man-pages Project, *epoll(7) - Linux Programmer's Manual*. ([<https://man7.org/linux/man-pages/man7/epoll.7.html](https://man7.org/linux/man-pages/man7/epoll.7.html)>)
-
-- Oracle Corporation, *Java New I/O (NIO) Architecture & Non-blocking I/O*. ([<https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html](https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html)>)
+1. W. Richard Stevens, [*UNIX Network Programming, Volume 1 (3rd Edition)*](https://man7.org/linux/man-pages/man7/epoll.7.html), Addison-Wesley.
+2. M. Tim Jones, [*Boost application performance using asynchronous I/O*](https://developer.ibm.com/articles/l-async/), IBM Developer.
+3. Node.js Foundation, [*Overview of Blocking vs Non-Blocking*](https://nodejs.org/en/docs/guides/blocking-vs-non-blocking/), Node.js Official Guides.
+4. Linux Man-pages Project, [*epoll(7) - Linux Programmer's Manual*](https://man7.org/linux/man-pages/man7/epoll.7.html).
+5. Oracle Corporation, [*Java New I/O (NIO) Architecture & Non-blocking I/O*](https://docs.oracle.com/javase/8/docs/technotes/guides/io/index.html).
 
 ## 백링크
 

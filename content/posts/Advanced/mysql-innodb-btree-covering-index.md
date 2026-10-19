@@ -213,17 +213,11 @@ JOIN (
 
 ---
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- [MySQL 8.0 Reference Manual - InnoDB Index Structures](https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
-
-- [MySQL 8.0 Reference Manual - Optimization and Indexes](https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html)
-
-- [High Performance MySQL 4th Edition (O'Reilly)](https://www.oreilly.com/library/view/high-performance-mysql/9781492080503/)
-
----
+1. [MySQL 8.0 Reference Manual - InnoDB Index Structures](https://dev.mysql.com/doc/refman/8.0/en/innodb-index-types.html)
+2. [MySQL 8.0 Reference Manual - Optimization and Indexes](https://dev.mysql.com/doc/refman/8.0/en/optimization-indexes.html)
+3. [High Performance MySQL 4th Edition (O'Reilly)](https://www.oreilly.com/library/view/high-performance-mysql/9781492080503/)
 
 ## 백링크
 

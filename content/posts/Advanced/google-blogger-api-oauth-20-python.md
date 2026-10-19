@@ -112,13 +112,10 @@ Blogger API 사용에도 몇 가지 분명한 한계가 존재합니다.
 
 Google Blogger API v3는 소규모 블로그 운영 자동화를 원하는 개발자에게 적합한 검증된 기술입니다. 초기 OAuth 2.0 세팅 오버헤드만 극복한다면 API 구조의 높은 네이티브 완성도와 Google의 공식 파이썬 라이브러리 덕분에 안정적으로 블로깅 자동화 파이프라인을 운영할 수 있습니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Google Developers - Blogger API v3 Reference ([https://developers.google.com/blogger/docs/3.0/reference](https://developers.google.com/blogger/docs/3.0/reference))
-
-- Google Identity Platform - OAuth 2.0 for Desktop Apps ([https://developers.google.com/identity/protocols/oauth2/native-app](https://developers.google.com/identity/protocols/oauth2/native-app))
+1. [Google Developers - Blogger API v3 Reference](https://developers.google.com/blogger/docs/3.0/reference)
+2. [Google Identity Platform - OAuth 2.0 for Desktop Apps](https://developers.google.com/identity/protocols/oauth2/native-app)
 
 ## 백링크
 

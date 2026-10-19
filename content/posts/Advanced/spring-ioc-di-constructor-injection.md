@@ -110,19 +110,13 @@ url: https://beji-tech.blogspot.com/2026/08/spring-ioc-di-constructor-injection.
 
 IoC와 DI는 복잡한 객체 그물망을 사람이 직접 실로 엮던 시대를 마감하고 설계도(Annotation, Config)만 던지면 시스템이 자동으로 배관을 잇는 시대를 열었습니다. 그리고 생성자 주입은 스프링 생태계가 오랜 경험 끝에 필드 주입의 부작용을 극복하며 정립한 최적의 상식이자 합리적 규칙입니다. 신규 백엔드 프로젝트를 시작하는 엔지니어라면 무조건 의존성은 `final`과 생성자 형태로 선언하고, 롬복을 도구로 결합하여 캡슐화의 안전지대를 탄탄히 수비하는 방식으로 코딩을 전개해야 합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Martin Fowler, "Inversion of Control Containers and the Dependency Injection pattern", [https://martinfowler.com/articles/injection.html](https://martinfowler.com/articles/injection.html)
-
-- Robert C. Martin, "Clean Architecture: A Craftsman's Guide to Software Structure and Design", Prentice Hall.
-
-- Spring Framework Reference Documentation, "Core Technologies - Dependency Injection", [https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#beans-dependencies](https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#beans-dependencies)
-
-- Baeldung, "Constructor Injection vs Field Injection in Spring", [https://www.baeldung.com/spring-constructor-injection-vs-field-injection](https://www.baeldung.com/spring-constructor-injection-vs-field-injection)
-
-- Spring Framework Github discussions, "Guidelines for dependency injection style guide", [https://github.com/spring-projects/spring-framework/wiki](https://github.com/spring-projects/spring-framework/wiki)
+1. Martin Fowler, "[Inversion of Control Containers and the Dependency Injection pattern](https://martinfowler.com/articles/injection.html)"
+2. Robert C. Martin, "Clean Architecture: A Craftsman's Guide to Software Structure and Design", Prentice Hall.
+3. Spring Framework Reference Documentation, "[Core Technologies - Dependency Injection](https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#beans-dependencies)"
+4. Baeldung, "[Constructor Injection vs Field Injection in Spring](https://www.baeldung.com/spring-constructor-injection-vs-field-injection)"
+5. Spring Framework Github discussions, "[Guidelines for dependency injection style guide](https://github.com/spring-projects/spring-framework/wiki)"
 
 ## 백링크
 

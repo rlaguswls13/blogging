@@ -123,21 +123,14 @@ DLQ는 데이터의 영구적 소실을 차단하는 최후의 안전망 역할�
 
 장애 대응을 설계할 때 가장 경계해야 할 부분은 복잡성에 매몰되는 것입니다. 무작정 5단계 이상의 촘촘한 백오프 재시도 토픽을 구축하는 것은 인프라 자원의 낭비이자 장애 추적 난이도만 증대시킬 뿐입니다. 대다수 실무 장애의 성격은 30초 내외의 네트워크 단절이나 일시적 데이터베이스 락 경합 등 짧은 주기 장애입니다. 따라서 1단계(15초 대기)와 2단계(3분 대기) 수준의 간결한 2-tier 백오프 구조만 설계하고, 해결되지 않는 이슈는 즉시 DLQ로 넘기는 타임아웃 밸런스를 잡는 것이 아키텍처 가독성과 운영 단순성 면에서 가장 모범적인 설계라고 생각합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- AWS Prescriptive Guidance, "Designing resilient event-driven architectures with dead-letter queues", [https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html](https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html)
-
-- Uber Engineering Blog, "Reliable Reprocessing in Apache Kafka: Multi-tier Dead Letter Queuing", [https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/](https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/)
-
-- Spring Framework Reference, "Non-Blocking Retries and Dead Letter Queue Support in Spring for Apache Kafka", [https://docs.spring.io/spring-kafka/reference/html/#retry-topic](https://docs.spring.io/spring-kafka/reference/html/#retry-topic)
-
-- Microsoft Azure Architecture Center, "Retry pattern for microservices and cloud applications", [https://learn.microsoft.com/en-us/azure/architecture/patterns/retry](https://learn.microsoft.com/en-us/azure/architecture/patterns/retry)
-
-- Confluent Developer Guide, "Error Handling Patterns in Apache Kafka: Retry and Dead Letter Queue", [https://developer.confluent.io/patterns/event-flow/error-handling/](https://developer.confluent.io/patterns/event-flow/error-handling/)
-
-- Google Cloud Architecture, "Designing reliable event-driven systems using Google Cloud Pub/Sub DLQ", [https://cloud.google.com/pubsub/docs/dead-letter-topics](https://cloud.google.com/pubsub/docs/dead-letter-topics)
+1. AWS Prescriptive Guidance, "[Designing resilient event-driven architectures with dead-letter queues](https://docs.aws.amazon.com/prescriptive-guidance/latest/resilient-event-driven-architectures/dead-letter-queues.html)"
+2. Uber Engineering Blog, "[Reliable Reprocessing in Apache Kafka: Multi-tier Dead Letter Queuing](https://www.uber.com/blog/reliable-reprocessing-in-apache-kafka/)"
+3. Spring Framework Reference, "[Non-Blocking Retries and Dead Letter Queue Support in Spring for Apache Kafka](https://docs.spring.io/spring-kafka/reference/html/#retry-topic)"
+4. Microsoft Azure Architecture Center, "[Retry pattern for microservices and cloud applications](https://learn.microsoft.com/en-us/azure/architecture/patterns/retry)"
+5. Confluent Developer Guide, "[Error Handling Patterns in Apache Kafka: Retry and Dead Letter Queue](https://developer.confluent.io/patterns/event-flow/error-handling/)"
+6. Google Cloud Architecture, "[Designing reliable event-driven systems using Google Cloud Pub/Sub DLQ](https://cloud.google.com/pubsub/docs/dead-letter-topics)"
 
 ## 백링크
 

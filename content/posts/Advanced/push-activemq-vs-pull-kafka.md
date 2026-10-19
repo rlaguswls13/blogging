@@ -128,21 +128,14 @@ Pull 모델은 컨슈머가 처리 가능한 데이터 크기를 파라미터 �
 
 MOM의 컨슘 패턴 설계는 두 기술의 우열 가리기가 아니라 시스템 목적과의 적합성 판단입니다. 지연이 극히 적어야 하고 데이터의 영속 보장 보존(Log Replay)보다 큐에 담긴 자원의 배치가 중요할 때는 Push(ActiveMQ) 브로커를 중심에 두고, 대용량 실시간 파이프라인의 안전성 확보와 데이터 재생 능력이 최상위 가치일 때는 Pull(Kafka) 브로커를 채택해야 합니다. 실무 인프라 엔지니어링 관점에서는 이 두 미들웨어를 하나의 파이프라인 전후단(예: 사용자 접수처는 ActiveMQ로 저지연 확보 ➔ 후속 통계 분석 적재는 Kafka로 버퍼 풀 취합)에 계층적으로 조합하여 시스템을 완성하는 Multi-Tier 메시징 설계를 적극 권장합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- RabbitMQ Documentation, "Consumer Prefetch and Flow Control Mechanisms", [https://www.rabbitmq.com/consumer-prefetch.html](https://www.rabbitmq.com/consumer-prefetch.html)
-
-- LinkedIn Engineering, "Kafka: a Distributed Messaging System for Log Processing", [https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf)
-
-- Apache Kafka Core Spec, "Consumer Fetch and Offset Management Specifications", [https://kafka.apache.org/documentation/#design_pull](https://kafka.apache.org/documentation/#design_pull)
-
-- Apache ActiveMQ Classic Guides, "Prefetch Policy and Consumer Configuration Reference", [https://activemq.apache.org/prefetch-policy](https://activemq.apache.org/prefetch-policy)
-
-- Confluent Developer Guide, "Push vs. Pull: Messaging Design Patterns in Distributed Systems", [https://developer.confluent.io/patterns/event-flow/push-vs-pull](https://developer.confluent.io/patterns/event-flow/push-vs-pull)
-
-- Google Cloud Architecture, "Comparing Pub/Sub push and pull subscriptions for massive workloads", [https://cloud.google.com/pubsub/docs/push-pull-comparison](https://cloud.google.com/pubsub/docs/push-pull-comparison)
+1. RabbitMQ Documentation, "[Consumer Prefetch and Flow Control Mechanisms](https://www.rabbitmq.com/consumer-prefetch.html)"
+2. LinkedIn Engineering, "[Kafka: a Distributed Messaging System for Log Processing](https://www.microsoft.com/en-us/research/wp-content/uploads/2017/09/Kafka.pdf)"
+3. Apache Kafka Core Spec, "[Consumer Fetch and Offset Management Specifications](https://kafka.apache.org/documentation/#design_pull)"
+4. Apache ActiveMQ Classic Guides, "[Prefetch Policy and Consumer Configuration Reference](https://activemq.apache.org/prefetch-policy)"
+5. Confluent Developer Guide, "[Push vs. Pull: Messaging Design Patterns in Distributed Systems](https://developer.confluent.io/patterns/event-flow/push-vs-pull)"
+6. Google Cloud Architecture, "[Comparing Pub/Sub push and pull subscriptions for massive workloads](https://cloud.google.com/pubsub/docs/push-pull-comparison)"
 
 ## 백링크
 

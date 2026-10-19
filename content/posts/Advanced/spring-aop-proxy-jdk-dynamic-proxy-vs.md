@@ -118,19 +118,13 @@ Spring AOP의 프록시 방식은 런타임에 다형성 대리 객체를 태우
 
 Spring AOP는 대리인을 두어 횡단을 통제하는 실용적인 실천을 보편화시켰습니다. JDK Dynamic Proxy의 리플렉션 오버헤드와 인터페이스 강제를 해결하기 위한 CGLIB의 상속 기법 및 Objenesis 바이트코드 제어는 자바가 추구해 온 프레임워크 레벨 기술 진화의 대표적인 기념비입니다. 성능의 격차가 사실상 거의 무너진 현대에는 캐스팅 트러블을 방지하기 위해 CGLIB를 주축으로 삼되, 프록시가 지닌 본질적인 자가 호출 한계를 항상 의식하며 컴포넌트 경계를 아름답게 격리해 나가는 설계 역량이 현대 백엔드 엔지니어에게 강하게 요구됩니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Gregor Kiczales et al., "Aspect-Oriented Programming", ECOOP 1997.
-
-- Erich Gamma et al., "Design Patterns: Elements of Reusable Object-Oriented Software", Addison-Wesley.
-
-- Spring Framework Reference Documentation, "Aspect Oriented Programming with Spring", [https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#aop](https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#aop)
-
-- CGLIB Project Github Wiki, "Code Generation Library principles and performance metrics", [https://github.com/cglib/cglib/wiki/Architecture](https://github.com/cglib/cglib/wiki/Architecture)
-
-- Spring Boot Reference Guide, "AOP Auto-configuration properties and CGLIB default strategies", [https://docs.spring.org/spring-boot/docs/current/reference/html/features.html#features.aop](https://docs.spring.org/spring-boot/docs/current/reference/html/features.html#features.aop)
+1. Gregor Kiczales et al., "Aspect-Oriented Programming", ECOOP 1997.
+2. Erich Gamma et al., "Design Patterns: Elements of Reusable Object-Oriented Software", Addison-Wesley.
+3. Spring Framework Reference Documentation, "[Aspect Oriented Programming with Spring](https://docs.spring.org/spring-framework/docs/current/reference/html/core.html#aop)"
+4. CGLIB Project Github Wiki, "[Code Generation Library principles and performance metrics](https://github.com/cglib/cglib/wiki/Architecture)"
+5. Spring Boot Reference Guide, "[AOP Auto-configuration properties and CGLIB default strategies](https://docs.spring.org/spring-boot/docs/current/reference/html/features.html#features.aop)"
 
 ## 백링크
 

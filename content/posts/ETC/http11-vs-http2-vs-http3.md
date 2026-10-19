@@ -110,21 +110,14 @@ HTTP/1.1에서 HTTP/2, 그리고 HTTP/3로 이어지는 프로토콜 진화의 �
 
 HTTP/1.1에서 HTTP/3까지의 발전사는 웹 어플리케이션의 복잡도 증가에 대응하여 웹 전송 계층의 병목을 하나씩 극복해 온 기술 진화의 역사입니다. HTTP/1.1이 persistent connection을 통해 기본 연결 효율을 세웠다면, HTTP/2는 바이너리 프레이밍과 다중화를 통해 애플리케이션 단의 효율성을 극대화했고, HTTP/3는 전송 계층을 UDP/QUIC으로 과감히 재설계하여 패킷 손실 및 네트워크 이동성이라는 현대 모바일 웹의 근본 과제를 해결했습니다. 엔지니어는 최신 프로토콜 도입 시 단순 전환을 넘어 기존의 자원 번들링 및 샤딩 습관을 재점검하고 프로토콜 특성에 맞춤화된 웹 최적화 전략을 수립해야 합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- MDN Web Docs, "Evolution of HTTP", [https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP) (확인일: 2026-08-12)
-
-- IETF RFC 2616, "Hypertext Transfer Protocol -- HTTP/1.1", [https://datatracker.ietf.org/doc/html/rfc2616](https://datatracker.ietf.org/doc/html/rfc2616) (확인일: 2026-08-12)
-
-- IETF RFC 7540, "Hypertext Transfer Protocol Version 2 (HTTP/2)", [https://datatracker.ietf.org/doc/html/rfc7540](https://datatracker.ietf.org/doc/html/rfc7540) (확인일: 2026-08-12)
-
-- IETF RFC 9114, "HTTP/3", [https://datatracker.ietf.org/doc/html/rfc9114](https://datatracker.ietf.org/doc/html/rfc9114) (확인일: 2026-08-12)
-
-- IETF RFC 9000, "QUIC: A UDP-Based Multiplexed and Secure Transport", [https://datatracker.ietf.org/doc/html/rfc9000](https://datatracker.ietf.org/doc/html/rfc9000) (확인일: 2026-08-12)
-
-- Cloudflare Blog, "HTTP/3 vs HTTP/2: Performance and Architecture Comparison", [https://blog.cloudflare.com/http-3-vs-http-2/](https://blog.cloudflare.com/http-3-vs-http-2/) (확인일: 2026-08-12)
+1. MDN Web Docs, "[Evolution of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)" (확인일: 2026-08-12)
+2. IETF RFC 2616, "[Hypertext Transfer Protocol -- HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc2616)" (확인일: 2026-08-12)
+3. IETF RFC 7540, "[Hypertext Transfer Protocol Version 2 (HTTP/2)](https://datatracker.ietf.org/doc/html/rfc7540)" (확인일: 2026-08-12)
+4. IETF RFC 9114, "[HTTP/3](https://datatracker.ietf.org/doc/html/rfc9114)" (확인일: 2026-08-12)
+5. IETF RFC 9000, "[QUIC: A UDP-Based Multiplexed and Secure Transport](https://datatracker.ietf.org/doc/html/rfc9000)" (확인일: 2026-08-12)
+6. Cloudflare Blog, "[HTTP/3 vs HTTP/2: Performance and Architecture Comparison](https://blog.cloudflare.com/http-3-vs-http-2/)" (확인일: 2026-08-12)
 
 ## 백링크
 

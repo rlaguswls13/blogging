@@ -125,21 +125,14 @@ url: https://beji-tech.blogspot.com/2026/08/kafka.html
 
 동시성과 연속성의 균형을 맞추는 핵심 열쇠는 결국 도메인 영역에 대한 이해입니다. 모든 데이터의 순서를 칼같이 맞추려는 욕심을 버리고, 비즈니스 영향도를 분석하여 "정말 이 단계에서 순서가 꼬이면 치명적인가?"를 자문해야 합니다. 주문 시스템에서도 주문의 시퀀스는 엄격해야 하지만, 정산 시스템이나 통계 지표 수집기는 순서가 다소 꼬여도 결국 최종적인 합산 결과(Eventual Consistency)만 맞으면 문제가 없습니다. 따라서 순서가 타이트해야 하는 데이터와 느슨해도 되는 데이터를 구분하여 파티션 키 세부 옵션을 이원화하는 것이 진정한 시스템 아키텍트의 자질입니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Confluent Developer, "Intro to Kafka Partitions (Apache Kafka 101)", [https://developer.confluent.io/courses/apache-kafka/partitions/](https://developer.confluent.io/courses/apache-kafka/partitions/)
-
-- LinkedIn Engineering, "Running Kafka At Scale", [https://engineering.linkedin.com/kafka/running-kafka-scale](https://engineering.linkedin.com/kafka/running-kafka-scale)
-
-- Apache Kafka Documentation, "Idempotent Producer and Message Delivery Semantics Specifications", [https://kafka.apache.org/documentation/#producerconfigs](https://kafka.apache.org/documentation/#producerconfigs)
-
-- Microsoft Azure Architecture Center, "Messaging patterns for maintaining sequence order in distributed microservices", [https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy](https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy)
-
-- Confluent, "Exactly-once Semantics Are Possible: Here's How Kafka Does It", [https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)
-
-- Google Cloud Documentation, "Pub/Sub - Order messages", [https://docs.cloud.google.com/pubsub/docs/ordering](https://docs.cloud.google.com/pubsub/docs/ordering)
+1. Confluent Developer, "[Intro to Kafka Partitions (Apache Kafka 101)](https://developer.confluent.io/courses/apache-kafka/partitions/)"
+2. LinkedIn Engineering, "[Running Kafka At Scale](https://engineering.linkedin.com/kafka/running-kafka-scale)"
+3. Apache Kafka Documentation, "[Idempotent Producer and Message Delivery Semantics Specifications](https://kafka.apache.org/documentation/#producerconfigs)"
+4. Microsoft Azure Architecture Center, "[Messaging patterns for maintaining sequence order in distributed microservices](https://learn.microsoft.com/en-us/azure/architecture/patterns/sequential-convoy)"
+5. Confluent, "[Exactly-once Semantics Are Possible: Here's How Kafka Does It](https://www.confluent.io/blog/exactly-once-semantics-are-possible-heres-how-apache-kafka-does-it/)"
+6. Google Cloud Documentation, "[Pub/Sub - Order messages](https://docs.cloud.google.com/pubsub/docs/ordering)"
 
 ## 백링크
 

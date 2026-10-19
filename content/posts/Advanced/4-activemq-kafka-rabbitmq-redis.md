@@ -164,21 +164,14 @@ RabbitMQ는 고급 메시지 큐 프로토콜(AMQP)을 기반으로 견고하게
 
 메시지 인프라 설계의 성공은 완벽한 솔루션을 고르는 것에 있지 않고, 각 솔루션의 고유 한계를 인지한 상태에서 소프트웨어적인 '방어 코드(Defensive Pattern)'를 구축하는 것에 있습니다. 아무리 RabbitMQ가 정밀해도 컨슈머 다운으로 큐가 막히면 브로커 메모리가 먼저 터지기 마련이며, 아무리 Redis가 빨라도 서버가 다운되면 일부 데이터는 날아갑니다. 브로커 성능에 전적으로 의존하기보다 컨슈머 측에 중복 방지 멱등성 필터(Idempotent Filter)를 달아두고 데드 레터 큐(DLQ) 등의 예외 처리 파이프라인을 보강하는 것이 진정으로 장애에 강한 분산 시스템을 구축하는 유일한 길입니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- RabbitMQ Tutorials & Architecture Guides, "Understanding Exchange Types and AMQP Routing logic", [https://www.rabbitmq.com/tutorials/amqp-concepts.html](https://www.rabbitmq.com/tutorials/amqp-concepts.html)
-
-- LinkedIn Engineering, "Running Kafka At Scale", [https://engineering.linkedin.com/kafka/running-kafka-scale](https://engineering.linkedin.com/kafka/running-kafka-scale)
-
-- Apache Kafka Core Spec, "Kafka Commit Log Storage and Offset Persistence Specification", [https://kafka.apache.org/documentation/#design_commitlog](https://kafka.apache.org/documentation/#design_commitlog)
-
-- Apache ActiveMQ Artemis Guide, "JMS Specifications, Transactional Messaging, and Protocol Support", [https://artemis.apache.org/components/artemis/documentation/](https://artemis.apache.org/components/artemis/documentation/)
-
-- RisingWave, "RabbitMQ vs. ActiveMQ vs. Kafka: A Comprehensive Comparison", [https://risingwave.com/blog/rabbitmq-vs-activemq-vs-kafka-a-comprehensive-comparison/](https://risingwave.com/blog/rabbitmq-vs-activemq-vs-kafka-a-comprehensive-comparison/)
-
-- Redis Official Documentation, "Redis Pub/sub", [https://redis.io/docs/latest/develop/pubsub/](https://redis.io/docs/latest/develop/pubsub/)
+1. RabbitMQ Tutorials & Architecture Guides, "[Understanding Exchange Types and AMQP Routing logic](https://www.rabbitmq.com/tutorials/amqp-concepts.html)"
+2. LinkedIn Engineering, "[Running Kafka At Scale](https://engineering.linkedin.com/kafka/running-kafka-scale)"
+3. Apache Kafka Core Spec, "[Kafka Commit Log Storage and Offset Persistence Specification](https://kafka.apache.org/documentation/#design_commitlog)"
+4. Apache ActiveMQ Artemis Guide, "[JMS Specifications, Transactional Messaging, and Protocol Support](https://artemis.apache.org/components/artemis/documentation/)"
+5. RisingWave, "[RabbitMQ vs. ActiveMQ vs. Kafka: A Comprehensive Comparison](https://risingwave.com/blog/rabbitmq-vs-activemq-vs-kafka-a-comprehensive-comparison/)"
+6. Redis Official Documentation, "[Redis Pub/sub](https://redis.io/docs/latest/develop/pubsub/)"
 
 ## 백링크
 

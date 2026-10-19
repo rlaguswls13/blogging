@@ -222,17 +222,11 @@ public class ProcessThreadMemoryDemo {
 
 ---
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- [Linux Kernel Memory Management Architecture](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
-
-- [POSIX Threads (pthreads) Programming Specification](https://man7.org/linux/man-pages/man7/pthreads.7.html)
-
-- [Intel 64 and IA-32 Architectures Software Developer Manual](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
-
----
+1. [Linux Kernel Memory Management Architecture](https://www.kernel.org/doc/html/latest/admin-guide/mm/index.html)
+2. [POSIX Threads (pthreads) Programming Specification](https://man7.org/linux/man-pages/man7/pthreads.7.html)
+3. [Intel 64 and IA-32 Architectures Software Developer Manual](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
 
 ## 백링크
 

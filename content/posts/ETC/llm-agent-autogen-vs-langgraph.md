@@ -125,21 +125,14 @@ LangGraph는 에이전트의 자율성을 그래프 구조로 한정시킴으로
 
 다중 에이전트 시스템은 '어떻게 똑똑한 LLM을 쓸 것인가'를 넘어 '어떻게 다중 프로세스(에이전트) 간의 데이터 파이프라인과 트랜잭션을 조율할 것인가'의 **소프트웨어 공학의 문제**로 전격 이동했습니다. AutoGen은 분산화된 에이전트 간의 자율 대화로 가볍고 빠른 아이디에이션에 강하고, LangGraph는 중앙 집중화된 상태 저장소를 기둥 삼아 결함 없고 디버깅 가능한 프로덕션 파이프라인 설계에 압도적으로 강력합니다. 에이전트 팀을 조직하고자 하는 인프라 아키텍트라면, 시스템에 요구되는 예측 가능성 수준을 냉정하게 평가하여 도구를 선택해야 할 것입니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- LangChain Blog, "LangGraph: Multi-Agent Workflows with Cyclic Graph Control", [https://blog.langchain.dev/langgraph/](https://blog.langchain.dev/langgraph/)
-
-- Wu et al. (Microsoft Research), "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation", [https://arxiv.org/abs/2308.08155](https://arxiv.org/abs/2308.08155)
-
-- LangChain Reference Guide, "LangGraph State Specification and Memory Store Mechanisms", [https://docs.langchain.com/oss/python/langgraph/overview](https://docs.langchain.com/oss/python/langgraph/overview)
-
-- MS AutoGen Documentation, "ConversableAgent Classes and Code Execution Sandbox Overview", [https://microsoft.github.io/autogen/](https://microsoft.github.io/autogen/)
-
-- Han et al., "A Survey on LLM-based Multi-Agent System: Recent Advances and New Frontiers in Application", [https://arxiv.org/abs/2412.17481](https://arxiv.org/abs/2412.17481)
-
-- Fiddler AI, "Managing Responsible Multi-Agent LLM Systems for Enterprise Applications", [https://www.fiddler.ai/articles/multi-agent-llm-systems-for-enterprises](https://www.fiddler.ai/articles/multi-agent-llm-systems-for-enterprises)
+1. LangChain Blog, "[LangGraph: Multi-Agent Workflows with Cyclic Graph Control](https://blog.langchain.dev/langgraph/)"
+2. Wu et al. (Microsoft Research), "[AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation](https://arxiv.org/abs/2308.08155)"
+3. LangChain Reference Guide, "[LangGraph State Specification and Memory Store Mechanisms](https://docs.langchain.com/oss/python/langgraph/overview)"
+4. MS AutoGen Documentation, "[ConversableAgent Classes and Code Execution Sandbox Overview](https://microsoft.github.io/autogen/)"
+5. Han et al., "[A Survey on LLM-based Multi-Agent System: Recent Advances and New Frontiers in Application](https://arxiv.org/abs/2412.17481)"
+6. Fiddler AI, "[Managing Responsible Multi-Agent LLM Systems for Enterprise Applications](https://www.fiddler.ai/articles/multi-agent-llm-systems-for-enterprises)"
 
 ## 백링크
 

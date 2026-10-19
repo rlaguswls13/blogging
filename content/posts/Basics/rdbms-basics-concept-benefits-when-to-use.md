@@ -144,7 +144,7 @@ public class Order {
 
 ## 참고문헌
 
-1. Wikipedia, "Relational model" (E. F. Codd, "A Relational Model of Data for Large Shared Data Banks", Communications of the ACM, Vol. 13, No. 6 (1970), pp. 377-387에 대한 서지정보 포함), [https://en.wikipedia.org/wiki/Relational_model](https://en.wikipedia.org/wiki/Relational_model) (확인일: 2026-08-19)
+1. Wikipedia, "[Relational model](https://en.wikipedia.org/wiki/Relational_model)" (E. F. Codd, "A Relational Model of Data for Large Shared Data Banks", Communications of the ACM, Vol. 13, No. 6 (1970), pp. 377-387에 대한 서지정보 포함) (확인일: 2026-08-19)
 2. PostgreSQL Global Development Group, "PostgreSQL Documentation — 3.3. Foreign Keys", [https://www.postgresql.org/docs/current/tutorial-fk.html](https://www.postgresql.org/docs/current/tutorial-fk.html) (확인일: 2026-08-19)
 3. Oracle, "Oracle Tuxedo Application Configuration Guide — About Transactions (ACID Properties)", [https://docs.oracle.com/en/database/oracle/tuxedo/22/otxcg/transactions.html](https://docs.oracle.com/en/database/oracle/tuxedo/22/otxcg/transactions.html) (확인일: 2026-08-19)
 4. Markus Winand, "The SQL Standard (ISO/IEC 9075)", modern-sql.com, [https://modern-sql.com/standard](https://modern-sql.com/standard) (확인일: 2026-08-19)

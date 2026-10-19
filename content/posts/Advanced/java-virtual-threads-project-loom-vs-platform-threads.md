@@ -188,7 +188,7 @@ public class PinningDemo {
 1. OpenJDK, "JEP 444: Virtual Threads" — Status: Closed/Delivered, Release 21, Mounting/Unmounting 및 Pinning 섹션, [https://openjdk.org/jeps/444](https://openjdk.org/jeps/444) (확인일: 2026-08-23)
 2. OpenJDK, "JEP 491: Synchronize Virtual Threads without Pinning" — Status: Closed/Delivered, Release 24, [https://openjdk.org/jeps/491](https://openjdk.org/jeps/491) (확인일: 2026-08-23)
 3. Oracle, "Class ReentrantLock" (Java SE API Documentation) — `java.util.concurrent.locks` 패키지, [https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/locks/ReentrantLock.html](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/locks/ReentrantLock.html) (확인일: 2026-08-23)
-4. golang/go GitHub 저장소, `runtime/proc.go` — `entersyscallblock()`의 `handoffp(releasep())` P 반납/재배정 로직, [https://github.com/golang/go/blob/master/src/runtime/proc.go](https://github.com/golang/go/blob/master/src/runtime/proc.go) (확인일: 2026-08-23)
+4. [golang/go GitHub 저장소, `runtime/proc.go` — `entersyscallblock()`의 `handoffp(releasep())` P 반납/재배정 로직](https://github.com/golang/go/blob/master/src/runtime/proc.go) (확인일: 2026-08-23)
 
 ## 종합적 의견
 

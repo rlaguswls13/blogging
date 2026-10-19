@@ -178,9 +178,9 @@ func chansend(c *hchan, ep unsafe.Pointer, block bool, callerpc uintptr) bool {
 
 ## 참고문헌
 
-1. golang/go GitHub 저장소, `runtime/chan.go` — `hchan` 구조체 및 `chansend`/`chanrecv` 함수, [https://github.com/golang/go/blob/master/src/runtime/chan.go](https://github.com/golang/go/blob/master/src/runtime/chan.go) (확인일: 2026-08-19)
-2. golang/go GitHub 저장소, `runtime/runtime2.go` — `p` 구조체(`runq [256]guintptr` 등), [https://github.com/golang/go/blob/master/src/runtime/runtime2.go](https://github.com/golang/go/blob/master/src/runtime/runtime2.go) (확인일: 2026-08-19)
-3. golang/go GitHub 저장소, `runtime/proc.go` — `findRunnable()` 및 스케줄링 로직, [https://github.com/golang/go/blob/master/src/runtime/proc.go](https://github.com/golang/go/blob/master/src/runtime/proc.go) (확인일: 2026-08-19)
+1. [golang/go GitHub 저장소, `runtime/chan.go` — `hchan` 구조체 및 `chansend`/`chanrecv` 함수](https://github.com/golang/go/blob/master/src/runtime/chan.go) (확인일: 2026-08-19)
+2. [golang/go GitHub 저장소, `runtime/runtime2.go` — `p` 구조체(`runq [256]guintptr` 등)](https://github.com/golang/go/blob/master/src/runtime/runtime2.go) (확인일: 2026-08-19)
+3. [golang/go GitHub 저장소, `runtime/proc.go` — `findRunnable()` 및 스케줄링 로직](https://github.com/golang/go/blob/master/src/runtime/proc.go) (확인일: 2026-08-19)
 4. The Go Programming Language, Go Wiki — "Use a sync.Mutex or a channel?", [https://go.dev/wiki/MutexOrChannel](https://go.dev/wiki/MutexOrChannel) (확인일: 2026-08-19)
 
 ## 종합적 의견

@@ -283,7 +283,7 @@ SOLID는 만능 해법이 아니라는 반론도 널리 공유됩니다. 대표�
 
 1. Wikipedia, "SOLID", [https://en.wikipedia.org/wiki/SOLID](https://en.wikipedia.org/wiki/SOLID) (확인일: 2026-08-19)
 2. Wikipedia, "Liskov substitution principle", [https://en.wikipedia.org/wiki/Liskov_substitution_principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle) (확인일: 2026-08-19)
-3. DePaul University (dmumaugh), "Bob Martin's Design Principles Page" — Robert C. Martin의 SOLID 원전 논문(Dependency Inversion / Interface Segregation / Liskov Substitution / Open-Closed Principle) 링크 모음, [https://condor.depaul.edu/dmumaugh/OOT/Design-Principles/](https://condor.depaul.edu/dmumaugh/OOT/Design-Principles/) (확인일: 2026-08-19)
+3. DePaul University (dmumaugh), "[Bob Martin's Design Principles Page](https://condor.depaul.edu/dmumaugh/OOT/Design-Principles/)" — Robert C. Martin의 SOLID 원전 논문(Dependency Inversion / Interface Segregation / Liskov Substitution / Open-Closed Principle) 링크 모음 (확인일: 2026-08-19)
 4. Oracle, "The Java Tutorials — Creating and Using Interfaces", [https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html) (확인일: 2026-08-19)
 5. Spring Framework Reference, "Dependency Injection — Constructor-based Dependency Injection", [https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html](https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html) (확인일: 2026-08-19)
 

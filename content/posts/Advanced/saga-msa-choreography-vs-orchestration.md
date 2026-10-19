@@ -102,21 +102,14 @@ Saga 패턴은 롤백을 구현할 때 ACID 트랜잭션처럼 물리적 DB 롤�
 
 분산 환경에서의 트랜잭션 처리는 결국 '성능'과 '정합성'이라는 두 마리 토끼 중 한쪽에 무게를 더 실어야 하는 비즈니스 가치 판단의 영역입니다. 2PC라는 엄격한 정합성을 선택하면 단 몇 백 명의 사용자 트래픽 속에서도 시스템 전체가 얼어붙게 됩니다. 반면 Saga라는 확장성을 선택하면 최종적 정합성(Eventual Consistency)에 도달하기 전까지의 미세한 상태 불안정을 감당하고 멱등성 및 보상 트랜잭션이라는 무거운 수동 방어벽 코드를 견고하게 짜내야 합니다. 결국 정답은 없습니다. 도메인의 데이터 성격에 맞추어 결제나 송금 같은 최고 보안 도메인에는 제한적으로 락과 버전을, 일반 정보 기록과 알림 배송 도메인에는 비동기 Saga 방식을 조합하는 유연함이 필요합니다.
 
-  📚 참고문헌 (클릭하여 열기)
-  
-    
+## 참고문헌
 
-- Chris Richardson, "Microservices Patterns: With examples in Java", Manning Publications, Chapter 3 & 4.
-
-- Chris Richardson, Microservices.io Pattern Catalog, "Pattern: Event-driven architecture", [https://microservices.io/patterns/data/event-driven-architecture.html](https://microservices.io/patterns/data/event-driven-architecture.html)
-
-- Microservices.io Pattern Catalog, "Saga Pattern (Choreography and Orchestration)", [https://microservices.io/patterns/data/saga.html](https://microservices.io/patterns/data/saga.html)
-
-- Martin Kleppmann, "Designing Data-Intensive Applications", O'Reilly Media, Chapter 9.
-
-- IBM Cloud Architecture, "Event-driven Solution - Saga Orchestration", [https://ibm-cloud-architecture.github.io/eda-saga-orchestration/](https://ibm-cloud-architecture.github.io/eda-saga-orchestration/)
-
-- Chris Richardson, Microservices.io Pattern Catalog, "Pattern: Database per service", [https://microservices.io/patterns/data/database-per-service.html](https://microservices.io/patterns/data/database-per-service.html)
+1. Chris Richardson, "Microservices Patterns: With examples in Java", Manning Publications, Chapter 3 & 4.
+2. Chris Richardson, Microservices.io Pattern Catalog, "[Pattern: Event-driven architecture](https://microservices.io/patterns/data/event-driven-architecture.html)"
+3. Microservices.io Pattern Catalog, "[Saga Pattern (Choreography and Orchestration)](https://microservices.io/patterns/data/saga.html)"
+4. Martin Kleppmann, "Designing Data-Intensive Applications", O'Reilly Media, Chapter 9.
+5. IBM Cloud Architecture, "[Event-driven Solution - Saga Orchestration](https://ibm-cloud-architecture.github.io/eda-saga-orchestration/)"
+6. Chris Richardson, Microservices.io Pattern Catalog, "[Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)"
 
 ## 백링크
 
