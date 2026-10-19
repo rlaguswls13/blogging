@@ -21,6 +21,7 @@ from src.pipeline.validate import validate_run
 from src.pipeline.check import check_run
 from src.pipeline.lint import lint_run
 from src.pipeline.seo_check import check_meta_description
+from src.pipeline.seo_meta import set_seo_meta
 from src.pipeline.approve import approve_run
 from src.pipeline.patch_urls import patch_urls
 from src.publishers import publish_to_multi
@@ -48,7 +49,7 @@ def required_flag(args: List[str], name: str) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("사용법: python main.py <new|check|lint|validate|approve|publish|patch-urls|sync|todo|backlinks|theme> [options]", file=sys.stderr)
+        print("사용법: python main.py <new|check|lint|validate|approve|publish|patch-urls|seo-meta|sync|todo|backlinks|theme> [options]", file=sys.stderr)
         sys.exit(1)
 
     command = sys.argv[1]
@@ -138,6 +139,17 @@ def main():
                 required_flag(args, "slug"),
                 Path(required_flag(args, "edits-file")),
                 has_flag(args, "dry-run"),
+            )
+            return
+
+        elif command == "seo-meta":
+            blog_id = os.environ.get("BLOGGER_BLOG_ID")
+            if not blog_id:
+                raise RuntimeError("BLOGGER_BLOG_ID가 설정되어 있지 않습니다.")
+            set_seo_meta(
+                required_flag(args, "run"),
+                blog_id,
+                dry_run=has_flag(args, "dry-run"),
             )
             return
 
