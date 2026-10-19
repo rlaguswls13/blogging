@@ -155,13 +155,10 @@ RETURN dst.accNo, dst.ownerName;
 ```
 
   
-## 6. 📚 참고자료 (References)
+## 참고문헌
 
-  
-    
-- Apache Cassandra Technical Documentation - LSM-Tree & SSTable Compaction
-    
-- Neo4j Graph Database Manual - Index-Free Adjacency Mechanics and Cypher Querying
+1. Apache Cassandra Technical Documentation - LSM-Tree & SSTable Compaction
+2. Neo4j Graph Database Manual - Index-Free Adjacency Mechanics and Cypher Querying
 
 ## 백링크
 

@@ -158,13 +158,10 @@ UPDATE TOP (4000) target_table WITH (ROWLOCK)
 ```
 
   
-## 6. 📚 참고자료 (References)
+## 참고문헌
 
-  
-    
-- Oracle RAC Architecture & Cache Fusion Technical Whitepaper
-    
-- Microsoft SQL Server Lock Escalation and Memory Management Guide
+1. Oracle RAC Architecture & Cache Fusion Technical Whitepaper
+2. Microsoft SQL Server Lock Escalation and Memory Management Guide
 
 ## 백링크
 

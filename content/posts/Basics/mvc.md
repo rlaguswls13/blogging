@@ -107,13 +107,10 @@ MVC 패턴의 핵심은 **Controller(입력), Model(상태 및 비즈니스 로�
 ```
 
   
-## 3. 참고자료 및 공식 문헌 (References)
+## 참고문헌
 
-  
-    
-- [Spring Framework Official Web MVC Documentation](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
-    
-- Martin Fowler, *Patterns of Enterprise Application Architecture* (Addison-Wesley)
+1. [Spring Framework Official Web MVC Documentation](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
+2. Martin Fowler, *Patterns of Enterprise Application Architecture* (Addison-Wesley)
 
 ## 백링크
 

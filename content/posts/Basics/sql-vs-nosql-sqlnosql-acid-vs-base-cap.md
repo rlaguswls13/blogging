@@ -235,13 +235,10 @@ ACID 원자성/영속성 검증 시작...
 ```
 
   
-## 6. 📚 참고자료 (References)
+## 참고문헌
 
-  
-    
-- Edgar F. Codd, *A Relational Model of Data for Large Shared Data Banks* (1970)
-    
-- Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly)
+1. Edgar F. Codd, *A Relational Model of Data for Large Shared Data Banks* (1970)
+2. Martin Kleppmann, *Designing Data-Intensive Applications* (O'Reilly)
 
 ## 백링크
 

@@ -184,13 +184,10 @@ Hibernate: SELECT * FROM orders WHERE metadata @> CAST(? AS jsonb) [GIN Index �
 ```
 
   
-## 6. 📚 참고자료 (References)
+## 참고문헌
 
-  
-    
-- MySQL Official Documentation - InnoDB Storage Engine Architecture
-    
-- PostgreSQL Documentation - MVCC, Vacuum, and GIN Indexing
+1. MySQL Official Documentation - InnoDB Storage Engine Architecture
+2. PostgreSQL Documentation - MVCC, Vacuum, and GIN Indexing
 
 ## 백링크
 

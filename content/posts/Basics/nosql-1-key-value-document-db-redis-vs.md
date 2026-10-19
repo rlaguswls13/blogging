@@ -165,13 +165,10 @@ public class NoSQLFirstEngineeringDemo {
 ```
 
   
-## 6. 📚 참고자료 (References)
+## 참고문헌
 
-  
-    
-- Redis Documentation - Event Loop Architecture & Memory Eviction Policies
-    
-- MongoDB Manual - WiredTiger Storage Engine and Sharded Clusters
+1. Redis Documentation - Event Loop Architecture & Memory Eviction Policies
+2. MongoDB Manual - WiredTiger Storage Engine and Sharded Clusters
 
 ## 백링크
 
