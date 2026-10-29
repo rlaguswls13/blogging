@@ -20,6 +20,12 @@ url: https://beji-tech.blogspot.com/2026/08/gof-14.html
 
 소프트웨어 객체지향 설계의 바이블인 **GoF(Gang of Four) 14대 핵심 디자인 패턴**을 각각 독자적인 심화 아티클과 Java 실전 예시 코드로 구성하여 완성한 **총괄 마스터 인덱스 포스트**입니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+개별 패턴 정의를 한 페이지에 축약하는 일반적인 목록과 달리, 이 글은 생성·구조·행위 패턴 14개를 분류한 마인드맵과 각 패턴의 독립 심화 글을 실제 라이브 URL로 연결하는 허브다. 각 연결 글에는 실행 가능한 Java 프로그램과 적용 사례가 있어 독자가 개념 비교에서 구현 검증으로 바로 이동할 수 있으며, 시리즈 전체를 순서대로 탐색하거나 필요한 패턴만 선택하는 두 가지 학습 경로를 동시에 제공한다.
+
 ![GoF 14대 디자인 패턴 마인드맵 인포그래픽](https://raw.githubusercontent.com/rlaguswls13/blogging/main/content/images/gof_14_patterns_map.jpg)
 
 [그림 1] GoF 핵심 14대 디자인 패턴 분류 체계도 (Creational, Structural, Behavioral)

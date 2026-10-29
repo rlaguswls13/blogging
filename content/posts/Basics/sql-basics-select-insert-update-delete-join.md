@@ -24,6 +24,12 @@ url: https://beji-tech.blogspot.com/2026/08/sql-selectinsertupdatedelete-join-wh
 
 관계형 데이터베이스(RDBMS)를 다루는 모든 백엔드 개발자가 가장 먼저 익혀야 하는 것이 SQL(Structured Query Language)입니다. 이 글은 SQL이 처음인 개발자를 위해 데이터를 조회·추가·수정·삭제하는 4대 기본 명령(SELECT/INSERT/UPDATE/DELETE)과, 여러 테이블을 엮어 조회하는 JOIN, 조건을 거는 WHERE, 그룹별로 집계하는 GROUP BY/HAVING을 실제로 실행 가능한 예제 코드와 함께 하나씩 설명합니다. MySQL과 PostgreSQL 공식 문서 기준으로 문법을 검증했으며, 두 DBMS 간 차이가 있는 부분은 명시적으로 짚었습니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+SQL 문법을 서로 무관한 예제로 나열하지 않고, 이 글은 고객·주문 스키마를 먼저 만든 뒤 같은 데이터 모델에서 SELECT, WHERE, ORDER BY, LIMIT, INSERT, UPDATE, DELETE, JOIN, GROUP BY, HAVING을 순서대로 실행한다. MySQL과 PostgreSQL 공식 문서를 기준으로 공통 문법과 차이를 명시하고, UPDATE·DELETE의 WHERE 누락 위험과 NULL·트랜잭션·인덱스 같은 다음 학습 경계까지 제시해 복사 가능한 쿼리와 운영 주의점을 하나의 흐름으로 묶는다.
+
 ## 본문
 
 ### 1. SQL은 무엇을 하는 언어인가

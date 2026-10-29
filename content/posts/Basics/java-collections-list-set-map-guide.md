@@ -24,6 +24,12 @@ url: https://beji-tech.blogspot.com/2026/08/java-list-vs-set-vs-map.html
 
 Java로 코드를 짜다 보면 배열(Array) 하나로는 금방 한계에 부딪힙니다. 크기를 미리 정해야 하고, 중간에 요소를 넣거나 빼는 게 번거롭고, "이 값이 이미 있는지" 확인하려면 매번 처음부터 끝까지 훑어봐야 합니다. 이런 불편을 해결하기 위해 Java는 `java.util` 패키지 아래에 **컬렉션 프레임워크(Collections Framework)**를 제공합니다. 이 글에서는 그중 가장 자주 쓰이는 세 가지 큰 틀 — **List(순서가 있고 중복을 허용하는 목록)**, **Set(중복을 허용하지 않는 집합)**, **Map(키-값 쌍을 저장하는 사전)** — 이 각각 무엇이고, 그 안에 어떤 구현체(ArrayList/LinkedList, HashSet/LinkedHashSet/TreeSet, HashMap/LinkedHashMap/TreeMap)가 있으며, 실무에서 무엇을 기준으로 골라야 하는지를 Java 공식 문서(Java SE 21 API)를 근거로 정리합니다. 자바를 막 배우기 시작한 개발자가 "그냥 아무거나 쓰면 되는 거 아닌가요?"라는 질문에 스스로 답할 수 있게 되는 것이 이 글의 목표입니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+컬렉션 인터페이스의 정의만 나열하는 입문 글과 달리, 이 글은 List·Set·Map의 의미를 ArrayList/LinkedList, HashSet/LinkedHashSet/TreeSet, HashMap/LinkedHashMap/TreeMap 구현체 선택까지 확장하고 각 연산의 시간복잡도를 하나의 비교표로 정리한다. Java SE 21 API를 근거로 순서·중복·정렬 보장 차이를 설명하며, 동일 작업을 여러 구현체로 실행하는 코드와 실무 선택 가이드를 연결해 “무엇을 쓰는가”보다 “왜 고르는가”에 답한다.
+
 ## 본문
 
 ### 1. 컬렉션 프레임워크 개요 — 왜 배열만으로는 부족한가

@@ -21,6 +21,12 @@ url: https://beji-tech.blogspot.com/2026/08/gof-11-observer-pattern-java.html
 
 옵저버 패턴(Observer Pattern)은 어떤 주체(Subject)의 상태가 변할 때, 이를 구독 중인 여러 관찰자(Observer)에게 자동으로 통지하는 발행-구독(Publish-Subscribe) 기반 행위 패턴입니다. 폴링(Polling) 방식의 자원 낭비 문제를 근본적으로 해결하지만, 구독 해제를 잊으면 메모리 누수(Lapsed Listener Problem)로 이어질 수 있습니다. 이 글에서는 뉴스 발행 시스템 예제와 함께 이 메모리 누수 함정의 원인과 해법, 그리고 Spring `@EventListener`와 리액티브 스트림(RxJava/Project Reactor)의 뿌리가 왜 옵저버 패턴인지 다룹니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+대부분의 옵저버 예제가 등록과 알림에서 끝나는 반면, 이 글은 뉴스 발행 시스템의 register·unregister·notify 전체 생명주기를 실행 가능한 Java 코드로 구현하고 구독 해제를 하지 않을 때 발생하는 Lapsed Listener Problem을 별도 주의점으로 분석한다. 폴링과 이벤트 통지의 자원 사용 차이, 강한 참조가 만드는 메모리 누수, Spring `@EventListener`와 RxJava·Project Reactor의 관계까지 이어서 패턴의 장점과 운영상 해제 책임을 동시에 보여준다.
+
 ## 본문
 
 ### 1. 배경 및 문제점

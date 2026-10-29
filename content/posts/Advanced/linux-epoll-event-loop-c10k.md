@@ -24,6 +24,12 @@ url: https://beji-tech.blogspot.com/2026/08/linux-epoll-eventloop-c10k-io.html
 
 1999년 Dan Kegel이 제기한 "C10K 문제"(서버 하나가 1만 개의 동시 접속을 처리할 수 있는가)는 `select`/`poll` 기반 I/O 멀티플렉싱의 근본적 한계를 드러냈습니다. 본 아티클에서는 `select`/`poll`이 왜 대규모 커넥션 환경에서 느려지는지, 리눅스 커널이 2.5.44부터 제공하는 `epoll`이 레드-블랙 트리와 준비 리스트(Ready List)로 이 문제를 어떻게 해결하는지, 그리고 Level-Triggered와 Edge-Triggered 모드의 실질적인 차이와 논블로킹 소켓이 왜 필수인지를 공식 man page 기준으로 정리합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+`epoll`을 단순히 “빠른 select”라고 소개하지 않고, `select`·`poll`의 전체 파일 디스크립터 순회 비용과 `epoll`의 등록용 레드-블랙 트리·통지용 준비 리스트 분리를 Linux 공식 man page 기준으로 연결한다. Level-Triggered와 Edge-Triggered의 의미 차이를 논블로킹 소켓과 `EAGAIN`까지 읽는 반복 패턴으로 설명하고, 실제 컴파일 가능한 C 서버 예제로 C10K 해결 메커니즘을 코드 수준에서 확인하게 한다.
+
 ## 본문
 
 ### 1. C10K 문제: select/poll의 구조적 한계

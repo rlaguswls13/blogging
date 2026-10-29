@@ -23,6 +23,12 @@ url: https://beji-tech.blogspot.com/2026/08/llm-agent-autogen-vs-langgraph.html
 
 자율적 AI 에이전트(Autonomous Agent) 기술이 발전함에 따라 다중 에이전트 시스템(Multi-Agent System)을 조율하고 관리하는 오케스트레이션 프레임워크의 중요성이 대두되고 있습니다. 본 아티클에서는 대표적인 에이전트 개발 도구인 Microsoft의 AutoGen과 LangChain 생태계의 LangGraph를 아키텍처 관점에서 비교 분석합니다. AutoGen의 이벤트 기반 대화 패턴(Event-driven Conversation)과 LangGraph의 상태 기계(State Machine) 기반 방향성 유향 그래프(DAG) 구조의 동작 원리를 상술하고, 두 프레임워크가 상태 제어, 루프 처리, 인간 개입(Human-in-the-loop) 측면에서 지니는 장단점을 실무적 관점에서 심도 있게 대조합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+프레임워크 기능 목록을 나열하는 대신, 이 글은 AutoGen의 `GroupChatManager` 기반 동적 발화자 선택과 LangGraph의 명시적 상태 전이·조건부 엣지를 서로 다른 제어 모델로 분석한다. Docker 샌드박스 코드 실행, 체크포인트 기반 재개, 순환 흐름, Human-in-the-loop를 같은 비교축에 놓고, 비정형 탐색에는 AutoGen을, 승인·실패 회귀 순서가 중요한 기업 워크플로에는 LangGraph를 선택하는 구체적인 아키텍처 판단 기준을 제시한다.
+
 ## 본문
 
 ### 1. 서론: 싱글 에이전트의 한계와 다중 에이전트 오케스트레이션의 대두

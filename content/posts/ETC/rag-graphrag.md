@@ -23,6 +23,12 @@ url: https://beji-tech.blogspot.com/2026/08/rag-graphrag.html
 
 전통적인 벡터 검색 기반 RAG(Retrieval-Augmented Generation) 시스템은 문서 파편화로 인해 전체 데이터를 통합적으로 바라보는 글로벌 요약 및 다층적 정보 연결에 구조적 한계를 보입니다. 이러한 페이징 한계를 넘어서기 위해 최근 지식 그래프(Knowledge Graph)의 그래프 데이터 모델을 LLM과 융합한 GraphRAG 기술이 주목받고 있습니다. 본 아티클에서는 GraphRAG의 핵심 파이프라인인 텍스트 분할, LLM 기반의 비정형 데이터 정제 및 엔티티-관계 추출(Entity-Relation Extraction), 그래프 커뮤니티 탐색을 통한 전역 질문 답변(Global Query Answer) 메커니즘을 상술합니다. 아울러 기존 Naive RAG와의 개념 및 연산 오버헤드 차이, 실제 구현 시 마주하는 트레이드오프를 심도 있게 규명합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+"그래프를 붙이면 검색이 좋아진다"는 설명에서 멈추지 않고, 이 글은 청킹부터 엔티티·관계·클레임 추출, Entity Resolution, Leiden 커뮤니티 분할, 커뮤니티 보고서의 Map-reduce 전역 질의까지 GraphRAG 인덱싱과 검색 경로를 단계별로 해부한다. Naive RAG와 GraphRAG의 질의 범위·인덱싱 비용·지연 시간을 비교하고, 로컬 질의에는 벡터 검색을 병행하는 하이브리드 구조와 증분 갱신 비용이라는 실제 도입 한계까지 함께 제시한다.
+
 ## 본문
 
 ### 1. 서론: Naive RAG의 구조적 병목과 GraphRAG의 등장 배경

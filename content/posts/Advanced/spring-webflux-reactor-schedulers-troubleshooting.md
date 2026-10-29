@@ -25,6 +25,12 @@ url: https://beji-tech.blogspot.com/2026/08/spring-webflux-project-reactor.html
 
 Spring WebFlux 서비스를 실무에 투입하면 십중팔구 마주치는 문제가 하나 있습니다. 분명 논블로킹으로 짰다고 생각했는데 이벤트 루프 스레드(예: `reactor-http-nio-*`)가 간헐적으로 멈추고, 처리량이 스레드 풀 크기와 무관하게 뚝뚝 끊기는 현상입니다. 원인은 거의 항상 이벤트 루프 스레드 위에서 블로킹 호출(JDBC, 동기 파일 I/O, `Thread.sleep`)이 실행되고 있기 때문입니다. 이 글은 Reactor의 스레드 모델을 코드 레벨에서 짚고, `subscribeOn`과 `publishOn`이 실제로 어떻게 다른 스레드 전환을 만드는지, 블로킹 호출을 자동으로 잡아내는 BlockHound 사용법, 그리고 컨슈머가 발행 속도를 못 따라갈 때 적용하는 Backpressure 전략까지 실무 트러블슈팅 관점에서 다룹니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+리액티브 개념 소개보다 실제 장애 진단에 초점을 맞춰 `subscribeOn`이 소스 구독 스레드를, `publishOn`이 이후 연산자의 실행 스레드를 바꾼다는 차이를 실행 로그 코드로 보여준다. 이벤트 루프의 숨은 JDBC·파일 I/O를 BlockHound의 `BlockingOperationError`로 찾는 방법과 `DROP_LATEST`, `DROP_OLDEST`, `onBackpressureLatest`, `onBackpressureError`를 데이터 유실 허용 여부에 따라 선택하는 운영 체크리스트까지 공식 Reactor 문서와 연결한다.
+
 ## 본문
 
 ### 1. Reactor 스레드 모델의 기본 전제 — 왜 블로킹 호출이 치명적인가

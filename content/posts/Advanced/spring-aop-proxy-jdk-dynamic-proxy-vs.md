@@ -22,6 +22,12 @@ url: https://beji-tech.blogspot.com/2026/08/spring-aop-proxy-jdk-dynamic-proxy-v
 
 엔터프라이즈 자바 개발에서 트랜잭션 처리(`@Transactional`), 보안 인가, 성능 로깅 등 핵심 로직 도처에 스며드는 공통 부가 기능을 비즈니스 비즈니스 코드로부터 분리해 내는 패러다임이 **'AOP(Aspect-Oriented Programming)'**입니다. Spring AOP는 컴파일러나 클래스로더를 직접 변조하는 대신, 데코레이터 패턴 형식으로 타겟을 제어하는 **'런타임 프록시(Proxy)'** 방식으로 구현되었습니다. 본 아티클에서는 AOP의 핵심 개념을 도식화하고, 자바 네이티브 동적 리플렉션을 응용하는 JDK Dynamic Proxy와 바이트코드를 조작하는 CGLIB Proxy 기술의 아키텍처적 구동 차이를 정밀 분석합니다. 아울러 스프링 부트에서 CGLIB를 기본 프록시 도구로 채택한 사유와 프록시 내부 호출(Self-Invocation)의 기술적 한계 및 해법을 도출합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+Spring AOP 어노테이션 사용법에서 멈추지 않고 JDK Dynamic Proxy가 인터페이스와 리플렉션을 이용하는 방식, CGLIB가 상속과 바이트코드 생성을 이용하는 방식을 프록시 생성 제약으로 비교한다. Spring Boot의 CGLIB 기본 선택을 설명한 뒤, 같은 객체 안의 `this` 호출이 프록시를 우회해 `@Transactional` 같은 Advice가 실행되지 않는 Self-Invocation 문제와 컴포넌트 경계 분리 해법까지 연결한다.
+
 ## 본문
 
 ### 1. 서론: OOP의 한계를 극복하는 AOP와 프록시 패턴의 관계

@@ -20,6 +20,12 @@ url: https://beji-tech.blogspot.com/2026/08/nosql-2-column-family-graph-db.html
 
 SQL & NoSQL 엔지니어링 시리즈 #5
     📌 독자 안내: 대용량 LSM-Tree 시계열 쓰기 & Graph DB 포인터 탐색 완벽 수록
+
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+NoSQL을 하나의 범주로 묶는 글과 달리, 이 글은 Cassandra의 Wide-Column·LSM-Tree 쓰기 경로와 Neo4j의 인접 포인터 기반 그래프 탐색을 서로 다른 워크로드 해법으로 분해한다. 대량 시계열 쓰기와 다단계 관계 탐색이라는 구체적 문제를 기준으로 파티셔닝·복제·쿼리 방식·확장 특성을 1:1 비교하고, Redis·MongoDB를 다룬 전편과 연결해 네 가지 NoSQL 모델을 사용 사례별로 선택할 수 있는 시리즈 구조를 완성한다.
   
 
   

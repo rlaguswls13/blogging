@@ -24,6 +24,12 @@ url: https://beji-tech.blogspot.com/2026/08/mcpmodel-context-protocol-2026-07-28
 
 Anthropic이 2024년 11월 오픈소스로 공개한 MCP(Model Context Protocol)는 불과 1년여 만에 LLM과 외부 도구·데이터를 연결하는 사실상의 표준으로 자리잡았습니다. 2026-07-28에 공개된 최신 스펙은 프로토콜 코어를 완전히 무상태(Stateless)로 재설계하고, 서버가 클라이언트에 중간 입력을 요구할 수 있는 Multi Round-Trip Requests, 헤더 기반 라우팅, 캐시 가능한 목록 응답, 강화된 인가(Authorization) 절차를 도입했습니다. 본 아티클에서는 이 변경 사항을 공식 스펙 문서 기준으로 정리하고, MCP와 구분되는 별개의 프로토콜인 A2A(Agent2Agent)가 왜 함께 언급되는지, 두 프로토콜이 실제로 어떤 역할을 나눠 맡는지를 살펴봅니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+MCP 개론을 반복하지 않고 2026-07-28 공식 스펙의 세션 제거를 운영 아키텍처 변화로 추적한 글이다. `_meta` 기반 자기완결 요청, `resultType: "input_required"`와 `inputResponses`로 구성되는 MRTR 재요청 흐름을 시퀀스 다이어그램과 JSON-RPC 예제로 구체화하고, RFC 9207 issuer 검증과 CIMD 전환까지 연결한다. 또한 MCP의 도구·컨텍스트 통합과 A2A의 에이전트 간 위임을 분리해 멀티 에이전트 시스템에서 두 프로토콜의 책임 경계를 판단할 수 있게 한다.
+
 ## 본문
 
 ### 1. MCP란 무엇인가: Host, Client, Server 3자 구조

@@ -21,6 +21,12 @@ url: https://beji-tech.blogspot.com/2026/08/rdbms-1-open-source-rdbms-mysql-vs.h
 
 SQL & NoSQL 엔지니어링 시리즈 #2
     📌 독자 안내: 오픈소스 RDBMS 3대장의 스토리지 엔진 & 인덱스 메커니즘 완벽 가이드
+
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+오픈소스 RDBMS를 기능 목록으로만 비교하는 글과 달리, 이 글은 MySQL·MariaDB·PostgreSQL의 계보와 설계 목표에서 출발해 스토리지 엔진, MVCC, 인덱스, JSON 처리, 복제와 확장 특성을 같은 축으로 대조한다. MySQL과 MariaDB의 포크 관계를 단순 호환성으로 취급하지 않고 엔진 선택 차이까지 분리하며, PostgreSQL의 객체-관계형 기능이 복잡한 분석과 JSONB 검색에 연결되는 이유를 1:1 아키텍처 매트릭스로 판단하게 한다.
   
 
   

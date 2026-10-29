@@ -24,6 +24,12 @@ url: https://beji-tech.blogspot.com/2026/08/mvc-mvc-msa.html
 
 "요즘은 다들 MSA(마이크로서비스 아키텍처)로 간다는데, 그럼 MVC는 낡은 기술인가요?" — 입문 개발자가 흔히 헤매는 질문입니다. 결론부터 말하면 MVC는 사라진 게 아니라 **역할이 재배치됐습니다**. 하나의 애플리케이션 안에 있던 Model/View/Controller가, 서비스 여러 개로 흩어지면서 View는 클라이언트(SPA)로, Controller는 API Gateway와 각 서비스의 REST Controller로 나뉘어 옮겨간 것입니다. 이 글은 전통적인 MVC 웹앱이 왜 MSA로 진화 압력을 받았는지, 그 과정에서 MVC의 각 역할이 구체적으로 어디로 이동했는지를 Java/Spring 코드와 함께 단계별로 설명합니다. MVC 패턴 자체(Model/View/Controller 3역할 분리)에 대한 기초 설명은 이미 [MVC 패턴: 자판기에서 동적 웹 서비스까지의 진화 및 아키텍처 분석](https://beji-tech.blogspot.com/2026/08/mvc.html)에서 다뤘으므로, 이 글은 그 뒤를 잇는 "MVC 다음 이야기"에 집중합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+“MVC와 MSA는 서로 다른 아키텍처”라는 비교에 그치지 않고, 이 글은 모놀리식 MVC의 Model·View·Controller 역할이 SPA, REST Controller, API Gateway, BFF, 개별 서비스 내부로 어떻게 재배치되는지를 단계별 Java/Spring 코드와 구조도로 추적한다. MVC가 사라지는 것이 아니라 서비스 경계 안에서 반복된다는 결론을 기존 MVC 자판기 글과 실제 라이브 내부링크로 연결해, 패턴과 배포 아키텍처를 같은 축에서 혼동하는 입문자의 질문에 구체적으로 답한다.
+
 ## 본문
 
 ### 1. 먼저, MVC를 한 줄로 복습하기

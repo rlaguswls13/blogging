@@ -21,6 +21,12 @@ url: https://beji-tech.blogspot.com/2026/08/sync-vs-async-blocking-vs-non-blocki
 
 개발 현장에서 빈번히 오용되는 동기/비동기(Synchronous/Asynchronous)와 블로킹/논블로킹(Blocking/Non-blocking)의 차이를 관점(Dimension) 분리를 통해 명확하게 정리합니다. 블로킹/논블로킹은 **"호출된 함수가 제어권을 즉시 반환하는가(대기 여부)"**에 관한 시스템 콜 관점이며, 동기/비동기는 **"작업의 완료 통지 주체와 결과 순서를 누가 처리하는가(동기화 여부)"**에 관한 흐름 제어 관점입니다. 이 두 축을 결합한 2x2 매트릭스(Sync-Blocking, Sync-Nonblocking, Async-Blocking, Async-Nonblocking)의 작동 방식과 실제 Linux `epoll`, Java NIO 등 아키텍처 사례를 다룹니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+“동기=블로킹, 비동기=논블로킹”이라는 흔한 등식을 그대로 반복하지 않고 제어권 반환 여부와 완료 통지 주체라는 두 독립 축으로 분해해 2×2 조합을 구성한다. POSIX·UNIX Network Programming의 커널→사용자 버퍼 복사 기준으로 진정한 비동기 I/O를 구분하고, Linux `epoll`, Java NIO, Node.js 사례를 각 사분면에 대응시켜 API 명칭보다 실제 완료 처리 흐름을 보고 판단하도록 만든다.
+
 ## 본문
 
 ### 1. 서론: 실행 흐름과 제어권의 혼란

@@ -23,6 +23,12 @@ url: https://beji-tech.blogspot.com/2026/08/load-balancing-l4-vs-l7.html
 
 대규모 웹 서비스 및 분산 시스템에서는 폭증하는 트래픽을 단일 서버의 성능 향상(Scale-up)만으로 처리하는 데 명확한 한계가 존재합니다. 따라서 여러 대의 서버로 요청을 분산하는 수평 확장(Scale-out)과 이를 제어하는 로드 밸런싱(Load Balancing) 인프라가 고가용성(High Availability) 확보의 핵심 요소로 자리잡고 있습니다. 본 아티클에서는 OSI 7계층 기준 전송 계층(L4) 및 애플리케이션 계층(L7) 부하 분산 스위치의 동작 원리와 패킷 파싱 깊이의 차이, 라운드 로빈(Round Robin), 최소 연결(Least Connection), 일관성 해싱(Consistent Hashing) 등 핵심 알고리즘의 메커니즘을 상세히 검토합니다. 아울러 SSL Offloading, Sticky Session 등 실무 아키텍처 패턴과 AWS(NLB/ALB), NGINX, HAProxy 등의 대표적 구현체 간 트레이드오프를 체계적으로 분석합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+L4와 L7을 단순 기능표로 비교하는 대신 패킷 파싱 깊이, 라운드 로빈·최소 연결·일관성 해싱의 선택 기준, SSL Offloading과 Sticky Session의 상태 비용을 하나의 계층형 설계로 묶는다. AWS NLB·ALB, NGINX, HAProxy를 각각 전송 계층 수용량과 애플리케이션 계층 라우팅 관점에서 배치하고, 엣지 L4와 내부 L7을 조합하는 Multi-Tier 구조까지 구체적인 운영 전략으로 제시한다.
+
 ## 본문
 
 ### 1. 서론: 대규모 트래픽 환경에서 로드 밸런싱의 역할과 필요성

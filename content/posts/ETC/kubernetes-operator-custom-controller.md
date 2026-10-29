@@ -21,6 +21,12 @@ url: https://beji-tech.blogspot.com/2026/08/kubernetes-operator-custom-controlle
 
 Kubernetes Operator 패턴은 시스템 운영자의 업무 지식(Operational Knowledge)을 코드화하여 클러스터 상의 애플리케이션 상태를 자동으로 관리하는 디자인 패턴입니다. 이는 사용자 정의 리소스 정의(CRD)와 이를 지속적으로 관찰 및 강제하는 사용자 정의 컨트롤러(Custom Controller)의 조합으로 구현됩니다. 본 글에서는 Operator 패턴의 정의, 핵심 메커니즘인 조정 루프(Reconciliation Loop)의 동작 원리, 대표적인 프레임워크인 Kubebuilder와 Operator SDK의 차이점, 그리고 설계 상 필수적으로 고려해야 할 멱등성(Idempotency) 등 모범 사례(Best Practices)를 상세히 설명합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+단순히 CRD와 Controller의 정의를 소개하는 데 그치지 않고, 이 글은 Observe–Compare–Act–Status/Re-queue로 이어지는 조정 루프를 실제 운영 흐름으로 분해한다. CRD가 스키마일 뿐 실행 로직이 아니라는 경계를 명확히 하고, Kubebuilder와 Operator SDK를 `controller-runtime`, Ansible·Helm 지원, OLM·Scorecard 관점에서 비교하며, 멱등성·Finalizer·Status/Condition·관찰 가능성까지 장애 복구 가능한 Operator 설계 기준으로 연결한다.
+
 ## 본문
 
 ### 1. 서론: 왜 Kubernetes Operator 패턴인가?

@@ -29,6 +29,12 @@ url: https://beji-tech.blogspot.com/2026/08/mysql-innodb-btree-covering-index.ht
 
 ---
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+인덱스가 검색을 빠르게 한다는 수준을 넘어 InnoDB의 Clustered Index 리프에 실제 행이 저장되고 Secondary Index 리프에는 기본 키가 저장되어 재탐색이 발생하는 구조를 B+Tree 단계로 설명한다. `EXPLAIN`의 `Using index`로 커버링 여부를 확인하고, 실제 SQL 스키마·쿼리와 지연 조인(Deferred Join) 레시피를 함께 제공해 Random Disk I/O를 줄이는 튜닝 효과를 실행 계획으로 판별하도록 구성한다.
+
 ## 본문
 
 ### 1. 개요 및 왜 필요한가? (Background & Motivation)

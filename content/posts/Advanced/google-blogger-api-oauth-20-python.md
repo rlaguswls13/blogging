@@ -20,6 +20,12 @@ url: https://beji-tech.blogspot.com/2026/08/google-blogger-api-oauth-20-python.h
 
 Google Blogger API v3는 개발자가 Python 등 프로그래밍 언어를 사용하여 블로그 포스트를 자동으로 생성, 수정, 삭제 및 관리할 수 있도록 지원하는 강력한 인터페이스입니다. 본 글에서는 Google Cloud Console을 활용한 OAuth 2.0 자격 증명 설정 방법, 로컬 인증 서버를 구축하여 브라우저 로그인 창으로 자격 증명을 획득하는 흐름(InstalledAppFlow), 그리고 획득한 토큰을 기반으로 Blogger API를 연동하여 포스트를 배포하는 전체 과정을 실전 코드와 함께 설명합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+단순한 Blogger API 메서드 목록이 아니라 Google Cloud 프로젝트 생성과 API 활성화, OAuth 동의 화면과 테스트 사용자 등록, `InstalledAppFlow` 기반 로컬 브라우저 인증, refresh token 보관, `posts().insert()` 호출까지 실제 자동 배포에 필요한 전체 인증 수명주기를 하나의 Python 흐름으로 연결한다. `https://www.googleapis.com/auth/blogger` 스코프와 글 생성·수정·삭제 메서드를 공식 Blogger API 문서에 맞춰 설명해 API 키 예제와 구분한다.
+
 ## 본문
 
 ### 1. Google Blogger API 소개 및 준비 단계

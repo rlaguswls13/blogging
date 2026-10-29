@@ -23,6 +23,12 @@ url: https://beji-tech.blogspot.com/2026/08/redis-distributed-lock-redlock-clock
 
 동일한 공유 자원에 대해 여러 분산 노드가 동시에 접근하는 분산 아키텍처(MSA 등)에서, 데이터 레이스 컨디션(Race Condition)을 통제하기 위한 **'분산 락(Distributed Lock)'** 구현은 필수적입니다. 이 중 고속 메모리 아키텍처를 지닌 Redis는 분산 락 구현의 사실상 표준(de facto standard)으로 활발히 기용되고 있습니다. 본 아티클에서는 대표적 Redis 클라이언트 라이브러리인 Lettuce와 Redisson의 락 획득 메커니즘 차이를 심층 규명하고, 다중 노드 합의 프로토콜인 Redlock 알고리즘의 동작 방식과 시계 드리프트(Clock Drift) 등 분산 네트워크 환경 하의 내재된 한계를 도출합니다. 아울러 이를 극복하기 위한 펜싱 토큰(Fencing Token) 보완 패턴을 제시합니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+Redis 분산 락 사용법만 소개하지 않고 Lettuce의 반복 획득 방식과 Redisson의 Pub/Sub 대기 모델을 경합 강도 관점에서 비교한다. 여러 Redis 노드의 과반수 획득을 요구하는 Redlock도 네트워크 지연과 Clock Drift 때문에 임계 구역의 최신 소유자를 완전히 증명하지 못할 수 있음을 설명하고, 단조 증가 Fencing Token을 저장소가 검증하도록 해 늦게 도착한 이전 소유자의 쓰기를 차단하는 보완 패턴까지 제시한다.
+
 ## 본문
 
 ### 1. 서론: 분산 환경에서의 동시성 제어와 Redis의 기용 이유

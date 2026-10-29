@@ -25,6 +25,12 @@ url: https://beji-tech.blogspot.com/2026/08/jvm-heap-stack-metaspace-garbage.htm
 
 자바 애플리케이션이 실행되는 동안 JVM은 객체, 메서드 코드, 스레드별 실행 상태를 서로 다른 메모리 영역에 나누어 관리합니다. 본 아티클에서는 JVM 명세(Java Virtual Machine Specification)가 정의하는 5가지 런타임 데이터 영역(Heap, Method Area/Metaspace, JVM Stack, PC Register, Native Method Stack)의 역할과 스레드 공유 여부를 정리하고, Young/Old Generation 기반 세대별 GC와 Minor/Major GC, Stop-The-World가 실제로 어떻게 맞물려 동작하는지, 그리고 2026년 현재 JDK의 기본 GC로 자리잡아 가는 G1 GC의 기본 동작 원리를 다룹니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+Heap과 Stack의 단순 정의에 머무는 글과 달리, 이 글은 JVM 명세의 다섯 런타임 데이터 영역을 스레드 공유 여부와 저장 대상 기준으로 나누고 Method Area와 HotSpot Metaspace의 관계를 구분한다. Young/Old 세대, Minor/Major GC, Stop-The-World, G1 Region 흐름을 하나의 메모리 구조도에 연결하고 `-XX:+UseG1GC`, `jstat` 명령까지 제공해 개념 설명을 실제 JVM 관찰 방법으로 이어준다.
+
 ## 본문
 
 ### 1. JVM 런타임 데이터 영역 개요

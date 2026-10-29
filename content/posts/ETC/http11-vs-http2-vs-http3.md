@@ -22,6 +22,12 @@ url: https://beji-tech.blogspot.com/2026/08/http11-vs-http2-vs-http3.html
 
 현대 웹 트래픽 환경에서 웹 성능 최적화는 단순히 자바스크립트 코드나 이미지 용량을 줄이는 것에 그치지 않고, 네트워크 전송 계층 프로토콜의 발전 과정과 밀접하게 연계되어 있습니다. 본 아티클에서는 HTTP/1.1의 텍스트 기반 구조 및 애플리케이션 레벨의 Head-of-Line(HOL) Blocking 병목에서부터, HTTP/2의 바이너리 프레이밍 계층과 다중화(Multiplexing)를 통한 단일 TCP 연결 혁신, 그리고 HTTP/3가 UDP 기반 QUIC 프로토콜을 도입하여 TCP 수준의 HOL Blocking을 근본적으로 해결하고 0-RTT 연결 및 Connection Migration을 성취한 원리를 체계적으로 다룹니다.
 
+## 차별화 포인트
+
+<!-- 내부 전용 섹션, 라이브 배포 시 자동 제거됨 -->
+
+일반적인 HTTP 버전 비교가 기능 표에 머무는 것과 달리, 이 글은 HTTP/1.1의 애플리케이션 HOL Blocking, HTTP/2의 TCP 계층 HOL Blocking, HTTP/3의 QUIC 스트림별 손실 복구를 계층별로 구분한다. 또한 RFC 7540·9000·9114를 근거로 0-RTT와 Connection ID를 설명하고, `Alt-Svc` 전환 예시와 패킷 손실 환경의 성능 수치까지 연결해 도메인 샤딩·대형 번들링이 최신 프로토콜에서 왜 반패턴이 되는지 운영 전략으로 환원한다.
+
 ## 본문
 
 ### 1. 서론: HTTP 프로토콜의 진화 배경과 웹 성능 최적화의 필요성
