@@ -21,7 +21,7 @@ from src.pipeline.validate import validate_run
 from src.pipeline.check import check_run
 from src.pipeline.lint import lint_run
 from src.pipeline.seo_check import check_meta_description
-from src.pipeline.seo_meta import set_seo_meta
+from src.pipeline.seo_meta import set_all_seo_meta, set_seo_meta
 from src.pipeline.approve import approve_run
 from src.pipeline.patch_urls import patch_urls
 from src.publishers import publish_to_multi
@@ -146,11 +146,23 @@ def main():
             blog_id = os.environ.get("BLOGGER_BLOG_ID")
             if not blog_id:
                 raise RuntimeError("BLOGGER_BLOG_ID가 설정되어 있지 않습니다.")
-            set_seo_meta(
-                required_flag(args, "run"),
-                blog_id,
-                dry_run=has_flag(args, "dry-run"),
-            )
+            if has_flag(args, "all"):
+                if read_flag(args, "run") is not None:
+                    raise RuntimeError("seo-meta는 --run 또는 --all 중 하나만 지정할 수 있습니다.")
+                start_at_raw = read_flag(args, "start-at") or "1"
+                if not start_at_raw.isdecimal():
+                    raise RuntimeError("--start-at은 1 이상의 정수여야 합니다.")
+                set_all_seo_meta(
+                    blog_id,
+                    dry_run=has_flag(args, "dry-run"),
+                    start_at=int(start_at_raw),
+                )
+            else:
+                set_seo_meta(
+                    required_flag(args, "run"),
+                    blog_id,
+                    dry_run=has_flag(args, "dry-run"),
+                )
             return
 
         elif command == "sync":
