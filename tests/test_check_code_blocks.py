@@ -11,6 +11,16 @@ class BashSyntaxTest(unittest.TestCase):
     def test_real_syntax_error_is_reported(self):
         self.assertIsNotNone(check_bash_syntax("if true; then\necho hi\n"))
 
+    def test_function_syntax_passes_when_windows_translates_stdin_newlines(self):
+        # Given: a valid Bash function whose opening brace exposes stray CR bytes.
+        script = "main() {\n  echo hi\n}\n\nmain \"$@\"\n"
+
+        # When: the script is checked through the real Bash subprocess boundary.
+        error = check_bash_syntax(script)
+
+        # Then: Windows text-mode pipe translation must not corrupt the script.
+        self.assertIsNone(error)
+
 
 class LogicMatchFalsePositiveTest(unittest.TestCase):
     def test_config_file_package_and_glob_quotes_are_not_identifiers(self):

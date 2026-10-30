@@ -81,10 +81,13 @@ def check_python_syntax(code):
 def check_bash_syntax(code):
     # 임시 파일 경로를 넘기면 Windows의 Git Bash가 `C:\Users\...`의 백슬래시를 이스케이프로
     # 먹어 "No such file" 오탐을 낸다(2026-10-19, 소급 감사 bash 4건) — stdin으로 넘겨 경로 의존을 없앤다.
+    # Windows text mode는 LF를 CRLF로 바꾸므로 bytes로 전달해 Bash 함수의 `{\r` 오탐을 막는다.
     try:
-        result = subprocess.run(["bash", "-n"], input=code, capture_output=True, text=True, timeout=10)
+        result = subprocess.run(
+            ["bash", "-n"], input=code.encode("utf-8"), capture_output=True, timeout=10
+        )
         if result.returncode != 0:
-            return result.stderr.strip()
+            return result.stderr.decode("utf-8", errors="replace").strip()
         return None
     except FileNotFoundError:
         return None  # bash 자체가 없는 환경 — 건너뜀
